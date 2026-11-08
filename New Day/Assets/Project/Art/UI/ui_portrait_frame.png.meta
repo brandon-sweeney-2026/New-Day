@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8c8e6e2cb2cd22744a619c26a3873389
+guid: dd75f2433c43374489bc39ff6f22ef16
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7832214784768987486
-    second: apple_0
+      213: 701002462913818927
+    second: ui_portrait_frame_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,9 +49,9 @@ TextureImporter:
   spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 0
-  alignment: 9
+  alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 50
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -115,13 +115,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: apple_0
+      name: ui_portrait_frame_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
-        height: 16
+        width: 44
+        height: 44
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,8 +130,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2ae284d66226e4390800000000000000
-      internalID: -7832214784768987486
+      spriteID: f21f6a4a6067ab900800000000000000
+      internalID: 701002462913818927
       vertices: []
       indices: 
       edges: []
@@ -150,7 +150,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      apple_0: -7832214784768987486
+      ui_portrait_frame_0: 701002462913818927
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

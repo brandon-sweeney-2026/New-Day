@@ -35,6 +35,8 @@ public class GrowingTree : MonoBehaviour, IToolTarget
 
         sr = gameObject.AddComponent<SpriteRenderer>();
         sr.sortingOrder = sortingOrder;
+        var sorter = gameObject.AddComponent<BehindPlayerSorter>();   // player walks behind the tree when standing above it
+        sorter.thresholdOffset = 0f;
 
         trunk = gameObject.AddComponent<BoxCollider2D>();
         Refresh(TimeManager.Instance != null ? (int)TimeManager.Instance.CurrentSeason : 0);

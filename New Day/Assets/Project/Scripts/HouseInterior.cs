@@ -20,9 +20,9 @@ public class HouseInterior : MonoBehaviour
     }
 
     [Header("Room size (in tiles)")]
-    [Min(4)] public int width = 10;
-    [Min(2)] public int floorRows = 5;
-    [Min(1)] public int wallRows = 2;
+    [Min(4)] public int width = 20;
+    [Min(2)] public int floorRows = 20;
+    [Min(1)] public int wallRows = 3;
 
     [Header("References")]
     [SerializeField] private Tilemap floorTilemap;

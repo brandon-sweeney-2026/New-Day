@@ -12,7 +12,7 @@ using UnityEngine.Tilemaps;
 /// Before running it, copy the "Trees" folder (the PNGs) anywhere into your project (e.g. Assets/Farm/Trees).
 /// It then:
 ///   - cuts each tree sheet into 16 pictures (4 growth stages x 4 seasons) with the pivot at the trunk base,
-///   - creates the items (Log, Acorn, Apple, Pine Cone, Maple Syrup) and 4 Tree assets (Oak, Apple, Pine, Maple),
+///   - creates the items (Log, Acorn, Birch Sap, Birch Bark, Pine Cone, Maple Syrup) and 4 Tree assets (Oak, Birch, Pine, Maple),
 ///   - adds a TreeManager to your scene and fills in the ground tiles trees may grow on (Grass and DirtFlat),
 ///     the tilemaps to avoid, and the places to keep clear (the farmhouse and the player).
 ///
@@ -23,7 +23,7 @@ public static class TreeSetupMenu
 {
     private const string DataRoot = "Assets/Farm/Trees/Data";
     private const string ItemsFolder = "Assets/Farm/Data/Items";
-    private const int CellW = 32, CellH = 48;
+    private const int CellW = 32, CellH = 96;          // each tree picture is 2 x 6 tiles
     private const float PixelsPerUnit = 16f;
 
     // Names of the ground tiles trees may grow on. Change them in the TreeManager Inspector afterwards if you like.
@@ -49,33 +49,34 @@ public static class TreeSetupMenu
         EnsureFolder(ItemsFolder);
 
         ImportIcons();
-        foreach (string name in new[] { "tree_oak", "tree_apple", "tree_pine", "tree_maple" })
+        foreach (string name in new[] { "tree_oak", "tree_birch", "tree_pine", "tree_maple" })
             SliceSheet(artFolder + "/" + name + ".png");
 
         // ---- items ----
         ItemData log = MakeItem("Log", "Log", "Sturdy timber from a felled tree.", ItemData.ItemType.Resource, 0, 8, "icon_log", 99);
         ItemData acorn = MakeItem("Acorn", "Acorn", "A nut from the oak tree.", ItemData.ItemType.Crop, 0, 6, "icon_acorn", 99);
-        ItemData apple = MakeItem("Apple", "Apple", "Crisp and sweet. Great in cooking.", ItemData.ItemType.Crop, 0, 14, "icon_apple", 99);
+        ItemData sap = MakeItem("BirchSap", "Birch Sap", "Clear, lightly sweet sap tapped from a birch.", ItemData.ItemType.Crop, 0, 16, "icon_birch_sap", 99);
+        ItemData bark = MakeItem("BirchBark", "Birch Bark", "Papery white bark. Good for crafting.", ItemData.ItemType.Resource, 0, 7, "icon_birch_bark", 99);
         ItemData cone = MakeItem("PineCone", "Pine Cone", "Smells like a forest.", ItemData.ItemType.Resource, 0, 5, "icon_pine_cone", 99);
         ItemData syrup = MakeItem("MapleSyrup", "Maple Syrup", "Thick, golden and delicious.", ItemData.ItemType.Crop, 0, 30, "icon_maple_syrup", 99);
 
         ItemData oakSeed = MakeItem("AcornSeed", "Oak Sapling", "Plant it to grow an oak tree.", ItemData.ItemType.Seed, 0, 10, "icon_acorn", 99);
-        ItemData appleSeed = MakeItem("AppleSeed", "Apple Seed", "Plant it to grow an apple tree.", ItemData.ItemType.Seed, 0, 10, "icon_apple", 99);
+        ItemData birchSeed = MakeItem("BirchSeed", "Birch Seed", "Plant it to grow a birch tree.", ItemData.ItemType.Seed, 0, 10, "icon_birch_seed", 99);
         ItemData pineSeed = MakeItem("PineSeed", "Pine Seed", "Plant it to grow a pine tree.", ItemData.ItemType.Seed, 0, 10, "icon_pine_cone", 99);
         ItemData mapleSeed = MakeItem("MapleSeed", "Maple Seed", "Plant it to grow a maple tree.", ItemData.ItemType.Seed, 0, 10, "icon_maple_syrup", 99);
 
         // ---- trees ----  (drops are in order: Spring, Summer, Autumn, Winter)
         TreeData oak = MakeTree("Oak", "Oak", "tree_oak", log, 1.2f, new[] { 1, 2, 4, 6 }, new[] { 0, 1, 3, 5 },
             Drops(null, null, D(acorn, 1, 3, 0.4f), null));
-        TreeData appleTree = MakeTree("AppleTree", "Apple Tree", "tree_apple", log, 1f, new[] { 1, 2, 3, 5 }, new[] { 0, 1, 2, 3 },
-            Drops(null, D(apple, 1, 2, 0.3f), D(apple, 1, 3, 0.45f), null));
+        TreeData birch = MakeTree("Birch", "Birch", "tree_birch", log, 1f, new[] { 1, 2, 3, 5 }, new[] { 0, 1, 2, 3 },
+            Drops(D(sap, 1, 2, 0.3f), null, D(bark, 1, 2, 0.4f), null));
         TreeData pine = MakeTree("Pine", "Pine", "tree_pine", log, 1.2f, new[] { 1, 2, 4, 6 }, new[] { 0, 1, 3, 5 },
             Drops(null, null, D(cone, 1, 2, 0.35f), D(cone, 1, 2, 0.25f)));
         TreeData maple = MakeTree("Maple", "Maple", "tree_maple", log, 0.8f, new[] { 1, 2, 4, 6 }, new[] { 0, 1, 3, 5 },
             Drops(D(syrup, 1, 1, 0.25f), null, null, null));
 
-        oak.seedItem = oakSeed; appleTree.seedItem = appleSeed; pine.seedItem = pineSeed; maple.seedItem = mapleSeed;
-        foreach (TreeData td in new[] { oak, appleTree, pine, maple }) EditorUtility.SetDirty(td);
+        oak.seedItem = oakSeed; birch.seedItem = birchSeed; pine.seedItem = pineSeed; maple.seedItem = mapleSeed;
+        foreach (TreeData td in new[] { oak, birch, pine, maple }) EditorUtility.SetDirty(td);
 
         AssetDatabase.SaveAssets();
 
@@ -89,7 +90,7 @@ public static class TreeSetupMenu
             created = true;
         }
 
-        var species = new List<Object> { oak, appleTree, pine, maple };
+        var species = new List<Object> { oak, birch, pine, maple };
         SetArray(manager, "species", species);
 
         // Ground tiles: look up by exact asset name.
@@ -134,7 +135,7 @@ public static class TreeSetupMenu
 
         var sb = new System.Text.StringBuilder();
         sb.AppendLine(created ? "TreeManager added to the scene." : "TreeManager refreshed.");
-        sb.AppendLine("Trees: Oak, Apple Tree, Pine, Maple (in " + DataRoot + ").");
+        sb.AppendLine("Trees: Oak, Birch, Pine, Maple (in " + DataRoot + ").");
         sb.AppendLine("Can grow on: " + (ground.Count > 0 ? string.Join(", ", ground.Select(g => g.name).ToArray()) : "(nothing yet)"));
         if (missing.Count > 0)
             sb.AppendLine("\nCould not find a tile asset named: " + string.Join(", ", missing.ToArray()) +

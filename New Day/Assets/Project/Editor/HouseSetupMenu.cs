@@ -30,7 +30,13 @@ public static class HouseSetupMenu
     // ------------------------------------------------------------------
 
     [MenuItem("Farm/House/Build Farmhouse")]
-    public static void Build()
+    public static void Build() { Run(false); }
+
+    /// <summary>Deletes the farmhouse, its inside and the store stall, then builds them again (same spot). Use this after updating the house art or size.</summary>
+    [MenuItem("Farm/House/Rebuild Farmhouse (replace existing)")]
+    public static void Rebuild() { Run(true); }
+
+    private static void Run(bool replace)
     {
         string[] found = AssetDatabase.FindAssets("house_ext_walls t:Texture2D");
         if (found.Length == 0)
@@ -39,7 +45,27 @@ public static class HouseSetupMenu
                 "Copy the 'House' folder from the zip into your project (for example Assets/Farm/House) first, then run this again.", "OK");
             return;
         }
-        artFolder = Path.GetDirectoryName(AssetDatabase.GUIDToAssetPath(found[0])).Replace('\\', '/');
+        // If the art exists in more than one folder, use the copy that is the NEW 8 x 8 tile picture (128 px tall).
+        string chosen = null;
+        var seen = new List<string>();
+        foreach (string g in found)
+        {
+            string p = AssetDatabase.GUIDToAssetPath(g);
+            if (Path.GetFileNameWithoutExtension(p) != "house_ext_walls") continue;
+            seen.Add(p);
+            var t = AssetDatabase.LoadAssetAtPath<Texture2D>(p);
+            if (t != null && t.height >= 128 && chosen == null) chosen = p;
+        }
+        if (chosen == null)
+        {
+            EditorUtility.DisplayDialog("House art is still the OLD version",
+                "Found house_ext_walls.png here:\n" + string.Join("\n", seen.ToArray()) +
+                "\n\n...but it is not the new 128 x 128 picture. Copy the 3 house_ext_*.png files from house_update.zip over those files " +
+                "(replace them), wait for Unity to import, then run this again.", "OK");
+            return;
+        }
+        artFolder = Path.GetDirectoryName(chosen).Replace('\\', '/');
+        Debug.Log("Farmhouse art folder: " + artFolder + (seen.Count > 1 ? " (other copies exist: " + string.Join(", ", seen.ToArray()) + ")" : ""));
 
         var log = new List<string>();
 
@@ -58,6 +84,19 @@ public static class HouseSetupMenu
         AssetDatabase.SaveAssets();
 
         var existing = Object.FindAnyObjectByType<HouseManager>();
+        Vector3? keepOrigin = null;
+        if (replace)
+        {
+            var oldHouse = GameObject.Find("Farmhouse");
+            if (oldHouse != null) keepOrigin = oldHouse.transform.position;
+            foreach (string n in new[] { "Farmhouse", "HouseInterior", "HouseManager", "GeneralStore" })
+            {
+                GameObject old = GameObject.Find(n);
+                if (old != null) Undo.DestroyObjectImmediate(old);
+            }
+            existing = null;
+        }
+
         if (existing != null)
         {
             SetArray(existing, "catalog", catalog.Cast<Object>().ToList());
@@ -69,7 +108,7 @@ public static class HouseSetupMenu
         }
         else
         {
-            BuildScene(catalog, recipes, log);
+            BuildScene(catalog, recipes, log, keepOrigin);
         }
 
         UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(UnityEngine.SceneManagement.SceneManager.GetActiveScene());
@@ -328,7 +367,7 @@ public static class HouseSetupMenu
         { category = c; name = n; this.x = x; this.y = y; this.order = order; colSize = cs; colOffset = co; this.kind = kind; }
     }
 
-    private static void BuildScene(List<HouseUpgradeData> catalog, List<Recipe> recipes, List<string> log)
+    private static void BuildScene(List<HouseUpgradeData> catalog, List<Recipe> recipes, List<string> log, Vector3? keepOrigin = null)
     {
         // ---- where to put the house: the middle of the Scene view, snapped to the tile grid ----
         Vector3 origin = Vector3.zero;
@@ -339,19 +378,26 @@ public static class HouseSetupMenu
             if (p != null) origin = p.transform.position + new Vector3(0f, 5f, 0f);
         }
         origin = new Vector3(Mathf.Round(origin.x), Mathf.Round(origin.y), 0f);
+        if (keepOrigin.HasValue) origin = keepOrigin.Value;
 
         // ---------------- exterior ----------------
         var house = new GameObject("Farmhouse");
         Undo.RegisterCreatedObjectUndo(house, "Create Farmhouse");
         house.transform.position = origin;
 
-        SpriteRenderer walls = Layer(house, "Walls", "house_ext_walls", 6);
-        SpriteRenderer roof = Layer(house, "Roof", "house_ext_roof", 7);
-        Layer(house, "Details", "house_ext_details", 8);
+        // The picture is 8 x 8 tiles. A Sorting Group keeps the three layers together and sorts the whole house against the
+        // player by its base: the player is drawn BEHIND the house while standing north of the footprint (walking behind the top 4 tiles).
+        var group = house.AddComponent<UnityEngine.Rendering.SortingGroup>();
+        group.sortingOrder = 10;
+        house.AddComponent<BehindPlayerSorter>();      // draws the house in front of / behind the player as they walk around it
+        SpriteRenderer walls = Layer(house, "Walls", "house_ext_walls", 0);
+        SpriteRenderer roof = Layer(house, "Roof", "house_ext_roof", 1);
+        Layer(house, "Details", "house_ext_details", 2);
 
-        var body = house.AddComponent<BoxCollider2D>();      // the building is solid (8 x 4 tiles)
-        body.size = new Vector2(7.6f, 3.4f);
-        body.offset = new Vector2(0f, 1.9f);
+        // Only the bottom 8 x 4 tiles are solid. The top 4 tiles of the art can be walked behind.
+        var body = house.AddComponent<BoxCollider2D>();
+        body.size = new Vector2(7.8f, 3.6f);
+        body.offset = new Vector2(0f, 2f);
 
         // ---------------- interior ----------------
         var room = new GameObject("HouseInterior");
@@ -359,12 +405,12 @@ public static class HouseSetupMenu
         room.transform.position = new Vector3(500f, 0f, 0f);       // far from the farm
         room.AddComponent<Grid>();
         var interior = room.AddComponent<HouseInterior>();
-        const int W = 10, FLOOR = 5, WALLROWS = 2;
+        const int W = 20, FLOOR = 20, WALLROWS = 3;      // walkable floor is 20 x 20 tiles, plus 3 rows of back wall
 
         var back = Child(room, "Backdrop", new Vector3(W * 0.5f, (FLOOR + WALLROWS) * 0.5f, 0f));
         var backSr = back.AddComponent<SpriteRenderer>();
         backSr.sprite = Spr("backdrop"); backSr.sortingOrder = -5;
-        back.transform.localScale = new Vector3(60f, 40f, 1f);
+        back.transform.localScale = new Vector3(100f, 80f, 1f);
 
         var floorGo = Child(room, "Floor", Vector3.zero);
         var floorMap = floorGo.AddComponent<Tilemap>(); floorGo.AddComponent<TilemapRenderer>().sortingOrder = 0;
@@ -379,25 +425,25 @@ public static class HouseSetupMenu
         Box(edges, new Vector2(W * 0.5f, FLOOR + WALLROWS * 0.5f), new Vector2(W, WALLROWS), false);
 
         // spawn point and exit door
-        var entry = Child(room, "EntrySpawn", new Vector3(5.5f, 1.2f, 0f));
-        var mat = Child(room, "Doormat", new Vector3(5f, 0f, 0f));
+        var entry = Child(room, "EntrySpawn", new Vector3(10.5f, 1.2f, 0f));
+        var mat = Child(room, "Doormat", new Vector3(10f, 0f, 0f));
         var matSr = mat.AddComponent<SpriteRenderer>(); matSr.sprite = Spr("fur_doormat"); matSr.sortingOrder = 2;
 
-        var exitDoor = Child(room, "ExitDoor", new Vector3(5.5f, 0f, 0f));
+        var exitDoor = Child(room, "ExitDoor", new Vector3(10.5f, 0f, 0f));
         Box(exitDoor, Vector2.zero, new Vector2(1.8f, 1.2f), true);
         var exitComp = exitDoor.AddComponent<HouseDoor>();
 
         // ---- furniture slots ----
         var slotSpecs = new List<Slot>
         {
-            new Slot(HouseCategory.Rug,       "Slot_Rug",       3, 0, 3, Vector2.zero, Vector2.zero),
-            new Slot(HouseCategory.Table,     "Slot_Table",     3, 1, 5, new Vector2(1.8f, 1.0f), new Vector2(1f, 0.9f)),
-            new Slot(HouseCategory.Bed,       "Slot_Bed",       1, 3, 5, new Vector2(2f, 1.6f), new Vector2(1f, 0.8f), "bed"),
-            new Slot(HouseCategory.Lamp,      "Slot_Lamp",      3, 3, 5, new Vector2(0.6f, 0.4f), new Vector2(0.5f, 0.3f)),
-            new Slot(HouseCategory.Bookshelf, "Slot_Bookshelf", 4, 3, 5, new Vector2(1f, 1.2f), new Vector2(0.5f, 0.6f)),
-            new Slot(HouseCategory.WallArt,   "Slot_WallArt",   5, 5, 4, Vector2.zero, Vector2.zero),
-            new Slot(HouseCategory.Kitchen,   "Slot_Kitchen",   7, 3, 5, new Vector2(2f, 1.6f), new Vector2(1f, 0.8f), "kitchen"),
-            new Slot(HouseCategory.Plant,     "Slot_Plant",     9, 3, 5, new Vector2(0.7f, 0.5f), new Vector2(0.5f, 0.3f)),
+            new Slot(HouseCategory.Rug,       "Slot_Rug",       8, 8, 3, Vector2.zero, Vector2.zero),
+            new Slot(HouseCategory.Table,     "Slot_Table",     8, 9, 5, new Vector2(1.8f, 1.0f), new Vector2(1f, 0.9f)),
+            new Slot(HouseCategory.Bed,       "Slot_Bed",       2, 17, 5, new Vector2(2f, 1.6f), new Vector2(1f, 0.8f), "bed"),
+            new Slot(HouseCategory.Lamp,      "Slot_Lamp",      5, 17, 5, new Vector2(0.6f, 0.4f), new Vector2(0.5f, 0.3f)),
+            new Slot(HouseCategory.Bookshelf, "Slot_Bookshelf", 7, 17, 5, new Vector2(1f, 1.2f), new Vector2(0.5f, 0.6f)),
+            new Slot(HouseCategory.WallArt,   "Slot_WallArt",   10, 20, 4, Vector2.zero, Vector2.zero),
+            new Slot(HouseCategory.Kitchen,   "Slot_Kitchen",   14, 17, 5, new Vector2(2f, 1.6f), new Vector2(1f, 0.8f), "kitchen"),
+            new Slot(HouseCategory.Plant,     "Slot_Plant",     18, 17, 5, new Vector2(0.7f, 0.5f), new Vector2(0.5f, 0.3f)),
         };
 
         var slotList = new List<(HouseCategory, SpriteRenderer)>();
@@ -424,7 +470,7 @@ public static class HouseSetupMenu
         }
 
         // design table (not customizable, it's the thing you use to customize)
-        var design = Child(room, "DesignTable", new Vector3(7f, 0f, 0f));
+        var design = Child(room, "DesignTable", new Vector3(15f, 3f, 0f));
         var designSr = design.AddComponent<SpriteRenderer>(); designSr.sprite = Spr("fur_designtable"); designSr.sortingOrder = 5;
         Box(design, new Vector2(1f, 0.9f), new Vector2(1.8f, 1.2f), false);
         design.AddComponent<HouseCustomizer>();
@@ -498,7 +544,7 @@ public static class HouseSetupMenu
             log.Add("Removed the old placeholder Bed (the house has one inside now).");
         }
 
-        log.Add("Built the farmhouse at " + origin + " (8 x 4 tiles). Its inside is at x = 500, far from the farm.");
+        log.Add("Built the farmhouse at " + origin + " (8 x 8 art, 8 x 4 solid footprint). Its inside is 20 x 20 tiles at x = 500, far from the farm.");
         log.Add("Added a General Store stall next to the house. Stock is every seed and material that has a Buy Price.");
         log.Add("If you have another farmhouse prop from the Kiln Harvest layout, delete it or move the new house.");
         Selection.activeGameObject = house;

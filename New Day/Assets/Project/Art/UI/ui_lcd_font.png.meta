@@ -1,0 +1,1016 @@
+fileFormatVersion: 2
+guid: b8ecaf9207b575747806b2eb15250e60
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2203992316453607000
+    second: ui_lcd_font_0
+  - first:
+      213: -3971752418749648218
+    second: ui_lcd_font_1
+  - first:
+      213: -5868243113678100633
+    second: ui_lcd_font_2
+  - first:
+      213: -2226051208842330520
+    second: ui_lcd_font_3
+  - first:
+      213: -8129340746590245636
+    second: ui_lcd_font_4
+  - first:
+      213: 7474946934988564752
+    second: ui_lcd_font_5
+  - first:
+      213: -2014475439591786436
+    second: ui_lcd_font_6
+  - first:
+      213: 1137073028993688481
+    second: ui_lcd_font_7
+  - first:
+      213: -3841640267461335094
+    second: ui_lcd_font_8
+  - first:
+      213: 119472536006598294
+    second: ui_lcd_font_9
+  - first:
+      213: 5002684178980088182
+    second: ui_lcd_font_10
+  - first:
+      213: 5827794392534007231
+    second: ui_lcd_font_11
+  - first:
+      213: -7629855318678675240
+    second: ui_lcd_font_12
+  - first:
+      213: 7137250559008082406
+    second: ui_lcd_font_13
+  - first:
+      213: -6632130749632541760
+    second: ui_lcd_font_14
+  - first:
+      213: 6619293272516086938
+    second: ui_lcd_font_15
+  - first:
+      213: -2313782222671063200
+    second: ui_lcd_font_16
+  - first:
+      213: -3628026664862090982
+    second: ui_lcd_font_17
+  - first:
+      213: 4722430345971045908
+    second: ui_lcd_font_18
+  - first:
+      213: 8788216586072139318
+    second: ui_lcd_font_19
+  - first:
+      213: 7125916372294432254
+    second: ui_lcd_font_20
+  - first:
+      213: 3780185560289634892
+    second: ui_lcd_font_21
+  - first:
+      213: -2934885288257727498
+    second: ui_lcd_font_22
+  - first:
+      213: -5263331028634123298
+    second: ui_lcd_font_23
+  - first:
+      213: 4102224778714570901
+    second: ui_lcd_font_24
+  - first:
+      213: -4137233229125209046
+    second: ui_lcd_font_25
+  - first:
+      213: -418732463635902809
+    second: ui_lcd_font_26
+  - first:
+      213: -9144471709554908610
+    second: ui_lcd_font_27
+  - first:
+      213: 2037754398297586698
+    second: ui_lcd_font_28
+  - first:
+      213: 6832890016254316555
+    second: ui_lcd_font_29
+  - first:
+      213: 9109338977074005022
+    second: ui_lcd_font_30
+  - first:
+      213: -6639248672651732476
+    second: ui_lcd_font_31
+  - first:
+      213: 7180940649566307582
+    second: ui_lcd_font_32
+  - first:
+      213: 7373148099874363801
+    second: ui_lcd_font_33
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 0
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ui_lcd_font_0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 0
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a9a71a5aa8d961e0800000000000000
+      internalID: -2203992316453607000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_lcd_font_1
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 0
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a2f0a8e73081e8c0800000000000000
+      internalID: -3971752418749648218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_lcd_font_2
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 0
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 767a599baffcf8ea0800000000000000
+      internalID: -5868243113678100633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_lcd_font_3
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 0
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86ebf1d383a7b11e0800000000000000
+      internalID: -2226051208842330520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_lcd_font_4
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 0
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfc216d79a7ce2f80800000000000000
+      internalID: -8129340746590245636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_lcd_font_5
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 0
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01963e622a85cb760800000000000000
+      internalID: 7474946934988564752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_lcd_font_6
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 0
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c38f166c2452b04e0800000000000000
+      internalID: -2014475439591786436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_lcd_font_7
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 0
+        width: 12
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a3a8d835e1b7cf00800000000000000
+      internalID: 1137073028993688481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_lcd_font_8
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 0
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac76127d780cfaac0800000000000000
+      internalID: -3841640267461335094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_lcd_font_9
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 0
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69e961573a378a100800000000000000
+      internalID: 119472536006598294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_lcd_font_10
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 0
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 679239361ca1d6540800000000000000
+      internalID: 5002684178980088182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_lcd_font_11
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 0
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fbdb00f7f1c70e050800000000000000
+      internalID: 5827794392534007231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_lcd_font_12
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 0
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d0688a230f4d1690800000000000000
+      internalID: -7629855318678675240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_lcd_font_13
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 0
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e982a2919b9c0360800000000000000
+      internalID: 7137250559008082406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_lcd_font_14
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 0
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cb0534c830f5f3a0800000000000000
+      internalID: -6632130749632541760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_lcd_font_15
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 0
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9c447c29247cdb50800000000000000
+      internalID: 6619293272516086938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_lcd_font_16
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 0
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 067d312d35bc3efd0800000000000000
+      internalID: -2313782222671063200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_lcd_font_17
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 0
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a19ff3d68f8a6adc0800000000000000
+      internalID: -3628026664862090982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_lcd_font_18
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 0
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41611201161798140800000000000000
+      internalID: 4722430345971045908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_lcd_font_19
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 0
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 636a60e4c6406f970800000000000000
+      internalID: 8788216586072139318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_lcd_font_20
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 0
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef5ffb59f2754e260800000000000000
+      internalID: 7125916372294432254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_lcd_font_21
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 0
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4aef122dbae57430800000000000000
+      internalID: 3780185560289634892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_lcd_font_22
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 0
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f3d0e841613547d0800000000000000
+      internalID: -2934885288257727498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_lcd_font_23
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 0
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed3c8f6d054e4f6b0800000000000000
+      internalID: -5263331028634123298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_lcd_font_24
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 0
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5906614a3b70ee830800000000000000
+      internalID: 4102224778714570901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_lcd_font_25
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 0
+        width: 12
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a24bc015c489596c0800000000000000
+      internalID: -4137233229125209046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_lcd_font_26
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 0
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7aece09fa0d503af0800000000000000
+      internalID: -418732463635902809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_lcd_font_27
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 0
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e32ee5dfd6f481180800000000000000
+      internalID: -9144471709554908610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_lcd_font_28
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 0
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0c740a24de874c10800000000000000
+      internalID: 2037754398297586698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_lcd_font_29
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 0
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b00d620844d43de50800000000000000
+      internalID: 6832890016254316555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_lcd_font_30
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 0
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e14cd1b498fda6e70800000000000000
+      internalID: 9109338977074005022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_lcd_font_31
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 0
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40a1c1b2286acd3a0800000000000000
+      internalID: -6639248672651732476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_lcd_font_32
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 0
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef4009a7973d7a360800000000000000
+      internalID: 7180940649566307582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_lcd_font_33
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 0
+        width: 17
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9999b59d12fa25660800000000000000
+      internalID: 7373148099874363801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      ui_lcd_font_0: -2203992316453607000
+      ui_lcd_font_1: -3971752418749648218
+      ui_lcd_font_10: 5002684178980088182
+      ui_lcd_font_11: 5827794392534007231
+      ui_lcd_font_12: -7629855318678675240
+      ui_lcd_font_13: 7137250559008082406
+      ui_lcd_font_14: -6632130749632541760
+      ui_lcd_font_15: 6619293272516086938
+      ui_lcd_font_16: -2313782222671063200
+      ui_lcd_font_17: -3628026664862090982
+      ui_lcd_font_18: 4722430345971045908
+      ui_lcd_font_19: 8788216586072139318
+      ui_lcd_font_2: -5868243113678100633
+      ui_lcd_font_20: 7125916372294432254
+      ui_lcd_font_21: 3780185560289634892
+      ui_lcd_font_22: -2934885288257727498
+      ui_lcd_font_23: -5263331028634123298
+      ui_lcd_font_24: 4102224778714570901
+      ui_lcd_font_25: -4137233229125209046
+      ui_lcd_font_26: -418732463635902809
+      ui_lcd_font_27: -9144471709554908610
+      ui_lcd_font_28: 2037754398297586698
+      ui_lcd_font_29: 6832890016254316555
+      ui_lcd_font_3: -2226051208842330520
+      ui_lcd_font_30: 9109338977074005022
+      ui_lcd_font_31: -6639248672651732476
+      ui_lcd_font_32: 7180940649566307582
+      ui_lcd_font_33: 7373148099874363801
+      ui_lcd_font_4: -8129340746590245636
+      ui_lcd_font_5: 7474946934988564752
+      ui_lcd_font_6: -2014475439591786436
+      ui_lcd_font_7: 1137073028993688481
+      ui_lcd_font_8: -3841640267461335094
+      ui_lcd_font_9: 119472536006598294
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
