@@ -1,0 +1,33 @@
+{
+ "_about": {
+  "size": "sprite size in px (for animated strips: one frame)",
+  "footprint_tiles": "tiles covered on the ground (width, height)",
+  "door": "door rectangle [x, y, w, h] in sprite px (null = no door)",
+  "collision": "solid rectangle [x, y, w, h] in sprite px; its bottom edge is the Y-sort line",
+  "strips": "files ending in _<n>f.png are horizontal strips of n frames (see frames / ms / loop)"
+ },
+ "farmhouse_1": {
+  "size": [
+   80,
+   80
+  ],
+  "footprint_tiles": [
+   4,
+   3
+  ],
+  "door": [
+   34,
+   53,
+   12,
+   20
+  ],
+  "collision": [
+   8,
+   28,
+   64,
+   48
+  ],
+  "group": "farm",
+  "file": "farm/farmhouse_1.png"
+ }
+}

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8a8ddbbe87a0ed4fa1e7b0c5d788b9a, type: 3}
+  m_Name: Potato
+  m_EditorClassIdentifier: Assembly-CSharp::CropData
+  cropName: Potato
+  seedItem: {fileID: 11400000, guid: cc20dba968eaf9e478f83d53a0752277, type: 2}
+  harvestItem: {fileID: 11400000, guid: fc0104c92e9c5554aa4867f63b6c5cbe, type: 2}
+  harvestAmount: 1
+  growthStageSprites:
+  - {fileID: 21300000, guid: be1aaf43738a7ee41a43582c576e79bd, type: 3}
+  - {fileID: 21300000, guid: a89aaa4eeb17f2a4bb787e3fb6a2ccab, type: 3}
+  - {fileID: 21300000, guid: 6428bc55f9eb6944c815f53f016a5be7, type: 3}
+  - {fileID: 21300000, guid: 1b4ec6f2f8046ab4bbae9d72373bbfaa, type: 3}
+  - {fileID: 21300000, guid: e4d50593469d2a84ca3a24f70dc00706, type: 3}
+  - {fileID: 21300000, guid: 5bbe83bfc64818a4fbf6372a78e23856, type: 3}
+  daysPerStage: 1
+  needsWater: 1
+  pollutionSensitivity: 1

@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6b12768e431e23418eb9a763f272197, type: 3}
+  m_Name: Grass
+  m_EditorClassIdentifier: Assembly-CSharp::RandomGroundTile
+  variants:
+  - sprite: {fileID: 1350938453, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+    weight: 1
+  - sprite: {fileID: 1064702095, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+    weight: 1
+  - sprite: {fileID: -392857194, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+    weight: 1
+  - sprite: {fileID: 494423962, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+    weight: 1
+  - sprite: {fileID: 1966180079, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+    weight: 1
+  - sprite: {fileID: 1396381203, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+    weight: 1
+  - sprite: {fileID: -130345123, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+    weight: 1
+  - sprite: {fileID: -1796240624, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+    weight: 1
+  - sprite: {fileID: 1957133205, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+    weight: 0.06
+  - sprite: {fileID: -1336201942, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+    weight: 0.06
+  - sprite: {fileID: -363063601, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+    weight: 0.06
+  - sprite: {fileID: 737741124, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+    weight: 0.06
+  - sprite: {fileID: 1411172325, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+    weight: 0.06
+  - sprite: {fileID: 1555523244, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+    weight: 0.06
+  - sprite: {fileID: -542763912, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+    weight: 0.06
+  - sprite: {fileID: 1129452916, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+    weight: 0.06
+  seed: 0
+  colliderType: 0
+  previewSprite: {fileID: 1350938453, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}

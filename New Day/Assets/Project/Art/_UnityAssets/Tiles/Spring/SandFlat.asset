@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6b12768e431e23418eb9a763f272197, type: 3}
+  m_Name: SandFlat
+  m_EditorClassIdentifier: Assembly-CSharp::RandomGroundTile
+  variants:
+  - sprite: {fileID: -1815071426, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+    weight: 1
+  - sprite: {fileID: 244800911, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+    weight: 1
+  - sprite: {fileID: -1214073281, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+    weight: 1
+  - sprite: {fileID: 1867755759, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+    weight: 1
+  seed: 0
+  colliderType: 0
+  previewSprite: {fileID: -1815071426, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}

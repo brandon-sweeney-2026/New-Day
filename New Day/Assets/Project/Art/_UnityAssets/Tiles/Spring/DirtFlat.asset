@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6b12768e431e23418eb9a763f272197, type: 3}
+  m_Name: DirtFlat
+  m_EditorClassIdentifier: Assembly-CSharp::RandomGroundTile
+  variants:
+  - sprite: {fileID: 1660158474, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+    weight: 1
+  - sprite: {fileID: 1181528637, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+    weight: 1
+  - sprite: {fileID: 596697121, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+    weight: 1
+  - sprite: {fileID: 1138076629, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+    weight: 1
+  - sprite: {fileID: -80542013, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+    weight: 0.05
+  - sprite: {fileID: 522788336, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+    weight: 0.05
+  - sprite: {fileID: 195985401, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+    weight: 0.05
+  - sprite: {fileID: 1396177299, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+    weight: 0.05
+  - sprite: {fileID: 1548296777, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+    weight: 0.05
+  - sprite: {fileID: -1438931356, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+    weight: 0.05
+  - sprite: {fileID: -648555731, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+    weight: 0.05
+  - sprite: {fileID: 1789816174, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+    weight: 0.05
+  seed: 0
+  colliderType: 0
+  previewSprite: {fileID: 1660158474, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}

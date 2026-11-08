@@ -1,0 +1,114 @@
+{
+ "pixel_scale": 1,
+ "nine_slice": {
+  "panel_wood": [
+   12,
+   12,
+   12,
+   12
+  ],
+  "button_wide_wood_normal": [
+   6,
+   0,
+   6,
+   0
+  ],
+  "button_wide_wood_hover": [
+   6,
+   0,
+   6,
+   0
+  ],
+  "button_wide_wood_pressed": [
+   6,
+   0,
+   6,
+   0
+  ],
+  "button_wide_wood_disabled": [
+   6,
+   0,
+   6,
+   0
+  ]
+ },
+ "slice_mode": {
+  "panel_wood": "stretch",
+  "button_wide_wood_normal": "stretch",
+  "button_wide_wood_hover": "stretch",
+  "button_wide_wood_pressed": "stretch",
+  "button_wide_wood_disabled": "stretch"
+ },
+ "hotbar_slots": [
+  [
+   6,
+   4
+  ],
+  [
+   27,
+   4
+  ],
+  [
+   48,
+   4
+  ],
+  [
+   69,
+   4
+  ],
+  [
+   90,
+   4
+  ],
+  [
+   111,
+   4
+  ],
+  [
+   132,
+   4
+  ],
+  [
+   153,
+   4
+  ],
+  [
+   174,
+   4
+  ],
+  [
+   195,
+   4
+  ],
+  [
+   216,
+   4
+  ],
+  [
+   237,
+   4
+  ]
+ ],
+ "slot_icon_offset": {
+  "slot": [
+   2,
+   2
+  ],
+  "slot_small": [
+   1,
+   1
+  ]
+ },
+ "categories": {
+  "panel_wood": "panels",
+  "slot_normal": "inventory",
+  "slot_hover": "inventory",
+  "slot_selected": "inventory",
+  "hotbar": "inventory",
+  "hotbar_select": "inventory",
+  "button_wide_wood_normal": "buttons",
+  "button_wide_wood_hover": "buttons",
+  "button_wide_wood_pressed": "buttons",
+  "button_wide_wood_disabled": "buttons"
+ }
+}

@@ -1,0 +1,330 @@
+{
+ "image": "items_sampler.png",
+ "cell_size": [
+  16,
+  16
+ ],
+ "columns": 16,
+ "items": {
+  "hoe_basic": {
+   "cell": [
+    0,
+    0
+   ],
+   "group": "tools",
+   "file": "tools/hoe_basic.png"
+  },
+  "watering_can_basic": {
+   "cell": [
+    1,
+    0
+   ],
+   "group": "tools",
+   "file": "tools/watering_can_basic.png"
+  },
+  "axe_basic": {
+   "cell": [
+    2,
+    0
+   ],
+   "group": "tools",
+   "file": "tools/axe_basic.png"
+  },
+  "pickaxe_basic": {
+   "cell": [
+    3,
+    0
+   ],
+   "group": "tools",
+   "file": "tools/pickaxe_basic.png"
+  },
+  "scythe_basic": {
+   "cell": [
+    4,
+    0
+   ],
+   "group": "tools",
+   "file": "tools/scythe_basic.png"
+  },
+  "shovel_basic": {
+   "cell": [
+    5,
+    0
+   ],
+   "group": "tools",
+   "file": "tools/shovel_basic.png"
+  },
+  "fishing_rod_basic": {
+   "cell": [
+    6,
+    0
+   ],
+   "group": "tools",
+   "file": "tools/fishing_rod_basic.png"
+  },
+  "turnip": {
+   "cell": [
+    7,
+    0
+   ],
+   "group": "produce",
+   "file": "produce/turnip.png"
+  },
+  "potato": {
+   "cell": [
+    8,
+    0
+   ],
+   "group": "produce",
+   "file": "produce/potato.png"
+  },
+  "carrot": {
+   "cell": [
+    9,
+    0
+   ],
+   "group": "produce",
+   "file": "produce/carrot.png"
+  },
+  "strawberry": {
+   "cell": [
+    10,
+    0
+   ],
+   "group": "produce",
+   "file": "produce/strawberry.png"
+  },
+  "tomato": {
+   "cell": [
+    11,
+    0
+   ],
+   "group": "produce",
+   "file": "produce/tomato.png"
+  },
+  "corn": {
+   "cell": [
+    12,
+    0
+   ],
+   "group": "produce",
+   "file": "produce/corn.png"
+  },
+  "wheat": {
+   "cell": [
+    13,
+    0
+   ],
+   "group": "produce",
+   "file": "produce/wheat.png"
+  },
+  "pumpkin": {
+   "cell": [
+    14,
+    0
+   ],
+   "group": "produce",
+   "file": "produce/pumpkin.png"
+  },
+  "seeds_turnip": {
+   "cell": [
+    15,
+    0
+   ],
+   "group": "seeds",
+   "file": "seeds/seeds_turnip.png"
+  },
+  "seeds_potato": {
+   "cell": [
+    0,
+    1
+   ],
+   "group": "seeds",
+   "file": "seeds/seeds_potato.png"
+  },
+  "seeds_carrot": {
+   "cell": [
+    1,
+    1
+   ],
+   "group": "seeds",
+   "file": "seeds/seeds_carrot.png"
+  },
+  "seeds_strawberry": {
+   "cell": [
+    2,
+    1
+   ],
+   "group": "seeds",
+   "file": "seeds/seeds_strawberry.png"
+  },
+  "seeds_tomato": {
+   "cell": [
+    3,
+    1
+   ],
+   "group": "seeds",
+   "file": "seeds/seeds_tomato.png"
+  },
+  "seeds_corn": {
+   "cell": [
+    4,
+    1
+   ],
+   "group": "seeds",
+   "file": "seeds/seeds_corn.png"
+  },
+  "seeds_wheat": {
+   "cell": [
+    5,
+    1
+   ],
+   "group": "seeds",
+   "file": "seeds/seeds_wheat.png"
+  },
+  "seeds_pumpkin": {
+   "cell": [
+    6,
+    1
+   ],
+   "group": "seeds",
+   "file": "seeds/seeds_pumpkin.png"
+  },
+  "wood": {
+   "cell": [
+    7,
+    1
+   ],
+   "group": "resources",
+   "file": "resources/wood.png"
+  },
+  "stone": {
+   "cell": [
+    8,
+    1
+   ],
+   "group": "minerals",
+   "file": "minerals/stone.png"
+  },
+  "fiber": {
+   "cell": [
+    9,
+    1
+   ],
+   "group": "resources",
+   "file": "resources/fiber.png"
+  },
+  "hay": {
+   "cell": [
+    10,
+    1
+   ],
+   "group": "resources",
+   "file": "resources/hay.png"
+  },
+  "sap": {
+   "cell": [
+    11,
+    1
+   ],
+   "group": "resources",
+   "file": "resources/sap.png"
+  },
+  "fertilizer": {
+   "cell": [
+    12,
+    1
+   ],
+   "group": "resources",
+   "file": "resources/fertilizer.png"
+  },
+  "egg_white": {
+   "cell": [
+    13,
+    1
+   ],
+   "group": "animal_products",
+   "file": "animal_products/egg_white.png"
+  },
+  "egg_brown": {
+   "cell": [
+    14,
+    1
+   ],
+   "group": "animal_products",
+   "file": "animal_products/egg_brown.png"
+  },
+  "milk": {
+   "cell": [
+    15,
+    1
+   ],
+   "group": "animal_products",
+   "file": "animal_products/milk.png"
+  },
+  "wool": {
+   "cell": [
+    0,
+    2
+   ],
+   "group": "animal_products",
+   "file": "animal_products/wool.png"
+  },
+  "coin": {
+   "cell": [
+    1,
+    2
+   ],
+   "group": "misc",
+   "file": "misc/coin.png"
+  },
+  "coin_stack": {
+   "cell": [
+    2,
+    2
+   ],
+   "group": "misc",
+   "file": "misc/coin_stack.png"
+  },
+  "gift_box": {
+   "cell": [
+    3,
+    2
+   ],
+   "group": "misc",
+   "file": "misc/gift_box.png"
+  },
+  "letter": {
+   "cell": [
+    4,
+    2
+   ],
+   "group": "misc",
+   "file": "misc/letter.png"
+  },
+  "energy_potion": {
+   "cell": [
+    5,
+    2
+   ],
+   "group": "misc",
+   "file": "misc/energy_potion.png"
+  },
+  "seed_pouch": {
+   "cell": [
+    6,
+    2
+   ],
+   "group": "seeds",
+   "file": "seeds/seed_pouch.png"
+  },
+  "apple": {
+   "cell": [
+    7,
+    2
+   ],
+   "group": "produce",
+   "file": "produce/apple.png"
+  }
+ }
+}

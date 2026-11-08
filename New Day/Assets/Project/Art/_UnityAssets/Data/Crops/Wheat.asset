@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8a8ddbbe87a0ed4fa1e7b0c5d788b9a, type: 3}
+  m_Name: Wheat
+  m_EditorClassIdentifier: Assembly-CSharp::CropData
+  cropName: Wheat
+  seedItem: {fileID: 11400000, guid: 5b263ccbc11fcc04aaefb8ac8f5dd3d4, type: 2}
+  harvestItem: {fileID: 11400000, guid: eca73beb07679c4409c779f9df491fc0, type: 2}
+  harvestAmount: 1
+  growthStageSprites:
+  - {fileID: 21300000, guid: 27c88512fc6da4a4db232e328bddbb82, type: 3}
+  - {fileID: 21300000, guid: 1fa996db65f76a84d85a4bc0fe6e59a7, type: 3}
+  - {fileID: 21300000, guid: 875928d2bb750244ba415ecf9891a934, type: 3}
+  - {fileID: 21300000, guid: 089a54daf77934f43b97895e9430fd66, type: 3}
+  - {fileID: 21300000, guid: 0e3a59a7663315c4899b96202819802d, type: 3}
+  - {fileID: 21300000, guid: 9083760fc4651bb45aeb31548c9f3923, type: 3}
+  daysPerStage: 1
+  needsWater: 1
+  pollutionSensitivity: 1

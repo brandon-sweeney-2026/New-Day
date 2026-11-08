@@ -1,0 +1,394 @@
+{
+ "pack": "KILN HARVEST",
+ "image": "crops_sheet.png",
+ "cell_size": [
+  16,
+  32
+ ],
+ "columns": [
+  "seed",
+  "sprout",
+  "small",
+  "medium",
+  "large",
+  "ripe",
+  "harvested",
+  "withered"
+ ],
+ "cells_are": "[column, row] in 16x32 cells of crops_sheet.png",
+ "anchor": [
+  8,
+  28
+ ],
+ "placement": "each sprite is 16x32: put its top-left corner at (tile_x, tile_y - 16) so the lower 16 px cover the soil tile; anchor [8, 28] is where the stem meets the soil (use it as the Y-sort origin)",
+ "stage_order": "seed -> sprout -> small -> medium -> large -> ripe; regrowing crops go ripe -> harvested -> ripe",
+ "crops": {
+  "turnip": {
+   "row": 0,
+   "season": "spring",
+   "regrows": false,
+   "stages": {
+    "seed": [
+     0,
+     0
+    ],
+    "sprout": [
+     1,
+     0
+    ],
+    "small": [
+     2,
+     0
+    ],
+    "medium": [
+     3,
+     0
+    ],
+    "large": [
+     4,
+     0
+    ],
+    "ripe": [
+     5,
+     0
+    ],
+    "withered": [
+     7,
+     0
+    ]
+   },
+   "files": {
+    "seed": "turnip/turnip_seed.png",
+    "sprout": "turnip/turnip_sprout.png",
+    "small": "turnip/turnip_small.png",
+    "medium": "turnip/turnip_medium.png",
+    "large": "turnip/turnip_large.png",
+    "ripe": "turnip/turnip_ripe.png",
+    "withered": "turnip/turnip_withered.png"
+   }
+  },
+  "potato": {
+   "row": 1,
+   "season": "spring",
+   "regrows": false,
+   "stages": {
+    "seed": [
+     0,
+     1
+    ],
+    "sprout": [
+     1,
+     1
+    ],
+    "small": [
+     2,
+     1
+    ],
+    "medium": [
+     3,
+     1
+    ],
+    "large": [
+     4,
+     1
+    ],
+    "ripe": [
+     5,
+     1
+    ],
+    "withered": [
+     7,
+     1
+    ]
+   },
+   "files": {
+    "seed": "potato/potato_seed.png",
+    "sprout": "potato/potato_sprout.png",
+    "small": "potato/potato_small.png",
+    "medium": "potato/potato_medium.png",
+    "large": "potato/potato_large.png",
+    "ripe": "potato/potato_ripe.png",
+    "withered": "potato/potato_withered.png"
+   }
+  },
+  "carrot": {
+   "row": 2,
+   "season": "spring",
+   "regrows": false,
+   "stages": {
+    "seed": [
+     0,
+     2
+    ],
+    "sprout": [
+     1,
+     2
+    ],
+    "small": [
+     2,
+     2
+    ],
+    "medium": [
+     3,
+     2
+    ],
+    "large": [
+     4,
+     2
+    ],
+    "ripe": [
+     5,
+     2
+    ],
+    "withered": [
+     7,
+     2
+    ]
+   },
+   "files": {
+    "seed": "carrot/carrot_seed.png",
+    "sprout": "carrot/carrot_sprout.png",
+    "small": "carrot/carrot_small.png",
+    "medium": "carrot/carrot_medium.png",
+    "large": "carrot/carrot_large.png",
+    "ripe": "carrot/carrot_ripe.png",
+    "withered": "carrot/carrot_withered.png"
+   }
+  },
+  "strawberry": {
+   "row": 3,
+   "season": "spring",
+   "regrows": true,
+   "stages": {
+    "seed": [
+     0,
+     3
+    ],
+    "sprout": [
+     1,
+     3
+    ],
+    "small": [
+     2,
+     3
+    ],
+    "medium": [
+     3,
+     3
+    ],
+    "large": [
+     4,
+     3
+    ],
+    "ripe": [
+     5,
+     3
+    ],
+    "harvested": [
+     6,
+     3
+    ],
+    "withered": [
+     7,
+     3
+    ]
+   },
+   "files": {
+    "seed": "strawberry/strawberry_seed.png",
+    "sprout": "strawberry/strawberry_sprout.png",
+    "small": "strawberry/strawberry_small.png",
+    "medium": "strawberry/strawberry_medium.png",
+    "large": "strawberry/strawberry_large.png",
+    "ripe": "strawberry/strawberry_ripe.png",
+    "harvested": "strawberry/strawberry_harvested.png",
+    "withered": "strawberry/strawberry_withered.png"
+   }
+  },
+  "tomato": {
+   "row": 4,
+   "season": "summer",
+   "regrows": true,
+   "stages": {
+    "seed": [
+     0,
+     4
+    ],
+    "sprout": [
+     1,
+     4
+    ],
+    "small": [
+     2,
+     4
+    ],
+    "medium": [
+     3,
+     4
+    ],
+    "large": [
+     4,
+     4
+    ],
+    "ripe": [
+     5,
+     4
+    ],
+    "harvested": [
+     6,
+     4
+    ],
+    "withered": [
+     7,
+     4
+    ]
+   },
+   "files": {
+    "seed": "tomato/tomato_seed.png",
+    "sprout": "tomato/tomato_sprout.png",
+    "small": "tomato/tomato_small.png",
+    "medium": "tomato/tomato_medium.png",
+    "large": "tomato/tomato_large.png",
+    "ripe": "tomato/tomato_ripe.png",
+    "harvested": "tomato/tomato_harvested.png",
+    "withered": "tomato/tomato_withered.png"
+   }
+  },
+  "corn": {
+   "row": 5,
+   "season": "summer",
+   "regrows": true,
+   "stages": {
+    "seed": [
+     0,
+     5
+    ],
+    "sprout": [
+     1,
+     5
+    ],
+    "small": [
+     2,
+     5
+    ],
+    "medium": [
+     3,
+     5
+    ],
+    "large": [
+     4,
+     5
+    ],
+    "ripe": [
+     5,
+     5
+    ],
+    "harvested": [
+     6,
+     5
+    ],
+    "withered": [
+     7,
+     5
+    ]
+   },
+   "files": {
+    "seed": "corn/corn_seed.png",
+    "sprout": "corn/corn_sprout.png",
+    "small": "corn/corn_small.png",
+    "medium": "corn/corn_medium.png",
+    "large": "corn/corn_large.png",
+    "ripe": "corn/corn_ripe.png",
+    "harvested": "corn/corn_harvested.png",
+    "withered": "corn/corn_withered.png"
+   }
+  },
+  "wheat": {
+   "row": 6,
+   "season": "summer",
+   "regrows": false,
+   "stages": {
+    "seed": [
+     0,
+     6
+    ],
+    "sprout": [
+     1,
+     6
+    ],
+    "small": [
+     2,
+     6
+    ],
+    "medium": [
+     3,
+     6
+    ],
+    "large": [
+     4,
+     6
+    ],
+    "ripe": [
+     5,
+     6
+    ],
+    "withered": [
+     7,
+     6
+    ]
+   },
+   "files": {
+    "seed": "wheat/wheat_seed.png",
+    "sprout": "wheat/wheat_sprout.png",
+    "small": "wheat/wheat_small.png",
+    "medium": "wheat/wheat_medium.png",
+    "large": "wheat/wheat_large.png",
+    "ripe": "wheat/wheat_ripe.png",
+    "withered": "wheat/wheat_withered.png"
+   }
+  },
+  "pumpkin": {
+   "row": 7,
+   "season": "fall",
+   "regrows": false,
+   "stages": {
+    "seed": [
+     0,
+     7
+    ],
+    "sprout": [
+     1,
+     7
+    ],
+    "small": [
+     2,
+     7
+    ],
+    "medium": [
+     3,
+     7
+    ],
+    "large": [
+     4,
+     7
+    ],
+    "ripe": [
+     5,
+     7
+    ],
+    "withered": [
+     7,
+     7
+    ]
+   },
+   "files": {
+    "seed": "pumpkin/pumpkin_seed.png",
+    "sprout": "pumpkin/pumpkin_sprout.png",
+    "small": "pumpkin/pumpkin_small.png",
+    "medium": "pumpkin/pumpkin_medium.png",
+    "large": "pumpkin/pumpkin_large.png",
+    "ripe": "pumpkin/pumpkin_ripe.png",
+    "withered": "pumpkin/pumpkin_withered.png"
+   }
+  }
+ }
+}

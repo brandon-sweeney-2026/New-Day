@@ -1,0 +1,57 @@
+{
+ "pack": "KILN HARVEST",
+ "category": "nature",
+ "tile": 16,
+ "anchor_note": "anchor = base point (where the object meets the ground), in sprite pixels",
+ "strips": "files ending in _<n>f.png are horizontal strips of n frames of size w x h",
+ "groups": {
+  "forest_trees": [
+   "oak_spring",
+   "oak_summer",
+   "oak_fall",
+   "oak_winter"
+  ]
+ },
+ "sprites": {
+  "oak_spring": {
+   "group": "forest_trees",
+   "file": "forest_trees/oak_spring.png",
+   "w": 48,
+   "h": 64,
+   "anchor": [
+    24,
+    60
+   ]
+  },
+  "oak_summer": {
+   "group": "forest_trees",
+   "file": "forest_trees/oak_summer.png",
+   "w": 48,
+   "h": 64,
+   "anchor": [
+    24,
+    60
+   ]
+  },
+  "oak_fall": {
+   "group": "forest_trees",
+   "file": "forest_trees/oak_fall.png",
+   "w": 48,
+   "h": 64,
+   "anchor": [
+    24,
+    60
+   ]
+  },
+  "oak_winter": {
+   "group": "forest_trees",
+   "file": "forest_trees/oak_winter.png",
+   "w": 48,
+   "h": 64,
+   "anchor": [
+    24,
+    60
+   ]
+  }
+ }
+}

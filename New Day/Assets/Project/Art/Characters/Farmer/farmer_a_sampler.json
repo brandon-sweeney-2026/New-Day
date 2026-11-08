@@ -1,0 +1,191 @@
+{
+ "character": "farmer_a",
+ "frame_size": [
+  48,
+  48
+ ],
+ "columns": 6,
+ "pivot": [
+  24,
+  42
+ ],
+ "rows": [
+  {
+   "name": "idle_down",
+   "anim": "idle",
+   "dir": "down",
+   "row": 0,
+   "y": 0,
+   "frames": 4,
+   "ms": 260,
+   "loop": true,
+   "mirrored_from": null
+  },
+  {
+   "name": "idle_up",
+   "anim": "idle",
+   "dir": "up",
+   "row": 1,
+   "y": 48,
+   "frames": 4,
+   "ms": 260,
+   "loop": true,
+   "mirrored_from": null
+  },
+  {
+   "name": "idle_right",
+   "anim": "idle",
+   "dir": "right",
+   "row": 2,
+   "y": 96,
+   "frames": 4,
+   "ms": 260,
+   "loop": true,
+   "mirrored_from": null
+  },
+  {
+   "name": "idle_left",
+   "anim": "idle",
+   "dir": "left",
+   "row": 3,
+   "y": 144,
+   "frames": 4,
+   "ms": 260,
+   "loop": true,
+   "mirrored_from": "right"
+  },
+  {
+   "name": "walk_down",
+   "anim": "walk",
+   "dir": "down",
+   "row": 4,
+   "y": 192,
+   "frames": 6,
+   "ms": 110,
+   "loop": true,
+   "mirrored_from": null
+  },
+  {
+   "name": "walk_up",
+   "anim": "walk",
+   "dir": "up",
+   "row": 5,
+   "y": 240,
+   "frames": 6,
+   "ms": 110,
+   "loop": true,
+   "mirrored_from": null
+  },
+  {
+   "name": "walk_right",
+   "anim": "walk",
+   "dir": "right",
+   "row": 6,
+   "y": 288,
+   "frames": 6,
+   "ms": 110,
+   "loop": true,
+   "mirrored_from": null
+  },
+  {
+   "name": "walk_left",
+   "anim": "walk",
+   "dir": "left",
+   "row": 7,
+   "y": 336,
+   "frames": 6,
+   "ms": 110,
+   "loop": true,
+   "mirrored_from": "right"
+  },
+  {
+   "name": "hoe_down",
+   "anim": "hoe",
+   "dir": "down",
+   "row": 8,
+   "y": 384,
+   "frames": 5,
+   "ms": 110,
+   "loop": false,
+   "mirrored_from": null
+  },
+  {
+   "name": "hoe_up",
+   "anim": "hoe",
+   "dir": "up",
+   "row": 9,
+   "y": 432,
+   "frames": 5,
+   "ms": 110,
+   "loop": false,
+   "mirrored_from": null
+  },
+  {
+   "name": "hoe_right",
+   "anim": "hoe",
+   "dir": "right",
+   "row": 10,
+   "y": 480,
+   "frames": 5,
+   "ms": 110,
+   "loop": false,
+   "mirrored_from": null
+  },
+  {
+   "name": "hoe_left",
+   "anim": "hoe",
+   "dir": "left",
+   "row": 11,
+   "y": 528,
+   "frames": 5,
+   "ms": 110,
+   "loop": false,
+   "mirrored_from": "right"
+  },
+  {
+   "name": "water_down",
+   "anim": "water",
+   "dir": "down",
+   "row": 12,
+   "y": 576,
+   "frames": 6,
+   "ms": 120,
+   "loop": false,
+   "mirrored_from": null
+  },
+  {
+   "name": "water_up",
+   "anim": "water",
+   "dir": "up",
+   "row": 13,
+   "y": 624,
+   "frames": 6,
+   "ms": 120,
+   "loop": false,
+   "mirrored_from": null
+  },
+  {
+   "name": "water_right",
+   "anim": "water",
+   "dir": "right",
+   "row": 14,
+   "y": 672,
+   "frames": 6,
+   "ms": 120,
+   "loop": false,
+   "mirrored_from": null
+  },
+  {
+   "name": "water_left",
+   "anim": "water",
+   "dir": "left",
+   "row": 15,
+   "y": 720,
+   "frames": 6,
+   "ms": 120,
+   "loop": false,
+   "mirrored_from": "right"
+  }
+ ],
+ "about": "one animation per row, frames left to right; frame_size = cell size; pivot = feet point inside a cell (place it on the ground position); \"*_left\" rows are ready-made mirrors of \"*_right\""
+}

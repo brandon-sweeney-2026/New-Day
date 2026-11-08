@@ -1,0 +1,77 @@
+{
+ "_about": {
+  "size": "w x h in px (one frame for strips); sizes are multiples of 16",
+  "anchor": "bottom-centre: line the bottom edge of the sprite up with the bottom edge of the tile the object stands on (the soft shadow is part of the sprite)",
+  "strips": "files ending in _<n>f.png are horizontal strips of n frames (frames / ms / loop)",
+  "winter": "*_winter sprites are the same object with snow on top"
+ },
+ "chest_wood": {
+  "group": "storage",
+  "file": "storage/chest_wood.png",
+  "w": 16,
+  "h": 16
+ },
+ "scarecrow_classic": {
+  "group": "field",
+  "file": "field/scarecrow_classic_2f.png",
+  "w": 16,
+  "h": 32,
+  "frames": 2,
+  "ms": 420,
+  "loop": true
+ },
+ "mailbox": {
+  "group": "signs",
+  "file": "signs/mailbox.png",
+  "w": 16,
+  "h": 32
+ },
+ "shipping_crate": {
+  "group": "storage",
+  "file": "storage/shipping_crate.png",
+  "w": 32,
+  "h": 32
+ },
+ "barrel": {
+  "group": "storage",
+  "file": "storage/barrel.png",
+  "w": 16,
+  "h": 32
+ },
+ "crate": {
+  "group": "storage",
+  "file": "storage/crate.png",
+  "w": 16,
+  "h": 16
+ },
+ "hay_bale": {
+  "group": "field",
+  "file": "field/hay_bale.png",
+  "w": 16,
+  "h": 16
+ },
+ "sprinkler_basic": {
+  "group": "field",
+  "file": "field/sprinkler_basic.png",
+  "w": 16,
+  "h": 16
+ },
+ "bench_park": {
+  "group": "furniture",
+  "file": "furniture/bench_park.png",
+  "w": 32,
+  "h": 16
+ },
+ "signpost_arrows": {
+  "group": "signs",
+  "file": "signs/signpost_arrows.png",
+  "w": 16,
+  "h": 32
+ },
+ "lantern_post": {
+  "group": "lights",
+  "file": "lights/lantern_post.png",
+  "w": 16,
+  "h": 32
+ }
+}
