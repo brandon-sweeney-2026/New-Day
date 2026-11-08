@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee9e5df28081ab2478d11e823ef04c35, type: 3}
+  m_Name: Wall_Cream
+  m_EditorClassIdentifier: Assembly-CSharp::HouseUpgradeData
+  displayName: Cream Walls
+  description: Soft cream paint with white skirting.
+  category: 1
+  isDefault: 1
+  goldCost: 0
+  materials: []
+  sprite: {fileID: 0}
+  tile: {fileID: 11400000, guid: caebc4af8bce66045bff8e9ea0caf233, type: 2}
+  tileBase: {fileID: 11400000, guid: 09f8b8388faccf84fbfb8482a63d11ba, type: 2}
+  tint: {r: 1, g: 1, b: 1, a: 1}
+  foodBonus: 0

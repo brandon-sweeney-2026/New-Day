@@ -43,6 +43,8 @@ public class GameHUD : MonoBehaviour
     private RectTransform healthFill, magicFill;
     private Text healthText, magicText, clockText, dateText, goldText, pollutionText;
     private Text equippedText, promptText, toastText;
+    private Image equippedIcon;
+    private Text equippedInitials;
     private readonly Image[] slotBackgrounds = new Image[Inventory.SlotCount];
     private readonly Image[] slotBorders = new Image[Inventory.SlotCount];
     private readonly Image[] slotIcons = new Image[Inventory.SlotCount];
@@ -62,10 +64,10 @@ public class GameHUD : MonoBehaviour
 
     private void Start()
     {
-        inventory = Inventory.Instance != null ? Inventory.Instance : FindFirstObjectByType<Inventory>();
-        stats = PlayerStats.Instance != null ? PlayerStats.Instance : FindFirstObjectByType<PlayerStats>();
-        actions = FindFirstObjectByType<PlayerActions>();
-        time = TimeManager.Instance != null ? TimeManager.Instance : FindFirstObjectByType<TimeManager>();
+        inventory = Inventory.Instance != null ? Inventory.Instance : FindAnyObjectByType<Inventory>();
+        stats = PlayerStats.Instance != null ? PlayerStats.Instance : FindAnyObjectByType<PlayerStats>();
+        actions = FindAnyObjectByType<PlayerActions>();
+        time = TimeManager.Instance != null ? TimeManager.Instance : FindAnyObjectByType<TimeManager>();
 
         if (inventory != null) { inventory.OnChanged += RefreshInventory; inventory.OnSelectionChanged += RefreshInventory; }
         if (stats != null) stats.OnChanged += RefreshBars;
@@ -148,6 +150,11 @@ public class GameHUD : MonoBehaviour
         }
 
         ItemStack sel = inventory.Selected;
+        bool hasItem = !sel.IsEmpty;
+        equippedIcon.enabled = hasItem && sel.item.icon != null;
+        equippedIcon.sprite = hasItem ? sel.item.icon : null;
+        equippedInitials.text = (hasItem && sel.item.icon == null) ? Short(sel.item.itemName) : "";
+
         if (sel.IsEmpty) equippedText.text = "";
         else
         {
@@ -266,6 +273,27 @@ public class GameHUD : MonoBehaviour
     {
         var panel = MakeImage(root, "Bars", panelColor);
         SetRect(panel.rectTransform, new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(12f, -12f), new Vector2(barWidth + 20f, barHeight * 2f + 24f));
+
+        // Big picture of the equipped item, under the bars.
+        var box = MakeImage(root, "Equipped Box", panelColor);
+        SetRect(box.rectTransform, new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(12f, -12f - (barHeight * 2f + 24f) - 6f), new Vector2(72f, 72f));
+        var boxInner = MakeImage(box.rectTransform, "Inner", slotColor);
+        boxInner.rectTransform.anchorMin = Vector2.zero;
+        boxInner.rectTransform.anchorMax = Vector2.one;
+        boxInner.rectTransform.offsetMin = new Vector2(4f, 4f);
+        boxInner.rectTransform.offsetMax = new Vector2(-4f, -4f);
+        equippedIcon = MakeImage(box.rectTransform, "Equipped Icon", Color.white);
+        equippedIcon.rectTransform.anchorMin = Vector2.zero;
+        equippedIcon.rectTransform.anchorMax = Vector2.one;
+        equippedIcon.rectTransform.offsetMin = new Vector2(10f, 10f);
+        equippedIcon.rectTransform.offsetMax = new Vector2(-10f, -10f);
+        equippedIcon.preserveAspect = true;
+        equippedIcon.enabled = false;
+        equippedInitials = MakeText(box.rectTransform, "Initials", 22, TextAnchor.MiddleCenter);
+        equippedInitials.rectTransform.anchorMin = Vector2.zero;
+        equippedInitials.rectTransform.anchorMax = Vector2.one;
+        equippedInitials.rectTransform.offsetMin = Vector2.zero;
+        equippedInitials.rectTransform.offsetMax = Vector2.zero;
 
         healthFill = MakeBar(panel.rectTransform, "Health", healthColor, -8f, out healthText);
         magicFill = MakeBar(panel.rectTransform, "Magic", magicColor, -8f - barHeight - 4f, out magicText);

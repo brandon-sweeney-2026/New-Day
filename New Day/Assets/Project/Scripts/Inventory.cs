@@ -204,6 +204,35 @@ public class Inventory : MonoBehaviour
         return true;
     }
 
+    /// <summary>Total number of items (all stacks) accepted by a test, e.g. i => i.type == ItemData.ItemType.Crop.</summary>
+    public int CountMatching(Predicate<ItemData> match)
+    {
+        int total = 0;
+        foreach (ItemStack s in slots) if (!s.IsEmpty && match(s.item)) total += s.count;
+        return total;
+    }
+
+    /// <summary>
+    /// Removes 'count' items accepted by the test. 'pollutionSum' adds up (pollution x amount) of everything removed,
+    /// so cooking can average the pollution of its ingredients. Returns false (and removes nothing) if there aren't enough.
+    /// </summary>
+    public bool TryConsume(Predicate<ItemData> match, int count, out int pollutionSum)
+    {
+        pollutionSum = 0;
+        if (CountMatching(match) < count) return false;
+
+        for (int i = 0; i < SlotCount && count > 0; i++)
+        {
+            ItemStack s = slots[i];
+            if (s.IsEmpty || !match(s.item)) continue;
+            int pollution = s.pollution;
+            int taken = RemoveFromSlot(i, count);
+            pollutionSum += pollution * taken;
+            count -= taken;
+        }
+        return true;
+    }
+
     /// <summary>Swaps two slots (used by the right-click rearrange in the HUD).</summary>
     public void Swap(int a, int b)
     {

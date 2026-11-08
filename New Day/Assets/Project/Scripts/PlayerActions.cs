@@ -47,7 +47,7 @@ public class PlayerActions : MonoBehaviour
 
     [Header("Timing")]
     [Tooltip("How long the player is locked in place after using a tool or seed.")]
-    [SerializeField] private float toolDuration = 0.3f;
+    [SerializeField] private float toolDuration = 1f / 3f;
 
     // ---- public state ----
     public Inventory Inventory { get { return inventory; } }
@@ -58,6 +58,9 @@ public class PlayerActions : MonoBehaviour
     public bool HasTargetCell { get; private set; }
     public IInteractable CurrentInteractable { get; private set; }
     public bool IsBusy { get; private set; }
+
+    /// <summary>Raised when an item starts being used: (item, how long the use lasts). Visual scripts listen to this.</summary>
+    public event System.Action<ItemData, float> OnItemUsed;
 
     private SpriteRenderer highlight;
     private ItemData swingingWeapon;
@@ -79,8 +82,8 @@ public class PlayerActions : MonoBehaviour
 
     private void Start()
     {
-        if (farm == null) farm = FindFirstObjectByType<FarmManager>();
-        if (crops == null) crops = FindFirstObjectByType<CropManager>();
+        if (farm == null) farm = FindAnyObjectByType<FarmManager>();
+        if (crops == null) crops = FindAnyObjectByType<CropManager>();
 
         if (animator != null && animator.runtimeAnimatorController != null)
             foreach (AnimatorControllerParameter p in animator.parameters) animatorParams.Add(p.nameHash);
@@ -221,6 +224,11 @@ public class PlayerActions : MonoBehaviour
         switch (tool.toolAction)
         {
             case ItemData.ToolAction.Hoe:
+                if (TreeManager.Instance != null && TreeManager.Instance.HasTree(TargetCell))
+                {
+                    GameEvents.ShowToast("A tree is in the way. Chop it down first.");
+                    break;
+                }
                 did = farm != null && farm.TryTill(TargetCell);
                 break;
 
@@ -250,7 +258,7 @@ public class PlayerActions : MonoBehaviour
                 break;
         }
 
-        if (did) StartCoroutine(Lock(toolDuration, UseToolTrigger));
+        if (did) StartCoroutine(Lock(toolDuration, UseToolTrigger, tool));
     }
 
     private bool HitToolTarget(ItemData.ToolAction action)
@@ -268,6 +276,22 @@ public class PlayerActions : MonoBehaviour
 
     private void Plant(ItemData seed)
     {
+        // Tree seeds: plant a sapling on allowed ground (set in the TreeManager).
+        TreeData treeKind = TreeManager.Instance != null ? TreeManager.Instance.FindBySeed(seed) : null;
+        if (treeKind != null)
+        {
+            string why = TreeManager.Instance.WhyNot(TargetCell, true);
+            if (why != null || TreeManager.Instance.Plant(TargetCell, treeKind, 0, false, true) == null)
+            {
+                GameEvents.ShowToast(why ?? "A tree can't grow here.");
+                return;
+            }
+            inventory.RemoveFromSlot(inventory.SelectedIndex, 1);
+            GameState.AddCounter("seeds_planted");
+            StartCoroutine(Lock(toolDuration, UseToolTrigger, seed));
+            return;
+        }
+
         if (crops == null || farm == null) return;
 
         CropData crop = crops.FindBySeed(seed);
@@ -281,18 +305,21 @@ public class PlayerActions : MonoBehaviour
 
         inventory.RemoveFromSlot(inventory.SelectedIndex, 1);
         GameState.AddCounter("seeds_planted");
-        StartCoroutine(Lock(toolDuration, UseToolTrigger));
+        StartCoroutine(Lock(toolDuration, UseToolTrigger, seed));
     }
 
     private void Eat(ItemData food)
     {
         if (stats == null) return;
-        if (stats.Health >= stats.maxHealth && food.energyRestored > 0)
+        bool needsHealth = stats.Health < stats.maxHealth && food.energyRestored > 0;
+        bool needsMagic = stats.Magic < stats.maxMagic && food.magicRestored > 0;
+        if (!needsHealth && !needsMagic && (food.energyRestored > 0 || food.magicRestored > 0))
         {
             GameEvents.ShowToast("You're not hurt.");
             return;
         }
         stats.Heal(food.energyRestored);
+        stats.RestoreMagic(food.magicRestored);
         inventory.RemoveFromSlot(inventory.SelectedIndex, 1);
         GameState.AddCounter("food_eaten");
     }
@@ -306,6 +333,7 @@ public class PlayerActions : MonoBehaviour
         swingingWeapon = weapon;
         hitThisSwing.Clear();
         Trigger(AttackTrigger);
+        if (OnItemUsed != null) OnItemUsed(weapon, weapon.swingDuration);
 
         if (weapon.hitDelay >= 0f)
         {
@@ -367,6 +395,7 @@ public class PlayerActions : MonoBehaviour
         IsBusy = true;
         Controller.CanMove = false;
         Trigger(CastTrigger);
+        if (OnItemUsed != null) OnItemUsed(spell, spell.castTime);
         yield return new WaitForSeconds(spell.castTime);
 
         if (spell.spellEffect == ItemData.SpellEffect.Heal)
@@ -387,11 +416,12 @@ public class PlayerActions : MonoBehaviour
 
     // ---- helpers ----
 
-    private IEnumerator Lock(float seconds, int trigger)
+    private IEnumerator Lock(float seconds, int trigger, ItemData item)
     {
         IsBusy = true;
         Controller.CanMove = false;
         Trigger(trigger);
+        if (OnItemUsed != null) OnItemUsed(item, seconds);
         yield return new WaitForSeconds(seconds);
         Controller.CanMove = true;
         IsBusy = false;

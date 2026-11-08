@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a63de952ba9c17746b501b16a0ff604b, type: 3}
+  m_Name: Oak
+  m_EditorClassIdentifier: Assembly-CSharp::TreeData
+  treeName: Oak
+  spawnWeight: 1.2
+  sproutChance: 1
+  sproutSeasons: 01010101y
+  seedItem: {fileID: 11400000, guid: 4464b9f8fa4bcbe46ab8948e5236e400, type: 2}
+  seedDropChancePerDay: 0.15
+  seedDropChanceOnChop: 0.5
+  sprites:
+  - {fileID: 1766071857, guid: bc6df0877de12dd41aa483d6477365f4, type: 3}
+  - {fileID: 168033269, guid: bc6df0877de12dd41aa483d6477365f4, type: 3}
+  - {fileID: 388219409, guid: bc6df0877de12dd41aa483d6477365f4, type: 3}
+  - {fileID: -1205111636, guid: bc6df0877de12dd41aa483d6477365f4, type: 3}
+  - {fileID: 682562823, guid: bc6df0877de12dd41aa483d6477365f4, type: 3}
+  - {fileID: 703960833, guid: bc6df0877de12dd41aa483d6477365f4, type: 3}
+  - {fileID: 1200808742, guid: bc6df0877de12dd41aa483d6477365f4, type: 3}
+  - {fileID: 849882678, guid: bc6df0877de12dd41aa483d6477365f4, type: 3}
+  - {fileID: 479489365, guid: bc6df0877de12dd41aa483d6477365f4, type: 3}
+  - {fileID: 1905667136, guid: bc6df0877de12dd41aa483d6477365f4, type: 3}
+  - {fileID: 1270271639, guid: bc6df0877de12dd41aa483d6477365f4, type: 3}
+  - {fileID: 721541238, guid: bc6df0877de12dd41aa483d6477365f4, type: 3}
+  - {fileID: -837148371, guid: bc6df0877de12dd41aa483d6477365f4, type: 3}
+  - {fileID: -976792848, guid: bc6df0877de12dd41aa483d6477365f4, type: 3}
+  - {fileID: 1355252775, guid: bc6df0877de12dd41aa483d6477365f4, type: 3}
+  - {fileID: -1215803154, guid: bc6df0877de12dd41aa483d6477365f4, type: 3}
+  daysInStage: 020000000300000004000000i
+  slowedByPollution: 1
+  hitsByStage: 01000000020000000400000006000000i
+  logItem: {fileID: 11400000, guid: b8b15e5c465d98f4bbc7e32c8fa31770, type: 2}
+  logsByStage: 00000000010000000300000005000000i
+  seasonDrops:
+  - item: {fileID: 0}
+    minAmount: 1
+    maxAmount: 2
+    chancePerDay: 0.3
+  - item: {fileID: 0}
+    minAmount: 1
+    maxAmount: 2
+    chancePerDay: 0.3
+  - item: {fileID: 11400000, guid: db0b4bbca1f1b064182f4bb119d6cb66, type: 2}
+    minAmount: 1
+    maxAmount: 3
+    chancePerDay: 0.4
+  - item: {fileID: 0}
+    minAmount: 1
+    maxAmount: 2
+    chancePerDay: 0.3
+  trunkSize: {x: 0.5, y: 0.35}

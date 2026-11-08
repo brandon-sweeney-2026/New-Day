@@ -72,6 +72,9 @@ public class FarmManager : MonoBehaviour
     // Public API (used by FarmToolController, and later by crops/save system)
     // ------------------------------------------------------------------
 
+    /// <summary>The ground tilemap (trees use it to find where they may grow).</summary>
+    public Tilemap GroundTilemap => groundTilemap;
+
     /// <summary>Converts a world position into a grid cell.</summary>
     public Vector3Int WorldToCell(Vector3 worldPos) => groundTilemap.WorldToCell(worldPos);
 

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 698854433848c494d88674e02571c06e, type: 3}
+  m_Name: TomatoPlate
+  m_EditorClassIdentifier: Assembly-CSharp::Recipe
+  recipeName: Tomato Plate
+  description: Two tomato cooked simply.
+  ingredients:
+  - item: {fileID: 11400000, guid: e8be23eec11c7554695d1c5a7160ab26, type: 2}
+    anyCrop: 0
+    count: 2
+  result: {fileID: 11400000, guid: deda31f6e3235054d888cdd14390c9bf, type: 2}
+  resultCount: 1
+  cookMinutes: 25

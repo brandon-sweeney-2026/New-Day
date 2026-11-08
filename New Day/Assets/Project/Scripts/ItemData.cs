@@ -32,6 +32,7 @@ public class ItemData : ScriptableObject
 
     [Header("Food (only used when type is Food)")]
     [Min(0)] public int energyRestored = 0;   // restores this much health
+    [Min(0)] public int magicRestored = 0;    // restores this much magic
 
     [Header("Tool (only used when type is Tool)")]
     public ToolAction toolAction = ToolAction.None;

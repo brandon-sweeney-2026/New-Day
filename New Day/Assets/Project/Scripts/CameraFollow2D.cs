@@ -36,6 +36,10 @@ public class CameraFollow2D : MonoBehaviour
     [SerializeField] private bool pixelSnap = true;
     [SerializeField] private float pixelsPerUnit = 16f;
 
+    // A temporary map limit (used inside the house, which sits far away from the farm).
+    private bool hasOverride;
+    private Rect overrideBounds;
+
     private Camera cam;
     private Vector3 velocity;
     private PlayerController player;
@@ -52,7 +56,7 @@ public class CameraFollow2D : MonoBehaviour
     {
         if (target == null)
         {
-            player = FindFirstObjectByType<PlayerController>();
+            player = FindAnyObjectByType<PlayerController>();
             if (player != null) target = player.transform;
         }
         else
@@ -89,6 +93,20 @@ public class CameraFollow2D : MonoBehaviour
         transform.position = Clamp(Desired());
     }
 
+    /// <summary>Use this world rectangle as the camera limit instead of the tilemap (e.g. while inside the house).</summary>
+    public void SetBoundsOverride(Rect worldBounds)
+    {
+        hasOverride = true;
+        overrideBounds = worldBounds;
+        SnapToTarget();
+    }
+
+    public void ClearBoundsOverride()
+    {
+        hasOverride = false;
+        SnapToTarget();
+    }
+
     public void SetTarget(Transform newTarget)
     {
         target = newTarget;
@@ -106,14 +124,23 @@ public class CameraFollow2D : MonoBehaviour
 
     private Vector3 Clamp(Vector3 pos)
     {
-        if (!limitToMap || boundsTilemap == null) return pos;
+        Vector3 min, max;
+        if (hasOverride)
+        {
+            min = new Vector3(overrideBounds.xMin, overrideBounds.yMin, 0f);
+            max = new Vector3(overrideBounds.xMax, overrideBounds.yMax, 0f);
+        }
+        else
+        {
+            if (!limitToMap || boundsTilemap == null) return pos;
 
-        boundsTilemap.CompressBounds();
-        BoundsInt cells = boundsTilemap.cellBounds;
-        if (cells.size.x == 0 || cells.size.y == 0) return pos;
+            boundsTilemap.CompressBounds();
+            BoundsInt cells = boundsTilemap.cellBounds;
+            if (cells.size.x == 0 || cells.size.y == 0) return pos;
 
-        Vector3 min = boundsTilemap.CellToWorld(cells.min) - new Vector3(boundsPadding, boundsPadding, 0f);
-        Vector3 max = boundsTilemap.CellToWorld(cells.max) + new Vector3(boundsPadding, boundsPadding, 0f);
+            min = boundsTilemap.CellToWorld(cells.min) - new Vector3(boundsPadding, boundsPadding, 0f);
+            max = boundsTilemap.CellToWorld(cells.max) + new Vector3(boundsPadding, boundsPadding, 0f);
+        }
 
         float halfH = cam.orthographicSize;
         float halfW = halfH * cam.aspect;

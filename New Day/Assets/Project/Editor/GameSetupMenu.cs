@@ -23,7 +23,7 @@ public static class GameSetupMenu
     [MenuItem("Farm/Game/Set Up Game Systems In Scene")]
     public static void SetUp()
     {
-        var player = Object.FindFirstObjectByType<PlayerController>();
+        var player = Object.FindAnyObjectByType<PlayerController>();
         if (player == null)
         {
             EditorUtility.DisplayDialog("No player found",
@@ -32,7 +32,7 @@ public static class GameSetupMenu
         }
 
         var log = new List<string>();
-        var farm = Object.FindFirstObjectByType<FarmManager>();
+        var farm = Object.FindAnyObjectByType<FarmManager>();
         if (farm == null) log.Add("WARNING: no FarmManager in the scene - crops and time cannot work without it.");
 
         EnsureFolder(DataFolder);
@@ -68,6 +68,7 @@ public static class GameSetupMenu
         Inventory inv = AddOnce<Inventory>(player, log);
         AddOnce<PlayerStats>(player, log);
         AddOnce<PlayerActions>(player, log);
+        AddOnce<HeldItemVisual>(player, log);
 
         // The old controllers are replaced by PlayerActions. Disabled, not deleted, so nothing is lost.
         foreach (MonoBehaviour b in player.GetComponents<MonoBehaviour>())
@@ -224,7 +225,7 @@ public static class GameSetupMenu
 
     private static void SetUpWorldObjects(Transform player, List<string> log)
     {
-        if (Object.FindFirstObjectByType<Bed>() == null)
+        if (Object.FindAnyObjectByType<Bed>() == null)
         {
             var go = new GameObject("Bed");
             Undo.RegisterCreatedObjectUndo(go, "Create Bed");
@@ -246,7 +247,7 @@ public static class GameSetupMenu
             log.Add("Added a placeholder Bed (pink rectangle). Give it your own sprite.");
         }
 
-        if (Object.FindFirstObjectByType<ShippingBin>() == null)
+        if (Object.FindAnyObjectByType<ShippingBin>() == null)
         {
             var go = new GameObject("ShippingBin");
             Undo.RegisterCreatedObjectUndo(go, "Create Shipping Bin");
@@ -366,8 +367,56 @@ public static class GameSetupMenu
             items.Add(it);
         }
 
+        AssignIcons(items, log);
+
         items.Sort((a, b) => string.Compare(a.name, b.name, System.StringComparison.OrdinalIgnoreCase));
         return items;
+    }
+
+    /// <summary>
+    /// Gives items without a picture one from any "icon_*.png" in the project (icon_wooden_sword.png fits an item
+    /// asset called WoodenSword). Icon PNGs are turned into 16-pixel sprites automatically.
+    /// </summary>
+    private static void AssignIcons(List<ItemData> items, List<string> log)
+    {
+        var sprites = new Dictionary<string, Sprite>();
+        foreach (string guid in AssetDatabase.FindAssets("icon_ t:Texture2D"))
+        {
+            string path = AssetDatabase.GUIDToAssetPath(guid);
+            string file = Path.GetFileNameWithoutExtension(path);
+            if (!file.StartsWith("icon_") || file.EndsWith("_big")) continue;
+
+            var importer = AssetImporter.GetAtPath(path) as TextureImporter;
+            if (importer == null) continue;
+            if (importer.textureType != TextureImporterType.Sprite)
+            {
+                importer.textureType = TextureImporterType.Sprite;
+                importer.spriteImportMode = SpriteImportMode.Single;
+                importer.spritePixelsPerUnit = 16f;
+                importer.filterMode = FilterMode.Point;
+                importer.textureCompression = TextureImporterCompression.Uncompressed;
+                importer.mipmapEnabled = false;
+                importer.SaveAndReimport();
+            }
+
+            var sprite = AssetDatabase.LoadAssetAtPath<Sprite>(path);
+            if (sprite != null) sprites[file.Substring(5).Replace("_", "")] = sprite;
+        }
+
+        int assigned = 0;
+        foreach (ItemData it in items)
+        {
+            if (it.icon != null) continue;
+            string key = it.name.ToLowerInvariant().Replace(" ", "").Replace("_", "");
+            Sprite s;
+            if (sprites.TryGetValue(key, out s))
+            {
+                it.icon = s;
+                EditorUtility.SetDirty(it);
+                assigned++;
+            }
+        }
+        if (assigned > 0) log.Add("Assigned " + assigned + " item icons from icon_*.png files.");
     }
 
     private static void CreateItemIfMissing(string fileName, System.Action<ItemData> setup, List<string> log)
@@ -409,7 +458,7 @@ public static class GameSetupMenu
 
     private static T GetOrCreate<T>(string name, List<string> log) where T : Component
     {
-        var existing = Object.FindFirstObjectByType<T>();
+        var existing = Object.FindAnyObjectByType<T>();
         if (existing != null) return existing;
 
         var go = new GameObject(name);

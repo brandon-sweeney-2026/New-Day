@@ -31,6 +31,12 @@ public class PlayerController : MonoBehaviour
         knockbackVelocity = force;
     }
 
+    /// <summary>Turns the player to face a direction (used when walking through doors).</summary>
+    public void FaceDirection(Vector2 direction)
+    {
+        if (direction.sqrMagnitude > 0.01f) FacingDirection = direction.normalized;
+    }
+
     /// <summary>Last cardinal direction the player moved in. Tools use this to pick the target tile.</summary>
     public Vector2 FacingDirection { get; private set; } = Vector2.down;
 

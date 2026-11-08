@@ -17,6 +17,7 @@ using UnityEngine;
 ///   row 2  Idle Up     (2 frames)      row 6  Walk Up     (4 frames)
 ///   row 3  Idle Left   (2 frames)      row 7  Walk Left   (4 frames)
 ///   row 4  Idle Right  (2 frames)      row 8  Walk Right  (4 frames)
+///   row 9-12  Use Tool Down / Up / Left / Right (4 frames each, played once when you use a tool)
 ///
 /// Select the sheet PNG in the Project window first (or it looks for one called player_sheet).
 /// This file must live in a folder named "Editor".
@@ -28,6 +29,7 @@ public static class PlayerAnimationBuilder
     private const float PixelsPerUnit = 16f;
     private const float IdleFps = 2f;
     private const float WalkFps = 8f;
+    private const float UseFps = 12f;   // 4 frames at 12 fps = 1/3 second, matching PlayerActions "Tool Duration"
 
     // Order of the rows in the sheet.
     private static readonly string[] Directions = { "Down", "Up", "Left", "Right" };
@@ -61,14 +63,17 @@ public static class PlayerAnimationBuilder
         // ---- clips ----
         var idle = new AnimationClip[4];
         var walk = new AnimationClip[4];
+        var use = new AnimationClip[4];
         for (int d = 0; d < 4; d++)
         {
             idle[d] = MakeClip(folder, "Idle_" + Directions[d], FrameSprites(byName, baseName, d, 2), IdleFps);
             walk[d] = MakeClip(folder, "Walk_" + Directions[d], FrameSprites(byName, baseName, 4 + d, 4), WalkFps);
+            use[d] = MakeClip(folder, "UseTool_" + Directions[d], FrameSprites(byName, baseName, 8 + d, 4), UseFps, false);
         }
 
         // ---- controller ----
-        string controllerPath = AssetDatabase.GenerateUniqueAssetPath(folder + "/PlayerAnimator.controller");
+        string controllerPath = folder + "/PlayerAnimator.controller";
+        if (AssetDatabase.LoadAssetAtPath<AnimatorController>(controllerPath) != null) AssetDatabase.DeleteAsset(controllerPath);   // rebuilt from scratch
         AnimatorController controller = AnimatorController.CreateAnimatorControllerAtPath(controllerPath);
         controller.AddParameter("MoveX", AnimatorControllerParameterType.Float);
         controller.AddParameter("MoveY", AnimatorControllerParameterType.Float);
@@ -81,7 +86,9 @@ public static class PlayerAnimationBuilder
         AnimatorStateMachine machine = controller.layers[0].stateMachine;
         AnimatorState idleState = machine.AddState("Idle");
         AnimatorState walkState = machine.AddState("Walk");
+        AnimatorState useState = machine.AddState("UseTool");
         idleState.motion = MakeBlendTree(controller, "Idle Directions", idle);
+        useState.motion = MakeBlendTree(controller, "UseTool Directions", use);
         walkState.motion = MakeBlendTree(controller, "Walk Directions", walk);
         machine.defaultState = idleState;
 
@@ -95,6 +102,18 @@ public static class PlayerAnimationBuilder
         toIdle.duration = 0f;
         toIdle.AddCondition(AnimatorConditionMode.IfNot, 0f, "IsMoving");
 
+        // Using a tool: jump in from any state when the UseTool trigger fires, play once, then return to idle.
+        AnimatorStateTransition toUse = machine.AddAnyStateTransition(useState);
+        toUse.hasExitTime = false;
+        toUse.duration = 0f;
+        toUse.canTransitionToSelf = false;
+        toUse.AddCondition(AnimatorConditionMode.If, 0f, "UseTool");
+
+        AnimatorStateTransition fromUse = useState.AddTransition(idleState);
+        fromUse.hasExitTime = true;
+        fromUse.exitTime = 1f;
+        fromUse.duration = 0f;
+
         EditorUtility.SetDirty(controller);
         AssetDatabase.SaveAssets();
 
@@ -103,7 +122,7 @@ public static class PlayerAnimationBuilder
 
         AssetDatabase.Refresh();
         EditorUtility.DisplayDialog("Animations built",
-            "Created 8 clips and an Animator Controller in:\n" + folder + "\n\n" + result, "OK");
+            "Created 12 clips (idle, walk and use-tool, 4 directions each) and an Animator Controller in:\n" + folder + "\n\n" + result, "OK");
     }
 
     // ------------------------------------------------------------------
@@ -179,7 +198,7 @@ public static class PlayerAnimationBuilder
         return list;
     }
 
-    private static AnimationClip MakeClip(string folder, string name, List<Sprite> frames, float fps)
+    private static AnimationClip MakeClip(string folder, string name, List<Sprite> frames, float fps, bool loop = true)
     {
         string path = folder + "/" + name + ".anim";
         var clip = AssetDatabase.LoadAssetAtPath<AnimationClip>(path);
@@ -206,7 +225,7 @@ public static class PlayerAnimationBuilder
         AnimationUtility.SetObjectReferenceCurve(clip, binding, keys);
 
         AnimationClipSettings settings = AnimationUtility.GetAnimationClipSettings(clip);
-        settings.loopTime = true;
+        settings.loopTime = loop;
         AnimationUtility.SetAnimationClipSettings(clip, settings);
 
         EditorUtility.SetDirty(clip);
@@ -230,7 +249,7 @@ public static class PlayerAnimationBuilder
 
     private static string AttachToPlayer(AnimatorController controller, Sprite firstSprite)
     {
-        var player = Object.FindFirstObjectByType<PlayerController>();
+        var player = Object.FindAnyObjectByType<PlayerController>();
         if (player == null)
             return "No Player found in the open scene, so nothing was attached.\nAdd an Animator to your player and drag the controller into its Controller slot.";
 
@@ -249,6 +268,8 @@ public static class PlayerAnimationBuilder
         sr.sortingOrder = 10;
 
         if (player.GetComponent<PlayerAnimator>() == null) Undo.AddComponent<PlayerAnimator>(player.gameObject);
+        if (player.GetComponent<HeldItemVisual>() == null && player.GetComponent<PlayerActions>() != null)
+            Undo.AddComponent<HeldItemVisual>(player.gameObject);
 
         EditorUtility.SetDirty(player.gameObject);
         UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(player.gameObject.scene);

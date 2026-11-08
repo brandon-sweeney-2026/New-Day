@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a63de952ba9c17746b501b16a0ff604b, type: 3}
+  m_Name: Maple
+  m_EditorClassIdentifier: Assembly-CSharp::TreeData
+  treeName: Maple
+  spawnWeight: 0.8
+  sproutChance: 1
+  sproutSeasons: 01010101y
+  seedItem: {fileID: 11400000, guid: f61e746b9e8cc84479bc5fe8f6019bc7, type: 2}
+  seedDropChancePerDay: 0.15
+  seedDropChanceOnChop: 0.5
+  sprites:
+  - {fileID: -902699546, guid: 05a09900da2fa124d81034c5571108f8, type: 3}
+  - {fileID: -1836146983, guid: 05a09900da2fa124d81034c5571108f8, type: 3}
+  - {fileID: 640655149, guid: 05a09900da2fa124d81034c5571108f8, type: 3}
+  - {fileID: 200508584, guid: 05a09900da2fa124d81034c5571108f8, type: 3}
+  - {fileID: -2092879550, guid: 05a09900da2fa124d81034c5571108f8, type: 3}
+  - {fileID: 1443404148, guid: 05a09900da2fa124d81034c5571108f8, type: 3}
+  - {fileID: 978236234, guid: 05a09900da2fa124d81034c5571108f8, type: 3}
+  - {fileID: 1535378266, guid: 05a09900da2fa124d81034c5571108f8, type: 3}
+  - {fileID: -1399303630, guid: 05a09900da2fa124d81034c5571108f8, type: 3}
+  - {fileID: -1648876160, guid: 05a09900da2fa124d81034c5571108f8, type: 3}
+  - {fileID: 1506973609, guid: 05a09900da2fa124d81034c5571108f8, type: 3}
+  - {fileID: -837211084, guid: 05a09900da2fa124d81034c5571108f8, type: 3}
+  - {fileID: 2146862138, guid: 05a09900da2fa124d81034c5571108f8, type: 3}
+  - {fileID: 812069757, guid: 05a09900da2fa124d81034c5571108f8, type: 3}
+  - {fileID: -193001406, guid: 05a09900da2fa124d81034c5571108f8, type: 3}
+  - {fileID: 1282358135, guid: 05a09900da2fa124d81034c5571108f8, type: 3}
+  daysInStage: 020000000300000004000000i
+  slowedByPollution: 1
+  hitsByStage: 01000000020000000400000006000000i
+  logItem: {fileID: 11400000, guid: b8b15e5c465d98f4bbc7e32c8fa31770, type: 2}
+  logsByStage: 00000000010000000300000005000000i
+  seasonDrops:
+  - item: {fileID: 11400000, guid: 96ea14d4276c2c3479074360f05caddc, type: 2}
+    minAmount: 1
+    maxAmount: 1
+    chancePerDay: 0.25
+  - item: {fileID: 0}
+    minAmount: 1
+    maxAmount: 2
+    chancePerDay: 0.3
+  - item: {fileID: 0}
+    minAmount: 1
+    maxAmount: 2
+    chancePerDay: 0.3
+  - item: {fileID: 0}
+    minAmount: 1
+    maxAmount: 2
+    chancePerDay: 0.3
+  trunkSize: {x: 0.5, y: 0.35}

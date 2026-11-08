@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Wooden Sword
   description: 
-  icon: {fileID: 0}
+  icon: {fileID: -3465728002129169038, guid: 32fdda3105c8aa94c874c49514541410, type: 3}
   type: 5
   maxStack: 1
   sellPrice: 10

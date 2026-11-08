@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee9e5df28081ab2478d11e823ef04c35, type: 3}
+  m_Name: Floor_Checker
+  m_EditorClassIdentifier: Assembly-CSharp::HouseUpgradeData
+  displayName: Checker Tile
+  description: Classic black and white kitchen checks.
+  category: 0
+  isDefault: 0
+  goldCost: 160
+  materials:
+  - item: {fileID: 11400000, guid: 5fb8c73e76c1f0849b4389eb0564e048, type: 2}
+    count: 8
+  sprite: {fileID: 0}
+  tile: {fileID: 11400000, guid: c89afdfc47aa93f49969c17f8cd97130, type: 2}
+  tileBase: {fileID: 0}
+  tint: {r: 1, g: 1, b: 1, a: 1}
+  foodBonus: 0

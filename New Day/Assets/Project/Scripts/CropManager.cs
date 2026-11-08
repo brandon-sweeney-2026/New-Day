@@ -41,7 +41,7 @@ public class CropManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        if (farm == null) farm = FindFirstObjectByType<FarmManager>();
+        if (farm == null) farm = FindAnyObjectByType<FarmManager>();
         holder = new GameObject("Crops").transform;
         holder.SetParent(transform, false);
     }

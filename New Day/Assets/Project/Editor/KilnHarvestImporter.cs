@@ -138,7 +138,7 @@ public static class KilnHarvestImporter
             return;
         }
 
-        if (Object.FindFirstObjectByType<Grid>() != null)
+        if (Object.FindAnyObjectByType<Grid>() != null)
         {
             bool go = EditorUtility.DisplayDialog("Kiln Harvest",
                 "This scene already contains a Grid. Create another one anyway?", "Create another", "Cancel");

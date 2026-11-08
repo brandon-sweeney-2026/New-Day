@@ -11,6 +11,8 @@ public class Bed : MonoBehaviour, IInteractable
     public static Bed Main { get; private set; }
 
     [SerializeField] private Transform wakePoint;
+    [Tooltip("Set this if the bed is inside the house, so the camera follows you indoors when you wake up.")]
+    [SerializeField] private HouseInterior interior;
     [Tooltip("Earliest hour you may sleep (24h clock). 0 = any time.")]
     [SerializeField] private int earliestHour = 0;
 
@@ -53,5 +55,8 @@ public class Bed : MonoBehaviour, IInteractable
         var rb = t.GetComponent<Rigidbody2D>();
         if (rb != null) { rb.position = target; rb.linearVelocity = Vector2.zero; }
         t.position = target;
+
+        if (interior != null) interior.EnterRoom();
+        else HouseInterior.LeaveAnyRoom();
     }
 }

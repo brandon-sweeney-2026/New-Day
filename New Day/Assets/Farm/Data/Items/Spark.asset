@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Spark
   description: 
-  icon: {fileID: 0}
+  icon: {fileID: 5574941467698846559, guid: e67fa81ac73e44d45831d3ef10464c4a, type: 3}
   type: 6
   maxStack: 1
   sellPrice: 10

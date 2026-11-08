@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 698854433848c494d88674e02571c06e, type: 3}
+  m_Name: VeggieStew
+  m_EditorClassIdentifier: Assembly-CSharp::Recipe
+  recipeName: Veggie Stew
+  description: A hearty stew from any three crops.
+  ingredients:
+  - item: {fileID: 0}
+    anyCrop: 1
+    count: 3
+  result: {fileID: 11400000, guid: 0079a8525870e1844b6f6c6fcabc3b3b, type: 2}
+  resultCount: 1
+  cookMinutes: 40

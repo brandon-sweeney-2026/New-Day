@@ -80,7 +80,7 @@ public class TimeManager : MonoBehaviour
         TotalDays = 1;
         minutes = dayStartHour * 60f;
 
-        if (farm == null) farm = FindFirstObjectByType<FarmManager>();
+        if (farm == null) farm = FindAnyObjectByType<FarmManager>();
     }
 
     private void OnDestroy()
