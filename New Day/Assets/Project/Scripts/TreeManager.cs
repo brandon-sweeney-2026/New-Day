@@ -86,6 +86,9 @@ public class TreeManager : MonoBehaviour
     // ------------------------------------------------------------------
 
     public bool HasTree(Vector3Int cell) { return trees.ContainsKey(cell); }
+
+    /// <summary>Every tree in the scene (used by Meatball's tips).</summary>
+    public IEnumerable<GrowingTree> AllTrees { get { return trees.Values; } }
     public int TreeCount { get { return trees.Count; } }
 
     /// <summary>Plants a tree by hand (a seed item, an event...). Returns null if the spot is not allowed.</summary>

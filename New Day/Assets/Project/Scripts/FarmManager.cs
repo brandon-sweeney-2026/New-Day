@@ -81,6 +81,9 @@ public class FarmManager : MonoBehaviour
     /// <summary>World-space centre of a cell (handy for placing highlights and crops).</summary>
     public Vector3 CellToWorldCenter(Vector3Int cell) => groundTilemap.GetCellCenterWorld(cell);
 
+    /// <summary>Every tilled cell (Meatball uses this to find empty soil to give planting tips).</summary>
+    public IEnumerable<Vector3Int> TilledCells => soil.Keys;
+
     public bool IsTilled(Vector3Int cell) => soil.ContainsKey(cell);
 
     public bool HasCrop(Vector3Int cell) => soil.TryGetValue(cell, out var s) && s.hasCrop;

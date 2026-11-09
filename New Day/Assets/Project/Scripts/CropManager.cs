@@ -80,6 +80,24 @@ public class CropManager : MonoBehaviour
 
     public bool HasCrop(Vector3Int cell) { return planted.ContainsKey(cell); }
 
+    /// <summary>Every cell that has a crop growing on it (used by Meatball's tips).</summary>
+    public IEnumerable<Vector3Int> PlantedCells { get { return planted.Keys; } }
+
+    /// <summary>The crop growing at this cell, or null.</summary>
+    public CropData CropAt(Vector3Int cell)
+    {
+        CropInstance c;
+        return planted.TryGetValue(cell, out c) ? c.data : null;
+    }
+
+    /// <summary>True if a crop here still needs water today.</summary>
+    public bool IsThirsty(Vector3Int cell)
+    {
+        CropInstance c;
+        if (!planted.TryGetValue(cell, out c)) return false;
+        return c.data.needsWater && !c.data.IsFullyGrown(c.daysGrown) && farm != null && !farm.IsWatered(cell);
+    }
+
     public bool IsRipe(Vector3Int cell)
     {
         CropInstance c;

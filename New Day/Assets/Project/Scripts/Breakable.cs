@@ -18,6 +18,10 @@ public class Breakable : MonoBehaviour, IToolTarget
     [Tooltip("Destroy the object when broken. Turn off to leave a stump (swap the sprite yourself).")]
     [SerializeField] private bool destroyWhenBroken = true;
 
+    /// <summary>The tool this needs (Meatball's tips use it).</summary>
+    public ItemData.ToolAction RequiredTool { get { return requiredTool; } }
+    public bool IsIntact { get { return hitsLeft > 0; } }
+
     private int hitsLeft;
     private Vector3 basePos;
     private float shakeUntil;

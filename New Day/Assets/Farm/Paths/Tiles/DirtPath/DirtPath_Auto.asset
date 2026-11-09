@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6885abb54ad9dc49bfcbe02995dcf24, type: 3}
+  m_Name: DirtPath_Auto
+  m_EditorClassIdentifier: Assembly-CSharp::AutoPathTile
+  sprites:
+  - {fileID: -1622139806, guid: e73f3c4fc0a6d0547b73c1458d640392, type: 3}
+  - {fileID: 286622646, guid: e73f3c4fc0a6d0547b73c1458d640392, type: 3}
+  - {fileID: 395683100, guid: e73f3c4fc0a6d0547b73c1458d640392, type: 3}
+  - {fileID: 282080529, guid: e73f3c4fc0a6d0547b73c1458d640392, type: 3}
+  - {fileID: -1021851980, guid: e73f3c4fc0a6d0547b73c1458d640392, type: 3}
+  - {fileID: 1876990613, guid: e73f3c4fc0a6d0547b73c1458d640392, type: 3}
+  - {fileID: -596920392, guid: e73f3c4fc0a6d0547b73c1458d640392, type: 3}
+  - {fileID: 1611151586, guid: e73f3c4fc0a6d0547b73c1458d640392, type: 3}
+  - {fileID: 1930691550, guid: e73f3c4fc0a6d0547b73c1458d640392, type: 3}
+  - {fileID: 404688377, guid: e73f3c4fc0a6d0547b73c1458d640392, type: 3}
+  - {fileID: 1319056132, guid: e73f3c4fc0a6d0547b73c1458d640392, type: 3}
+  - {fileID: 1752497254, guid: e73f3c4fc0a6d0547b73c1458d640392, type: 3}
+  - {fileID: -1405607630, guid: e73f3c4fc0a6d0547b73c1458d640392, type: 3}
+  - {fileID: -961134329, guid: e73f3c4fc0a6d0547b73c1458d640392, type: 3}
+  - {fileID: -1647909173, guid: e73f3c4fc0a6d0547b73c1458d640392, type: 3}
+  - {fileID: 1788759307, guid: e73f3c4fc0a6d0547b73c1458d640392, type: 3}
+  group: DirtPath
+  colliderType: 0

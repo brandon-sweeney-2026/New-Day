@@ -1,82 +1,92 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// A shipping bin. Press the action button in front of it to sell. Payment is instant.
+/// The blue mailbox where you ship goods. Press the action button in front of it to open the shipping screen:
+/// move items from your backpack into the box (and back out again if you change your mind).
+/// Everything left in the box is SOLD at the end of the day, when you go to sleep or pass out, and the money is added then.
 /// Crops that grew in polluted soil sell for less (see PollutionSettings).
-/// Needs a Collider2D (a trigger works well).
+///
+/// Put it on an object with a Collider2D (a trigger works well). Farm > Shipping > Set Up Mailbox does it all for you.
 /// </summary>
 [RequireComponent(typeof(Collider2D))]
 public class ShippingBin : MonoBehaviour, IInteractable
 {
-    public enum SellMode
-    {
-        [Tooltip("Sell only the stack in the slot you are holding.")] EquippedStack,
-        [Tooltip("Sell every Crop item in your backpack at once.")] AllCrops
-    }
+    public const int Columns = 10;
+    public const int Rows = 2;
+    public const int SlotCount = Columns * Rows;
 
-    [SerializeField] private SellMode mode = SellMode.EquippedStack;
-    [Tooltip("Item types the bin accepts.")]
+    [Header("What can be shipped")]
     [SerializeField] private bool acceptCrops = true;
     [SerializeField] private bool acceptResources = true;
     [SerializeField] private bool acceptFood = true;
     [Tooltip("Multiplies every price (e.g. 1.2 for a lucrative market day).")]
     [SerializeField] private float priceMultiplier = 1f;
 
-    public string InteractPrompt { get { return mode == SellMode.AllCrops ? "Sell all crops" : "Sell"; } }
+    [Header("Mailbox pictures (the setup menu fills these in)")]
+    [SerializeField] private SpriteRenderer mailboxRenderer;
+    [SerializeField] private Sprite emptySprite;          // flag down
+    [SerializeField] private Sprite fullSprite;           // flag up: there is something inside
+
+    [Header("Shipping screen art (optional)")]
+    [SerializeField] private Sprite panelSprite;
+    [SerializeField] private Sprite slotSprite;
+    [SerializeField] private Sprite selectSprite;
+    [SerializeField] private Sprite totalBoxSprite;
+    [SerializeField] private Sprite envelopeSprite;
+
+    [Header("Look of the total")]
+    [SerializeField] private Color totalColor = new Color(0.3f, 0.95f, 0.4f);
+
+    // The contents are shared by every mailbox, so they survive scene changes.
+    private static readonly ItemStack[] pending = NewSlots();
+    public static ItemStack[] Pending { get { return pending; } }
+
+    private static ItemStack[] NewSlots()
+    {
+        var a = new ItemStack[SlotCount];
+        for (int i = 0; i < a.Length; i++) a[i] = new ItemStack();
+        return a;
+    }
+
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+    private static void ResetStatics()
+    {
+        for (int i = 0; i < pending.Length; i++) { pending[i].item = null; pending[i].count = 0; pending[i].pollution = 0; }
+    }
+
+    public string InteractPrompt { get { return "Ship items"; } }
+    public Color TotalColor { get { return totalColor; } }
+    public Sprite PanelSprite { get { return panelSprite; } }
+    public Sprite SlotSprite { get { return slotSprite; } }
+    public Sprite SelectSprite { get { return selectSprite; } }
+    public Sprite TotalBoxSprite { get { return totalBoxSprite; } }
+    public Sprite EnvelopeSprite { get { return envelopeSprite; } }
+
+    private void OnEnable()
+    {
+        FarmManager.OnBeforeDayAdvanced += Settle;
+        RefreshSprite();
+    }
+
+    private void OnDisable()
+    {
+        FarmManager.OnBeforeDayAdvanced -= Settle;
+    }
 
     public void Interact(PlayerActions player)
     {
-        Inventory inv = player.Inventory;
-        if (inv == null) return;
-
-        int totalGold = 0;
-        int totalItems = 0;
-
-        if (mode == SellMode.EquippedStack)
-        {
-            SellSlot(inv, inv.SelectedIndex, ref totalGold, ref totalItems);
-        }
-        else
-        {
-            for (int i = 0; i < Inventory.SlotCount; i++)
-            {
-                ItemStack s = inv.GetSlot(i);
-                if (!s.IsEmpty && s.item.type == ItemData.ItemType.Crop) SellSlot(inv, i, ref totalGold, ref totalItems);
-            }
-        }
-
-        if (totalItems == 0)
-        {
-            GameEvents.ShowToast(mode == SellMode.AllCrops ? "You have no crops to sell." : "Hold something you want to sell.");
-            return;
-        }
-
-        GameState.AddGold(totalGold);
-        GameEvents.ShowToast("Sold " + totalItems + (totalItems == 1 ? " item" : " items") + " for " + totalGold + "g");
+        if (player.Inventory == null) return;
+        ShippingUI.Open(this, player.Inventory);
     }
 
-    private void SellSlot(Inventory inv, int index, ref int gold, ref int items)
+    // ------------------------------------------------------------------
+    // The box's contents
+    // ------------------------------------------------------------------
+
+    public bool Accepts(ItemData item)
     {
-        ItemStack s = inv.GetSlot(index);
-        if (s == null || s.IsEmpty || !Accepts(s.item)) return;
-
-        int pollution = s.pollution;
-        ItemData item = s.item;
-        int count = s.count;
-
-        int each = Mathf.RoundToInt(item.GetSellPrice(pollution) * priceMultiplier);
-        inv.RemoveFromSlot(index, count);
-
-        gold += each * count;
-        items += count;
-
-        GameState.AddCounter("items_sold", count);
-        if (item.type == ItemData.ItemType.Crop) GameState.AddCounter("crops_sold", count);
-        GameState.AddCounter("sold_" + item.itemName.ToLowerInvariant().Replace(' ', '_'), count);
-    }
-
-    private bool Accepts(ItemData item)
-    {
+        if (item == null) return false;
         switch (item.type)
         {
             case ItemData.ItemType.Crop: return acceptCrops;
@@ -84,5 +94,101 @@ public class ShippingBin : MonoBehaviour, IInteractable
             case ItemData.ItemType.Food: return acceptFood;
             default: return false;   // tools, weapons, spells and seeds can't be shipped
         }
+    }
+
+    public int PriceEach(ItemStack s)
+    {
+        if (s == null || s.IsEmpty) return 0;
+        return Mathf.RoundToInt(s.item.GetSellPrice(s.pollution) * priceMultiplier);
+    }
+
+    /// <summary>The money you will get tonight for everything in the box.</summary>
+    public int Total()
+    {
+        int total = 0;
+        foreach (ItemStack s in pending) if (!s.IsEmpty) total += PriceEach(s) * s.count;
+        return total;
+    }
+
+    public int ItemCount()
+    {
+        int n = 0;
+        foreach (ItemStack s in pending) if (!s.IsEmpty) n += s.count;
+        return n;
+    }
+
+    /// <summary>Puts items in the box (stacking with matching ones). Returns how many did NOT fit.</summary>
+    public int TryAdd(ItemData item, int count, int pollution)
+    {
+        if (item == null || count <= 0) return count;
+        int max = Mathf.Max(1, item.maxStack);
+
+        foreach (ItemStack s in pending)
+        {
+            if (count <= 0) break;
+            if (s.IsEmpty || s.item != item || s.pollution != pollution) continue;
+            int move = Mathf.Min(count, max - s.count);
+            s.count += move;
+            count -= move;
+        }
+        foreach (ItemStack s in pending)
+        {
+            if (count <= 0) break;
+            if (!s.IsEmpty) continue;
+            int move = Mathf.Min(count, max);
+            s.item = item; s.count = move; s.pollution = pollution;
+            count -= move;
+        }
+        RefreshSprite();
+        return count;
+    }
+
+    /// <summary>Takes up to 'count' out of one box slot. Returns how many were removed.</summary>
+    public int RemoveFromSlot(int index, int count)
+    {
+        if (index < 0 || index >= SlotCount) return 0;
+        ItemStack s = pending[index];
+        if (s.IsEmpty) return 0;
+        int removed = Mathf.Min(count, s.count);
+        s.count -= removed;
+        if (s.count <= 0) { s.item = null; s.count = 0; s.pollution = 0; }
+        RefreshSprite();
+        return removed;
+    }
+
+    public void RefreshSprite()
+    {
+        if (mailboxRenderer == null) mailboxRenderer = GetComponent<SpriteRenderer>();
+        if (mailboxRenderer == null) return;
+        Sprite s = ItemCount() > 0 ? fullSprite : emptySprite;
+        if (s != null) mailboxRenderer.sprite = s;
+    }
+
+    // ------------------------------------------------------------------
+    // End of the day: everything in the box is sold
+    // ------------------------------------------------------------------
+
+    private void Settle()
+    {
+        int gold = 0, items = 0;
+        foreach (ItemStack s in pending)
+        {
+            if (s.IsEmpty) continue;
+
+            gold += PriceEach(s) * s.count;
+            items += s.count;
+
+            GameState.AddCounter("items_sold", s.count);
+            if (s.item.type == ItemData.ItemType.Crop) GameState.AddCounter("crops_sold", s.count);
+            GameState.AddCounter("sold_" + s.item.itemName.ToLowerInvariant().Replace(' ', '_'), s.count);
+
+            s.item = null; s.count = 0; s.pollution = 0;
+        }
+
+        RefreshSprite();
+        if (items == 0) return;
+
+        GameState.AddGold(gold);
+        GameEvents.ShowToast("Shipped " + items + (items == 1 ? " item" : " items") + ": +" + gold + "g");
     }
 }

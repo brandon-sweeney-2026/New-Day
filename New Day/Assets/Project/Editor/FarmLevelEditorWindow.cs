@@ -294,6 +294,10 @@ public class FarmLevelEditorWindow : EditorWindow
         var randomTile = asset as RandomGroundTile;
         if (randomTile != null) return randomTile.previewSprite;
 
+        var pathTile = asset as AutoPathTile;
+        if (pathTile != null && pathTile.sprites != null && pathTile.sprites.Length == 16)
+            return pathTile.sprites[10] != null ? pathTile.sprites[10] : pathTile.sprites[0];
+
         var tile = asset as Tile;
         if (tile != null) return tile.sprite;
 

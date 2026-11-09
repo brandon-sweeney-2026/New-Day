@@ -13,6 +13,9 @@ public class CookingStation : MonoBehaviour, IInteractable
     [Tooltip("Where the cooked food lands if the backpack is full.")]
     [SerializeField] private Vector2 dropOffset = new Vector2(0f, -0.6f);
 
+    /// <summary>The recipes on this stove (Mitzi reads these to teach crafting).</summary>
+    public IReadOnlyList<Recipe> Recipes { get { return recipes; } }
+
     public string InteractPrompt { get { return "Cook"; } }
 
     private PlayerActions player;
