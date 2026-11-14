@@ -88,7 +88,25 @@ public class MeatballDog : MonoBehaviour, IInteractable
 
     public string InteractPrompt { get { return "Talk to " + dogName; } }
 
-    private bool AtHome { get { return GameState.HasFlag(HomeFlag) && DogHouse.Instance != null; } }
+    // He counts as "at home" when you sent him there, OR while the player is inside the house (he waits outside).
+    private bool AtHome { get { return DogHouse.Instance != null && (GameState.HasFlag(HomeFlag) || PlayerIndoors); } }
+
+    private bool wasIndoors;
+    private HouseInterior[] rooms;
+
+    /// <summary>True while the player is standing inside a house room.</summary>
+    private bool PlayerIndoors
+    {
+        get
+        {
+            if (player == null) return false;
+            if (rooms == null) rooms = FindObjectsByType<HouseInterior>();
+            Vector2 p = player.transform.position;
+            foreach (HouseInterior room in rooms)
+                if (room != null && room.WorldBounds.Contains(p)) return true;
+            return false;
+        }
+    }
 
     // ------------------------------------------------------------------
     // Setup
@@ -150,6 +168,11 @@ public class MeatballDog : MonoBehaviour, IInteractable
         if (player == null) { FindPlayer(); if (player == null) return; }
 
         desiredVelocity = Vector2.zero;
+
+        // the player just went indoors: he is already waiting at his dog house when they come back out
+        bool indoors = PlayerIndoors;
+        if (indoors && !wasIndoors && DogHouse.Instance != null && mode != Mode.Talk) { Warp(DogHouse.Instance.SitPoint); EnterSit(); }
+        wasIndoors = indoors;
 
         switch (mode)
         {

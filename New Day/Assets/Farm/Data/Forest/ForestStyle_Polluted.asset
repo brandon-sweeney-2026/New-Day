@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: ForestStyle_Polluted
+  m_EditorClassIdentifier: Assembly-CSharp::ForestStyle
+  floorTiles:
+  - {fileID: 21300000, guid: 9bf106f62d7e642438210c18258491fe, type: 3}
+  - {fileID: 21300000, guid: f9670d8ef7f825f4e8d689a8268ae6a1, type: 3}
+  - {fileID: 21300000, guid: eb4142d789f5e4e4ba1d1e5254a56003, type: 3}
+  wallTile: {fileID: 21300000, guid: b5f8c1597115097469a9352da9f7571d, type: 3}
+  scenery:
+  - {fileID: 21300000, guid: 9c41336ebb49fac44a3bdc2afc986c4f, type: 3}
+  - {fileID: 21300000, guid: 9e55f09e84744de4da4180edbd52173d, type: 3}
+  - {fileID: 21300000, guid: 34fb121ffde0fa94aab7fd2392613743, type: 3}
+  - {fileID: 21300000, guid: 9f31282a6a6e17e479fecfba289df4f8, type: 3}
+  sceneryCount: 5
+  maxScenery: 5
+  deadTreeScale: 2
+  sceneryShadows: 1
+  treeShadowLength: 1.3
+  sceneryFlat: 0
+  gateAcrossLocked: {fileID: 21300000, guid: 3b64218d5422bd9418b57ff7e6957e3b, type: 3}
+  gateAcrossOpen: {fileID: 21300000, guid: 5237763476ad95349b1ce069e9b58dfa, type: 3}
+  gateUpDownLocked: {fileID: 21300000, guid: 9ddad1acb46a13b49be2625f1f558df1, type: 3}
+  gateUpDownOpen: {fileID: 21300000, guid: a805fa96143c04f44a391da3c89635b7, type: 3}
+  gateAcrossGreen: {fileID: 0}
+  gateUpDownGreen: {fileID: 0}
+  fog: 1
+  fogColor: {r: 0.66042304, g: 0.5657707, b: 0.735849, a: 0.16}
+  fogAmount: 0.259

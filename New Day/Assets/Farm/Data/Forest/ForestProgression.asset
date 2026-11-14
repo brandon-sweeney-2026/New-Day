@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: ForestProgression
+  m_EditorClassIdentifier: Assembly-CSharp::ForestProgression
+  stumps:
+  - note: 
+    requirements:
+    - item: {fileID: 11400000, guid: 2310c5952ef76a74aba89d6e9c004a8f, type: 2}
+      count: 1
+  - note: 
+    requirements:
+    - item: {fileID: 11400000, guid: 8ced7e7f653441f4db9315cc8da44c9a, type: 2}
+      count: 1
+  farmItems:
+  - {fileID: 11400000, guid: db0b4bbca1f1b064182f4bb119d6cb66, type: 2}
+  - {fileID: 11400000, guid: ac67ad7bf2de88441b45e9cfe51c91bf, type: 2}
+  - {fileID: 11400000, guid: dba75da76a244b4479bd528a7b14340c, type: 2}
+  - {fileID: 11400000, guid: 96ea14d4276c2c3479074360f05caddc, type: 2}
+  - {fileID: 11400000, guid: f62dcb8b80e91c644b25cbc4f796f9b1, type: 2}
+  - {fileID: 11400000, guid: 7131efea24ac2a7478636dc29754660a, type: 2}
+  - {fileID: 11400000, guid: fc0104c92e9c5554aa4867f63b6c5cbe, type: 2}
+  - {fileID: 11400000, guid: 71e8abaac063a7449a20032e0475b777, type: 2}
+  quarryItems:
+  - {fileID: 11400000, guid: 2310c5952ef76a74aba89d6e9c004a8f, type: 2}
+  - {fileID: 11400000, guid: b281a58049ce3e4429d92053961bc58c, type: 2}
+  - {fileID: 11400000, guid: 8bcdf49311cd792468b0d454271c712e, type: 2}
+  - {fileID: 11400000, guid: dfbdb14562bf998469f822778c0d4fc4, type: 2}
+  - {fileID: 11400000, guid: 4c8da34f70857a147bc95142ad3311e2, type: 2}
+  firstCount: 2
+  extraPerDoor: 0.6
+  maxCount: 20
+  bothEvery: 4

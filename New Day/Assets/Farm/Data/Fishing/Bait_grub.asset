@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2613b1ca5077a8442a475b9b0a340e6b, type: 3}
+  m_Name: Bait_grub
+  m_EditorClassIdentifier: Assembly-CSharp::BaitData
+  baitItem: {fileID: 11400000, guid: 225c7e8a94cdd2f46b1af5fd5e6636fd, type: 2}
+  attracts:
+  - {fileID: 11400000, guid: 87762e851219bb5469a1eea10cda41a6, type: 2}
+  - {fileID: 11400000, guid: 95c919c1b796dfd42add2d528a8f5f7f, type: 2}
+  - {fileID: 11400000, guid: 98a3682fff54579448c69b11857088b5, type: 2}
+  boost: 3

@@ -10,6 +10,7 @@ public struct DamageInfo
     public Vector2 knockback;   // a velocity pushed onto the target
     public Team team;           // team of the attacker
     public GameObject source;
+    public bool crit;           // true for a critical strike (shown by the damage numbers)
 
     public DamageInfo(int amount, Vector2 knockback, Team team, GameObject source)
     {
@@ -17,6 +18,7 @@ public struct DamageInfo
         this.knockback = knockback;
         this.team = team;
         this.source = source;
+        this.crit = false;
     }
 }
 

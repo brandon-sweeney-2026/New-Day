@@ -9,17 +9,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a4d472c95f109e47b43f4605add6afc, type: 3}
+  m_Script: {fileID: 11500000, guid: 9e2417261e43e9f4d996e7d715c811c3, type: 3}
   m_Name: HealingLight
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Healing Light
   description: 
-  icon: {fileID: -6603505399685316489, guid: a5bfc63dda158694da3352d9a014a9cd, type: 3}
+  icon: {fileID: 21300000, guid: a5bfc63dda158694da3352d9a014a9cd, type: 3}
   type: 6
   maxStack: 1
   sellPrice: 10
   buyPrice: 0
   energyRestored: 0
+  magicRestored: 0
   toolAction: 0
   damage: 5
   attackRange: 0.8
@@ -28,6 +29,24 @@ MonoBehaviour:
   swingDuration: 0.5
   hitDelay: 0.25
   attackCooldown: 0.1
+  weaponKind: 0
+  tier: 0
+  critChance: 0.05
+  critMultiplier: 2
+  swingSpeed: 1
+  moveSpeedWhileUsing: 1
+  splashRadius: 1.4
+  splashDamagePercent: 0.6
+  flailRadius: 1.5
+  flailStartSpin: 110
+  flailMaxSpin: 620
+  flailSpinUpTime: 1.3
+  flailMaxSeconds: 3.5
+  chargeSeconds: 1
+  ammo: {fileID: 0}
+  heldSprite: {fileID: 0}
+  ballSprite: {fileID: 0}
+  drawFrames: []
   spellEffect: 1
   magicCost: 15
   spellDamage: 8

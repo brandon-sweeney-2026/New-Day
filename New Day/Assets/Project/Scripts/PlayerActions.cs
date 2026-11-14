@@ -58,6 +58,25 @@ public class PlayerActions : MonoBehaviour
     public bool HasTargetCell { get; private set; }
     public IInteractable CurrentInteractable { get; private set; }
     public bool IsBusy { get; private set; }
+    /// <summary>The player's hands (a bit above the feet). Weapons swing from here.</summary>
+    public Vector2 HandOrigin { get { return Origin; } }
+    /// <summary>True while the action button is held down (the bow uses this to draw and release).</summary>
+    public bool ActionHeld
+    {
+        get
+        {
+            Keyboard kb = Keyboard.current;
+            if (kb != null && ((useSpace && kb.spaceKey.isPressed) || (useJKey && kb.jKey.isPressed))) return true;
+            if (useGamepadSouth && Gamepad.current != null && Gamepad.current.buttonSouth.isPressed) return true;
+            if (useLeftMouse && Mouse.current != null && Mouse.current.leftButton.isPressed) return true;
+            return false;
+        }
+    }
+    /// <summary>Used by WeaponController to take over the player while a weapon is in use.</summary>
+    public void SetBusy(bool busy) { IsBusy = busy; }
+    public void SetCooldown(float seconds) { nextActionTime = Time.time + seconds; }
+    public void RaiseItemUsed(ItemData item, float duration) { if (OnItemUsed != null) OnItemUsed(item, duration); }
+    public Animator BodyAnimator { get { return animator; } }
 
     /// <summary>Raised when an item starts being used: (item, how long the use lasts). Visual scripts listen to this.</summary>
     public event System.Action<ItemData, float> OnItemUsed;
@@ -209,7 +228,16 @@ public class PlayerActions : MonoBehaviour
             case ItemData.ItemType.Tool: UseTool(item); break;
             case ItemData.ItemType.Seed: Plant(item); break;
             case ItemData.ItemType.Food: Eat(item); break;
-            case ItemData.ItemType.Weapon: StartCoroutine(Swing(item)); break;
+            case ItemData.ItemType.Weapon:
+                if (item.weaponKind != ItemData.WeaponKind.Generic)
+                {
+                    var wc = GetComponent<WeaponController>();
+                    if (wc != null) { wc.Begin(item); break; }
+                    GameEvents.ShowToast("Add the WeaponController to the Player (Farm > Combat > Set Up Weapons On Player).");
+                    break;
+                }
+                StartCoroutine(Swing(item));
+                break;
             case ItemData.ItemType.Spell: StartCoroutine(Cast(item)); break;
             default: break;   // crops and resources can't be "used" - sell them at the shipping bin
         }
@@ -250,7 +278,7 @@ public class PlayerActions : MonoBehaviour
                 break;
 
             case ItemData.ToolAction.FishingRod:
-                GameEvents.ShowToast("Fishing isn't implemented yet.");
+                FishingManager.TryStart(this, tool);
                 break;
 
             default:

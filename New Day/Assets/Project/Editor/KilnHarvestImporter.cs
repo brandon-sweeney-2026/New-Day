@@ -22,8 +22,11 @@ using UnityEngine.Tilemaps;
 ///   Farm > Kiln Harvest > 2. Create Farm Scene Layout
 ///       Builds a correctly configured Grid with all the tilemaps and a FarmManager that is already wired up.
 ///
-/// Everything generated goes into a "_UnityAssets" folder inside the pack folder. Running the importer again is safe:
-/// it will not overwrite items, crops or prefabs you have edited.
+/// Everything generated goes into Assets/Farm/Kiln, OUTSIDE the pack folder, so re-copying or replacing the pack folder can never
+/// delete your tiles, items or prefabs (which is what made scene art vanish). If you still have the older "_UnityAssets" folder inside
+/// the pack, it keeps being used until you run Farm > Kiln Harvest > Move Generated Assets Out Of The Pack Folder (that keeps every
+/// reference in your scenes). Running the importer again is safe: it will not overwrite items, crops or prefabs you have edited,
+/// and sprite IDs stay the same, so nothing in your scenes loses its picture.
 /// </summary>
 public static class KilnHarvestImporter
 {
@@ -31,13 +34,77 @@ public static class KilnHarvestImporter
     private const int TileSize = 16;
     private const string TerrainFile = "Tilesets/Terrain/terrain_spring.png";
     private const string OutputFolderName = "_UnityAssets";
+    private const string PermanentRoot = "Assets/Farm/Kiln";
+
+    /// <summary>Where generated assets live: the permanent folder, or the old one inside the pack until it has been moved.</summary>
+    private static string OutRootFor(string packRoot)
+    {
+        string legacy = packRoot + "/" + OutputFolderName;
+        if (AssetDatabase.IsValidFolder(PermanentRoot + "/Tiles")) return PermanentRoot;
+        if (AssetDatabase.IsValidFolder(legacy)) return legacy;
+        return PermanentRoot;
+    }
+
+    [MenuItem("Farm/Kiln Harvest/Move Generated Assets Out Of The Pack Folder")]
+    public static void MoveGeneratedOut()
+    {
+        string root = FindPackRoot();
+        if (root == null) { EditorUtility.DisplayDialog("Kiln Harvest", "Pack not found.", "OK"); return; }
+        string legacy = root + "/" + OutputFolderName;
+        if (!AssetDatabase.IsValidFolder(legacy))
+        {
+            EditorUtility.DisplayDialog("Kiln Harvest", "Nothing to move: there is no '" + OutputFolderName + "' folder inside the pack. New imports already go to " + PermanentRoot + ".", "OK");
+            return;
+        }
+        if (AssetDatabase.IsValidFolder(PermanentRoot))
+        {
+            EditorUtility.DisplayDialog("Kiln Harvest", PermanentRoot + " already exists, so I did not move anything. Move or merge the two folders by hand in the Project window (drag inside Unity so the references are kept).", "OK");
+            return;
+        }
+        EnsureFolder("Assets/Farm");
+        string error = AssetDatabase.MoveAsset(legacy, PermanentRoot);
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
+        EditorUtility.DisplayDialog("Kiln Harvest", string.IsNullOrEmpty(error)
+            ? "Moved the generated tiles, items, crops and prefabs to " + PermanentRoot + ". Your scenes keep working (Unity moved them with their references). You can now replace the pack folder safely."
+            : "Could not move: " + error, "OK");
+    }
 
     // ------------------------------------------------------------------
     // Menu entry 1: import everything
     // ------------------------------------------------------------------
 
+    // When true, textures that were already imported are cut up and configured again (the old behaviour). Normally false.
+    private static bool forceReimportTextures = false;
+
     [MenuItem("Farm/Kiln Harvest/1. Import Pack Assets")]
     public static void ImportPack()
+    {
+        forceReimportTextures = false;
+        ImportPackInternal();
+    }
+
+    [MenuItem("Farm/Kiln Harvest/1b. Re-Import Pack Textures (resets their import settings)")]
+    public static void ReimportPackTextures()
+    {
+        if (!EditorUtility.DisplayDialog("Kiln Harvest",
+                "This cuts up and configures EVERY pack picture again, including ones you already set up (player, UI, animals...). " +
+                "Pivots, slicing and animation frames set on those pictures are reset.\n\nOnly do this if you want the pack's original settings back. Continue?",
+                "Re-import", "Cancel")) return;
+        forceReimportTextures = true;
+        ImportPackInternal();
+        forceReimportTextures = false;
+    }
+
+    /// <summary>True when the picture already has sprites, so it was set up before (by the importer or by you) and is left exactly as it is.</summary>
+    private static bool AlreadySetUp(string assetPath)
+    {
+        var importer = AssetImporter.GetAtPath(assetPath) as TextureImporter;
+        if (importer == null || importer.textureType != TextureImporterType.Sprite) return false;
+        return AssetDatabase.LoadAllAssetsAtPath(assetPath).OfType<Sprite>().Any();
+    }
+
+    private static void ImportPackInternal()
     {
         string root = FindPackRoot();
         if (root == null)
@@ -49,7 +116,7 @@ public static class KilnHarvestImporter
             return;
         }
 
-        string outRoot = root + "/" + OutputFolderName;
+        string outRoot = OutRootFor(root);
         int tileCount = 0, itemCount = 0, cropCount = 0, prefabCount = 0;
 
         try
@@ -67,6 +134,14 @@ public static class KilnHarvestImporter
                 EditorUtility.DisplayProgressBar("Kiln Harvest", "Importing textures: " + rel, 0.45f * i / pngs.Length);
 
                 TexPlan plan = PlanFor(rel);
+
+                // already set up (by the importer or by you)? leave its slicing, pivots and animations alone
+                if (!forceReimportTextures && plan.kind != TexKind.Skip && AlreadySetUp(assetPath))
+                {
+                    if (plan.kind == TexKind.Grid && rel.StartsWith("Tilesets/Terrain/terrain_")) terrainFiles.Add(assetPath);
+                    continue;
+                }
+
                 switch (plan.kind)
                 {
                     case TexKind.Skip:
@@ -126,7 +201,7 @@ public static class KilnHarvestImporter
             return;
         }
 
-        string tilesFolder = root + "/" + OutputFolderName + "/Tiles/Spring";
+        string tilesFolder = OutRootFor(root) + "/Tiles/Spring";
         var grass = AssetDatabase.LoadAssetAtPath<TileBase>(tilesFolder + "/Grass.asset");
         var dirtFlat = AssetDatabase.LoadAssetAtPath<TileBase>(tilesFolder + "/DirtFlat.asset");
         var dirtPatch = AssetDatabase.LoadAssetAtPath<TileBase>(tilesFolder + "/DirtPatch.asset");
@@ -138,51 +213,73 @@ public static class KilnHarvestImporter
             return;
         }
 
-        if (Object.FindAnyObjectByType<Grid>() != null)
+        // ADDS TO the open scene: it reuses what is already there and only creates what is missing.
+        // It never deletes or replaces anything, and never touches the Player, UI, cameras or anything else.
+        var made = new List<string>();
+        var kept = new List<string>();
+
+        Grid grid = Object.FindAnyObjectByType<Grid>();
+        GameObject gridObject;
+        if (grid == null)
         {
-            bool go = EditorUtility.DisplayDialog("Kiln Harvest",
-                "This scene already contains a Grid. Create another one anyway?", "Create another", "Cancel");
-            if (!go) return;
+            gridObject = new GameObject("Grid", typeof(Grid));
+            Undo.RegisterCreatedObjectUndo(gridObject, "Create Farm Layout");
+            gridObject.GetComponent<Grid>().cellSize = new Vector3(1f, 1f, 0f);
+            made.Add("Grid");
         }
+        else { gridObject = grid.gameObject; kept.Add("Grid"); }
 
-        // Grid: cell size 1 unit = one 16 px tile at 16 Pixels Per Unit.
-        var gridObject = new GameObject("Grid", typeof(Grid));
-        Undo.RegisterCreatedObjectUndo(gridObject, "Create Farm Layout");
-        gridObject.GetComponent<Grid>().cellSize = new Vector3(1f, 1f, 0f);
+        Tilemap ground = EnsureTilemap(gridObject.transform, "Ground", 0, true, made, kept);
+        EnsureTilemap(gridObject.transform, "Paths", 1, false, made, kept);
+        Tilemap soil = EnsureTilemap(gridObject.transform, "Soil", 2, false, made, kept);
+        Tilemap wetSoil = EnsureTilemap(gridObject.transform, "WetSoil", 3, false, made, kept);
+        EnsureTilemap(gridObject.transform, "Fences", 4, true, made, kept);
 
-        Tilemap ground = MakeTilemap(gridObject.transform, "Ground", 0, true);
-        Tilemap paths = MakeTilemap(gridObject.transform, "Paths", 1, false);
-        Tilemap soil = MakeTilemap(gridObject.transform, "Soil", 2, false);
-        Tilemap wetSoil = MakeTilemap(gridObject.transform, "WetSoil", 3, false);
-        Tilemap fences = MakeTilemap(gridObject.transform, "Fences", 4, true);
-
-        var objects = new GameObject("Objects");
-        Undo.RegisterCreatedObjectUndo(objects, "Create Farm Layout");
-
-        // Start with a field of grass so there is something to paint on.
-        for (int x = -15; x < 15; x++)
-            for (int y = -10; y < 10; y++)
-                ground.SetTile(new Vector3Int(x, y, 0), grass);
-
-        // FarmManager, fully wired up.
-        var managerObject = new GameObject("FarmManager");
-        Undo.RegisterCreatedObjectUndo(managerObject, "Create Farm Layout");
-        var manager = managerObject.AddComponent<FarmManager>();
-
-        var so = new SerializedObject(manager);
-        SetRef(so, "groundTilemap", ground);
-        SetRef(so, "soilTilemap", soil);
-        SetRef(so, "waterTilemap", wetSoil);
-        SetRef(so, "tilledSoilTile", tilled);
-        SetRef(so, "wateredSoilTile", wet);
-
-        var tillable = new List<TileBase>();
-        if (grass != null) tillable.Add(grass);
-        if (dirtFlat != null) tillable.Add(dirtFlat);
-        if (dirtPatch != null) tillable.Add(dirtPatch);
-        SerializedProperty tillableProp = so.FindProperty("tillableGroundTiles");
-        if (tillableProp != null)
+        if (GameObject.Find("Objects") == null)
         {
+            var objects = new GameObject("Objects");
+            Undo.RegisterCreatedObjectUndo(objects, "Create Farm Layout");
+            made.Add("Objects");
+        }
+        else kept.Add("Objects");
+
+        // Only lay down starter grass on an EMPTY ground layer.
+        if (ground.GetUsedTilesCount() == 0)
+        {
+            Undo.RegisterCompleteObjectUndo(ground, "Create Farm Layout");
+            for (int x = -15; x < 15; x++)
+                for (int y = -10; y < 10; y++)
+                    ground.SetTile(new Vector3Int(x, y, 0), grass);
+            made.Add("starter grass");
+        }
+        else kept.Add("your ground tiles");
+
+        // FarmManager: reuse it, and only fill in references that are still empty.
+        FarmManager manager = Object.FindAnyObjectByType<FarmManager>();
+        if (manager == null)
+        {
+            var managerObject = new GameObject("FarmManager");
+            Undo.RegisterCreatedObjectUndo(managerObject, "Create Farm Layout");
+            manager = managerObject.AddComponent<FarmManager>();
+            made.Add("FarmManager");
+        }
+        else kept.Add("FarmManager");
+
+        Undo.RecordObject(manager, "Create Farm Layout");
+        var so = new SerializedObject(manager);
+        SetRefIfEmpty(so, "groundTilemap", ground);
+        SetRefIfEmpty(so, "soilTilemap", soil);
+        SetRefIfEmpty(so, "waterTilemap", wetSoil);
+        SetRefIfEmpty(so, "tilledSoilTile", tilled);
+        SetRefIfEmpty(so, "wateredSoilTile", wet);
+
+        SerializedProperty tillableProp = so.FindProperty("tillableGroundTiles");
+        if (tillableProp != null && tillableProp.arraySize == 0)
+        {
+            var tillable = new List<TileBase>();
+            if (grass != null) tillable.Add(grass);
+            if (dirtFlat != null) tillable.Add(dirtFlat);
+            if (dirtPatch != null) tillable.Add(dirtPatch);
             tillableProp.arraySize = tillable.Count;
             for (int i = 0; i < tillable.Count; i++)
                 tillableProp.GetArrayElementAtIndex(i).objectReferenceValue = tillable[i];
@@ -190,15 +287,26 @@ public static class KilnHarvestImporter
         so.ApplyModifiedProperties();
 
         EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
-        Selection.activeGameObject = gridObject;
-
-        FarmLevelEditorWindow.Open();
 
         EditorUtility.DisplayDialog("Kiln Harvest",
-            "Farm layout created:\n\n" +
-            "Grid > Ground, Paths, Soil, WetSoil, Fences\nObjects\nFarmManager (already connected)\n\n" +
-            "The Farm Level Editor is open. Pick a layer, pick something from the palette, and paint in the Scene view.\n\n" +
-            "Water tiles and fences are solid. Remember to give your Player a Collider2D.", "OK");
+            "Added to your scene (nothing was replaced):\n  " + (made.Count > 0 ? string.Join(", ", made.ToArray()) : "nothing new was needed") +
+            "\n\nKept as it was:\n  " + (kept.Count > 0 ? string.Join(", ", kept.ToArray()) : "-") +
+            "\n\nYour Player, UI, cameras and other objects were not touched. Ctrl+Z undoes this.\n" +
+            "Water tiles and fences are solid. Remember your Player needs a Collider2D.", "OK");
+    }
+
+    private static Tilemap EnsureTilemap(Transform parent, string name, int sortingOrder, bool solid, List<string> made, List<string> kept)
+    {
+        foreach (Tilemap existing in parent.GetComponentsInChildren<Tilemap>(true))
+            if (string.Equals(existing.name, name, System.StringComparison.OrdinalIgnoreCase)) { kept.Add(name); return existing; }
+        made.Add(name);
+        return MakeTilemap(parent, name, sortingOrder, solid);
+    }
+
+    private static void SetRefIfEmpty(SerializedObject so, string property, Object value)
+    {
+        SerializedProperty p = so.FindProperty(property);
+        if (p != null && p.objectReferenceValue == null) p.objectReferenceValue = value;
     }
 
     private static Tilemap MakeTilemap(Transform parent, string name, int sortingOrder, bool solid)
@@ -328,6 +436,11 @@ public static class KilnHarvestImporter
         ISpriteEditorDataProvider provider = factory.GetSpriteEditorDataProviderFromObject(importer);
         provider.InitSpriteEditorDataProvider();
 
+        // keep the IDs sprites already have, so everything that uses them keeps its picture; new ones get a fixed ID made from the name
+        var knownIds = new Dictionary<string, UnityEngine.GUID>();
+        foreach (SpriteRect old in provider.GetSpriteRects()) knownIds[old.name] = old.spriteID;
+        string fileName = Path.GetFileNameWithoutExtension(path);
+
         var rects = new List<SpriteRect>();
         for (int r = 0; r < rows; r++)
         {
@@ -338,7 +451,8 @@ public static class KilnHarvestImporter
                 rect.rect = new Rect(c * cellW, texH - (r + 1) * cellH, cellW, cellH);
                 rect.alignment = SpriteAlignment.Custom;
                 rect.pivot = pivot;
-                rect.spriteID = UnityEngine.GUID.Generate();
+                UnityEngine.GUID known;
+                rect.spriteID = knownIds.TryGetValue(rect.name, out known) ? known : StableId(fileName, rect.name);
                 rects.Add(rect);
             }
         }
@@ -350,6 +464,18 @@ public static class KilnHarvestImporter
 
         provider.Apply();
         importer.SaveAndReimport();
+    }
+
+    /// <summary>The same ID every time for the same picture name, so re-slicing a sheet never breaks references to its sprites.</summary>
+    private static UnityEngine.GUID StableId(string fileName, string spriteName)
+    {
+        using (var md5 = System.Security.Cryptography.MD5.Create())
+        {
+            byte[] hash = md5.ComputeHash(System.Text.Encoding.UTF8.GetBytes("kiln:" + fileName + ":" + spriteName));
+            var sb = new System.Text.StringBuilder();
+            foreach (byte b in hash) sb.Append(b.ToString("x2"));
+            return new UnityEngine.GUID(sb.ToString());
+        }
     }
 
     /// <summary>Reads the width and height straight from the PNG header (no need to load the image).</summary>

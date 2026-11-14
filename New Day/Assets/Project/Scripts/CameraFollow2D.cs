@@ -41,6 +41,8 @@ public class CameraFollow2D : MonoBehaviour
     private Rect overrideBounds;
 
     private Camera cam;
+    private static CameraFollow2D main;
+    private float shakeAmount, shakeUntil, shakeTotal;
     private Vector3 velocity;
     private PlayerController player;
     private Vector2 currentLook;
@@ -48,6 +50,7 @@ public class CameraFollow2D : MonoBehaviour
     private void Awake()
     {
         cam = GetComponent<Camera>();
+        main = this;
         cam.orthographic = true;
         cam.orthographicSize = orthographicSize;
     }
@@ -82,7 +85,24 @@ public class CameraFollow2D : MonoBehaviour
             next.y = Mathf.Round(next.y * pixelsPerUnit) / pixelsPerUnit;
         }
 
+        if (Time.unscaledTime < shakeUntil)
+        {
+            float k = (shakeUntil - Time.unscaledTime) / Mathf.Max(0.01f, shakeTotal);
+            float amt = shakeAmount * k;
+            next.x += Mathf.Round(Random.Range(-amt, amt) * 16f) / 16f;      // whole pixels, so it stays crisp
+            next.y += Mathf.Round(Random.Range(-amt, amt) * 16f) / 16f;
+        }
+
         transform.position = new Vector3(next.x, next.y, transform.position.z);
+    }
+
+    /// <summary>Shakes the screen for a moment (hammer slams, critical hits). Amount is in world units (0.1 = a gentle shake).</summary>
+    public static void Shake(float amount, float seconds)
+    {
+        if (main == null) main = FindAnyObjectByType<CameraFollow2D>();
+        if (main == null) return;
+        if (amount < main.shakeAmount * ((main.shakeUntil - Time.unscaledTime) / Mathf.Max(0.01f, main.shakeTotal))) return;   // don't cut a bigger shake short
+        main.shakeAmount = amount; main.shakeTotal = seconds; main.shakeUntil = Time.unscaledTime + seconds;
     }
 
     /// <summary>Instantly snap to the target (after a teleport).</summary>

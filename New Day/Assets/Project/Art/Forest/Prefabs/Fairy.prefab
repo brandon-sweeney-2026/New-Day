@@ -1,0 +1,291 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &733488552253268887
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1332868946736857712}
+  - component: {fileID: 2508732629475492702}
+  m_Layer: 0
+  m_Name: Picture
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1332868946736857712
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 733488552253268887}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7409808759951054420}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &2508732629475492702
+SpriteRenderer:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 733488552253268887}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 12
+  m_MaskInteraction: 0
+  m_Sprite: {fileID: -1747358730, guid: 9f601ebba39c4fe48b2f0accf13af4f0, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1.5, y: 1.5}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 0
+  m_SpriteSortPoint: 1
+  m_BlendShapeWeights: []
+--- !u!1 &4877835952885910451
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7409808759951054420}
+  - component: {fileID: 2442138758547981983}
+  - component: {fileID: 5335745909752580289}
+  m_Layer: 0
+  m_Name: Fairy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7409808759951054420
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4877835952885910451}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1332868946736857712}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &2442138758547981983
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4877835952885910451}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 1.1
+--- !u!114 &5335745909752580289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4877835952885910451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ab50905f41718146bdccc08b59128d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FairyNpc
+  fairyName: Fairy
+  flyFrames:
+  - {fileID: -1747358730, guid: 9f601ebba39c4fe48b2f0accf13af4f0, type: 3}
+  - {fileID: -544121591, guid: 9f601ebba39c4fe48b2f0accf13af4f0, type: 3}
+  flyFps: 6
+  bobHeight: 0.18
+  bobSpeed: 2
+  glowColor: {r: 0.7, g: 1, b: 0.8, a: 0.28}
+  portraitIdle: {fileID: -1250959855, guid: 3c22ff1c1a9bb81409490088cf158c3f, type: 3}
+  portraitTalk: {fileID: -1149047858, guid: 3c22ff1c1a9bb81409490088cf158c3f, type: 3}
+  portraitHappy: {fileID: 1308293042, guid: 3c22ff1c1a9bb81409490088cf158c3f, type: 3}
+  portraitBlink: {fileID: -1896401758, guid: 3c22ff1c1a9bb81409490088cf158c3f, type: 3}
+  dialoguePanel: {fileID: 21300000, guid: 031b059d99820c5458641095e4070c10, type: 3}
+  portraitFrame: {fileID: 21300000, guid: 596599fae9cbc8c4386d6ff2e60a29f2, type: 3}
+  nameColor: {r: 0.2, g: 0.55, b: 0.35, a: 1}
+  firstMeeting:
+  - Oh! A visitor... and you don't smell of shadow. Hello, little farmer.
+  - I am the keeper of this grove. The pollution crept in slowly, and now it chokes the forest paths. Everything here is wilting.
+  - If you would help me, perhaps the forest can breathe again.
+  fromSisterPages:
+  - Oh... you have spoken to my little sister? I could feel her worry from here. You came all this way for her. Thank you.
+  aboutPollution:
+  - The dark stuff seeps up from the farm and the mountain, carried by water and wind. The animals were the first to change.
+  - Clean it away at the source, and the shadows will let them go. I think. I hope.
+  allDone:
+  - The forest is breathing easier because of you. Come and sit by the pond whenever you like.
+  quests:
+  - id: shadows_1
+    title: Quiet the Shadows
+    kind: 1
+    offerPages:
+    - The shadow animals were my friends once. Rabbits, squirrels... all twisted by the dark.
+    - If you banish eight of them, the paths will be safer, and maybe the pollution will loosen its hold.
+    reminder: Eight shadows, little farmer. They hide in the maze rooms.
+    completePages:
+    - I can feel it. The forest is breathing a little deeper. Thank you!
+    items: []
+    counterKey: shadows_banished
+    counterTarget: 8
+    countFromAccept: 1
+    counterLabel: Shadows banished
+    rewardGold: 120
+    rewardItems: []
+    setFlag: 
+  - id: stone_1
+    title: Cleansing Stones
+    kind: 0
+    offerPages:
+    - Stone can hold a spell, if the stone is clean. The mountain has plenty.
+    - Bring me some, and I'll set them around the pond to keep the pollution out.
+    reminder: Stones from the mountain, please. They must be clean.
+    completePages:
+    - Perfect. I'll set these around the water tonight.
+    items:
+    - item: {fileID: 11400000, guid: 2310c5952ef76a74aba89d6e9c004a8f, type: 2}
+      count: 10
+    counterKey: shadows_banished
+    counterTarget: 10
+    countFromAccept: 1
+    counterLabel: Shadows banished
+    rewardGold: 150
+    rewardItems: []
+    setFlag: 
+  - id: harvest_1
+    title: Seeds of Hope
+    kind: 0
+    offerPages:
+    - Things grow slowly here now. Fresh produce from the farm carries living magic.
+    - Could you bring me a basket? I'll plant the seeds where the shadows once stood.
+    reminder: Fresh things from the farm, please.
+    completePages:
+    - Oh, these are wonderful. Already the soil feels warmer.
+    items:
+    - item: {fileID: 11400000, guid: db0b4bbca1f1b064182f4bb119d6cb66, type: 2}
+      count: 8
+    counterKey: shadows_banished
+    counterTarget: 10
+    countFromAccept: 1
+    counterLabel: Shadows banished
+    rewardGold: 200
+    rewardItems: []
+    setFlag: 
+  - id: shadows_2
+    title: Hunters of the Dark
+    kind: 1
+    offerPages:
+    - There are more. So many more. The pollution keeps making them.
+    - Twenty-five this time. Then I think we can look for where it all comes from.
+    reminder: Keep going. Every shadow you free is a friend returned.
+    completePages:
+    - You've done what I could not for years. Now... we need to find the source.
+    items: []
+    counterKey: shadows_banished
+    counterTarget: 25
+    countFromAccept: 1
+    counterLabel: Shadows banished
+    rewardGold: 400
+    rewardItems: []
+    setFlag: 
+  - id: story_placeholder
+    title: (Story placeholder) The Source
+    kind: 1
+    offerPages:
+    - '[Placeholder] This is where the main story continues: where the pollution comes from, and how to stop it.'
+    reminder: '[Placeholder] Rewrite this quest to match your story.'
+    completePages:
+    - '[Placeholder] To be continued...'
+    items: []
+    counterKey: fairy_quests_done
+    counterTarget: 4
+    countFromAccept: 0
+    counterLabel: Quests finished
+    rewardGold: 0
+    rewardItems: []
+    setFlag: forest_story_unlocked

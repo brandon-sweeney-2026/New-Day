@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e2417261e43e9f4d996e7d715c811c3, type: 3}
+  m_Name: CopperBow
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemName: Copper Bow
+  description: Hold to draw, let go to shoot. Uses one Arrow per shot. Better bows draw and reload faster.
+  icon: {fileID: 21300000, guid: f4a14e3c928b5074a923ae1f71d724c6, type: 3}
+  type: 5
+  maxStack: 1
+  sellPrice: 45
+  buyPrice: 0
+  energyRestored: 0
+  magicRestored: 0
+  toolAction: 0
+  damage: 8
+  attackRange: 0.8
+  attackRadius: 0.6
+  knockbackForce: 3
+  swingDuration: 0.5
+  hitDelay: -1
+  attackCooldown: 0.38
+  weaponKind: 5
+  tier: 1
+  critChance: 0
+  critMultiplier: 2
+  swingSpeed: 1
+  moveSpeedWhileUsing: 0.4
+  splashRadius: 1.4
+  splashDamagePercent: 0.6
+  flailRadius: 1.5
+  flailStartSpin: 110
+  flailMaxSpin: 620
+  flailSpinUpTime: 1.3
+  flailMaxSeconds: 3.5
+  chargeSeconds: 0.95
+  ammo: {fileID: 11400000, guid: 0ec78135d53fce74daa3d246c2b6eb6e, type: 2}
+  heldSprite: {fileID: 0}
+  ballSprite: {fileID: 0}
+  drawFrames:
+  - {fileID: 21300000, guid: 3c7da44072b96804293e6f257b9be65b, type: 3}
+  - {fileID: 21300000, guid: e119243ed68f4954185fdd2fdae79a93, type: 3}
+  - {fileID: 21300000, guid: a5c4a05ef48546a48b21ff14277e1382, type: 3}
+  spellEffect: 0
+  magicCost: 10
+  spellDamage: 8
+  projectileSpeed: 13
+  projectileLifetime: 0.8
+  projectileSprite: {fileID: 21300000, guid: 2bbfb50b65ec4854ab903b3333e85f5f, type: 3}
+  projectileColor: {r: 1, g: 0.55, b: 0.15, a: 1}
+  healAmount: 20
+  castTime: 0.25

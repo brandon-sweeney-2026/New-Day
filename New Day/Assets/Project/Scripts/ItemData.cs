@@ -17,6 +17,15 @@ public class ItemData : ScriptableObject
 
     public enum SpellEffect { Projectile, Heal }
 
+    /// <summary>
+    /// Which fighting style a Weapon uses. Generic = the old simple swing. The others are handled by WeaponController
+    /// (add that to the Player: Farm > Combat > Set Up Weapons On Player).
+    /// </summary>
+    public enum WeaponKind { Generic, Sword, Dagger, Flail, Hammer, Bow }
+
+    /// <summary>Material tier (the same metals as the ores). Only used for the name/label and to keep the stats tidy.</summary>
+    public enum WeaponTier { Stone, Copper, Iron, Gold, Platinum }
+
     [Header("Basics")]
     public string itemName = "New Item";
     [TextArea] public string description;
@@ -48,6 +57,28 @@ public class ItemData : ScriptableObject
     [Tooltip("Seconds into the swing when the blade connects. Use -1 to hit from an Animation Event named SwordHit instead.")]
     public float hitDelay = 0.25f;
     public float attackCooldown = 0.1f;
+
+    [Header("Weapon style (new combat system - used when Weapon Kind is not Generic)")]
+    public WeaponKind weaponKind = WeaponKind.Generic;
+    public WeaponTier tier = WeaponTier.Stone;
+    [Range(0f, 1f), Tooltip("Chance for a hit to be a critical strike.")] public float critChance = 0.05f;
+    [Min(1f), Tooltip("Damage multiplier on a critical strike (2 = double).")] public float critMultiplier = 2f;
+    [Min(0.1f), Tooltip("Swing speed. 1 = normal, 1.5 = 50% faster. (Bow: also draws faster.)")] public float swingSpeed = 1f;
+    [Range(0f, 1.5f), Tooltip("Walking speed while the weapon is in use (1 = normal, 0.5 = half). Used by the flail and the bow.")] public float moveSpeedWhileUsing = 1f;
+    [Tooltip("Hammer: radius of the splash around the impact. Splash targets take Splash Damage % of the damage.")] public float splashRadius = 1.4f;
+    [Range(0f, 1f)] public float splashDamagePercent = 0.6f;
+    [Tooltip("Flail: how far the ball swings from the player, in tiles.")] public float flailRadius = 1.5f;
+    [Tooltip("Flail: degrees per second when it starts turning, and at full speed.")] public float flailStartSpin = 110f;
+    public float flailMaxSpin = 620f;
+    [Tooltip("Flail: seconds to reach full speed.")] public float flailSpinUpTime = 1.3f;
+    [Tooltip("Flail: the longest it will keep spinning while you hold the button.")] public float flailMaxSeconds = 3.5f;
+    [Tooltip("Bow: seconds to draw the bow fully (smaller = faster).")] public float chargeSeconds = 1f;
+    [Tooltip("Bow: the arrows it uses up. Each shot uses one.")] public ItemData ammo;
+    [Tooltip("Pictures used while the weapon is in use. Held picture = the weapon in the hand (leave empty to use the icon). " +
+             "Flail: held picture = the handle, Ball Sprite = the spiked ball. Bow: 3 draw frames (relaxed, half, full).")]
+    public Sprite heldSprite;
+    public Sprite ballSprite;
+    public Sprite[] drawFrames;
 
     [Header("Spell (only used when type is Spell)")]
     public SpellEffect spellEffect = SpellEffect.Projectile;

@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 /// <summary>
-/// Builds 6 palettes for roads and paths: Asphalt Road, Asphalt Path, Sidewalk, Forest Path, Mountain Path, Dirt Path.
+/// Builds 7 palettes for roads and paths: Asphalt Road, Asphalt Path, Sidewalk, Forest Path, Mountain Path, Dirt Path, Dock.
 /// Menu: Farm > Biomes > Build Path Palettes.
 ///
 /// First copy the "Paths" art folder (the six *_tiles.png files) anywhere into your Assets.
@@ -49,6 +49,9 @@ public static class PathPaletteBuilder
         new Surface { file = "mountain_path_tiles", title = "MountainPath",
             decor = new[] { "Snow", "Ice", "Pebbles", "Scree", "Crack", "Puddle", "AlpineFlowers", "Moss", "Footprints" },
             props = new[] { "Cairn", "TrailMarker", "Boulder", "Signpost", "Pine", "RopePost", "StoneMarker" } },
+        new Surface { file = "dock_tiles", title = "Dock",
+            decor = new[] { "Puddle", "Seaweed", "FishBones", "Starfish", "Stain", "Rope", "WetPrints", "Feather", "Shells", "Splinters", "Knot" },
+            props = new[] { "Bollard", "Crate", "Barrel", "RopeCoil", "LampPost", "Lifebuoy", "Bucket", "LobsterTrap", "FishCrate", "Cleat", "Ladder", "Signpost", "Buoy", "Anchor", "NetPile" } },
         new Surface { file = "dirt_path_tiles", title = "DirtPath",
             decor = new[] { "Footprints", "RutsH", "RutsV", "Puddle", "GrassTuft", "Pebbles", "Cracks", "Leaves", "Weeds", "Flowers" },
             props = new[] { "FencePost", "Signpost", "HayBale", "Barrel", "StoneMarker", "Stump", "Lantern" } },
@@ -65,11 +68,18 @@ public static class PathPaletteBuilder
         { "Dot", "N", "E", "NE", "S", "NS", "ES", "NES", "W", "NW", "EW", "NEW", "SW", "NSW", "ESW", "NESW" };
 
     [MenuItem("Farm/Biomes/Build Path Palettes")]
-    public static void Build()
+    public static void Build() { BuildSurfaces(null); }
+
+    /// <summary>Builds only the dock palette (needs dock_tiles.png somewhere in your Assets).</summary>
+    [MenuItem("Farm/Biomes/Build Dock Palette")]
+    public static void BuildDock() { BuildSurfaces("Dock"); }
+
+    private static void BuildSurfaces(string onlyTitle)
     {
         var log = new List<string>();
         foreach (Surface s in Surfaces)
         {
+            if (onlyTitle != null && s.title != onlyTitle) continue;
             string sheetPath = FindSheet(s.file);
             if (sheetPath == null) { log.Add(s.title + ": " + s.file + ".png not found (skipped)"); continue; }
 
@@ -137,7 +147,8 @@ public static class PathPaletteBuilder
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
         string msg = string.Join("\n", log.ToArray()) +
-            "\n\nOpen Window > 2D > Tile Palette and pick e.g. AsphaltRoad_Palette. The Auto tile is in the row below the sheet.";
+            "\n\nOpen Window > 2D > Tile Palette and pick e.g. AsphaltRoad_Palette. The Auto tile is in the row below the sheet." +
+            "\nIn the Farm Level Editor the new tiles appear by themselves (Ground and Paths palettes, group names like Dock).";
         Debug.Log(msg);
         EditorUtility.DisplayDialog("Path palettes built", msg, "OK");
     }

@@ -143,6 +143,22 @@ public static class MeatballTips
             float d = Vector2.Distance(pos, b.transform.position);
             if (d < brkD) { brkD = d; brk = b; }
         }
+        // ---- mineable rocks (mountain) ----
+        float rockD = float.MaxValue; MineableRock rock = null;
+        foreach (MineableRock mr in Object.FindObjectsByType<MineableRock>())
+        {
+            if (mr == null || !mr.IsIntact) continue;
+            float d = Vector2.Distance(pos, mr.transform.position);
+            if (d < rockD) { rockD = d; rock = mr; }
+        }
+        if (rock != null && rockD <= SearchRadius)
+        {
+            bool ore = rock.rockName != "Rock";
+            list.Add(new Cand(rockD + 1f, "You can mine that " + (ore ? rock.rockName + " ore " : "rock ") + "(" + Where(pos, rock.transform.position) + "). "
+                + Equip(inv, ItemData.ToolAction.Pickaxe, "Pickaxe") + " Face it and press Space a few times"
+                + (ore ? " - ore sells for a lot more than plain stone!" : ". Rocks drop stone, and sometimes you find coal or copper hiding in the rocks.")));
+        }
+
         if (brk != null && brkD <= SearchRadius)
         {
             ItemData.ToolAction need = brk.RequiredTool;

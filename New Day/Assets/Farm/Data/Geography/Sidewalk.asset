@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676280cc325601d4a9888ecebcea5eab, type: 3}
+  m_Name: Sidewalk
+  m_EditorClassIdentifier: Assembly-CSharp-Editor::GeographyPreset
+  title: Sidewalk
+  paletteGroup: Sidewalk
+  shape: 1
+  defaultWidth: 2
+  widthWobble: 0
+  mergeWithExisting: 1
+  shoulderWidth: 1
+  fillTiles:
+  - {fileID: 11400000, guid: 750ec55af4102914894a500e7b5fcf80, type: 2}
+  - {fileID: 11400000, guid: 0ae18e8f289046f4abb6f799b3200354, type: 2}
+  - {fileID: 11400000, guid: 77bc6087708b194449c161c07a819c37, type: 2}
+  - {fileID: 11400000, guid: ff673d645fc120d4a945af51285d71ed, type: 2}
+  - {fileID: 11400000, guid: 35bc8fa3d1e13f94ab18744fbb34f95b, type: 2}
+  - {fileID: 11400000, guid: 7d48784919afbbc47b35065a734405a9, type: 2}
+  - {fileID: 11400000, guid: f8cc9126329f0af49a8fc098482da7c5, type: 2}
+  - {fileID: 11400000, guid: 4a9b494d8b2bd2e4ea869b9288d3d8f8, type: 2}
+  wideTiles:
+  - {fileID: 11400000, guid: 4e1cb9a77115f064ba7795b2424ad64b, type: 2}
+  - {fileID: 11400000, guid: 27478a6e9cc96254d884fedd9110803e, type: 2}
+  - {fileID: 11400000, guid: ec9330ea51f43f3429339ba6bbb54c7c, type: 2}
+  - {fileID: 11400000, guid: 0c32e009b930f72468edb4094feaca3b, type: 2}
+  - {fileID: 11400000, guid: 73a358417d272e64083e11d67100d7a3, type: 2}
+  - {fileID: 11400000, guid: 127c43938c8272c4ca617e8c5ec0fdf7, type: 2}
+  - {fileID: 11400000, guid: f04c4857982721b4a8cc4e2929435a99, type: 2}
+  - {fileID: 11400000, guid: 7cc79910d83468841894f4a0410d54c7, type: 2}
+  - {fileID: 11400000, guid: bd60a5a14b63b214b8e7d129154e7c7f, type: 2}
+  innerTiles:
+  - {fileID: 11400000, guid: f1845bd2d95a6b949a930bf888c5beb8, type: 2}
+  - {fileID: 11400000, guid: cc7d63389a04b23419be495a25ac0360, type: 2}
+  - {fileID: 11400000, guid: f09d175edb3e26545a6f7af159aeacd5, type: 2}
+  - {fileID: 11400000, guid: 30494d23c31b73b40b89f618a5911c1a, type: 2}
+  autoTile: {fileID: 11400000, guid: 4027a52902f3d03488a7a74ec3bcc025, type: 2}
+  swapInnerCorners: 0
+  centerHorizontal: {fileID: 0}
+  centerVertical: {fileID: 0}
+  centerMinWidth: 11
+  dashOn: 2
+  dashOff: 2
+  scatter:
+  - label: Cracks, gum, leaves, stains
+    assets:
+    - {fileID: 11400000, guid: f97d127f3e01f004daf949b7349f6083, type: 2}
+    - {fileID: 11400000, guid: d2b8aff045a0d7e40a7ae49730e1e525, type: 2}
+    - {fileID: 11400000, guid: 51a75b18b3b553744b367b9b17b7c073, type: 2}
+    - {fileID: 11400000, guid: a6b6bb029b46c4f43b1f333fed6a074d, type: 2}
+    - {fileID: 11400000, guid: b95f5a0ad6c93c3418829cb8ca4c617a, type: 2}
+    - {fileID: 11400000, guid: 9d32ef99d6f4d1445bc60530f9823359, type: 2}
+    - {fileID: 11400000, guid: c7c6a5f1a108aa24b85393155fe6c253, type: 2}
+    zone: 0
+    chance: 0.07
+    minSpacing: 0
+    minBrushWidth: 1
+  - label: Drains and manholes
+    assets:
+    - {fileID: 11400000, guid: f61c99c3831d17742a894f3143ab4a95, type: 2}
+    - {fileID: 11400000, guid: 9e4d9ea7da106e749971bce8266f8d01, type: 2}
+    zone: 0
+    chance: 0.012
+    minSpacing: 5
+    minBrushWidth: 1
+  - label: Street furniture
+    assets:
+    - {fileID: 11400000, guid: 0e5221c9574b8eb4f94a8826f30a4634, type: 2}
+    - {fileID: 11400000, guid: b29791aaa7c6a73488b1bef8a2b9d386, type: 2}
+    - {fileID: 11400000, guid: d7aacf38f40b95148a76ccb62275e747, type: 2}
+    - {fileID: 11400000, guid: aae150441363fbc48aa973b700c86631, type: 2}
+    - {fileID: 11400000, guid: df778306b7725794c9277a0dba374169, type: 2}
+    - {fileID: 11400000, guid: 8574dcae26088d349ad81341073e9e0c, type: 2}
+    - {fileID: 11400000, guid: 799dcc2ba1a553041b442c598713b5a1, type: 2}
+    zone: 1
+    chance: 0.05
+    minSpacing: 6
+    minBrushWidth: 1

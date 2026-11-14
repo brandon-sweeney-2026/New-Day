@@ -68,6 +68,13 @@ public class GameHUD : MonoBehaviour
     [Header("Messages")]
     [SerializeField] private float toastSeconds = 2.5f;
 
+    // ---- other screens can borrow the bar's pictures and take over slot clicks (the forest stump does both) ----
+    public Sprite ForestPanelSprite { get { return forestPanel; } }
+    public Sprite ForestSlotSprite { get { return forestSlot; } }
+    public Sprite ForestSelectedSprite { get { return forestSelected; } }
+    /// <summary>Set by a screen that wants slot clicks instead of "equip". Called with (slot index, isRightClick); return true when it handled the click.</summary>
+    public static System.Func<int, bool, bool> SlotClickHandler;
+
     // ---- scene links ----
     private Inventory inventory;
     private PlayerStats stats;
@@ -252,6 +259,7 @@ public class GameHUD : MonoBehaviour
         {
             if (!RectTransformUtility.RectangleContainsScreenPoint(slotRects[i], pos, null)) continue;
 
+            if (SlotClickHandler != null && SlotClickHandler(i, !left)) return;      // another screen took this click
             if (left) inventory.Select(i);
             else inventory.Swap(i, inventory.SelectedIndex);
             return;

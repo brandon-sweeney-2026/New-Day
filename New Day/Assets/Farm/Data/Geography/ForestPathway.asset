@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676280cc325601d4a9888ecebcea5eab, type: 3}
+  m_Name: ForestPathway
+  m_EditorClassIdentifier: Assembly-CSharp-Editor::GeographyPreset
+  title: Forest Pathway
+  paletteGroup: ForestPath
+  shape: 0
+  defaultWidth: 3
+  widthWobble: 1
+  mergeWithExisting: 1
+  shoulderWidth: 3
+  fillTiles:
+  - {fileID: 11400000, guid: 966d77cd21ff01b4b8f76dd156f2a852, type: 2}
+  - {fileID: 11400000, guid: 13c9f3bb5ac022e45a9cba24fbb932fa, type: 2}
+  - {fileID: 11400000, guid: dfb3e089824d7094eb3629c87923dda8, type: 2}
+  - {fileID: 11400000, guid: 847cd6bee0131f443977f8ddce096afe, type: 2}
+  - {fileID: 11400000, guid: 75a81b70aa260654c8e7464b4f37150e, type: 2}
+  - {fileID: 11400000, guid: d78d41d863828824ea7f3d9ec44e6062, type: 2}
+  - {fileID: 11400000, guid: 13b9b0d0364c1174c9c87c58bd99dc96, type: 2}
+  - {fileID: 11400000, guid: 0f3bc31733bbdae4e960ba33c64be59b, type: 2}
+  wideTiles:
+  - {fileID: 11400000, guid: 3027e3690f2d8af488038499d88812e7, type: 2}
+  - {fileID: 11400000, guid: 2f7e26fe489690f4f9e4313fcde3f61b, type: 2}
+  - {fileID: 11400000, guid: 295faefd5ce831149abd9a90ab8046c5, type: 2}
+  - {fileID: 11400000, guid: 06d18fdce8a452246a7d22dfe10fe7bd, type: 2}
+  - {fileID: 11400000, guid: cff19521286b20744ab8771d8539ffa5, type: 2}
+  - {fileID: 11400000, guid: 90afbc94b83c0fd4f84dea5f6a04627d, type: 2}
+  - {fileID: 11400000, guid: d3b5bddb764cbd54d9b2f4fb740de742, type: 2}
+  - {fileID: 11400000, guid: 7603200a9f04e344ea283393fd4a6677, type: 2}
+  - {fileID: 11400000, guid: 34fc980e2f8058a49afa5808161fb14c, type: 2}
+  innerTiles:
+  - {fileID: 11400000, guid: 71531014ec96770438a436795145ee64, type: 2}
+  - {fileID: 11400000, guid: e18d4dbe86313dc4398c844acd187288, type: 2}
+  - {fileID: 11400000, guid: 28692afe079d9fc4c8c1807a24f04f87, type: 2}
+  - {fileID: 11400000, guid: ff7f5bad1a69d3e4c91b68d4a8b55780, type: 2}
+  autoTile: {fileID: 11400000, guid: a322c410fad00c84ba60e333728b12f8, type: 2}
+  swapInnerCorners: 0
+  centerHorizontal: {fileID: 0}
+  centerVertical: {fileID: 0}
+  centerMinWidth: 11
+  dashOn: 2
+  dashOff: 2
+  scatter:
+  - label: Leaves, needles, twigs
+    assets:
+    - {fileID: 11400000, guid: bc8f4945c0c39964e8be832b048f0d1b, type: 2}
+    - {fileID: 11400000, guid: 2ba83a061d416ea4d82d74dcee244d6f, type: 2}
+    - {fileID: 11400000, guid: 0a1d49715e3fa62438d5f126d97e3b94, type: 2}
+    - {fileID: 11400000, guid: 39005821e335c3e44b8adf8dfca2abcb, type: 2}
+    zone: 0
+    chance: 0.14
+    minSpacing: 0
+    minBrushWidth: 1
+  - label: Puddles
+    assets:
+    - {fileID: 11400000, guid: ee3caa87875b07c40b288b3bece739f3, type: 2}
+    zone: 0
+    chance: 0.02
+    minSpacing: 0
+    minBrushWidth: 1
+  - label: Roots and moss
+    assets:
+    - {fileID: 11400000, guid: 8e9e262982206f447bf6105bbf74325b, type: 2}
+    - {fileID: 11400000, guid: a7d39e5c1aff3cd4fa7831ec1b7e67e3, type: 2}
+    zone: 1
+    chance: 0.12
+    minSpacing: 0
+    minBrushWidth: 1
+  - label: Mushrooms, ferns, flowers
+    assets:
+    - {fileID: 11400000, guid: 24479464c7ec7c5449660f3c8d69b494, type: 2}
+    - {fileID: 11400000, guid: d6c6c750ee60ae74ca03d49644fad8e5, type: 2}
+    - {fileID: 11400000, guid: 7bfe0e2a7ba399743bb4e981dec5c527, type: 2}
+    zone: 2
+    chance: 0.1
+    minSpacing: 0
+    minBrushWidth: 1
+  - label: Stumps, logs, lanterns
+    assets:
+    - {fileID: 11400000, guid: f8ec952de381d2c4b9eede6252324840, type: 2}
+    - {fileID: 11400000, guid: 40583ff3a048ec548a65235329673878, type: 2}
+    - {fileID: 11400000, guid: d3fdae08beb18064897748128da90712, type: 2}
+    - {fileID: 11400000, guid: 4bf03524db292f849a3c5398e79fbcfb, type: 2}
+    - {fileID: 11400000, guid: 8aa7b82b519c9414ebcd4183068d3960, type: 2}
+    - {fileID: 11400000, guid: 2aaa4facc5bd0db4ba8e2fd1a8007cd0, type: 2}
+    zone: 1
+    chance: 0.03
+    minSpacing: 5
+    minBrushWidth: 1
+  - label: Signpost
+    assets:
+    - {fileID: 11400000, guid: 7ac78cbe6babd66439a7d7c3fd9f1d17, type: 2}
+    zone: 1
+    chance: 0.008
+    minSpacing: 14
+    minBrushWidth: 2

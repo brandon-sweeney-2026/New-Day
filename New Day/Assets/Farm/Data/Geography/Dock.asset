@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676280cc325601d4a9888ecebcea5eab, type: 3}
+  m_Name: Dock
+  m_EditorClassIdentifier: Assembly-CSharp-Editor::GeographyPreset
+  title: Dock
+  paletteGroup: Dock
+  shape: 1
+  defaultWidth: 3
+  widthWobble: 0
+  mergeWithExisting: 1
+  shoulderWidth: 1
+  paintOnGroundLayer: 1
+  useEdgeTiles: 0
+  fillTiles:
+  - {fileID: 11400000, guid: 2aaec5eafa3063146bfc05e72336ea8f, type: 2}
+  - {fileID: 11400000, guid: 9bf86bdbfbcea9648bfcb6ea9dbf8a1e, type: 2}
+  - {fileID: 11400000, guid: 0372225125a599d458541f25553f3783, type: 2}
+  - {fileID: 11400000, guid: 88667141428887a42aeedfeda250608f, type: 2}
+  - {fileID: 11400000, guid: f60d664570f74ea4fbb06ff4265df26e, type: 2}
+  - {fileID: 11400000, guid: 56a01b3b366388c47b3ec94ef2eebb5b, type: 2}
+  - {fileID: 11400000, guid: 195e16159c786334781e30869fc02309, type: 2}
+  - {fileID: 11400000, guid: 07d013d111fd72944ae57f263c2e425d, type: 2}
+  wideTiles:
+  - {fileID: 11400000, guid: f90d5382ce3379a49894001d469bbe84, type: 2}
+  - {fileID: 11400000, guid: e4c8cb5002bd37047b14798e1bc657fc, type: 2}
+  - {fileID: 11400000, guid: 7f7228b49c9ccc84886f5fb7ee656d99, type: 2}
+  - {fileID: 11400000, guid: 24a6d268e03d9574baaa912905c102d3, type: 2}
+  - {fileID: 11400000, guid: 79d01e9c78c8ce14087f820858643a1b, type: 2}
+  - {fileID: 11400000, guid: 22fd5cbf5dde89840959757ef749129e, type: 2}
+  - {fileID: 11400000, guid: 42e62fd179072b242af5553af2167086, type: 2}
+  - {fileID: 11400000, guid: 6cd6e8c9a9bd1994bb2bbd332a8e045e, type: 2}
+  - {fileID: 11400000, guid: d3d365cae45b7ce4982f667f50804d97, type: 2}
+  innerTiles:
+  - {fileID: 11400000, guid: 40c55b67d64095d4d83f77c084b0a413, type: 2}
+  - {fileID: 11400000, guid: 182149b1c2870e54983e8c541ed7a6f1, type: 2}
+  - {fileID: 11400000, guid: 86152a11f521cd549b664a383f02dda4, type: 2}
+  - {fileID: 11400000, guid: 483baffa7189d004c94f56dc20363e3a, type: 2}
+  autoTile: {fileID: 11400000, guid: bff0ba4bd3944404cbf887ffd79683cc, type: 2}
+  swapInnerCorners: 0
+  centerHorizontal: {fileID: 0}
+  centerVertical: {fileID: 0}
+  centerMinWidth: 11
+  dashOn: 2
+  dashOff: 2
+  scatter:
+  - label: Wet planks, rope, shells
+    assets:
+    - {fileID: 11400000, guid: 8ec3d26389255244db0cc830d465ad89, type: 2}
+    - {fileID: 11400000, guid: e3dbfca67ccd81a48bb93ece42a09db2, type: 2}
+    - {fileID: 11400000, guid: a029008dbc84b544995372a2f733a582, type: 2}
+    - {fileID: 11400000, guid: 85d5b94dded948c4faf26f96179faba5, type: 2}
+    - {fileID: 11400000, guid: d851f30ceb36e0a4a9db2d2b1896a59b, type: 2}
+    - {fileID: 11400000, guid: e843d93d15c76284ca5b19e072ec04f6, type: 2}
+    - {fileID: 11400000, guid: 2811b03d8ed05394f93892f86e146469, type: 2}
+    - {fileID: 11400000, guid: e25d9631d6a410c4090dd81fccbef5e2, type: 2}
+    - {fileID: 11400000, guid: 9134cc68f5bbc4a45a7ba0ed99bd304b, type: 2}
+    - {fileID: 11400000, guid: a2e6ed973be97b845813b5dff7fef1d3, type: 2}
+    zone: 0
+    chance: 0.08
+    minSpacing: 0
+    minBrushWidth: 1
+  - label: Posts, cleats and lamps
+    assets:
+    - {fileID: 11400000, guid: 328b70263a98ac744b0222b76504a868, type: 2}
+    - {fileID: 11400000, guid: 4060a50a4634b194c96eced13566f14e, type: 2}
+    - {fileID: 11400000, guid: e73c0997aa395cd49bb38bf1df722e1a, type: 2}
+    zone: 1
+    chance: 0.05
+    minSpacing: 6
+    minBrushWidth: 1
+  - label: Crates, barrels, nets
+    assets:
+    - {fileID: 11400000, guid: b4ad548c5c9532743af68dec9e9e14e2, type: 2}
+    - {fileID: 11400000, guid: 6d160f0e87c18ca40bcad4b49364fa71, type: 2}
+    - {fileID: 11400000, guid: 2c8c55b55063db146b265c9ba02363c5, type: 2}
+    - {fileID: 11400000, guid: e1fe1c5be63e2b6419a8928b45e89e2e, type: 2}
+    - {fileID: 11400000, guid: cfb928cbdf4cdf64fb6aa79bcad10f6d, type: 2}
+    - {fileID: 11400000, guid: 3c34e3def80d90c42a48d79082d36d46, type: 2}
+    - {fileID: 11400000, guid: 7392cfdeb8e3ade41bc0e842ef805cbf, type: 2}
+    zone: 1
+    chance: 0.05
+    minSpacing: 3
+    minBrushWidth: 1
+  - label: Lifebuoys and ladders
+    assets:
+    - {fileID: 11400000, guid: 4f4dd851bb2870147a406e365067de46, type: 2}
+    - {fileID: 11400000, guid: c5ca4beec7f760c45a65e039836643b6, type: 2}
+    zone: 1
+    chance: 0.012
+    minSpacing: 10
+    minBrushWidth: 1
+  - label: Signpost
+    assets:
+    - {fileID: 11400000, guid: 03d78768bd9f1ea42b150d980e245b1f, type: 2}
+    zone: 2
+    chance: 0.01
+    minSpacing: 12
+    minBrushWidth: 1

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59e27bd4f3be0a64c9e699c7b5f1ec55, type: 3}
+  m_Name: Fish_catfish
+  m_EditorClassIdentifier: Assembly-CSharp::FishData
+  fishName: Catfish
+  item: {fileID: 11400000, guid: be2d369c3e7a4b144a7af717ce9c4bea, type: 2}
+  stars: 3
+  description: Comes out in the evening.
+  noteCount: 56
+  scrollSpeed: 560
+  notesPerSecond: 1.9
+  buttonsUsed: 5
+  startStamina: 30
+  requiredHitRatio: 0.78
+  missPenalty: 1
+  defaultWeight: 10
+  availableFromHour: 17
+  availableToHour: 7
+  xp: 14

@@ -1,0 +1,98 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676280cc325601d4a9888ecebcea5eab, type: 3}
+  m_Name: Road
+  m_EditorClassIdentifier: Assembly-CSharp-Editor::GeographyPreset
+  title: Road
+  paletteGroup: AsphaltRoad
+  shape: 1
+  defaultWidth: 4
+  widthWobble: 0
+  mergeWithExisting: 1
+  shoulderWidth: 1
+  fillTiles:
+  - {fileID: 11400000, guid: d6b59a9ffcad22248832b828d6df4050, type: 2}
+  - {fileID: 11400000, guid: a34eb732471d3704cbc98dcf07bc76c3, type: 2}
+  - {fileID: 11400000, guid: 258305c29c060c347885cc3556a24e34, type: 2}
+  - {fileID: 11400000, guid: 82904e21857fee24f891f9bdea292bce, type: 2}
+  - {fileID: 11400000, guid: 8a1e1daac7c0a624b862e3871441c9a2, type: 2}
+  - {fileID: 11400000, guid: 0da506c40403599448aabec4fac19642, type: 2}
+  - {fileID: 11400000, guid: 820f32ad31ca2aa43a1f47fb4c5a30ea, type: 2}
+  - {fileID: 11400000, guid: 149f17a23c9d8ec4293f92cb38c7831e, type: 2}
+  wideTiles:
+  - {fileID: 11400000, guid: 1572a30e44bd5734691e402b0d2401ab, type: 2}
+  - {fileID: 11400000, guid: 2cb94f3b71067fc46b307756b4972908, type: 2}
+  - {fileID: 11400000, guid: 54976366631837348adea12b5bdcf750, type: 2}
+  - {fileID: 11400000, guid: f8ff3e5b641c6d14dad64f4db54755ab, type: 2}
+  - {fileID: 11400000, guid: b83b8bb750c0949439844cbac7708aa9, type: 2}
+  - {fileID: 11400000, guid: 0847ee2ffe5b81a4ba84cf3463993556, type: 2}
+  - {fileID: 11400000, guid: 9bc026c903fb22a419598b46dd56bbe4, type: 2}
+  - {fileID: 11400000, guid: 0a224508c05c57940b5287529d382c8f, type: 2}
+  - {fileID: 11400000, guid: 18535446127a79246b4c60774b5d65aa, type: 2}
+  innerTiles:
+  - {fileID: 11400000, guid: 0b99323d39abc2f4b9b7e5b16c0ad132, type: 2}
+  - {fileID: 11400000, guid: 19b152b4369bec344926cd175ec9460b, type: 2}
+  - {fileID: 11400000, guid: b834b373c8f6bdd40879f05faabdcdbe, type: 2}
+  - {fileID: 11400000, guid: 8ba421323e9e9134a94dc9e0f9f560c6, type: 2}
+  autoTile: {fileID: 11400000, guid: b9f20dc03470d3a4f975d8852c4ca3d7, type: 2}
+  swapInnerCorners: 0
+  centerHorizontal: {fileID: 11400000, guid: d63ee841522c97a46b62bc22e04eb5b5, type: 2}
+  centerVertical: {fileID: 11400000, guid: 30c8d719bb871a54dbd643c7c8318282, type: 2}
+  centerMinWidth: 4
+  dashOn: 2
+  dashOff: 2
+  scatter:
+  - label: Potholes and drains
+    assets:
+    - {fileID: 11400000, guid: 4cdfe853877fdd64091f8589be942473, type: 2}
+    - {fileID: 11400000, guid: 39b0ce39c18885849b2a3fd320d21d0a, type: 2}
+    zone: 0
+    chance: 0.012
+    minSpacing: 2
+    minBrushWidth: 1
+  - label: Manholes
+    assets:
+    - {fileID: 11400000, guid: 9f2e28df4264a5640bc746fa095e6464, type: 2}
+    zone: 0
+    chance: 0.01
+    minSpacing: 5
+    minBrushWidth: 1
+  - label: Lamp posts
+    assets:
+    - {fileID: 11400000, guid: 8f8ea7e6caa19154b8e5066ceb4a27b2, type: 2}
+    zone: 1
+    chance: 0.04
+    minSpacing: 8
+    minBrushWidth: 1
+  - label: Bollards and reflectors
+    assets:
+    - {fileID: 11400000, guid: 5336aaf363f190a4091c5c3276e5e038, type: 2}
+    - {fileID: 11400000, guid: 5b0d7c07efd9d194faad3f25076d7159, type: 2}
+    zone: 1
+    chance: 0.03
+    minSpacing: 4
+    minBrushWidth: 1
+  - label: Cones and barricades
+    assets:
+    - {fileID: 11400000, guid: a8e686f4d9250294584307455a99007b, type: 2}
+    - {fileID: 11400000, guid: 177e9398a2e5d17489a6d70e1dbd93b5, type: 2}
+    zone: 1
+    chance: 0.008
+    minSpacing: 6
+    minBrushWidth: 1
+  - label: Stop sign
+    assets:
+    - {fileID: 11400000, guid: 328c97648fdbf7645af0e2bc9cbbf37c, type: 2}
+    zone: 2
+    chance: 0.01
+    minSpacing: 12
+    minBrushWidth: 1

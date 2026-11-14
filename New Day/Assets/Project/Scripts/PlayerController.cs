@@ -22,6 +22,9 @@ public class PlayerController : MonoBehaviour
     [Tooltip("How quickly knockback fades. Higher = shorter shove.")]
     [SerializeField] private float knockbackDamping = 12f;
 
+    /// <summary>1 = normal walking speed. Weapons lower it while they are used (spinning a flail, drawing a bow).</summary>
+    public float SpeedMultiplier { get; set; } = 1f;
+
     /// <summary>Set to false to freeze the player (swinging a sword, in a menu, etc.).</summary>
     public bool CanMove { get; set; } = true;
 
@@ -94,7 +97,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         // MovePosition respects colliders and works in every Unity version.
-        Vector2 velocity = moveInput * moveSpeed + knockbackVelocity;
+        Vector2 velocity = moveInput * moveSpeed * SpeedMultiplier + knockbackVelocity;
         knockbackVelocity = Vector2.Lerp(knockbackVelocity, Vector2.zero, knockbackDamping * Time.fixedDeltaTime);
         if (knockbackVelocity.sqrMagnitude < 0.01f) knockbackVelocity = Vector2.zero;
 

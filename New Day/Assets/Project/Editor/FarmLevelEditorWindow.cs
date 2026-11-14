@@ -21,7 +21,7 @@ public static class FarmEditorLabels
 }
 
 /// <summary>
-/// A visual level editor for your farm. Open it from the menu: Farm > Level Editor.
+/// A visual level editor for your farm. Open it from the menu: Farm > Level Editors > Farm Level Editor.
 ///
 /// IMPORTANT: this file must live inside a folder named "Editor" (e.g. Assets/_Project/Scripts/Editor/).
 ///
@@ -50,7 +50,7 @@ public class FarmLevelEditorWindow : EditorWindow
         public List<Object> items = new List<Object>();
     }
 
-    [MenuItem("Farm/Level Editor")]
+    [MenuItem("Farm/Level Editors/Farm Level Editor", false, 1)]
     public static void Open()
     {
         var window = GetWindow<FarmLevelEditorWindow>("Farm Level Editor");
@@ -73,6 +73,7 @@ public class FarmLevelEditorWindow : EditorWindow
     [SerializeField] private int brushSize = 1;
     [SerializeField] private bool restrictToValidCells = true;
     [SerializeField] private bool placeObjectsAtCellBottom = true;
+    [SerializeField] private int objectAngle = 0;          // how new objects are turned when placed: 0, 90, 180 or 270
     [SerializeField] private bool editingActive = true;
     [SerializeField] private int fillWidth = 30;
     [SerializeField] private int fillHeight = 20;
@@ -112,6 +113,49 @@ public class FarmLevelEditorWindow : EditorWindow
         for (int i = 0; i < LayerCount; i++)
             if (palettes[i].items.Count > 0) allEmpty = false;
         if (allEmpty) AutoFillAllPalettes();
+
+        // remember the current counts so only assets added LATER get appended to your lists
+        if (knownLabelCounts == null || knownLabelCounts.Length != LayerCount) knownLabelCounts = new int[LayerCount];
+        for (int i = 0; i < LayerCount; i++)
+        {
+            string type = i == (int)FarmLayer.Objects ? "t:Prefab" : "t:TileBase";
+            knownLabelCounts[i] = AssetDatabase.FindAssets("l:" + LayerLabels[i] + " " + type).Length;
+        }
+    }
+
+    // How many labelled assets each palette had the last time we looked (so we can tell when NEW ones appear).
+    [SerializeField] private int[] knownLabelCounts;
+
+    // When tiles or prefabs are added to the project (a palette was just built, a label was set), ADD the new ones to the palette.
+    // Your lists are never cleared, re-sorted or rebuilt by this: only new assets are appended, and deleted ones are dropped.
+    // (The "Reload ALL palettes" button is still the way to rebuild a list from scratch.)
+    private void OnProjectChange()
+    {
+        if (palettes == null) return;
+        if (knownLabelCounts == null || knownLabelCounts.Length != LayerCount) knownLabelCounts = new int[LayerCount];
+        bool any = false;
+        for (int i = 0; i < LayerCount && i < palettes.Length; i++)
+        {
+            if (palettes[i] == null || palettes[i].items == null) continue;
+            List<Object> items = palettes[i].items;
+            if (items.RemoveAll(o => o == null) > 0) any = true;
+
+            string type = i == (int)FarmLayer.Objects ? "t:Prefab" : "t:TileBase";
+            string[] guids = AssetDatabase.FindAssets("l:" + LayerLabels[i] + " " + type);
+            int before = knownLabelCounts[i];
+            knownLabelCounts[i] = guids.Length;
+            if (before == 0 || guids.Length <= before) continue;       // first look, or nothing new: leave the list alone
+
+            foreach (string guid in guids)
+            {
+                string path = AssetDatabase.GUIDToAssetPath(guid);
+                Object asset = i == (int)FarmLayer.Objects
+                    ? (Object)AssetDatabase.LoadAssetAtPath<GameObject>(path)
+                    : (Object)AssetDatabase.LoadAssetAtPath<TileBase>(path);
+                if (asset != null && !items.Contains(asset)) { items.Add(asset); any = true; }
+            }
+        }
+        if (any) Repaint();
     }
 
     private void OnDisable()
@@ -192,6 +236,23 @@ public class FarmLevelEditorWindow : EditorWindow
         placeObjectsAtCellBottom = EditorGUILayout.ToggleLeft("Place objects with their base at the bottom of the cell", placeObjectsAtCellBottom);
         EditorGUILayout.HelpBox("Hold Shift to erase with any tool.  [ and ] change brush size.  Hold Alt to orbit/pan the Scene view.", MessageType.None);
 
+        if (layer == FarmLayer.Objects)
+        {
+            EditorGUILayout.LabelField("Rotate objects", EditorStyles.boldLabel);
+            using (new EditorGUILayout.HorizontalScope())
+            {
+                EditorGUILayout.LabelField("New objects placed turned " + objectAngle + "\u00B0", GUILayout.Width(190));
+                if (GUILayout.Button("Turn left (Shift+R)")) { objectAngle = (objectAngle + 270) % 360; Repaint(); SceneView.RepaintAll(); }
+                if (GUILayout.Button("Turn right (R)")) { objectAngle = (objectAngle + 90) % 360; Repaint(); SceneView.RepaintAll(); }
+            }
+            using (new EditorGUILayout.HorizontalScope())
+            {
+                if (GUILayout.Button("Rotate selected objects left")) ObjectRotation.RotateSelected(90f);
+                if (GUILayout.Button("Rotate selected objects right")) ObjectRotation.RotateSelected(-90f);
+            }
+            EditorGUILayout.HelpBox("R turns what you are about to place. T turns the object under the mouse (Shift+T the other way). To turn things you already placed in bulk, turn painting off, select them, and use the buttons above.", MessageType.None);
+        }
+
         // ---- Palette ----
         EditorGUILayout.Space();
         EditorGUILayout.LabelField("Palette: " + LayerNames[(int)layer], EditorStyles.boldLabel);
@@ -259,30 +320,9 @@ public class FarmLevelEditorWindow : EditorWindow
             return;
         }
 
-        previewsPending = false;
-        const float cell = 56f;
-        int columns = Mathf.Max(1, Mathf.FloorToInt((position.width - 24f) / (cell + 6f)));
-        int i = 0;
-        while (i < count)
-        {
-            EditorGUILayout.BeginHorizontal();
-            for (int c = 0; c < columns && i < count; c++, i++)
-            {
-                Object asset = items[i];
-                Rect r = GUILayoutUtility.GetRect(cell, cell, GUILayout.Width(cell), GUILayout.Height(cell));
-
-                bool selected = selectedByLayer[(int)layer] == i;
-                string tip = asset != null ? asset.name : "(empty slot)";
-                bool pressed = GUI.Toggle(r, selected, new GUIContent("", tip), "Button");
-                if (pressed && !selected) selectedByLayer[(int)layer] = i;
-
-                if (Event.current.type == EventType.Repaint && asset != null) DrawAssetIcon(new Rect(r.x + 4, r.y + 4, r.width - 8, r.height - 8), asset);
-            }
-            EditorGUILayout.EndHorizontal();
-        }
-
-        Object current = SelectedAsset();
-        EditorGUILayout.LabelField("Selected: " + (current != null ? current.name : "none"), EditorStyles.miniLabel);
+        int sel = selectedByLayer[(int)layer];
+        if (PaletteBrowser.Draw(items, ref sel, "farm_" + layer, position.width)) selectedByLayer[(int)layer] = sel;
+        if (Event.current.type == EventType.Repaint && AssetPreview.IsLoadingAssetPreviews()) previewsPending = true;
     }
 
     /// <summary>The sprite that best represents a palette entry (tile or prefab), or null.</summary>
@@ -363,6 +403,23 @@ public class FarmLevelEditorWindow : EditorWindow
         Vector3Int cell;
         if (!TryGetCell(e.mousePosition, out cell)) return;
         bool erase = tool == BrushTool.Erase || e.shift;
+
+        // R turns the object you are about to place, T turns the object under the mouse (Shift reverses)
+        if (e.type == EventType.KeyDown && layer == FarmLayer.Objects)
+        {
+            if (e.keyCode == KeyCode.R)
+            {
+                objectAngle = (objectAngle + (e.shift ? 270 : 90)) % 360;
+                Repaint(); sceneView.Repaint(); e.Use();
+            }
+            else if (e.keyCode == KeyCode.T)
+            {
+                foreach (Transform t in ObjectRotation.At(objectsParent, CurrentGrid, cell, placeObjectsAtCellBottom))
+                    ObjectRotation.Rotate(t.gameObject, e.shift ? -90f : 90f);
+                if (GroundMap != null) EditorSceneManager.MarkSceneDirty(GroundMap.gameObject.scene);
+                sceneView.Repaint(); e.Use();
+            }
+        }
 
         if (e.type == EventType.Repaint) DrawPreview(cell, erase);
         if (e.type == EventType.MouseMove || e.type == EventType.MouseDrag) sceneView.Repaint();
@@ -449,6 +506,29 @@ public class FarmLevelEditorWindow : EditorWindow
 
         Color fill = erase ? new Color(1f, 0.25f, 0.25f, 0.25f) : new Color(0.3f, 1f, 0.4f, 0.25f);
         Handles.DrawSolidRectangleWithOutline(corners, fill, Color.white);
+
+        // show the turn of what is about to be placed, with a ghost of the object's picture
+        if (layer == FarmLayer.Objects && !erase)
+        {
+            var prefab = SelectedAsset() as GameObject;
+            var sr = prefab != null ? prefab.GetComponentInChildren<SpriteRenderer>() : null;
+            if (sr != null && sr.sprite != null)
+            {
+                Vector3 foot = ObjectPositionFor(cell);
+                Vector3 centre = foot + (sr.transform.TransformPoint(sr.sprite.bounds.center) - prefab.transform.position);
+                Vector3 size = sr.sprite.bounds.size;
+                Vector3 half = new Vector3(size.x, size.y, 0f) * 0.5f;
+                Quaternion turn = Quaternion.Euler(0f, 0f, objectAngle);
+                Vector3[] box =
+                {
+                    centre + turn * new Vector3(-half.x, -half.y), centre + turn * new Vector3(-half.x, half.y),
+                    centre + turn * new Vector3(half.x, half.y), centre + turn * new Vector3(half.x, -half.y)
+                };
+                Handles.DrawSolidRectangleWithOutline(box, new Color(1f, 1f, 1f, 0.08f), new Color(1f, 0.9f, 0.3f, 0.9f));
+                Handles.DrawLine(centre, centre + turn * new Vector3(0f, half.y, 0f));         // an arrow to the object's top
+            }
+            Handles.Label(a + new Vector3(0.1f, 1.2f, 0f), "Turn " + objectAngle + "\u00B0   (R / Shift+R, T = turn object under mouse)");
+        }
     }
 
     // ------------------------------------------------------------------
@@ -600,12 +680,14 @@ public class FarmLevelEditorWindow : EditorWindow
         Transform parent = GetOrCreateObjectsParent();
         var instance = (GameObject)PrefabUtility.InstantiatePrefab(prefab, parent);
         instance.transform.position = ObjectPositionFor(cell);
+        ObjectRotation.RotateNew(instance, objectAngle);
         Undo.RegisterCreatedObjectUndo(instance, "Place Object");
     }
 
     private void EraseObjectAt(Vector3Int cell)
     {
-        foreach (Transform t in ObjectsAt(cell))
+        // erases the object standing in the cell AND any bigger object (a boulder, a turned prop) whose picture covers it
+        foreach (Transform t in ObjectRotation.At(objectsParent, CurrentGrid, cell, placeObjectsAtCellBottom))
             Undo.DestroyObjectImmediate(t.gameObject);
     }
 

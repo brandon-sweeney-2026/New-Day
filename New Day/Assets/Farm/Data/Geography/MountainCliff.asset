@@ -1,0 +1,111 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676280cc325601d4a9888ecebcea5eab, type: 3}
+  m_Name: MountainCliff
+  m_EditorClassIdentifier: Assembly-CSharp-Editor::GeographyPreset
+  title: Mountain Cliff
+  paletteGroup: Cliff
+  style: 1
+  shape: 1
+  defaultWidth: 4
+  widthWobble: 0
+  mergeWithExisting: 1
+  shoulderWidth: 2
+  paintOnGroundLayer: 0
+  useEdgeTiles: 1
+  fillTiles:
+  - {fileID: 11400000, guid: 5859b9c28e9c0444683ef0f34c4ec90e, type: 2}
+  - {fileID: 11400000, guid: 5533e1cef2c44cd42a499e54a2dacf47, type: 2}
+  - {fileID: 11400000, guid: df62859716c71bd429f2e22e91b58ca9, type: 2}
+  - {fileID: 11400000, guid: a392000c2c30f7f4485adf282f8291b9, type: 2}
+  wideTiles:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  innerTiles:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  autoTile: {fileID: 0}
+  swapInnerCorners: 0
+  cliffFaceUpper:
+  - {fileID: 11400000, guid: 32e3bc4dd6926a449892ad4dc9ba83ef, type: 2}
+  - {fileID: 11400000, guid: f9e9c2646d89d454cb8640be9cf0d248, type: 2}
+  - {fileID: 11400000, guid: 1de365ba34cf8674fa31b3e075aeca18, type: 2}
+  - {fileID: 11400000, guid: ea2763898991f104bbf0efce658d7237, type: 2}
+  cliffFaceLower:
+  - {fileID: 11400000, guid: 7777980f62c452f47b931c3c14106de0, type: 2}
+  - {fileID: 11400000, guid: bf0e1d312057c0b41b40f063777f37e5, type: 2}
+  - {fileID: 11400000, guid: c1236b780b06d854782358eff7ba8bd7, type: 2}
+  - {fileID: 11400000, guid: 2cddbed94ae13a64fa74a6f5317af568, type: 2}
+  cliffLip:
+  - {fileID: 11400000, guid: dd6e9821bd3c2404da93901b0f866573, type: 2}
+  - {fileID: 11400000, guid: d0d4d3cb69fbe544c907677d5b1fafbc, type: 2}
+  - {fileID: 11400000, guid: ab98517ce1e9d1c49adc64e11f4c9bec, type: 2}
+  - {fileID: 11400000, guid: 28497df55cd41f54685aa060dde77e06, type: 2}
+  - {fileID: 11400000, guid: e2de37444c8df8a40a6f4ec59fd9e61d, type: 2}
+  cliffInner:
+  - {fileID: 11400000, guid: 7b7bed0a16dd6d248b17f3a66590d95e, type: 2}
+  - {fileID: 11400000, guid: deba54c4823b4d44593e607e8594ba13, type: 2}
+  cliffFaceEdges:
+  - {fileID: 11400000, guid: 1044daccc227316408b190a927a0507b, type: 2}
+  - {fileID: 11400000, guid: be3cdb032c82aff468c82c25ceaad36d, type: 2}
+  - {fileID: 11400000, guid: 4b50d0af238283e40a873ed37fa38310, type: 2}
+  - {fileID: 11400000, guid: cdb1695b435846c449b1234073d5cb13, type: 2}
+  roughEdges: 0.2
+  centerHorizontal: {fileID: 0}
+  centerVertical: {fileID: 0}
+  centerMinWidth: 11
+  dashOn: 2
+  dashOff: 2
+  scatter:
+  - label: Moss, snow, cracks on top
+    assets:
+    - {fileID: 11400000, guid: 59c973a4588b22d4282b13099a643d8a, type: 2}
+    - {fileID: 11400000, guid: 19266a95a2753e44cb53b702a4c7b4c9, type: 2}
+    - {fileID: 11400000, guid: 282f7aa405919b34eb864bc844cad786, type: 2}
+    - {fileID: 11400000, guid: cbe4115e42081f642a8b62c2fe9653b2, type: 2}
+    zone: 0
+    chance: 0.08
+    minSpacing: 0
+    minBrushWidth: 1
+  - label: Ice on the rim
+    assets:
+    - {fileID: 11400000, guid: 87f858cdbd2be1a479801e0569e281d2, type: 2}
+    - {fileID: 11400000, guid: 19266a95a2753e44cb53b702a4c7b4c9, type: 2}
+    zone: 1
+    chance: 0.06
+    minSpacing: 0
+    minBrushWidth: 1
+  - label: Vines on the wall
+    assets:
+    - {fileID: 11400000, guid: 1b0ac97578ad731408291b47c511ca66, type: 2}
+    zone: 1
+    chance: 0.05
+    minSpacing: 0
+    minBrushWidth: 1
+  - label: Rubble at the foot
+    assets:
+    - {fileID: 11400000, guid: f795055901a06ee4ab168d1ca850afcb, type: 2}
+    - {fileID: 11400000, guid: cbe4115e42081f642a8b62c2fe9653b2, type: 2}
+    - {fileID: 11400000, guid: 6325b3019ab768d4d98737fd152f7821, type: 2}
+    zone: 2
+    chance: 0.12
+    minSpacing: 0
+    minBrushWidth: 1

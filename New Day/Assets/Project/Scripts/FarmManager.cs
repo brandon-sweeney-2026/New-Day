@@ -76,10 +76,41 @@ public class FarmManager : MonoBehaviour
     public Tilemap GroundTilemap => groundTilemap;
 
     /// <summary>Converts a world position into a grid cell.</summary>
-    public Vector3Int WorldToCell(Vector3 worldPos) => groundTilemap.WorldToCell(worldPos);
+    public Vector3Int WorldToCell(Vector3 worldPos)
+    {
+        if (groundTilemap != null) return groundTilemap.WorldToCell(worldPos);
+        Grid g = FallbackGrid();
+        return g != null ? g.WorldToCell(worldPos) : Vector3Int.FloorToInt(worldPos);
+    }
 
     /// <summary>World-space centre of a cell (handy for placing highlights and crops).</summary>
-    public Vector3 CellToWorldCenter(Vector3Int cell) => groundTilemap.GetCellCenterWorld(cell);
+    public Vector3 CellToWorldCenter(Vector3Int cell)
+    {
+        if (groundTilemap != null) return groundTilemap.GetCellCenterWorld(cell);
+        Grid g = FallbackGrid();
+        return g != null ? g.GetCellCenterWorld(cell) : new Vector3(cell.x + 0.5f, cell.y + 0.5f, 0f);
+    }
+
+    private Grid fallbackGrid;
+    /// <summary>Used only when no Ground tilemap is assigned (e.g. a scene without a farm, like the forest): any Grid in the scene will do for aiming.</summary>
+    private Grid FallbackGrid()
+    {
+        if (fallbackGrid == null) fallbackGrid = FindAnyObjectByType<Grid>();
+        return fallbackGrid;
+    }
+
+    private void Awake()
+    {
+        // If you forgot to assign the tilemaps, look for ones with the usual names so the scene still works.
+        if (groundTilemap != null && soilTilemap != null && waterTilemap != null) return;
+        foreach (Tilemap t in FindObjectsByType<Tilemap>())
+        {
+            string n = t.name.ToLowerInvariant();
+            if (groundTilemap == null && n == "ground") groundTilemap = t;
+            else if (soilTilemap == null && n.Contains("soil")) soilTilemap = t;
+            else if (waterTilemap == null && (n.Contains("wet") || n.Contains("water"))) waterTilemap = t;
+        }
+    }
 
     /// <summary>Every tilled cell (Meatball uses this to find empty soil to give planting tips).</summary>
     public IEnumerable<Vector3Int> TilledCells => soil.Keys;
@@ -94,7 +125,7 @@ public class FarmManager : MonoBehaviour
     public bool TryTill(Vector3Int cell)
     {
         if (IsTilled(cell)) return false;
-        if (!CanTillGround(cell)) return false;
+        if (soilTilemap == null || !CanTillGround(cell)) return false;
 
         soil[cell] = new SoilState();
         soilTilemap.SetTile(cell, tilledSoilTile);
@@ -115,7 +146,7 @@ public class FarmManager : MonoBehaviour
         if (state.watered) return false;
 
         state.watered = true;
-        waterTilemap.SetTile(cell, wateredSoilTile);
+        if (waterTilemap != null) waterTilemap.SetTile(cell, wateredSoilTile);
         return true;
     }
 
@@ -163,6 +194,7 @@ public class FarmManager : MonoBehaviour
 
     private bool CanTillGround(Vector3Int cell)
     {
+        if (groundTilemap == null) return false;
         TileBase ground = groundTilemap.GetTile(cell);
         if (ground == null) return false; // no ground here (e.g. water or empty space)
 

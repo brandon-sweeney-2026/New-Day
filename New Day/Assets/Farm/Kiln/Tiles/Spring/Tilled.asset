@@ -1,0 +1,323 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f4787a53a9271648a95c00588e0f6cb, type: 3}
+  m_Name: Tilled
+  m_EditorClassIdentifier: Assembly-CSharp::AutoTile
+  mode: 0
+  pieces:
+  - frames:
+    - {fileID: -1186720380, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  - frames:
+    - {fileID: -1519374583, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  - frames: []
+  - frames: []
+  - frames:
+    - {fileID: -1965999174, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  - frames:
+    - {fileID: 155028444, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  - frames: []
+  - frames:
+    - {fileID: 374613707, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames:
+    - {fileID: -1046793668, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  - frames:
+    - {fileID: 452758343, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  - frames: []
+  - frames: []
+  - frames:
+    - {fileID: 463701231, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  - frames:
+    - {fileID: 1792146476, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  - frames: []
+  - frames:
+    - {fileID: -1148057626, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames:
+    - {fileID: -289843822, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  - frames:
+    - {fileID: -280819170, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  - frames: []
+  - frames:
+    - {fileID: -645963886, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames:
+    - {fileID: 990789896, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  - frames:
+    - {fileID: -631700631, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  - frames: []
+  - frames: []
+  - frames:
+    - {fileID: 500655640, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  - frames:
+    - {fileID: -79324920, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  - frames: []
+  - frames:
+    - {fileID: 1822300077, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames:
+    - {fileID: 447067042, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  - frames:
+    - {fileID: -1558604873, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  - frames: []
+  - frames: []
+  - frames:
+    - {fileID: -680188055, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  - frames:
+    - {fileID: -1780424607, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  - frames: []
+  - frames:
+    - {fileID: 25173439, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames:
+    - {fileID: 987888248, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  - frames:
+    - {fileID: -1330437123, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  - frames: []
+  - frames:
+    - {fileID: -1414432374, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames:
+    - {fileID: 1420838939, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  - frames:
+    - {fileID: 110159090, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  - frames: []
+  - frames: []
+  - frames:
+    - {fileID: -1833162461, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  - frames:
+    - {fileID: -1207792374, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  - frames: []
+  - frames:
+    - {fileID: 1765992629, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames:
+    - {fileID: -227509799, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  - frames:
+    - {fileID: 94600498, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  - frames: []
+  - frames:
+    - {fileID: 973813615, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames:
+    - {fileID: 1177582954, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames:
+    - {fileID: -2007404112, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  - frames: []
+  - frames:
+    - {fileID: 1272459782, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames:
+    - {fileID: -1498135024, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames:
+    - {fileID: -613204163, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  - frames: []
+  - frames:
+    - {fileID: 1733693835, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames:
+    - {fileID: 488516073, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  - frames: []
+  - frames:
+    - {fileID: 2005748392, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames:
+    - {fileID: 1851103308, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames:
+    - {fileID: 1727664159, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  - frames: []
+  - frames:
+    - {fileID: -1715996509, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames: []
+  - frames:
+    - {fileID: 159437526, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  - frames: []
+  - frames:
+    - {fileID: -493960096, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  animationFramesPerSecond: 4
+  colliderType: 0
+  previewSprite: {fileID: -493960096, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
+  shoreKinds: []

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59e27bd4f3be0a64c9e699c7b5f1ec55, type: 3}
+  m_Name: Fish_moonlit_koi
+  m_EditorClassIdentifier: Assembly-CSharp::FishData
+  fishName: Moonlit Koi
+  item: {fileID: 11400000, guid: ac3172a7eed780f40b6099db9945cc1a, type: 2}
+  stars: 5
+  description: Glows faintly. Appears only in deep night.
+  noteCount: 100
+  scrollSpeed: 820
+  notesPerSecond: 3
+  buttonsUsed: 6
+  startStamina: 30
+  requiredHitRatio: 0.86
+  missPenalty: 1
+  defaultWeight: 10
+  availableFromHour: 20
+  availableToHour: 5
+  xp: 60
