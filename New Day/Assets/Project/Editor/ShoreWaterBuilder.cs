@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 
 /// <summary>
-/// Makes the water's shore match the ground it touches. Menu: Farm > Biomes > Build Shore-Matching Water.
+/// Makes the water's shore match the ground it touches. Menu: Farm > Build Art > Shore-Matching Water.
 ///
 /// The Kiln water auto-tile has grass painted into its edge pieces, so a pond next to sand or dirt still had a grass rim.
 /// This builds a copy of every shore piece for each ground it can find - Dirt, Sand, and every biome ground
@@ -16,7 +16,7 @@ using UnityEngine.Tilemaps;
 /// The Water tile then looks at the tiles around each water cell and picks the matching shore. Water you already painted updates
 /// by itself, no repainting. Grass and unknown ground keep the original pieces.
 ///
-/// Run Farm > Kiln Harvest > 1. Import Pack Assets (and Farm > Biomes > Build Tile Palettes for the biome grounds) first.
+/// Run Farm > Build Art > Kiln Harvest > 1. Import Pack Assets (and Farm > Build Art > Biome Tile Palettes for the biome grounds) first.
 /// Safe to run again. This file must live in a folder named "Editor".
 /// </summary>
 public static class ShoreWaterBuilder
@@ -32,7 +32,7 @@ public static class ShoreWaterBuilder
 
     private static readonly Dictionary<string, Texture2D> loaded = new Dictionary<string, Texture2D>();
 
-    [MenuItem("Farm/Biomes/Build Shore-Matching Water")]
+    [MenuItem("Farm/Build Art/Shore-Matching Water", false, 203)]
     public static void Build()
     {
         loaded.Clear();
@@ -46,7 +46,7 @@ public static class ShoreWaterBuilder
         }
         if (waters.Count == 0)
         {
-            EditorUtility.DisplayDialog("Shore-matching water", "No 'Water' auto-tile was found. Run Farm > Kiln Harvest > 1. Import Pack Assets first.", "OK");
+            EditorUtility.DisplayDialog("Shore-matching water", "No 'Water' auto-tile was found. Run Farm > Build Art > Kiln Harvest > 1. Import Pack Assets first.", "OK");
             return;
         }
 

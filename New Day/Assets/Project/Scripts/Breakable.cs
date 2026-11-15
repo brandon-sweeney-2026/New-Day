@@ -32,7 +32,7 @@ public class Breakable : MonoBehaviour, IToolTarget
         basePos = transform.position;
     }
 
-    public bool OnToolUsed(ItemData.ToolAction tool, PlayerActions user)
+    public bool OnToolUsed(ItemData.ToolAction tool, int power, PlayerActions user)
     {
         if (hitsLeft <= 0) return false;
 
@@ -42,7 +42,7 @@ public class Breakable : MonoBehaviour, IToolTarget
             return false;
         }
 
-        hitsLeft--;
+        hitsLeft -= Mathf.Max(1, power);   // a better tool counts as several hits
         shakeUntil = Time.time + 0.15f;
 
         if (hitsLeft <= 0)

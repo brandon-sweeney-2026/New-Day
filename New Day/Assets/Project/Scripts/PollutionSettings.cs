@@ -12,7 +12,7 @@ using UnityEngine;
 ///   yieldMultiplier - multiplies how much you harvest
 ///   cropTint        - colour wash on the growing plant, so polluted fields look sick
 ///
-/// Create the asset with Farm > Game > Set Up Game Systems In Scene, or Create > Farm > Pollution Settings.
+/// Create the asset with Farm > Set Up > Game Systems In Scene, or Create > Farm > Pollution Settings.
 /// </summary>
 [CreateAssetMenu(fileName = "PollutionSettings", menuName = "Farm/Pollution Settings")]
 public class PollutionSettings : ScriptableObject

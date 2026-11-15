@@ -58,7 +58,12 @@ public class StartInsideRoom : MonoBehaviour
         if (rooms.Length == 0) return false;
 
         HouseInterior chosen = null;
-        if (alwaysStartInside) chosen = rooms[Mathf.Clamp(roomIndex, 0, rooms.Length - 1)];
+        if (alwaysStartInside)
+        {
+            // with several interiors in the scene (store, apartment...) the farmhouse is the one named "HouseInterior"
+            foreach (HouseInterior r in rooms) if (r.name == "HouseInterior") { chosen = r; break; }
+            if (chosen == null) chosen = rooms[Mathf.Clamp(roomIndex, 0, rooms.Length - 1)];
+        }
         else
         {
             foreach (HouseInterior room in rooms)

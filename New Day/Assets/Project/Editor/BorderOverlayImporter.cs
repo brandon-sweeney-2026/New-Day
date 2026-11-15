@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEngine;
 
 /// <summary>
-/// Sets up the 3 map-edge overlays. Menu: Farm > Biomes > Build Edge Overlay Prefabs.
+/// Sets up the 3 map-edge overlays. Menu: Farm > Build Art > Edge Overlay Prefabs.
 ///
 /// Before running it, copy the "Borders" folder (border_forest.png, border_city.png, border_mountain.png) into your project,
 /// e.g. Assets/Farm/Biomes/Borders. It imports them as pixel-art sprites that repeat sideways (top-centre pivot)
@@ -15,7 +15,7 @@ public static class BorderOverlayImporter
     private static readonly string[] Names = { "border_forest", "border_city", "border_mountain" };
     private static readonly string[] Titles = { "ForestBorder", "CityBorder", "MountainBorder" };
 
-    [MenuItem("Farm/Biomes/Build Edge Overlay Prefabs")]
+    [MenuItem("Farm/Build Art/Edge Overlay Prefabs", false, 204)]
     public static void Build()
     {
         var made = new System.Text.StringBuilder();

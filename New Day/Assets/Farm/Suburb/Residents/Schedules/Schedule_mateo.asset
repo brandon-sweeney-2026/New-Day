@@ -1,0 +1,294 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd850fae68a74ed4087495a7eab7ac27, type: 3}
+  m_Name: Schedule_mateo
+  m_EditorClassIdentifier: Assembly-CSharp::NpcScheduleData
+  npcId: mateo
+  idleSpot: H8Bed
+  idleScene: 
+  routes:
+  - routeName: Breakfast
+    enabled: 1
+    priority: 10
+    startHour: 6.5
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: H8Kitchen
+      scene: 
+      waitMinutes: 30
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Having breakfast
+    whenFinished: 1
+  - routeName: Tending the park
+    enabled: 1
+    priority: 20
+    startHour: 7.5
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 63
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 35
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: PlaySandbox
+      scene: 
+      waitMinutes: 20
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Raking the sandbox
+    - place: ParkBenchD
+      scene: 
+      waitMinutes: 20
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Trimming the hedge
+    - place: ParkBenchA
+      scene: 
+      waitMinutes: 30
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Watering the trees
+    - place: FieldSide
+      scene: 
+      waitMinutes: 40
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Marking the pitch lines
+    - place: ParkBenchB
+      scene: 
+      waitMinutes: 30
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Emptying the bins
+    - place: ParkBenchC
+      scene: 
+      waitMinutes: 30
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Weeding
+    whenFinished: 1
+  - routeName: Seed catalogues
+    enabled: 1
+    priority: 20
+    startHour: 8
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 28
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: H8Living
+      scene: 
+      waitMinutes: 180
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Reading seed catalogues
+    whenFinished: 1
+  - routeName: Lunch on a bench
+    enabled: 1
+    priority: 10
+    startHour: 12.25
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 63
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 35
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: ParkBenchB
+      scene: 
+      waitMinutes: 40
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Eating a sandwich
+    whenFinished: 1
+  - routeName: Plaza planters
+    enabled: 1
+    priority: 20
+    startHour: 14.25
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 21
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 35
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: PlazaPlanterMidE
+      scene: 
+      waitMinutes: 30
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Checking the planters
+    - place: PlazaPlanterE
+      scene: 
+      waitMinutes: 30
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Watering the planters
+    whenFinished: 1
+  - routeName: Fertiliser from Frank's
+    enabled: 1
+    priority: 20
+    startHour: 14.25
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 10
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: HwCustomer
+      scene: 
+      waitMinutes: 20
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Ordering fertiliser from Frank
+    whenFinished: 1
+  - routeName: Sunday in the garden
+    enabled: 1
+    priority: 10
+    startHour: 10
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 64
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: H8Street
+      scene: 
+      waitMinutes: 90
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Pottering in the front garden
+    whenFinished: 1
+  - routeName: Watching the practice
+    enabled: 1
+    priority: 10
+    startHour: 16.5
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 64
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 35
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: ParkBenchA
+      scene: 
+      waitMinutes: 60
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Checking nobody ruins his pitch
+    whenFinished: 1
+  - routeName: Evening
+    enabled: 1
+    priority: 10
+    startHour: 18.25
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: H8Kitchen
+      scene: 
+      waitMinutes: 50
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Cooking dinner
+    - place: H8Living
+      scene: 
+      waitMinutes: 100
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Dozing off
+    whenFinished: 0

@@ -18,6 +18,17 @@ public class ForestShortcutDoor : MonoBehaviour, IInteractable
     public Vector2 arriveOffset = new Vector2(0f, -1.3f);
     public Vector2 arriveFacing = Vector2.down;
 
+    [Header("Door to another scene (leave empty for a Partner in this scene)")]
+    [Tooltip("If filled in, the door loads this scene instead of using Partner. The scene must be in File > Build Profiles.")]
+    public string travelToScene = "";
+    [Tooltip("Spawn Id of the SceneSpawnPoint to appear at in that scene.")]
+    public string travelArriveAt = "";
+
+    [Header("Waking the door")]
+    [Tooltip("Tick to let the player wake a sealed door by using it once (this sets the Require Flag). The mine's fairy door works like this.")]
+    public bool wakeOnInteract = false;
+    [TextArea] public string wakeMessage = "The fairy door wakes up. It will remember you from now on.";
+
     [Header("Look")]
     public Sprite lockedSprite;
     public Sprite openSprite;
@@ -83,10 +94,39 @@ public class ForestShortcutDoor : MonoBehaviour, IInteractable
     {
         if (Time.unscaledTime < busyUntil) return;
         Refresh(false);
-        if (!unlocked) { GameEvents.ShowToast(lockedHint); return; }
-        if (partner == null) { GameEvents.ShowToast("This fairy door doesn't lead anywhere yet."); return; }
+        if (!unlocked)
+        {
+            // a door that can be woken: using it once sets the flag, and from then on both ends work
+            if (wakeOnInteract && !string.IsNullOrEmpty(requireFlag))
+            {
+                GameState.SetFlag(requireFlag, true);
+                Refresh(true);
+                busyUntil = Time.unscaledTime + 0.5f;
+                GameEvents.ShowToast(wakeMessage);
+            }
+            else GameEvents.ShowToast(lockedHint);
+            return;
+        }
+        bool otherScene = !string.IsNullOrEmpty(travelToScene);
+        if (!otherScene && partner == null) { GameEvents.ShowToast("This fairy door doesn't lead anywhere yet."); return; }
         busyUntil = Time.unscaledTime + 1f;
-        StartCoroutine(Travel(player));
+        StartCoroutine(otherScene ? TravelToScene() : Travel(player));
+    }
+
+    // Set just before another scene is loaded, so the door over there knows to fade the picture back in.
+    private static bool fadeInOnArrive;
+
+    private void Start()
+    {
+        if (fadeInOnArrive) { fadeInOnArrive = false; StartCoroutine(Fade(1f, 0f, 0.3f)); }
+    }
+
+    private IEnumerator TravelToScene()
+    {
+        yield return Fade(0f, 1f, 0.25f);
+        fadeInOnArrive = true;
+        SceneExit.NextSpawnId = travelArriveAt;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(travelToScene);
     }
 
     private IEnumerator Travel(PlayerActions player)

@@ -22,6 +22,12 @@ MonoBehaviour:
   energyRestored: 0
   magicRestored: 0
   toolAction: 0
+  toolReach: 1
+  toolPower: 1
+  plantInSpring: 0
+  plantInSummer: 1
+  plantInAutumn: 0
+  plantInWinter: 0
   damage: 5
   attackRange: 0.8
   attackRadius: 0.6

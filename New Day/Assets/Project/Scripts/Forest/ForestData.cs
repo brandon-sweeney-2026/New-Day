@@ -10,7 +10,7 @@ public class ForestRequirement
 }
 
 /// <summary>
-/// The look of a forest room: floor, walls, gate pictures, scenery. Make one with Farm > Forest > Set Up Forest
+/// The look of a forest room: floor, walls, gate pictures, scenery. Make one with Farm > Set Up > Forest
 /// (a polluted style for the maze and a clean one for the grove). Change the pictures here to restyle every room that uses it.
 /// </summary>
 [CreateAssetMenu(fileName = "ForestStyle", menuName = "Farm/Forest Style")]
@@ -39,7 +39,7 @@ public class ForestStyle : ScriptableObject
     public Sprite gateAcrossOpen;
     public Sprite gateUpDownLocked;   // 16x32, blocks a gap in a left/right wall
     public Sprite gateUpDownOpen;
-    [Tooltip("The same gates in green. They fade in over the purple ones when a gate unlocks. Farm > Forest > Add Green Gates fills these in.")]
+    [Tooltip("The same gates in green. They fade in over the purple ones when a gate unlocks. Farm > Set Up > Forest Green Gates fills these in.")]
     public Sprite gateAcrossGreen;
     public Sprite gateUpDownGreen;
 

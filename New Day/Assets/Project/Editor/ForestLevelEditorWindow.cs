@@ -59,7 +59,7 @@ public class ForestLevelEditorWindow : EditorWindow
         if (grid != null)
         {
             Transform g = grid.transform.Find("Ground"), w = grid.transform.Find("Walls");
-            if (w == null) w = grid.transform.Find("Fences");   // made by Farm > Level Editors > Make Forest Editor Layers
+            if (w == null) w = grid.transform.Find("Fences");   // made by Farm > Build Art > Forest Editor Layers
             ground = g != null ? g.GetComponent<Tilemap>() : null;
             walls = w != null ? w.GetComponent<Tilemap>() : null;
         }
@@ -188,7 +188,7 @@ public class ForestLevelEditorWindow : EditorWindow
 
         List<Object> items = palettes[(int)layer];
         if (items.Count == 0)
-            EditorGUILayout.HelpBox("This palette is empty. Press 'Reload palettes'. If it is still empty, the project has no assets with the label for this layer (Ground: FarmLayer_Ground, Walls: FarmLayer_Fences, Objects: FarmLayer_Objects). Run Farm > Forest > Set Up Forest first.", MessageType.Warning);
+            EditorGUILayout.HelpBox("This palette is empty. Press 'Reload palettes'. If it is still empty, the project has no assets with the label for this layer (Ground: FarmLayer_Ground, Walls: FarmLayer_Fences, Objects: FarmLayer_Objects). Run Farm > Set Up > Forest first.", MessageType.Warning);
         else DrawPalette(items);
 
         EditorGUILayout.Space();

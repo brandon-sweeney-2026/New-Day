@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 
 /// <summary>
-/// Farm > Forest > Set Up Sick Fairy and Fairy Door
+/// Farm > Set Up > Forest Sick Fairy and Fairy Door
 /// Imports the sick-fairy art (fairy_sick.png, fairy_sick_portraits.png, fairy_door_locked.png, fairy_door_open.png - copy them into the same folder as your other
 /// forest art) and makes two prefabs next to it: SickFairy and FairyDoor. Both are labelled so they show up in the Level Editor's Objects palette.
 /// The Maze Generator calls this for you, so you usually don't need to run it yourself.
@@ -12,7 +12,7 @@ using UnityEngine;
 /// </summary>
 public static class ForestSickFairyMenu
 {
-    [MenuItem("Farm/Forest/Set Up Sick Fairy and Fairy Door")]
+    [MenuItem("Farm/Set Up/Forest Sick Fairy and Fairy Door", false, 141)]
     public static void Run()
     {
         GameObject sick, door;
@@ -164,7 +164,7 @@ public static class ForestSickFairyMenu
                 rect.rect = new Rect(c * cellW, tex.height - (r + 1) * cellH, cellW, cellH);
                 rect.alignment = SpriteAlignment.Center;
                 rect.pivot = new Vector2(0.5f, 0.5f);
-                rect.spriteID = GUID.Generate();
+                rect.spriteID = StableSpriteId.For(provider, baseName, rect.name);   // keeps the same ID every run, so nothing loses its art
                 rects.Add(rect);
             }
         provider.SetSpriteRects(rects.ToArray());

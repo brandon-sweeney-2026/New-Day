@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 /// <summary>
-/// Farm > Diagnose > Find Broken Sprites
+/// Farm > Fix and Diagnose > Find Broken Sprites
 /// When many things go invisible at once (player, paths, palette pictures) it is almost always because a sprite sheet was re-imported and its sprites got new
 /// internal ids, so everything that pointed at the old ones now points at nothing. This report finds that:
 ///   A. textures whose import settings changed in the last 12 hours (the likely culprits)
@@ -18,7 +18,7 @@ using UnityEngine.Tilemaps;
 /// </summary>
 public static class FarmDiagnoseSprites
 {
-    [MenuItem("Farm/Diagnose/Find Broken Sprites")]
+    [MenuItem("Farm/Fix and Diagnose/Find Broken Sprites", false, 401)]
     public static void Run()
     {
         var sb = new StringBuilder();

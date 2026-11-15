@@ -9,8 +9,10 @@ using UnityEngine.InputSystem;
 /// Press Space (or J, or gamepad A):
 ///   1. If you are standing in front of something interactive (bed, shipping bin, NPC) you use that.
 ///   2. Otherwise the EQUIPPED item (the selected inventory slot) is used:
-///        Tool   - Hoe tills, Watering Can waters, Sickle harvests, Shovel digs up a crop,
+///        Tool   - Hoe tills, Watering Can waters, Sickle/Scythe harvests, Shovel digs up a crop,
 ///                 Axe/Pickaxe hit trees and rocks (Breakable).
+///                 Better tools do more: the Hoe, Watering Can and Scythe work on several tiles in a row
+///                 (the item's Tool Reach), the Axe and Pickaxe count as several hits (the item's Tool Power).
 ///        Seed   - plants on tilled soil.
 ///        Food   - eats it (restores health).
 ///        Weapon - swings and damages enemies in front of you.
@@ -48,8 +50,19 @@ public class PlayerActions : MonoBehaviour
     [Header("Timing")]
     [Tooltip("How long the player is locked in place after using a tool or seed.")]
     [SerializeField] private float toolDuration = 1f / 3f;
+    [Tooltip("How long the player is locked in place while pouring the watering can (a pour looks rushed if it is too short).")]
+    [SerializeField] private float pourDuration = 0.55f;
+    [Range(0.1f, 0.9f)]
+    [Tooltip("The moment in a tool swing when it lands (0.55 = just past half way). Dirt, chips and other effects appear then.")]
+    [SerializeField] private float strikePoint = 0.55f;
+
+    [Header("Tool effects")]
+    [Tooltip("Show dirt, water drops, wood chips and so on when a tool is used.")]
+    [SerializeField] private bool showToolEffects = true;
 
     // ---- public state ----
+    /// <summary>Every tile the equipped tool will work on (1 for a basic tool, more for upgraded ones). The first one is TargetCell.</summary>
+    public IReadOnlyList<Vector3Int> TargetCells { get { return targetCells; } }
     public Inventory Inventory { get { return inventory; } }
     public PlayerStats Stats { get { return stats; } }
     public PlayerController Controller { get; private set; }
@@ -81,7 +94,10 @@ public class PlayerActions : MonoBehaviour
     /// <summary>Raised when an item starts being used: (item, how long the use lasts). Visual scripts listen to this.</summary>
     public event System.Action<ItemData, float> OnItemUsed;
 
-    private SpriteRenderer highlight;
+    private readonly List<SpriteRenderer> highlights = new List<SpriteRenderer>();   // one square per target tile
+    private readonly List<Vector3Int> targetCells = new List<Vector3Int>();
+    private SpriteRenderer bodyRenderer;       // the player's picture (effects are drawn just in front of it)
+    private Vector3 lastToolHitPoint;          // where the axe / pickaxe landed (for the chips)
     private ItemData swingingWeapon;
     private readonly HashSet<IDamageable> hitThisSwing = new HashSet<IDamageable>();
     private float nextActionTime;
@@ -97,6 +113,7 @@ public class PlayerActions : MonoBehaviour
         if (inventory == null) inventory = GetComponent<Inventory>();
         if (stats == null) stats = GetComponent<PlayerStats>();
         if (animator == null) animator = GetComponentInChildren<Animator>();
+        bodyRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     private void Start()
@@ -107,20 +124,57 @@ public class PlayerActions : MonoBehaviour
         if (animator != null && animator.runtimeAnimatorController != null)
             foreach (AnimatorControllerParameter p in animator.parameters) animatorParams.Add(p.nameHash);
 
-        if (showTargetTile)
-        {
-            var go = new GameObject("TargetTile");
-            highlight = go.AddComponent<SpriteRenderer>();
-            highlight.sprite = RuntimeSprites.Square;
-            highlight.color = targetColor;
-            highlight.sortingOrder = 4;
-            go.SetActive(false);
-        }
     }
 
     private void OnDestroy()
     {
-        if (highlight != null) Destroy(highlight.gameObject);
+        foreach (SpriteRenderer h in highlights)
+            if (h != null) Destroy(h.gameObject);
+    }
+
+    /// <summary>The white square number 'index' (they are made the first time they are needed).</summary>
+    private SpriteRenderer Highlight(int index)
+    {
+        while (highlights.Count <= index)
+        {
+            var go = new GameObject("TargetTile");
+            var h = go.AddComponent<SpriteRenderer>();
+            h.sprite = RuntimeSprites.Square;
+            h.color = targetColor;
+            h.sortingOrder = 4;
+            go.SetActive(false);
+            highlights.Add(h);
+        }
+        return highlights[index];
+    }
+
+    private void HideHighlights()
+    {
+        foreach (SpriteRenderer h in highlights)
+            if (h != null && h.gameObject.activeSelf) h.gameObject.SetActive(false);
+    }
+
+    /// <summary>One tile step in the direction the player faces (right, left, up or down).</summary>
+    private Vector3Int FacingStep()
+    {
+        Vector2 f = Facing;
+        if (Mathf.Abs(f.x) > Mathf.Abs(f.y)) return new Vector3Int(f.x > 0f ? 1 : -1, 0, 0);
+        return new Vector3Int(0, f.y > 0f ? 1 : -1, 0);
+    }
+
+    /// <summary>How many tiles in a row this item works on. Only the Hoe, Watering Can and Sickle/Scythe use their Tool Reach.</summary>
+    private static int ReachOf(ItemData item)
+    {
+        if (item == null || item.type != ItemData.ItemType.Tool) return 1;
+        switch (item.toolAction)
+        {
+            case ItemData.ToolAction.Hoe:
+            case ItemData.ToolAction.WateringCan:
+            case ItemData.ToolAction.Sickle:
+                return Mathf.Max(1, item.toolReach);
+            default:
+                return 1;
+        }
     }
 
     private Vector2 Origin { get { return (Vector2)transform.position + originOffset; } }
@@ -129,7 +183,7 @@ public class PlayerActions : MonoBehaviour
     {
         if (GameState.InputLocked || IsBusy || (stats != null && stats.IsDead))
         {
-            if (highlight != null) highlight.gameObject.SetActive(false);
+            HideHighlights();
             CurrentInteractable = null;
             return;
         }
@@ -160,18 +214,28 @@ public class PlayerActions : MonoBehaviour
     private void UpdateTarget()
     {
         HasTargetCell = farm != null;
-        if (!HasTargetCell) return;
+        targetCells.Clear();
+        if (!HasTargetCell) { HideHighlights(); return; }
 
         TargetCell = farm.WorldToCell(Origin + Facing * targetDistance);
 
         ItemData item = inventory != null ? inventory.EquippedItem : null;
         bool needsTile = item != null && (item.type == ItemData.ItemType.Tool || item.type == ItemData.ItemType.Seed);
 
-        if (highlight != null)
+        // An upgraded hoe / watering can / scythe works on a row of tiles: the one in front of you and the ones behind it.
+        int reach = ReachOf(item);
+        Vector3Int step = FacingStep();
+        for (int i = 0; i < reach; i++) targetCells.Add(TargetCell + step * i);
+
+        // One white square per target tile.
+        bool show = showTargetTile && needsTile && CurrentInteractable == null;
+        int wanted = show ? targetCells.Count : 0;
+        for (int i = 0; i < Mathf.Max(wanted, highlights.Count); i++)
         {
-            bool show = needsTile && CurrentInteractable == null;
-            highlight.gameObject.SetActive(show);
-            if (show) highlight.transform.position = farm.CellToWorldCenter(TargetCell);
+            SpriteRenderer h = Highlight(i);
+            bool on = i < wanted;
+            if (h.gameObject.activeSelf != on) h.gameObject.SetActive(on);
+            if (on) h.transform.position = farm.CellToWorldCenter(targetCells[i]);
         }
     }
 
@@ -233,7 +297,7 @@ public class PlayerActions : MonoBehaviour
                 {
                     var wc = GetComponent<WeaponController>();
                     if (wc != null) { wc.Begin(item); break; }
-                    GameEvents.ShowToast("Add the WeaponController to the Player (Farm > Combat > Set Up Weapons On Player).");
+                    GameEvents.ShowToast("Add the WeaponController to the Player (Farm > Set Up > Weapons).");
                     break;
                 }
                 StartCoroutine(Swing(item));
@@ -248,33 +312,50 @@ public class PlayerActions : MonoBehaviour
     private void UseTool(ItemData tool)
     {
         bool did = false;
+        float duration = toolDuration;
+        var worked = new List<Vector3Int>();   // the tiles the tool really changed (the effects are drawn on these)
 
         switch (tool.toolAction)
         {
             case ItemData.ToolAction.Hoe:
-                if (TreeManager.Instance != null && TreeManager.Instance.HasTree(TargetCell))
+                // Tills every target tile it can (a better hoe has more target tiles).
+                foreach (Vector3Int cell in targetCells)
                 {
-                    GameEvents.ShowToast("A tree is in the way. Chop it down first.");
-                    break;
+                    if (TreeManager.Instance != null && TreeManager.Instance.HasTree(cell)) continue;
+                    if (farm != null && farm.TryTill(cell)) worked.Add(cell);
                 }
-                did = farm != null && farm.TryTill(TargetCell);
+                did = worked.Count > 0;
+                if (!did && TreeManager.Instance != null && TreeManager.Instance.HasTree(TargetCell))
+                    GameEvents.ShowToast("A tree is in the way. Chop it down first.");
                 break;
 
             case ItemData.ToolAction.WateringCan:
-                did = farm != null && farm.TryWater(TargetCell);
+                foreach (Vector3Int cell in targetCells)
+                    if (farm != null && farm.TryWater(cell)) worked.Add(cell);
+                did = worked.Count > 0;
+                duration = pourDuration;
                 break;
 
             case ItemData.ToolAction.Sickle:
-                did = crops != null && crops.TryHarvest(TargetCell, inventory);
+                for (int i = 0; i < targetCells.Count; i++)
+                {
+                    Vector3Int cell = targetCells[i];
+                    // Only the tile right in front of you says "isn't ready yet"; the rest of the row is skipped quietly.
+                    // (Withered crops count too: the scythe clears them.)
+                    if (i > 0 && (crops == null || !(crops.IsRipe(cell) || crops.IsWithered(cell)))) continue;
+                    if (crops != null && crops.TryHarvest(cell, inventory)) worked.Add(cell);
+                }
+                did = worked.Count > 0;
                 break;
 
             case ItemData.ToolAction.Shovel:
                 did = crops != null && crops.TryRemove(TargetCell);
+                if (did) worked.Add(TargetCell);
                 break;
 
             case ItemData.ToolAction.Axe:
             case ItemData.ToolAction.Pickaxe:
-                did = HitToolTarget(tool.toolAction);
+                did = HitToolTarget(tool.toolAction, tool.toolPower);
                 break;
 
             case ItemData.ToolAction.FishingRod:
@@ -286,18 +367,75 @@ public class PlayerActions : MonoBehaviour
                 break;
         }
 
-        if (did) StartCoroutine(Lock(toolDuration, UseToolTrigger, tool));
+        if (did)
+        {
+            StartCoroutine(Lock(duration, UseToolTrigger, tool));
+            if (showToolEffects) StartCoroutine(ToolEffects(tool.toolAction, worked, duration));
+        }
     }
 
-    private bool HitToolTarget(ItemData.ToolAction action)
+    /// <summary>Hits the tree or rock in front of the player. 'power' = how many hits this swing counts as.</summary>
+    private bool HitToolTarget(ItemData.ToolAction action, int power)
     {
         Vector2 center = Origin + Facing * interactDistance;
         foreach (Collider2D hit in Physics2D.OverlapCircleAll(center, interactRadius))
         {
             var target = hit.GetComponentInParent<IToolTarget>();
-            if (target != null && target.OnToolUsed(action, this)) return true;
+            if (target != null && target.OnToolUsed(action, Mathf.Max(1, power), this))
+            {
+                lastToolHitPoint = hit.ClosestPoint(Origin);   // the spot on the tree / rock nearest the player
+                return true;
+            }
         }
         return false;
+    }
+
+    /// <summary>The little effects that go with a tool: dirt for the hoe, drops for the watering can, chips for the axe and pickaxe...</summary>
+    private IEnumerator ToolEffects(ItemData.ToolAction action, List<Vector3Int> cells, float duration)
+    {
+        int order = (bodyRenderer != null ? bodyRenderer.sortingOrder : 10) + 2;
+        int layer = bodyRenderer != null ? bodyRenderer.sortingLayerID : 0;
+        if (farm == null) cells.Clear();        // no farm in this scene = no tiles to draw effects on
+
+        if (action == ItemData.ToolAction.WateringCan)
+        {
+            // Drops fall from the spout onto the watered tiles for most of the pour, then each tile gets a small splash.
+            Vector3 spout = Origin + Facing * 0.55f + Vector2.up * 0.15f;
+            float start = duration * 0.2f, end = duration * 0.8f;
+            yield return new WaitForSeconds(start);
+            for (float t = start; t < end; t += 0.04f)
+            {
+                if (cells.Count > 0)
+                {
+                    Vector3 to = farm.CellToWorldCenter(cells[Random.Range(0, cells.Count)]);
+                    ToolFx.WaterDrop(spout, to + (Vector3)(Random.insideUnitCircle * 0.25f), order, layer);
+                }
+                yield return new WaitForSeconds(0.04f);
+            }
+            foreach (Vector3Int cell in cells) ToolFx.Splash(farm.CellToWorldCenter(cell), order, layer);
+            yield break;
+        }
+
+        // Everything else happens at the moment the tool lands.
+        yield return new WaitForSeconds(duration * strikePoint);
+
+        switch (action)
+        {
+            case ItemData.ToolAction.Hoe:
+            case ItemData.ToolAction.Shovel:
+                foreach (Vector3Int cell in cells) ToolFx.Dirt(farm.CellToWorldCenter(cell), order, layer);
+                break;
+            case ItemData.ToolAction.Sickle:
+                ToolFx.Sweep(Origin, Facing, order, layer);
+                foreach (Vector3Int cell in cells) ToolFx.Leaves(farm.CellToWorldCenter(cell), order, layer);
+                break;
+            case ItemData.ToolAction.Axe:
+                ToolFx.WoodChips(lastToolHitPoint, order, layer);
+                break;
+            case ItemData.ToolAction.Pickaxe:
+                ToolFx.StoneChips(lastToolHitPoint, order, layer);
+                break;
+        }
     }
 
     // ---- seeds and food ----
@@ -326,6 +464,15 @@ public class PlayerActions : MonoBehaviour
         if (crop == null)
         {
             GameEvents.ShowToast("No crop uses " + seed.itemName + " (add it to the CropManager).");
+            return;
+        }
+
+        // Wrong season for this seed (or winter)? Say so instead of silently doing nothing.
+        string notNow = crops.WhyNotPlantable(crop);
+        if (notNow != null)
+        {
+            GameEvents.ShowToast(notNow);
+            nextActionTime = Time.time + 0.4f;
             return;
         }
 

@@ -1,0 +1,172 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd850fae68a74ed4087495a7eab7ac27, type: 3}
+  m_Name: Schedule_lucia
+  m_EditorClassIdentifier: Assembly-CSharp::NpcScheduleData
+  npcId: lucia
+  idleSpot: H8Bed
+  idleScene: 
+  routes:
+  - routeName: Morning run
+    enabled: 1
+    priority: 10
+    startHour: 6.5
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 35
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: PlaySlide
+      scene: 
+      waitMinutes: 2
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Running
+    - place: FieldLeft
+      scene: 
+      waitMinutes: 3
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Running laps
+    - place: FieldRight
+      scene: 
+      waitMinutes: 3
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Running laps
+    whenFinished: 1
+  - routeName: City hall
+    enabled: 1
+    priority: 40
+    startHour: 8.25
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 15
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: City
+      scene: City
+      waitMinutes: 300
+      transitMinutes: 40
+      facing: {x: 0, y: 0}
+      activity: Working at city hall
+    whenFinished: 0
+  - routeName: Shopping
+    enabled: 1
+    priority: 10
+    startHour: 11
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 48
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: StoreCustomer
+      scene: 
+      waitMinutes: 15
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Buying sports drinks
+    - place: PlazaBench1
+      scene: 
+      waitMinutes: 20
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Planning the weekend match
+    whenFinished: 1
+  - routeName: Coaching football
+    enabled: 1
+    priority: 20
+    startHour: 16.25
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 35
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: FieldMid
+      scene: 
+      waitMinutes: 90
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Coaching football
+    whenFinished: 1
+  - routeName: Evening
+    enabled: 1
+    priority: 10
+    startHour: 19.5
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: H8Kitchen
+      scene: 
+      waitMinutes: 45
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Having dinner
+    - place: H8Living
+      scene: 
+      waitMinutes: 90
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Watching match replays
+    whenFinished: 0

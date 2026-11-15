@@ -1,0 +1,186 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd850fae68a74ed4087495a7eab7ac27, type: 3}
+  m_Name: Schedule_bea
+  m_EditorClassIdentifier: Assembly-CSharp::NpcScheduleData
+  npcId: bea
+  idleSpot: H4Bed
+  idleScene: 
+  routes:
+  - routeName: Coffee and notes
+    enabled: 1
+    priority: 10
+    startHour: 7
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: H4Kitchen
+      scene: 
+      waitMinutes: 45
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Having coffee over her notes
+    whenFinished: 1
+  - routeName: University
+    enabled: 1
+    priority: 40
+    startHour: 8.25
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 21
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: City
+      scene: City
+      waitMinutes: 360
+      transitMinutes: 40
+      facing: {x: 0, y: 0}
+      activity: In the lab at the university
+    whenFinished: 0
+  - routeName: Reading in the park
+    enabled: 1
+    priority: 10
+    startHour: 10
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 106
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 35
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: ParkBenchB
+      scene: 
+      waitMinutes: 120
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Reading under the trees
+    whenFinished: 1
+  - routeName: Lunch
+    enabled: 1
+    priority: 10
+    startHour: 13.5
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: H4Kitchen
+      scene: 
+      waitMinutes: 40
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Having lunch
+    whenFinished: 1
+  - routeName: Seed shopping
+    enabled: 1
+    priority: 10
+    startHour: 15.25
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 10
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: StoreSeeds
+      scene: 
+      waitMinutes: 25
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Reading every seed packet
+    - place: StoreCustomer
+      scene: 
+      waitMinutes: 10
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Buying just one packet
+    whenFinished: 1
+  - routeName: Evening
+    enabled: 1
+    priority: 10
+    startHour: 18.75
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: H4Kitchen
+      scene: 
+      waitMinutes: 45
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Having dinner
+    - place: H4Living
+      scene: 
+      waitMinutes: 120
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Studying
+    whenFinished: 0

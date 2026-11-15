@@ -1,0 +1,238 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd850fae68a74ed4087495a7eab7ac27, type: 3}
+  m_Name: Schedule_lena
+  m_EditorClassIdentifier: Assembly-CSharp::NpcScheduleData
+  npcId: lena
+  idleSpot: H6Bed
+  idleScene: 
+  routes:
+  - routeName: Breakfast
+    enabled: 1
+    priority: 10
+    startHour: 7.5
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: H6Kitchen
+      scene: 
+      waitMinutes: 40
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Having breakfast
+    whenFinished: 1
+  - routeName: Sketching in the park
+    enabled: 1
+    priority: 10
+    startHour: 9.5
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 35
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: ParkBenchB
+      scene: 
+      waitMinutes: 100
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Sketching the trees
+    whenFinished: 1
+  - routeName: Drawing at home
+    enabled: 1
+    priority: 20
+    startHour: 9.5
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 28
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: H6Living
+      scene: 
+      waitMinutes: 200
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Drawing
+    whenFinished: 1
+  - routeName: Lunch
+    enabled: 1
+    priority: 10
+    startHour: 13
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 63
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: H6Kitchen
+      scene: 
+      waitMinutes: 40
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Having lunch
+    whenFinished: 1
+  - routeName: Park with Marcus
+    enabled: 1
+    priority: 20
+    startHour: 14
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 64
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 35
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: ParkBenchB
+      scene: 
+      waitMinutes: 90
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Sketching Marcus
+    whenFinished: 1
+  - routeName: Plaza sketches
+    enabled: 1
+    priority: 10
+    startHour: 15.25
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 21
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 35
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: PlazaBench2
+      scene: 
+      waitMinutes: 75
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Sketching the shopfronts
+    whenFinished: 1
+  - routeName: Groceries
+    enabled: 1
+    priority: 10
+    startHour: 15.25
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 34
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: StoreCustomer
+      scene: 
+      waitMinutes: 15
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Buying groceries
+    - place: StoreFront
+      scene: 
+      waitMinutes: 15
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Sketching the store window
+    whenFinished: 1
+  - routeName: Evening
+    enabled: 1
+    priority: 10
+    startHour: 19
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: H6Kitchen
+      scene: 
+      waitMinutes: 50
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Having dinner
+    - place: H6Living
+      scene: 
+      waitMinutes: 100
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Inking today's sketches
+    whenFinished: 0

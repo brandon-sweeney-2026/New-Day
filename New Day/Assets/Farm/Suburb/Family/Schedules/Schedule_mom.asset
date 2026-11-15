@@ -1,0 +1,248 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd850fae68a74ed4087495a7eab7ac27, type: 3}
+  m_Name: Schedule_mom
+  m_EditorClassIdentifier: Assembly-CSharp::NpcScheduleData
+  npcId: mom
+  idleSpot: AptBed1
+  idleScene: 
+  routes:
+  - routeName: Morning prep
+    enabled: 1
+    priority: 10
+    startHour: 6.25
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: AptKitchen
+      scene: 
+      waitMinutes: 35
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Making breakfast
+    - place: StoreAisleMid
+      scene: 
+      waitMinutes: 60
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Stocking shelves
+    - place: StoreSeeds
+      scene: 
+      waitMinutes: 30
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Tidying the seed rack
+    - place: StoreSlush
+      scene: 
+      waitMinutes: 20
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Cleaning the slush machines
+    - place: StoreAisleBack
+      scene: 
+      waitMinutes: 120
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Checking the coolers
+    whenFinished: 1
+  - routeName: Cover the till over lunch
+    enabled: 1
+    priority: 10
+    startHour: 12
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: StoreCheckout
+      scene: 
+      waitMinutes: 110
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Running the till
+    whenFinished: 1
+  - routeName: Late lunch upstairs
+    enabled: 1
+    priority: 10
+    startHour: 14.5
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: AptKitchen
+      scene: 
+      waitMinutes: 30
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Cooking lunch
+    - place: AptDining
+      scene: 
+      waitMinutes: 30
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Having lunch
+    whenFinished: 1
+  - routeName: Afternoon in the plaza
+    enabled: 1
+    priority: 10
+    startHour: 16.25
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 35
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: PlazaBench1
+      scene: 
+      waitMinutes: 50
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Catching up with the neighbours
+    - place: StoreFront
+      scene: 
+      waitMinutes: 10
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Watering the flower pots
+    whenFinished: 1
+  - routeName: 'Rainy afternoon: baking'
+    enabled: 1
+    priority: 30
+    startHour: 16.25
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 28
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: AptKitchen
+      scene: 
+      waitMinutes: 100
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Baking
+    whenFinished: 1
+  - routeName: Evening
+    enabled: 1
+    priority: 10
+    startHour: 18.5
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: AptKitchen
+      scene: 
+      waitMinutes: 60
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Cooking dinner
+    - place: AptDining
+      scene: 
+      waitMinutes: 50
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Having dinner
+    - place: AptLiving
+      scene: 
+      waitMinutes: 60
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Relaxing
+    whenFinished: 0
+  - routeName: Saturday in the city
+    enabled: 1
+    priority: 50
+    startHour: 8.5
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 32
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: CityFriends
+      scene: City
+      waitMinutes: 210
+      transitMinutes: 45
+      facing: {x: 0, y: 0}
+      activity: Visiting friends in the city
+    whenFinished: 0

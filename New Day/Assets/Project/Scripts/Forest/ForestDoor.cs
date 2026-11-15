@@ -10,7 +10,7 @@ using UnityEngine;
 /// ANIMATION
 ///   Unlock(): the purple vines shake and turn GREEN, then the two halves of the gate slide apart into the walls and fade, in a burst of green sparks.
 ///   Lock():   the reverse - the halves slide back together and the vines turn purple again (used by the test menu; you can call it from your own scripts).
-///   Speeds are in the Inspector (Green Seconds, Slide Seconds). The green pictures come from the Forest Style (Farm > Forest > Add Green Gates).
+///   Speeds are in the Inspector (Green Seconds, Slide Seconds). The green pictures come from the Forest Style (Farm > Set Up > Forest Green Gates).
 ///   If the style has no green pictures, the purple ones are tinted green instead.
 /// </summary>
 [RequireComponent(typeof(SpriteRenderer))]

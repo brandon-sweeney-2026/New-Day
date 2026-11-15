@@ -1,0 +1,306 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd850fae68a74ed4087495a7eab7ac27, type: 3}
+  m_Name: Schedule_Frank
+  m_EditorClassIdentifier: Assembly-CSharp::NpcScheduleData
+  npcId: frank
+  idleSpot: HwBackOffice
+  idleScene: 
+  routes:
+  - routeName: Open the store
+    enabled: 1
+    priority: 10
+    startHour: 7.5
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 63
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: HwDoorInside
+      scene: 
+      waitMinutes: 5
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Unlocking the doors
+    - place: HwCounter
+      scene: 
+      waitMinutes: 100
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Running the till
+    whenFinished: 1
+  - routeName: Morning rounds
+    enabled: 1
+    priority: 10
+    startHour: 10
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 63
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: HwLumber
+      scene: 
+      waitMinutes: 20
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Restocking lumber
+    - place: HwFlooring
+      scene: 
+      waitMinutes: 15
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Tidying the flooring samples
+    - place: HwCounter
+      scene: 
+      waitMinutes: 55
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Running the till
+    whenFinished: 1
+  - routeName: Rainy-day paint sale
+    enabled: 1
+    priority: 30
+    startHour: 10
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 63
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 12
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: HwPaint
+      scene: 
+      waitMinutes: 30
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Mixing paint
+    - place: HwCounter
+      scene: 
+      waitMinutes: 70
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Running the till
+    whenFinished: 1
+  - routeName: Lunch
+    enabled: 1
+    priority: 10
+    startHour: 12.5
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 63
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: HwBackOffice
+      scene: 
+      waitMinutes: 40
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Eating a sandwich
+    whenFinished: 1
+  - routeName: Afternoon till
+    enabled: 1
+    priority: 10
+    startHour: 13.75
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 63
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: HwCounter
+      scene: 
+      waitMinutes: 115
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Running the till
+    whenFinished: 1
+  - routeName: Helping customers
+    enabled: 1
+    priority: 10
+    startHour: 16.25
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 63
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: HwKitchen
+      scene: 
+      waitMinutes: 20
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Showing someone a stove
+    - place: HwWindows
+      scene: 
+      waitMinutes: 20
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Measuring a window
+    - place: HwCounter
+      scene: 
+      waitMinutes: 55
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Running the till
+    whenFinished: 1
+  - routeName: Close up
+    enabled: 1
+    priority: 10
+    startHour: 18.75
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 63
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: HwDoorInside
+      scene: 
+      waitMinutes: 5
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Locking up
+    whenFinished: 0
+  - routeName: Close up, then the bench
+    enabled: 1
+    priority: 20
+    startHour: 18.75
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 63
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 3
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: HwDoorInside
+      scene: 
+      waitMinutes: 5
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Locking up
+    - place: PlazaBench2
+      scene: 
+      waitMinutes: 45
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Putting his feet up
+    whenFinished: 0
+  - routeName: Sunday off
+    enabled: 1
+    priority: 50
+    startHour: 8
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 64
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: HwBackOffice
+      scene: 
+      waitMinutes: 90
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Having a slow morning
+    - place: ParkBenchB
+      scene: 
+      waitMinutes: 120
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Watching the football
+    - place: PlazaBench1
+      scene: 
+      waitMinutes: 45
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Reading the paper
+    whenFinished: 0

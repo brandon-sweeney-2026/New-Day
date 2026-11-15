@@ -127,6 +127,14 @@ public class FarmManager : MonoBehaviour
         if (IsTilled(cell)) return false;
         if (soilTilemap == null || !CanTillGround(cell)) return false;
 
+        // Without a picture for tilled soil the ground would be tilled but look unchanged, which is very confusing.
+        // So refuse, and say how to fix it.
+        if (tilledSoilTile == null)
+        {
+            WarnMissingTile("Tilled Soil Tile");
+            return false;
+        }
+
         soil[cell] = new SoilState();
         soilTilemap.SetTile(cell, tilledSoilTile);
         return true;
@@ -147,7 +155,34 @@ public class FarmManager : MonoBehaviour
 
         state.watered = true;
         if (waterTilemap != null) waterTilemap.SetTile(cell, wateredSoilTile);
+        if (wateredSoilTile == null) WarnMissingTile("Watered Soil Tile");   // the soil IS watered, it just can't be shown
         return true;
+    }
+
+    private float nextTileWarning;
+
+    /// <summary>Tells the player (at most every few seconds) and the Console that a tile picture is not set on this FarmManager.</summary>
+    private void WarnMissingTile(string fieldName)
+    {
+        if (Time.time < nextTileWarning) return;
+        nextTileWarning = Time.time + 3f;
+        GameEvents.ShowToast("FarmManager has no " + fieldName + ". Run Farm > Fix and Diagnose > Fix Soil Tiles.");
+        Debug.LogWarning("FarmManager: '" + fieldName + "' is empty, so that soil can't be drawn. " +
+                         "Select the FarmManager and drag a tile into that field, or run Farm > Fix and Diagnose > Fix Soil Tiles.", this);
+    }
+
+    /// <summary>Waters every tilled tile that is still dry (rain does this). Returns how many tiles it wet.</summary>
+    public int WaterAllTilled()
+    {
+        int count = 0;
+        foreach (KeyValuePair<Vector3Int, SoilState> pair in soil)
+        {
+            if (pair.Value.watered) continue;
+            pair.Value.watered = true;                  // changing the tile's state is fine while looping; we don't add or remove tiles
+            if (waterTilemap != null && wateredSoilTile != null) waterTilemap.SetTile(pair.Key, wateredSoilTile);
+            count++;
+        }
+        return count;
     }
 
     /// <summary>Crop code calls this when a seed is planted or a crop is harvested.</summary>

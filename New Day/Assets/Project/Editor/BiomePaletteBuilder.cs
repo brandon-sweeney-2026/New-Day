@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 /// <summary>
-/// Builds the 3 area palettes (Old Growth Forest, Dense City, Mountain Range). Menu: Farm > Biomes > Build Tile Palettes.
+/// Builds the 3 area palettes (Old Growth Forest, Dense City, Mountain Range). Menu: Farm > Build Art > Biome Tile Palettes.
 ///
 /// Before running it, copy the "Biomes" folder (forest_tiles.png, city_tiles.png, mountain_tiles.png) into your project,
 /// for example Assets/Farm/Biomes. It then:
@@ -69,7 +69,7 @@ public static class BiomePaletteBuilder
     private static readonly string[] Edge9 =
         { "TopLeft", "Top", "TopRight", "Left", "Middle", "Right", "BottomLeft", "Bottom", "BottomRight" };
 
-    [MenuItem("Farm/Biomes/Build Tile Palettes")]
+    [MenuItem("Farm/Build Art/Biome Tile Palettes", false, 200)]
     public static void Build()
     {
         var log = new List<string>();
@@ -177,7 +177,7 @@ public static class BiomePaletteBuilder
                 rect.rect = new Rect(c * Cell, tex.height - (r + 1) * Cell, Cell, Cell);
                 rect.alignment = SpriteAlignment.Center;
                 rect.pivot = new Vector2(0.5f, 0.5f);
-                rect.spriteID = GUID.Generate();
+                rect.spriteID = StableSpriteId.For(provider, baseName, rect.name);   // keeps the same ID every run, so nothing loses its art
                 rects.Add(rect);
             }
 

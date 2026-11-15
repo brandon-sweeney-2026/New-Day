@@ -3,7 +3,7 @@ using UnityEngine.Tilemaps;
 
 /// <summary>
 /// One "geography": everything the Geography Brush needs to paint a path, road, sidewalk... in one stroke.
-/// Made by Farm > Level Editors > Make Geography Presets (Mountain Pathway, Road, Sidewalk, Forest Pathway).
+/// Made by Farm > Build Art > Geography Presets (Mountain Pathway, Road, Sidewalk, Forest Pathway).
 /// Select the asset in Assets/Farm/Data/Geography (or open it inside the Geography Brush window) to change anything.
 /// This file must live in a folder named "Editor".
 /// </summary>

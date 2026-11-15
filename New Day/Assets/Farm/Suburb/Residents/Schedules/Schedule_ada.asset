@@ -1,0 +1,230 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd850fae68a74ed4087495a7eab7ac27, type: 3}
+  m_Name: Schedule_ada
+  m_EditorClassIdentifier: Assembly-CSharp::NpcScheduleData
+  npcId: ada
+  idleSpot: H9Bed
+  idleScene: 
+  routes:
+  - routeName: Tea with the cat
+    enabled: 1
+    priority: 10
+    startHour: 6.75
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: H9Kitchen
+      scene: 
+      waitMinutes: 40
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Having tea with the cat
+    whenFinished: 1
+  - routeName: Plaza flowers
+    enabled: 1
+    priority: 10
+    startHour: 8
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 35
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: PlazaPlanterW
+      scene: 
+      waitMinutes: 35
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Watering the planters
+    - place: PlazaPlanterMidW
+      scene: 
+      waitMinutes: 35
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Talking to the tulips
+    - place: PlazaPlanterMidE
+      scene: 
+      waitMinutes: 35
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Watering the planters
+    - place: PlazaPlanterE
+      scene: 
+      waitMinutes: 35
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Deadheading
+    whenFinished: 1
+  - routeName: Repotting
+    enabled: 1
+    priority: 20
+    startHour: 8
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 28
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: H9Living
+      scene: 
+      waitMinutes: 180
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Repotting on the living room floor
+    whenFinished: 1
+  - routeName: Lunch
+    enabled: 1
+    priority: 10
+    startHour: 12.75
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: H9Kitchen
+      scene: 
+      waitMinutes: 40
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Having lunch
+    whenFinished: 1
+  - routeName: Seeds and gossip
+    enabled: 1
+    priority: 10
+    startHour: 15.25
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 42
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: StoreSeeds
+      scene: 
+      waitMinutes: 25
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Choosing seeds
+    - place: StoreCustomer
+      scene: 
+      waitMinutes: 10
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Catching up on the news
+    whenFinished: 1
+  - routeName: Front garden
+    enabled: 1
+    priority: 5
+    startHour: 15.25
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 35
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: H9Street
+      scene: 
+      waitMinutes: 60
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Deadheading the roses
+    whenFinished: 1
+  - routeName: Evening
+    enabled: 1
+    priority: 10
+    startHour: 18.5
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: H9Kitchen
+      scene: 
+      waitMinutes: 50
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Having dinner
+    - place: H9Living
+      scene: 
+      waitMinutes: 120
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Pressing flowers
+    whenFinished: 0

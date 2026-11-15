@@ -5,8 +5,8 @@ using UnityEngine;
 using UnityEngine.Rendering;
 
 /// <summary>
-/// Farm > Lighting > Set Up Lighting      (run once)
-/// Farm > Lighting > Drop Sample Lights Near Player   (optional, for testing)
+/// Farm > Set Up > Lighting      (run once)
+/// Farm > Test and Debug > Drop Sample Lights Near Player   (optional, for testing)
 ///
 /// Set Up Lighting:
 ///  1. imports the light-object art (copy the "Lights" folder into Assets first)
@@ -58,7 +58,7 @@ public static class LightingSetupMenu
 
     private static string Cap(string s) { return char.ToUpper(s[0]) + s.Substring(1); }
 
-    [MenuItem("Farm/Lighting/Set Up Lighting")]
+    [MenuItem("Farm/Set Up/Lighting", false, 104)]
     public static void Run()
     {
         if (GraphicsSettings.currentRenderPipeline == null)
@@ -144,7 +144,7 @@ public static class LightingSetupMenu
             "\n  (they also appear in the Level Editor's Objects palette).\n\nPress Play. To test, select LightingManager, tick 'Use Preview Hour' and drag 'Preview Hour'.", "OK");
     }
 
-    [MenuItem("Farm/Lighting/Drop Sample Lights Near Player")]
+    [MenuItem("Farm/Test and Debug/Drop Sample Lights Near Player", false, 341)]
     public static void DropSamples()
     {
         var player = Object.FindAnyObjectByType<PlayerController>();
@@ -160,7 +160,7 @@ public static class LightingSetupMenu
             inst.transform.position = start + new Vector3((i % 6) * 2.2f, -(i / 6) * 3.5f, 0f);
             i++;
         }
-        if (i == 0) EditorUtility.DisplayDialog("No light prefabs", "Run Farm > Lighting > Set Up Lighting first.", "OK");
+        if (i == 0) EditorUtility.DisplayDialog("No light prefabs", "Run Farm > Set Up > Lighting first.", "OK");
     }
 
     // ------------------------------------------------------------------
@@ -244,7 +244,7 @@ public static class LightingSetupMenu
             rect.rect = new Rect(c * cw, 0, cw, tex.height);
             rect.alignment = SpriteAlignment.BottomCenter;
             rect.pivot = new Vector2(0.5f, 0f);
-            rect.spriteID = GUID.Generate();
+            rect.spriteID = StableSpriteId.For(provider, baseName, rect.name);   // keeps the same ID every run, so nothing loses its art
             rects.Add(rect);
         }
         provider.SetSpriteRects(rects.ToArray());

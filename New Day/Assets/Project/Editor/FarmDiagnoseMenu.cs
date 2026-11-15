@@ -4,14 +4,14 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 /// <summary>
-/// Farm > Diagnose > Check Player and Palettes
+/// Farm > Fix and Diagnose > Check Player and Palettes
 /// Prints a report (and copies it to the clipboard) about: how many labelled assets each level-editor palette would find, the open scene's player pictures and
 /// anything drawn on top of the player, the camera, and the active Scene-view tool. Paste the report to me if something looks wrong.
 /// Must live in a folder named "Editor".
 /// </summary>
 public static class FarmDiagnoseMenu
 {
-    [MenuItem("Farm/Diagnose/Check Player and Palettes")]
+    [MenuItem("Farm/Fix and Diagnose/Check Player and Palettes", false, 400)]
     public static void Run()
     {
         var sb = new StringBuilder();

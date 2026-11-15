@@ -6,12 +6,12 @@ using UnityEngine.SceneManagement;
 /// <summary>
 /// Two fixes for the objects you place in the editor. Must live in a folder named "Editor".
 ///
-/// Farm > Fix Draw Order (Y-sort)
+/// Farm > Fix and Diagnose > Fix Draw Order (Y-sort)
 ///     Makes objects lower on the map draw in front of objects higher up, in the Scene view and the Game view:
 ///     Project Graphics sort mode = Custom Axis (0,1,0), the 2D Renderer asset(s) the same, and every Objects prefab and
 ///     every object under "Objects" in the open scene sorts by its pivot (the feet) instead of its centre.
 ///
-/// Farm > Mountain > Shrink Ore Hitboxes
+/// Farm > Fix and Diagnose > Shrink Ore Hitboxes
 ///     Shrinks the solid collider of every Ore_ prefab so it is easy to walk around them.
 /// </summary>
 public static class DrawOrderTools
@@ -22,7 +22,7 @@ public static class DrawOrderTools
     private const float WidthFraction = 0.6f;
     private const float BoxHeight = 0.3f;
 
-    [MenuItem("Farm/Fix Draw Order (Y-sort)")]
+    [MenuItem("Farm/Fix and Diagnose/Fix Draw Order (Y-sort)", false, 421)]
     public static void FixDrawOrder()
     {
         // 1. project-wide sort mode
@@ -85,7 +85,7 @@ public static class DrawOrderTools
     /// <summary>Ore_Coal, Rock_Brown_Large, Rock_Grey_Small... Add more start-of-name words here if you have other mineable things.</summary>
     private static bool IsRockName(string n) { return n.StartsWith("Ore_") || n.StartsWith("Rock_"); }
 
-    [MenuItem("Farm/Mountain/Shrink Ore Hitboxes")]
+    [MenuItem("Farm/Fix and Diagnose/Shrink Ore Hitboxes", false, 422)]
     public static void ShrinkOres()
     {
         int n = 0;

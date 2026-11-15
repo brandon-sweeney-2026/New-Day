@@ -6,14 +6,14 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 /// <summary>
-/// Builds the farmhouse. Menu: Farm > House > Build Farmhouse.
+/// Builds the farmhouse. Menu: Farm > Set Up > Build Farmhouse.
 ///
 /// Before running it, copy the "House" folder (the PNG art) anywhere into your project (e.g. Assets/Farm/House).
 /// It then:
 ///   - sets up all the House pictures as pixel-art sprites and makes tiles from the floors and wallpapers,
 ///   - creates the building materials, the dishes, the recipes and the ~40 house options (all editable assets),
 ///   - builds the house in your open scene at the centre of your Scene view: an 8 x 4 tile farmhouse outside,
-///     a room inside (far from the farm), a door each way, a bed, a stove, a design table, and a General Store stall.
+///     a room inside (far from the farm), a door each way, a bed, a stove, and a design table. (No shop stall any more: seeds are bought at the General Store in the suburbs.)
 ///
 /// Safe to run again: assets are reused. If a house is already in the scene it only refreshes the lists.
 /// This file must live in a folder named "Editor".
@@ -29,11 +29,11 @@ public static class HouseSetupMenu
     // Entry point
     // ------------------------------------------------------------------
 
-    [MenuItem("Farm/House/Build Farmhouse")]
+    [MenuItem("Farm/Set Up/Build Farmhouse", false, 120)]
     public static void Build() { Run(false); }
 
     /// <summary>Deletes the farmhouse, its inside and the store stall, then builds them again (same spot). Use this after updating the house art or size.</summary>
-    [MenuItem("Farm/House/Rebuild Farmhouse (replace existing)")]
+    [MenuItem("Farm/Set Up/Rebuild Farmhouse (replace existing)", false, 121)]
     public static void Rebuild() { Run(true); }
 
     private static void Run(bool replace)
@@ -527,14 +527,7 @@ public static class HouseSetupMenu
             }
         }
 
-        // ---------------- general store stall ----------------
-        var stall = new GameObject("GeneralStore");
-        Undo.RegisterCreatedObjectUndo(stall, "Create GeneralStore");
-        stall.transform.position = origin + new Vector3(7f, 0f, 0f);
-        var stallSr = stall.AddComponent<SpriteRenderer>(); stallSr.sprite = Spr("stall"); stallSr.sortingOrder = 6;
-        Box(stall, new Vector2(0f, 0.7f), new Vector2(2.8f, 1.2f), false);
-        var shop = stall.AddComponent<ShopCounter>();
-        SetArray(shop, "stock", ShopStock().Cast<Object>().ToList());
+        // (There used to be a shop stall here. It was removed on purpose: seeds are bought at the General Store in the suburbs now.)
 
         // ---------------- clean up the earlier placeholder bed (the house has a real one now) ----------------
         foreach (Bed b in Object.FindObjectsByType<Bed>(FindObjectsInactive.Include))
@@ -545,7 +538,7 @@ public static class HouseSetupMenu
         }
 
         log.Add("Built the farmhouse at " + origin + " (8 x 8 art, 8 x 4 solid footprint). Its inside is 20 x 20 tiles at x = 500, far from the farm.");
-        log.Add("Added a General Store stall next to the house. Stock is every seed and material that has a Buy Price.");
+        log.Add("No shop stall is added any more: seeds and materials are bought at the General Store in the suburbs.");
         log.Add("If you have another farmhouse prop from the Kiln Harvest layout, delete it or move the new house.");
         Selection.activeGameObject = house;
     }

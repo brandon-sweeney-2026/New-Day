@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 /// A 1-tile-wide path that connects to its neighbours by itself.
 /// Paint it with the Tile Palette brush and it picks the right piece (straight, corner, T, cross, end, dot).
 /// Tiles with the same "group" text connect to each other, so you can make two different paths join.
-/// Made for you by Farm > Biomes > Build Path Palettes.
+/// Made for you by Farm > Build Art > Path Palettes.
 /// </summary>
 public class AutoPathTile : TileBase
 {

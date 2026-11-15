@@ -1,0 +1,192 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd850fae68a74ed4087495a7eab7ac27, type: 3}
+  m_Name: Schedule_dev
+  m_EditorClassIdentifier: Assembly-CSharp::NpcScheduleData
+  npcId: dev
+  idleSpot: H3Bed2
+  idleScene: 
+  routes:
+  - routeName: Breakfast
+    enabled: 1
+    priority: 10
+    startHour: 7
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: H3Kitchen
+      scene: 
+      waitMinutes: 20
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Wolfing down breakfast
+    whenFinished: 1
+  - routeName: School in the city
+    enabled: 1
+    priority: 40
+    startHour: 7.75
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 31
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: City
+      scene: City
+      waitMinutes: 350
+      transitMinutes: 40
+      facing: {x: 0, y: 0}
+      activity: At school in the city
+    whenFinished: 0
+  - routeName: Slush run
+    enabled: 1
+    priority: 15
+    startHour: 11
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 96
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: StoreSlush
+      scene: 
+      waitMinutes: 20
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Choosing a slush
+    - place: StoreFront
+      scene: 
+      waitMinutes: 30
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Drinking a blue slush
+    whenFinished: 1
+  - routeName: Football practice
+    enabled: 1
+    priority: 20
+    startHour: 16
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 35
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: FieldLeft
+      scene: 
+      waitMinutes: 100
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: At football practice
+    - place: ParkBenchA
+      scene: 
+      waitMinutes: 15
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Getting his breath back
+    whenFinished: 1
+  - routeName: Rainy afternoon
+    enabled: 1
+    priority: 10
+    startHour: 16
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 28
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: H3Living
+      scene: 
+      waitMinutes: 150
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Gaming
+    whenFinished: 1
+  - routeName: Dinner
+    enabled: 1
+    priority: 10
+    startHour: 19.5
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: H3Kitchen
+      scene: 
+      waitMinutes: 45
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Having dinner
+    - place: H3Living
+      scene: 
+      waitMinutes: 90
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Gaming
+    whenFinished: 0

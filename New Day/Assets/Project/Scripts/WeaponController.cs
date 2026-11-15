@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// The fighting styles. Put this on the Player (Farm > Combat > Set Up Weapons does it). PlayerActions hands any Weapon whose
+/// The fighting styles. Put this on the Player (Farm > Set Up > Weapons does it). PlayerActions hands any Weapon whose
 /// "Weapon Kind" is not Generic over to this script when you press the action button.
 ///
 /// Each weapon has its OWN player animation (the pictures come from player_weapon_sheet.png, the timings and hand positions from PlayerWeaponFrames):
@@ -20,7 +20,7 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerActions))]
 public class WeaponController : MonoBehaviour
 {
-    [Header("Animation pictures (set by Farm > Combat > Set Up Weapons)")]
+    [Header("Animation pictures (set by Farm > Set Up > Weapons)")]
     [SerializeField] private PlayerWeaponAnimSet animSet;
 
     [Header("Feel")]
@@ -145,7 +145,7 @@ public class WeaponController : MonoBehaviour
         if (IsUsing || w == null) return;
         if (animSet == null)
         {
-            GameEvents.ShowToast("Run Farm > Combat > Set Up Weapons first (the weapon animations are missing).");
+            GameEvents.ShowToast("Run Farm > Set Up > Weapons first (the weapon animations are missing).");
             return;
         }
         switch (w.weaponKind)

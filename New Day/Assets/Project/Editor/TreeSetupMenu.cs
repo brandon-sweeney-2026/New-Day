@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 /// <summary>
-/// Sets up the 4 growing trees. Menu: Farm > Trees > Set Up Trees In Scene.
+/// Sets up the 4 growing trees. Menu: Farm > Set Up > Trees In Scene.
 ///
 /// Before running it, copy the "Trees" folder (the PNGs) anywhere into your project (e.g. Assets/Farm/Trees).
 /// It then:
@@ -33,7 +33,7 @@ public static class TreeSetupMenu
 
     private static string artFolder;
 
-    [MenuItem("Farm/Trees/Set Up Trees In Scene")]
+    [MenuItem("Farm/Set Up/Trees In Scene", false, 123)]
     public static void Build()
     {
         string[] found = AssetDatabase.FindAssets("tree_oak t:Texture2D");
@@ -210,7 +210,7 @@ public static class TreeSetupMenu
                 rect.rect = new Rect(c * CellW, tex.height - (r + 1) * CellH, CellW, CellH);
                 rect.alignment = SpriteAlignment.Custom;
                 rect.pivot = new Vector2(0.5f, 0f);   // bottom centre = the trunk base
-                rect.spriteID = GUID.Generate();
+                rect.spriteID = StableSpriteId.For(provider, baseName, rect.name);   // keeps the same ID every run, so nothing loses its art
                 rects.Add(rect);
             }
         }

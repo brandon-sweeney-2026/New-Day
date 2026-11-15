@@ -8,12 +8,12 @@ using UnityEngine;
 ///     rolling slowly in the sun (white tummy up!), licking herself, a hairball (nothing is spawned), and batting a toy mouse or ball around.
 ///   - Sleeps on the cat tree at night. If you walk up to the tree she hops down to see what you want.
 ///   - Talk to her to learn about MAGIC, CRAFTING and FISHING. She knows what you own and tells you what she can see.
-/// Everything is tweakable in the Inspector. Art arrays are filled by Farm > NPCs > Set Up Mitzi.
+/// Everything is tweakable in the Inspector. Art arrays are filled by Farm > Set Up > Mitzi.
 /// </summary>
 [RequireComponent(typeof(Rigidbody2D))]
 public class MitziCat : MonoBehaviour, IInteractable
 {
-    [Header("Art (filled in by Farm > NPCs > Set Up Mitzi)")]
+    [Header("Art (filled in by Farm > Set Up > Mitzi)")]
     [SerializeField] private Sprite[] walkSide;          // facing right (left uses a flip)
     [SerializeField] private Sprite[] walkDown;
     [SerializeField] private Sprite[] walkUp;

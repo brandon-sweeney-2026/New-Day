@@ -142,7 +142,7 @@ public class GeographyBrushWindow : EditorWindow
         Grid grid = CurrentGrid;
         if (grid == null)
         {
-            EditorUtility.DisplayDialog("Geography Brush", "No ground tilemap was found in this scene. Open the scene's level editor first (Farm > Level Editors > Open Level Editor), or for the forest run Make Forest Editor Layers.", "OK");
+            EditorUtility.DisplayDialog("Geography Brush", "No ground tilemap was found in this scene. Open the scene's level editor first (Farm > Level Editors > Open Level Editor), or for the forest run Farm > Build Art > Forest Editor Layers.", "OK");
             return false;
         }
         int baseOrder = 0; int layerId = 0;
@@ -214,7 +214,7 @@ public class GeographyBrushWindow : EditorWindow
             int tiles = CountTiles(preset);
             if (tiles == 0)
             {
-                EditorGUILayout.HelpBox("This geography has no tiles. Run Farm > Biomes > Build Path Palettes, then press Reset below.", MessageType.Warning);
+                EditorGUILayout.HelpBox("This geography has no tiles. Run Farm > Build Art > Path Palettes, then press Reset below.", MessageType.Warning);
             }
             else if (preset.fillTiles == null || preset.fillTiles.Length == 0)
             {
@@ -544,7 +544,7 @@ public class GeographyBrushWindow : EditorWindow
         if (!EnsureLayers()) return;
         if (!erase && CountTiles(preset) == 0)
         {
-            EditorUtility.DisplayDialog("Geography Brush", "This geography has no tiles yet. Run Farm > Biomes > Build Path Palettes, then press 'Reset this geography to defaults' in the Geography Brush window.", "OK");
+            EditorUtility.DisplayDialog("Geography Brush", "This geography has no tiles yet. Run Farm > Build Art > Path Palettes, then press 'Reset this geography to defaults' in the Geography Brush window.", "OK");
             return;
         }
 

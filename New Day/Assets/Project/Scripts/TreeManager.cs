@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 /// <summary>
-/// Grows trees on the farm. Put this on an empty GameObject (Farm > Trees > Set Up Trees In Scene does it).
+/// Grows trees on the farm. Put this on an empty GameObject (Farm > Set Up > Trees In Scene does it).
 ///
 ///  - New trees sprout at random, only on the ground tiles YOU pick in 'allowedGround' (e.g. Grass and DirtFlat).
 ///  - Each new day: existing trees grow, mature trees may drop fruit, and a few new saplings may appear.

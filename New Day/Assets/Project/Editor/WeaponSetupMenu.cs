@@ -5,12 +5,12 @@ using UnityEditor;
 using UnityEngine;
 
 /// <summary>
-/// Farm > Combat > Set Up Weapons
+/// Farm > Set Up > Weapons
 ///   1. finds the weapon pictures (sword_stone.png ... arrow_proj.png) anywhere in your Assets and sets them up as sprites;
 ///   2. makes 25 weapon items (Sword, Dagger, Flail, Hammer, Bow x Stone, Copper, Iron, Gold, Platinum) and an Arrow item, in Assets/Farm/Data/Weapons;
 ///   3. adds the WeaponController to the Player in the open scene.
 /// Running it again only refreshes the pictures and keeps stats you changed.
-/// Farm > Combat > Reset Weapon Stats To Defaults puts every weapon's numbers back to the defaults below.
+/// Farm > Test and Debug > Reset Weapon Stats To Defaults puts every weapon's numbers back to the defaults below.
 /// Must live in a folder named "Editor".
 /// </summary>
 public static class WeaponSetupMenu
@@ -40,13 +40,13 @@ public static class WeaponSetupMenu
     private static readonly float[] BowCooldown = { 0.45f, 0.38f, 0.3f, 0.22f, 0.15f };
     private static readonly int[] Prices = { 20, 45, 80, 150, 300 };
 
-    [MenuItem("Farm/Combat/Set Up Weapons")]
+    [MenuItem("Farm/Set Up/Weapons", false, 103)]
     public static void SetUp()
     {
         Run(false);
     }
 
-    [MenuItem("Farm/Combat/Reset Weapon Stats To Defaults")]
+    [MenuItem("Farm/Test and Debug/Reset Weapon Stats To Defaults", false, 324)]
     public static void ResetStats()
     {
         if (!EditorUtility.DisplayDialog("Reset weapon stats", "Put the damage, speed, critical chance and the other numbers of all 25 weapons back to the defaults? Pictures stay.", "Reset", "Cancel")) return;
@@ -134,7 +134,7 @@ public static class WeaponSetupMenu
 
         EditorUtility.DisplayDialog("Weapons ready",
             "Made 25 weapons and the Arrow in " + Folder + ".\n\n" + playerMsg +
-            "\n\nTo try them: Play, open Farm > Debug > Give Items, give yourself a weapon (and Arrows for the bow), equip it and press Space.\n" +
+            "\n\nTo try them: Play, open Farm > Test and Debug > Give Items, give yourself a weapon (and Arrows for the bow), equip it and press Space.\n" +
             "Sword/dagger/hammer: tap. Flail: hold to keep spinning. Bow: hold to draw, release to shoot.\n\nNot compiled in Unity - tell me about any red errors.", "OK");
     }
 

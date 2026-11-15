@@ -37,6 +37,22 @@ public class CropData : ScriptableObject
 
     public bool IsFullyGrown(int daysGrown) => daysGrown >= DaysToMature;
 
+    /// <summary>
+    /// Can this crop grow in this season? The seasons are set on the SEED item (Plant In Spring / Summer / Autumn),
+    /// so the shop, the planting check and the growing check all read the same tick boxes.
+    /// </summary>
+    public bool CanGrowIn(TimeManager.Season season)
+    {
+        return seedItem == null || seedItem.CanPlantIn(season);
+    }
+
+    /// <summary>How far along it is, from 0 (just planted) to 1 (fully grown). Used to make taller plants sway more.</summary>
+    public float GrowthFraction(int daysGrown)
+    {
+        int total = DaysToMature;
+        return total <= 0 ? 1f : Mathf.Clamp01((float)daysGrown / total);
+    }
+
     /// <summary>Returns the sprite to display for a crop that has grown for this many days.</summary>
     public Sprite GetSpriteForDays(int daysGrown)
     {

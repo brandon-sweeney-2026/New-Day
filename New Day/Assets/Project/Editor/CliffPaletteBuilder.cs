@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 
 /// <summary>
 /// Builds the CLIFF tile palette from cliff_tiles.png (a 16-column sheet of 16x16 tiles).
-/// Menu: Farm > Mountain > Build Cliff Palette.   Must live in a folder named "Editor".
+/// Menu: Farm > Build Art > Cliff Palette.   Must live in a folder named "Editor".
 ///
 /// - Slices the sheet, makes one Tile asset per piece in Assets/Farm/Paths/Tiles/Cliff (named Cliff_Fill_1, Cliff_Lip_T ...).
 /// - The ROCK pieces (fills, lips, inner corners, wall) get a GRID COLLIDER, so the player cannot walk on them.
@@ -35,7 +35,7 @@ public static class CliffPaletteBuilder
         return n == "Moss" || n == "Snow" || n == "Crack" || n == "Rubble" || n == "Pebbles" || n == "Ice" || n == "Vines" || n == "SmallRock";
     }
 
-    [MenuItem("Farm/Mountain/Build Cliff Palette", false, 120)]
+    [MenuItem("Farm/Build Art/Cliff Palette", false, 205)]
     public static void Build()
     {
         string png = FindSheet();
@@ -71,7 +71,7 @@ public static class CliffPaletteBuilder
         GeographyPresetMaker.EnsureAll();       // adds the Mountain Cliff geography if it is missing
 
         EditorUtility.DisplayDialog("Cliff palette", "Tiles made: " + made + ", updated: " + updated + "\nFolder: " + TileFolder +
-            "\n\nOpen Farm > Level Editors > Geography Brush and pick 'Mountain Cliff'. If it was already there from before, open the Make Geography Presets menu and choose Reset all once so it picks up the tiles." +
+            "\n\nOpen Farm > Level Editors > Geography Brush and pick 'Mountain Cliff'. If it was already there from before, open Farm > Build Art > Geography Presets and choose Reset all once so it picks up the tiles." +
             "\n\nNot compiled in Unity - tell me about any red errors.", "OK");
     }
 

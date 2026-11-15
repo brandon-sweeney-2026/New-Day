@@ -4,9 +4,9 @@ using UnityEditor;
 using UnityEngine;
 
 /// <summary>
-/// Farm > Fishing > Set Up Fishing         (run once)
-/// Farm > Fishing > Give Starter Fishing Kit   (test: a rod, baits and some fishing XP in the inventory)
-/// Farm > Fishing > Reset Fishing Progress     (test: sets XP and talents back to zero)
+/// Farm > Set Up > Fishing         (run once)
+/// Farm > Test and Debug > Give Starter Fishing Kit   (test: a rod, baits and some fishing XP in the inventory)
+/// Farm > Test and Debug > Reset Fishing Progress     (test: sets XP and talents back to zero)
 ///
 /// Set Up Fishing:
 ///  1. imports the art (copy the "Fishing" folder into Assets first)
@@ -62,7 +62,7 @@ public static class FishingSetupMenu
         new BaitDef { key="lure",    name="Golden Lure", price=60, fish=new[]{"salmon","golden_koi","moonlit_koi"}, boost=4f, desc="Shiny. The rare ones can't resist." },
     };
 
-    [MenuItem("Farm/Fishing/Set Up Fishing")]
+    [MenuItem("Farm/Set Up/Fishing", false, 125)]
     public static void Run()
     {
         artFolder = FindFolder("fish_minnow");
@@ -155,7 +155,7 @@ public static class FishingSetupMenu
             "Done!\n\n- 13 fish, 4 rods and 5 baits created (data in " + FishFolder + ", items in " + ItemsFolder + ")\n" +
             "- FishingManager added to the scene.\n- Water_Pond, Water_River and Water_MountainLake prefabs in " + prefabDir +
             ".\n  In the Level Editor open the Objects palette > 'Edit palette list' > 'Reload this palette from labelled assets', then paint a water piece over each pond and drag its box handles to fit.\n\n" +
-            "To try it: Farm > Fishing > Give Starter Fishing Kit, then equip the rod, face the water and press Space.\n" +
+            "To try it: Farm > Test and Debug > Give Starter Fishing Kit, then equip the rod, face the water and press Space.\n" +
             "To sell rods/baits, add them to a ShopCounter's stock (they have Buy Prices).", "OK");
     }
 
@@ -177,20 +177,20 @@ public static class FishingSetupMenu
     }
 
     // ------------------------------------------------------------------ test helpers
-    [MenuItem("Farm/Fishing/Give Starter Fishing Kit")]
+    [MenuItem("Farm/Test and Debug/Give Starter Fishing Kit", false, 320)]
     public static void GiveKit()
     {
         if (!Application.isPlaying) { EditorUtility.DisplayDialog("Play mode needed", "Press Play first, then use this to fill the inventory.", "OK"); return; }
         var inv = Object.FindAnyObjectByType<Inventory>();
         var mgr = Object.FindAnyObjectByType<FishingManager>();
-        if (inv == null || mgr == null || mgr.rods == null) { EditorUtility.DisplayDialog("Not ready", "Run Farm > Fishing > Set Up Fishing first.", "OK"); return; }
+        if (inv == null || mgr == null || mgr.rods == null) { EditorUtility.DisplayDialog("Not ready", "Run Farm > Set Up > Fishing first.", "OK"); return; }
         if (mgr.rods.Length > 0 && mgr.rods[0].rodItem != null) inv.Add(mgr.rods[0].rodItem, 1);
         foreach (BaitData b in mgr.baits) if (b != null && b.baitItem != null) inv.Add(b.baitItem, 5);
         FishingTalents.AddXp(300);
         Debug.Log("Fishing kit added: a Wooden Rod, 5 of each bait and 300 fishing XP (level " + FishingTalents.FishingLevel + ").");
     }
 
-    [MenuItem("Farm/Fishing/Reset Fishing Progress")]
+    [MenuItem("Farm/Test and Debug/Reset Fishing Progress", false, 321)]
     public static void ResetProgress()
     {
         if (!Application.isPlaying) { EditorUtility.DisplayDialog("Play mode needed", "Fishing progress is part of the running game. Press Play first.", "OK"); return; }

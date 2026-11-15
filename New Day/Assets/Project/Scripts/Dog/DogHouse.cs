@@ -2,7 +2,7 @@ using UnityEngine;
 
 /// <summary>
 /// Meatball's dog house. When he is "at home" he hangs out at the Sit Point next to it,
-/// and you can still talk to him there. Add this to the dog house object (Farm > NPCs > Set Up Meatball does it for you).
+/// and you can still talk to him there. Add this to the dog house object (Farm > Set Up > Meatball does it for you).
 /// </summary>
 public class DogHouse : MonoBehaviour
 {

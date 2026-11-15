@@ -10,7 +10,7 @@ using UnityEngine;
 /// Turns a player sprite sheet into 8 animations (Idle and Walk, facing Down / Up / Left / Right),
 /// builds the Animator Controller for them, and attaches everything to your Player.
 ///
-/// Menu: Farm > Player > Build Animations From Sheet
+/// Menu: Farm > Set Up > Player Animations From Sheet
 ///
 /// Sheet layout (read from the TOP, each cell 16 x 24 pixels):
 ///   row 1  Idle Down   (2 frames)      row 5  Walk Down   (4 frames)
@@ -38,7 +38,7 @@ public static class PlayerAnimationBuilder
         new Vector2(0f, -1f), new Vector2(0f, 1f), new Vector2(-1f, 0f), new Vector2(1f, 0f)
     };
 
-    [MenuItem("Farm/Player/Build Animations From Sheet")]
+    [MenuItem("Farm/Set Up/Player Animations From Sheet", false, 101)]
     public static void Build()
     {
         string sheetPath = FindSheetPath();
@@ -175,7 +175,7 @@ public static class PlayerAnimationBuilder
                 rect.rect = new Rect(c * CellW, tex.height - (r + 1) * CellH, CellW, CellH);
                 rect.alignment = SpriteAlignment.BottomCenter;
                 rect.pivot = new Vector2(0.5f, 0f);
-                rect.spriteID = GUID.Generate();
+                rect.spriteID = StableSpriteId.For(provider, baseName, rect.name);   // keeps the same ID every run, so nothing loses its art
                 rects.Add(rect);
             }
         }

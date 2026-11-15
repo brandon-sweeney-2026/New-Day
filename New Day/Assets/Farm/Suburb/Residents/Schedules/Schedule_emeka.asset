@@ -1,0 +1,252 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd850fae68a74ed4087495a7eab7ac27, type: 3}
+  m_Name: Schedule_emeka
+  m_EditorClassIdentifier: Assembly-CSharp::NpcScheduleData
+  npcId: emeka
+  idleSpot: H1Bed
+  idleScene: 
+  routes:
+  - routeName: Breakfast
+    enabled: 1
+    priority: 10
+    startHour: 6.5
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: H1Kitchen
+      scene: 
+      waitMinutes: 30
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Having breakfast
+    whenFinished: 1
+  - routeName: Morning mail round
+    enabled: 1
+    priority: 20
+    startHour: 7.5
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 63
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: H2Street
+      scene: 
+      waitMinutes: 4
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Delivering the mail
+    - place: H3Street
+      scene: 
+      waitMinutes: 4
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Delivering the mail
+    - place: StoreFront
+      scene: 
+      waitMinutes: 6
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Delivering to the Kims
+    - place: HwStreet
+      scene: 
+      waitMinutes: 6
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Delivering catalogues to Frank
+    - place: H10Street
+      scene: 
+      waitMinutes: 4
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Delivering the mail
+    - place: H4Street
+      scene: 
+      waitMinutes: 4
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Delivering the mail
+    - place: H5Street
+      scene: 
+      waitMinutes: 4
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Delivering the mail
+    - place: H6Street
+      scene: 
+      waitMinutes: 4
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Delivering the mail
+    - place: H9Street
+      scene: 
+      waitMinutes: 4
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Delivering the mail
+    - place: H8Street
+      scene: 
+      waitMinutes: 4
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Delivering the mail
+    - place: H7Street
+      scene: 
+      waitMinutes: 4
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Delivering the mail
+    whenFinished: 1
+  - routeName: Lunch at home
+    enabled: 1
+    priority: 10
+    startHour: 12.5
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: H1Kitchen
+      scene: 
+      waitMinutes: 40
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Having lunch
+    whenFinished: 1
+  - routeName: Sunday football
+    enabled: 1
+    priority: 30
+    startHour: 10
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 64
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 35
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: FieldRight
+      scene: 
+      waitMinutes: 90
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Playing football with Nia
+    - place: ParkBenchB
+      scene: 
+      waitMinutes: 30
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Catching his breath
+    whenFinished: 1
+  - routeName: Football with Nia
+    enabled: 1
+    priority: 10
+    startHour: 16
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 35
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: FieldRight
+      scene: 
+      waitMinutes: 60
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Playing football with Nia
+    - place: ParkBenchB
+      scene: 
+      waitMinutes: 20
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Catching his breath
+    whenFinished: 1
+  - routeName: Evening
+    enabled: 1
+    priority: 10
+    startHour: 19
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: H1Kitchen
+      scene: 
+      waitMinutes: 45
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Cooking dinner
+    - place: H1Living
+      scene: 
+      waitMinutes: 90
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Reading the paper
+    whenFinished: 0

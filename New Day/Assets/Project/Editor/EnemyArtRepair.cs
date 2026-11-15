@@ -5,7 +5,7 @@ using UnityEngine;
 
 /// <summary>
 /// Repairs the Bat and Bug art when their sprites have gone missing or blank.
-/// Menu: Farm > Mountain > Repair Enemy Art.   Must live in a folder named "Editor".
+/// Menu: Farm > Fix and Diagnose > Repair Enemy Art.   Must live in a folder named "Editor".
 ///
 /// Why it breaks: the mountain setup cut bat_sheet.png and bug_sheet.png with RANDOM sprite IDs every time it ran, so anything that
 /// pointed at the old sprites (prefab frame lists, copies in a scene) lost them. This tool
@@ -16,7 +16,7 @@ using UnityEngine;
 /// </summary>
 public static class EnemyArtRepair
 {
-    [MenuItem("Farm/Mountain/Repair Enemy Art")]
+    [MenuItem("Farm/Fix and Diagnose/Repair Enemy Art", false, 420)]
     public static void Repair()
     {
         string batPath = FindTexture("bat_sheet"), bugPath = FindTexture("bug_sheet");
@@ -57,7 +57,7 @@ public static class EnemyArtRepair
         EditorUtility.DisplayDialog("Repair enemy art",
             "Bat sheet: " + (bat == null ? "not found" : bat.Count + " sprites") + ", Bug sheet: " + (bug == null ? "not found" : bug.Count + " sprites") +
             "\nPrefabs repaired: " + prefabs + "\nEnemies repaired in this scene: " + scene +
-            "\n\nIf you see 0 prefabs, the Bat/Bug prefabs are missing: run Farm > Mountain > Set Up Mountain Trail." +
+            "\n\nIf you see 0 prefabs, the Bat/Bug prefabs are missing: run Farm > Set Up > Mountain Trail." +
             "\n\nNot compiled in Unity - tell me about any red errors.", "OK");
     }
 

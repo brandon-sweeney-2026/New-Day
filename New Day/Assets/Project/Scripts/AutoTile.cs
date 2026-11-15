@@ -10,7 +10,7 @@ using UnityEngine.Tilemaps;
 ///   Blob47    - 8 neighbours (edges AND corners). Used for terrain, soil and paths.
 ///   Cardinal4 - 4 neighbours (up/right/down/left). Used for fences.
 ///
-/// You normally never create these by hand: the Kiln Harvest importer (Farm > Kiln Harvest) makes them.
+/// You normally never create these by hand: the Kiln Harvest importer (Farm > Build Art > Kiln Harvest) makes them.
 /// To make your own, use Create > Farm > Auto Tile and fill in the Pieces list.
 ///
 /// Neighbour bits:
@@ -31,7 +31,7 @@ public class AutoTile : TileBase
 
     /// <summary>
     /// A shore variant of the pieces: the same shape, but the land part of the edge looks like a different ground (sand, dirt, moss...).
-    /// Used by the water tile so its shore matches whatever ground it touches. Made by Farm > Biomes > Build Shore-Matching Water.
+    /// Used by the water tile so its shore matches whatever ground it touches. Made by Farm > Build Art > Shore-Matching Water.
     /// </summary>
     [Serializable]
     public class ShoreKind

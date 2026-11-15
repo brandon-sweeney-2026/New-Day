@@ -4,13 +4,13 @@ using UnityEditor;
 using UnityEngine;
 
 /// <summary>
-/// Farm > NPCs > Set Up Mitzi
+/// Farm > Set Up > Mitzi
 /// Imports Mitzi's art (copy the "Cat" folder into your Assets first), then puts a cat tree, a Douglas fir, a sunny spot and Mitzi
 /// into the open scene near your house and wires everything up. Safe to run again: it reuses what is already in the scene.
 /// </summary>
 public static class MitziSetupMenu
 {
-    [MenuItem("Farm/NPCs/Set Up Mitzi")]
+    [MenuItem("Farm/Set Up/Mitzi", false, 161)]
     public static void Run()
     {
         string dir = FindFolder("mitzi_sheet");
@@ -271,7 +271,7 @@ public static class MitziSetupMenu
                 rect.rect = new Rect(c * cellW, tex.height - (r + 1) * cellH, cellW, cellH);
                 rect.alignment = align;
                 rect.pivot = align == SpriteAlignment.BottomCenter ? new Vector2(0.5f, 0f) : new Vector2(0.5f, 0.5f);
-                rect.spriteID = GUID.Generate();
+                rect.spriteID = StableSpriteId.For(provider, baseName, rect.name);   // keeps the same ID every run, so nothing loses its art
                 rects.Add(rect);
             }
         provider.SetSpriteRects(rects.ToArray());

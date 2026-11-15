@@ -3,13 +3,13 @@ using UnityEditor;
 using UnityEngine;
 
 /// <summary>
-/// Farm > Shipping > Set Up Mailbox
+/// Farm > Set Up > Mailbox
 /// Imports the mailbox art, then turns your ShippingBin (or makes one) into the blue mailbox and wires up the shipping screen art.
 /// Safe to run again.
 /// </summary>
 public static class ShippingSetupMenu
 {
-    [MenuItem("Farm/Shipping/Set Up Mailbox")]
+    [MenuItem("Farm/Set Up/Mailbox", false, 124)]
     public static void Run()
     {
         string dir = FindMailFolder();

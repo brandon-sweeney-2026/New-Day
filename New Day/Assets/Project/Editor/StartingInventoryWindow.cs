@@ -4,7 +4,7 @@ using UnityEditorInternal;
 using UnityEngine;
 
 /// <summary>
-/// Farm > Debug > Starting Inventory
+/// Farm > Test and Debug > Starting Inventory
 /// Edit what the player starts the game with, without hunting for the list in the Inspector.
 ///   - Top: the 20 backpack slots as they will look at the start (bottom row = hotbar, slots 1-10).
 ///   - Middle: the starting list. Drag the handles to reorder, change counts, press - to remove.
@@ -27,7 +27,7 @@ public class StartingInventoryWindow : EditorWindow
     private int addAmount = 1;
     private Vector2 scrollList, scrollAll;
 
-    [MenuItem("Farm/Debug/Starting Inventory")]
+    [MenuItem("Farm/Test and Debug/Starting Inventory", false, 301)]
     public static void Open()
     {
         var w = GetWindow<StartingInventoryWindow>("Starting Inventory");

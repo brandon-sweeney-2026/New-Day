@@ -1,0 +1,198 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd850fae68a74ed4087495a7eab7ac27, type: 3}
+  m_Name: Schedule_dad
+  m_EditorClassIdentifier: Assembly-CSharp::NpcScheduleData
+  npcId: dad
+  idleSpot: AptBed1
+  idleScene: 
+  routes:
+  - routeName: Breakfast, then open the store
+    enabled: 1
+    priority: 10
+    startHour: 6.5
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: AptKitchen
+      scene: 
+      waitMinutes: 25
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Having breakfast
+    - place: StoreCheckout
+      scene: 
+      waitMinutes: 270
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Running the till
+    whenFinished: 1
+  - routeName: Lunch upstairs
+    enabled: 1
+    priority: 10
+    startHour: 12.25
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: AptDining
+      scene: 
+      waitMinutes: 40
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Having lunch
+    whenFinished: 1
+  - routeName: Afternoon till
+    enabled: 1
+    priority: 10
+    startHour: 13.5
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: StoreCheckout
+      scene: 
+      waitMinutes: 300
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Running the till
+    whenFinished: 1
+  - routeName: 'Rainy day: stock check'
+    enabled: 1
+    priority: 30
+    startHour: 13.5
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 12
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: StoreAisleBack
+      scene: 
+      waitMinutes: 40
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Checking stock
+    - place: StoreSlush
+      scene: 
+      waitMinutes: 15
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Fixing the slush machine
+    - place: StoreCheckout
+      scene: 
+      waitMinutes: 220
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Running the till
+    whenFinished: 1
+  - routeName: Close up
+    enabled: 1
+    priority: 10
+    startHour: 19.25
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: StoreDoorInside
+      scene: 
+      waitMinutes: 5
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Locking up
+    - place: AptLiving
+      scene: 
+      waitMinutes: 120
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Watching TV
+    whenFinished: 0
+  - routeName: Sunday in the city
+    enabled: 1
+    priority: 50
+    startHour: 8.5
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 64
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: CityMarket
+      scene: City
+      waitMinutes: 240
+      transitMinutes: 45
+      facing: {x: 0, y: 0}
+      activity: Buying stock in the city
+    whenFinished: 0

@@ -5,8 +5,8 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 /// <summary>
-/// Makes (or resets) the four ready-to-use geographies from the tiles that Farm > Biomes > Build Path Palettes created:
-/// Mountain Pathway, Road, Sidewalk, Forest Pathway, Dock. Menu: Farm > Level Editors > Make Geography Presets.
+/// Makes (or resets) the four ready-to-use geographies from the tiles that Farm > Build Art > Path Palettes created:
+/// Mountain Pathway, Road, Sidewalk, Forest Pathway, Dock. Menu: Farm > Build Art > Geography Presets.
 /// Run Build Path Palettes first, otherwise the presets come out empty (the Geography Brush window has a Reset button for that).
 /// Must live in a folder named "Editor".
 /// </summary>
@@ -95,7 +95,7 @@ public static class GeographyPresetMaker
         return null;
     }
 
-    [MenuItem("Farm/Level Editors/Make Geography Presets", false, 33)]
+    [MenuItem("Farm/Build Art/Geography Presets", false, 223)]
     public static void MakeMenu()
     {
         bool anyExist = false;
@@ -119,7 +119,7 @@ public static class GeographyPresetMaker
             if (isNew || reset) { Apply(p, d); made++; filled += p.fillTiles != null ? p.fillTiles.Length : 0; }
         }
         AssetDatabase.SaveAssets();
-        string warn = filled == 0 ? "\n\nNo path tiles were found. Run Farm > Biomes > Build Path Palettes first, then use 'Reset' again (here or in the Geography Brush window)." : "";
+        string warn = filled == 0 ? "\n\nNo path tiles were found. Run Farm > Build Art > Path Palettes first, then use 'Reset' again (here or in the Geography Brush window)." : "";
         EditorUtility.DisplayDialog("Geography presets", "Made or reset " + made + " preset(s) in " + Folder + "." + warn + "\n\nOpen Farm > Level Editors > Geography Brush to paint with them.\nNot compiled in Unity - tell me about any red errors.", "OK");
     }
 

@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 /// <summary>
-/// One-click setup for the new game systems. Menu: Farm > Game > Set Up Game Systems In Scene.
+/// One-click setup for the new game systems. Menu: Farm > Set Up > Game Systems In Scene.
 ///
 /// It is safe to run more than once: anything that already exists is reused, not duplicated.
 /// It adds to your open scene: TimeManager, PollutionMap (+ a Pollution tilemap), CropManager, GameHUD,
@@ -20,14 +20,14 @@ public static class GameSetupMenu
     private const string ItemsFolder = "Assets/Farm/Data/Items";
     private const string PollutionFolder = "Assets/Farm/Pollution";
 
-    [MenuItem("Farm/Game/Set Up Game Systems In Scene")]
+    [MenuItem("Farm/Set Up/Game Systems In Scene", false, 100)]
     public static void SetUp()
     {
         var player = Object.FindAnyObjectByType<PlayerController>();
         if (player == null)
         {
             EditorUtility.DisplayDialog("No player found",
-                "Add your Player (with a PlayerController) to the scene first.\n\nTip: Farm > Kiln Harvest > 2. Create Farm Scene Layout builds a whole scene.", "OK");
+                "Add your Player (with a PlayerController) to the scene first.\n\nTip: Farm > Build Art > Kiln Harvest > 2. Create Farm Scene Layout builds a whole scene.", "OK");
             return;
         }
 
@@ -102,8 +102,16 @@ public static class GameSetupMenu
                 ItemData.ToolAction.Axe, ItemData.ToolAction.Pickaxe, ItemData.ToolAction.Shovel
             };
             foreach (var action in order)
+            {
+                // Start with the weakest tool of each kind (Stone), not whichever one happens to be found first.
+                ItemData starter = null;
                 foreach (ItemData it in items)
-                    if (it.type == ItemData.ItemType.Tool && it.toolAction == action) { wanted.Add(it); break; }
+                {
+                    if (it.type != ItemData.ItemType.Tool || it.toolAction != action) continue;
+                    if (starter == null || (int)it.tier < (int)starter.tier) starter = it;
+                }
+                if (starter != null) wanted.Add(starter);
+            }
 
             foreach (ItemData it in items) if (it.type == ItemData.ItemType.Weapon) { wanted.Add(it); break; }
             foreach (ItemData it in items) if (it.type == ItemData.ItemType.Spell && it.spellEffect == ItemData.SpellEffect.Projectile) { wanted.Add(it); break; }

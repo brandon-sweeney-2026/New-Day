@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 /// <summary>
 /// Runs a fishing trip from start to finish:  cast -> pick bait -> wait for a bite -> rhythm fight -> catch (or escape).
 ///
-/// Put ONE of these in the scene (Farm > Fishing > Set Up Fishing does it) and fill the two lists. PlayerActions calls
+/// Put ONE of these in the scene (Farm > Set Up > Fishing does it) and fill the two lists. PlayerActions calls
 /// FishingManager.TryStart when the player uses a Fishing Rod while facing a FishingWater area.
 ///
 /// BUTTONS in the fight:  Up / Down / Left / Right = W A S D or the arrow keys (or the D-pad).

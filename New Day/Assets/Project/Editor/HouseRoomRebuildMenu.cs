@@ -3,7 +3,11 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 /// <summary>
-/// Farm > House > Rebuild Room After Resizing
+/// Farm > Set Up > Rebuild Selected Interior
+///
+/// Works on the interior you have SELECTED in the Hierarchy (the farmhouse, the store, the apartment...). With nothing selected it uses the
+/// object named "HouseInterior" (the farmhouse). Shops and apartments (rooms with an InteriorStyle) are repainted from their own style,
+/// floor patches, inside walls and Interior Blockers instead of the HouseManager catalog.
 ///
 /// After you change Width / Floor Rows / Wall Rows on the HouseInterior component, run this. It:
 ///  1. wipes the old floor and wall tiles (so nothing is left behind outside the new edge)
@@ -15,15 +19,23 @@ using UnityEngine.Tilemaps;
 /// </summary>
 public static class HouseRoomRebuildMenu
 {
-    [MenuItem("Farm/House/Rebuild Room After Resizing")]
+    [MenuItem("Farm/Set Up/Rebuild Selected Interior", false, 122)]
     public static void Run()
     {
-        var interior = Object.FindAnyObjectByType<HouseInterior>();
+        HouseInterior interior = null;
+        if (Selection.activeGameObject != null) interior = Selection.activeGameObject.GetComponentInParent<HouseInterior>();
         if (interior == null)
         {
-            EditorUtility.DisplayDialog("No house interior", "Couldn't find a HouseInterior in the open scene.", "OK");
+            GameObject named = GameObject.Find("HouseInterior");
+            if (named != null) interior = named.GetComponent<HouseInterior>();
+        }
+        if (interior == null) interior = Object.FindAnyObjectByType<HouseInterior>();
+        if (interior == null)
+        {
+            EditorUtility.DisplayDialog("No house interior", "Select an interior in the Hierarchy first (or add one to the scene).", "OK");
             return;
         }
+        Debug.Log("Rebuilding '" + interior.name + "'.");
 
         var so = new SerializedObject(interior);
         var floor = so.FindProperty("floorTilemap").objectReferenceValue as Tilemap;
@@ -34,9 +46,11 @@ public static class HouseRoomRebuildMenu
         if (floor != null) { Undo.RecordObject(floor, "Rebuild room"); floor.ClearAllTiles(); }
         if (wall != null) { Undo.RecordObject(wall, "Rebuild room"); wall.ClearAllTiles(); }
 
-        // default options come from the HouseManager's catalog
-        var mgr = Object.FindAnyObjectByType<HouseManager>();
+        // shops and apartments repaint from their own style (floor patches, inside walls, blockers)
+        var style = interior.GetComponent<InteriorStyle>();
+        var mgr = style != null ? null : Object.FindAnyObjectByType<HouseManager>();
         int painted = 0;
+        if (style != null) { style.Apply(); painted = 2; }
         if (mgr != null)
         {
             SerializedProperty catalog = new SerializedObject(mgr).FindProperty("catalog");
@@ -91,6 +105,7 @@ public static class HouseRoomRebuildMenu
         Place(room, "Backdrop", new Vector3(W * 0.5f, (FL + WR) * 0.5f, 0f));
         Place(room, "EntrySpawn", new Vector3(Mathf.Floor(W * 0.5f) + 0.5f, 1.2f, 0f));
         Place(room, "Doormat", new Vector3(Mathf.Floor(W * 0.5f), 0f, 0f));
+        Place(room, "Store_Doormat", new Vector3(Mathf.Floor(W * 0.5f) + 0.5f, 0.6f, 0f));
         Place(room, "ExitDoor", new Vector3(Mathf.Floor(W * 0.5f) + 0.5f, 0f, 0f));
         Place(room, "Slot_WallArt", new Vector3(Mathf.Floor(W * 0.5f), FL, 0f));
         Undo.CollapseUndoOperations(group);

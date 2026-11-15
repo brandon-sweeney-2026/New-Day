@@ -29,7 +29,7 @@ public static class FarmEditorLabels
 /// and paint in the Scene view. It edits the real Tilemaps in your scene, so each Scene is a level.
 /// All edits support Ctrl+Z / Ctrl+Y.
 ///
-/// Fastest way to get a correct scene: Farm > Kiln Harvest > 2. Create Farm Scene Layout.
+/// Fastest way to get a correct scene: Farm > Build Art > Kiln Harvest > 2. Create Farm Scene Layout.
 /// </summary>
 public class FarmLevelEditorWindow : EditorWindow
 {
@@ -212,7 +212,7 @@ public class FarmLevelEditorWindow : EditorWindow
         {
             EditorGUILayout.HelpBox(
                 "Assign at least the Ground tilemap to start.\n" +
-                "Quick way: Farm > Kiln Harvest > 2. Create Farm Scene Layout builds everything for you.",
+                "Quick way: Farm > Build Art > Kiln Harvest > 2. Create Farm Scene Layout builds everything for you.",
                 MessageType.Warning);
             EditorGUILayout.EndScrollView();
             return;
@@ -315,7 +315,7 @@ public class FarmLevelEditorWindow : EditorWindow
         if (count == 0)
         {
             EditorGUILayout.HelpBox(
-                "This palette is empty.\nRun Farm > Kiln Harvest > 1. Import Pack Assets, or open 'Edit palette list' below to drag in your own tiles/prefabs.",
+                "This palette is empty.\nRun Farm > Build Art > Kiln Harvest > 1. Import Pack Assets, or open 'Edit palette list' below to drag in your own tiles/prefabs.",
                 MessageType.Info);
             return;
         }

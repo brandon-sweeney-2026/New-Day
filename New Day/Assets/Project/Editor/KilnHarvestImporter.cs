@@ -11,7 +11,7 @@ using UnityEngine.Tilemaps;
 /// <summary>
 /// One-click setup for the "Kiln Harvest Free Sampler" art pack (16x16 cozy farming).
 ///
-///   Farm > Kiln Harvest > 1. Import Pack Assets
+///   Farm > Build Art > Kiln Harvest > 1. Import Pack Assets
 ///       Fixes every texture's import settings (Sprite, 16 Pixels Per Unit, Point filter, correct pivots),
 ///       slices the sprite sheets, and generates:
 ///         - Tile assets: random grass, flat dirt/sand, and AUTO-TILES (edges and corners join up by themselves):
@@ -19,12 +19,12 @@ using UnityEngine.Tilemaps;
 ///         - ItemData assets (seeds, produce, tools...) and CropData assets (8 crops with growth stages)
 ///         - Prefabs for trees, the farmhouse and props, ready to place with the Level Editor
 ///
-///   Farm > Kiln Harvest > 2. Create Farm Scene Layout
+///   Farm > Build Art > Kiln Harvest > 2. Create Farm Scene Layout
 ///       Builds a correctly configured Grid with all the tilemaps and a FarmManager that is already wired up.
 ///
 /// Everything generated goes into Assets/Farm/Kiln, OUTSIDE the pack folder, so re-copying or replacing the pack folder can never
 /// delete your tiles, items or prefabs (which is what made scene art vanish). If you still have the older "_UnityAssets" folder inside
-/// the pack, it keeps being used until you run Farm > Kiln Harvest > Move Generated Assets Out Of The Pack Folder (that keeps every
+/// the pack, it keeps being used until you run Farm > Build Art > Kiln Harvest > Move Generated Assets Out Of The Pack Folder (that keeps every
 /// reference in your scenes). Running the importer again is safe: it will not overwrite items, crops or prefabs you have edited,
 /// and sprite IDs stay the same, so nothing in your scenes loses its picture.
 /// </summary>
@@ -45,7 +45,7 @@ public static class KilnHarvestImporter
         return PermanentRoot;
     }
 
-    [MenuItem("Farm/Kiln Harvest/Move Generated Assets Out Of The Pack Folder")]
+    [MenuItem("Farm/Build Art/Kiln Harvest/Move Generated Assets Out Of The Pack Folder", false, 243)]
     public static void MoveGeneratedOut()
     {
         string root = FindPackRoot();
@@ -77,14 +77,14 @@ public static class KilnHarvestImporter
     // When true, textures that were already imported are cut up and configured again (the old behaviour). Normally false.
     private static bool forceReimportTextures = false;
 
-    [MenuItem("Farm/Kiln Harvest/1. Import Pack Assets")]
+    [MenuItem("Farm/Build Art/Kiln Harvest/1. Import Pack Assets", false, 240)]
     public static void ImportPack()
     {
         forceReimportTextures = false;
         ImportPackInternal();
     }
 
-    [MenuItem("Farm/Kiln Harvest/1b. Re-Import Pack Textures (resets their import settings)")]
+    [MenuItem("Farm/Build Art/Kiln Harvest/1b. Re-Import Pack Textures (resets their import settings)", false, 241)]
     public static void ReimportPackTextures()
     {
         if (!EditorUtility.DisplayDialog("Kiln Harvest",
@@ -184,14 +184,14 @@ public static class KilnHarvestImporter
             "Import finished.\n\n" +
             "Tiles: " + tileCount + "\nItems: " + itemCount + "\nCrops: " + cropCount + "\nPrefabs: " + prefabCount +
             "\n\nEverything is in:\n" + outRoot +
-            "\n\nNext: Farm > Kiln Harvest > 2. Create Farm Scene Layout.", "OK");
+            "\n\nNext: Farm > Build Art > Kiln Harvest > 2. Create Farm Scene Layout.", "OK");
     }
 
     // ------------------------------------------------------------------
     // Menu entry 2: scene layout
     // ------------------------------------------------------------------
 
-    [MenuItem("Farm/Kiln Harvest/2. Create Farm Scene Layout")]
+    [MenuItem("Farm/Build Art/Kiln Harvest/2. Create Farm Scene Layout", false, 242)]
     public static void CreateSceneLayout()
     {
         string root = FindPackRoot();

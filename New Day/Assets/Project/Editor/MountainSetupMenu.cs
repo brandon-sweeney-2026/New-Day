@@ -5,8 +5,8 @@ using UnityEngine;
 using UnityEngine.Rendering;
 
 /// <summary>
-/// Farm > Mountain > Set Up Mountain Trail      (run once, in your mountain scene)
-/// Farm > Mountain > Drop Test Set Near Player  (optional: a bug, a bat and a few rocks to try things)
+/// Farm > Set Up > Mountain Trail      (run once, in your mountain scene)
+/// Farm > Test and Debug > Drop Mountain Test Set Near Player  (optional: a bug, a bat and a few rocks to try things)
 ///
 /// Set Up Mountain Trail:
 ///  1. imports the art (copy the "Mountain" folder into Assets first)
@@ -47,7 +47,7 @@ public static class MountainSetupMenu
         return l;
     }
 
-    [MenuItem("Farm/Mountain/Set Up Mountain Trail")]
+    [MenuItem("Farm/Set Up/Mountain Trail", false, 144)]
     public static void Run()
     {
         artFolder = FindFolder("rock_brown_a");
@@ -149,7 +149,7 @@ public static class MountainSetupMenu
         EditorUtility.DisplayDialog("Mountain trail ready",
             "Done!\n\n- 11 items created in " + ItemsFolder + "\n- prefabs created in " + prefabDir +
             "\n  (12 rocks, Bug, Bat, MineEntrance)\n- 'MountainSpawners' added to the scene with rocks and enemies set up.\n" +
-            (pieces ? "- Level Editor pieces added (zones, keep-clear marker, Bug, Bat).\n" : "- Level Editor zone pieces skipped: copy the 'Zones' art folder in, then run Farm > Level Editors > Add Mountain Editor Pieces.\n") + "\n" +
+            (pieces ? "- Level Editor pieces added (zones, keep-clear marker, Bug, Bat).\n" : "- Level Editor zone pieces skipped: copy the 'Zones' art folder in, then run Farm > Build Art > Mountain Editor Pieces.\n") + "\n" +
             "Select MountainSpawners: if your ground tilemap isn't called 'Ground', drag it into 'Spawn On Tilemap' on both spawner components.", "OK");
     }
 
@@ -262,12 +262,12 @@ public static class MountainSetupMenu
     // ------------------------------------------------------------------
     // Level Editor pieces
     // ------------------------------------------------------------------
-    [MenuItem("Farm/Level Editors/Add Mountain Editor Pieces", false, 31)]
+    [MenuItem("Farm/Build Art/Mountain Editor Pieces", false, 221)]
     public static void AddPiecesMenu()
     {
         if (!BuildDesignPieces())
             EditorUtility.DisplayDialog("Couldn't add the pieces",
-                "Needs two things:\n1. Run Farm > Mountain > Set Up Mountain Trail first (it makes the rocks, Bug and Bat).\n2. Copy the 'Zones' art folder into Assets.", "OK");
+                "Needs two things:\n1. Run Farm > Set Up > Mountain Trail first (it makes the rocks, Bug and Bat).\n2. Copy the 'Zones' art folder into Assets.", "OK");
         else
             EditorUtility.DisplayDialog("Level Editor pieces ready",
                 "Open Farm > Level Editors > Farm Level Editor, choose the Objects layer, open 'Edit palette list' and press 'Reload this palette from labelled assets'.\nYou'll find Zone_Rocks, Zone_Enemies, Marker_KeepClear, Bug, Bat, the rocks and MineEntrance.", "OK");
@@ -346,7 +346,7 @@ public static class MountainSetupMenu
     // ------------------------------------------------------------------
     // Test set
     // ------------------------------------------------------------------
-    [MenuItem("Farm/Mountain/Drop Test Set Near Player")]
+    [MenuItem("Farm/Test and Debug/Drop Mountain Test Set Near Player", false, 340)]
     public static void DropTestSet()
     {
         var player = Object.FindAnyObjectByType<PlayerController>();
@@ -366,7 +366,7 @@ public static class MountainSetupMenu
                 break;
             }
         }
-        if (i == 0) EditorUtility.DisplayDialog("Nothing to drop", "Run Farm > Mountain > Set Up Mountain Trail first.", "OK");
+        if (i == 0) EditorUtility.DisplayDialog("Nothing to drop", "Run Farm > Set Up > Mountain Trail first.", "OK");
     }
 
     // ------------------------------------------------------------------

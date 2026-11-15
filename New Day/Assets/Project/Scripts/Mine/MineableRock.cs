@@ -43,7 +43,7 @@ public class MineableRock : MonoBehaviour, IToolTarget
         sr = GetComponent<SpriteRenderer>();
     }
 
-    public bool OnToolUsed(ItemData.ToolAction tool, PlayerActions user)
+    public bool OnToolUsed(ItemData.ToolAction tool, int power, PlayerActions user)
     {
         if (hitsLeft <= 0) return false;
         if (tool != ItemData.ToolAction.Pickaxe)
@@ -52,7 +52,7 @@ public class MineableRock : MonoBehaviour, IToolTarget
             return false;
         }
 
-        hitsLeft--;
+        hitsLeft = Mathf.Max(0, hitsLeft - Mathf.Max(1, power));   // a better pickaxe counts as several hits
         shakeUntil = Time.time + 0.15f;
         // a rock gets darker as it cracks
         if (sr != null) sr.color = Color.Lerp(Color.white, new Color(0.7f, 0.7f, 0.7f), 1f - (float)hitsLeft / hits);

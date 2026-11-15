@@ -112,7 +112,7 @@ public class GrowingTree : MonoBehaviour, IToolTarget
     // Chopping
     // ------------------------------------------------------------------
 
-    public bool OnToolUsed(ItemData.ToolAction tool, PlayerActions user)
+    public bool OnToolUsed(ItemData.ToolAction tool, int power, PlayerActions user)
     {
         if (tool != ItemData.ToolAction.Axe)
         {
@@ -120,7 +120,7 @@ public class GrowingTree : MonoBehaviour, IToolTarget
             return false;
         }
 
-        hitsLeft--;
+        hitsLeft -= Mathf.Max(1, power);   // a better axe does more damage per swing
         shakeUntil = Time.time + 0.15f;
 
         if (hitsLeft <= 0) FellTree();

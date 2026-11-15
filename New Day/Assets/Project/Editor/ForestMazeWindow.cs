@@ -8,7 +8,7 @@ using UnityEngine;
 /// grove (it tries many layouts until the path is long enough), a locked gate + stump + item request in every room on the main path, shadow animals in
 /// every room, dead-end side rooms, and the enchanted grove with the Fairy at the very end. Everything it makes is ordinary scene objects,
 /// so you can move, delete or rebuild any room by hand afterwards (select a room > "Rebuild Room").
-/// Set up first with Farm > Forest > Set Up Forest.
+/// Set up first with Farm > Set Up > Forest.
 /// </summary>
 public class ForestMazeWindow : EditorWindow
 {
@@ -65,7 +65,7 @@ public class ForestMazeWindow : EditorWindow
         GameObject roomPrefab = FindPrefab("ForestRoom"), stumpPrefab = FindPrefab("ForestStump"), fairyPrefab = FindPrefab("Fairy"), zonePrefab = FindPrefab("Grove_Zone");
         if (roomPrefab == null || stumpPrefab == null || fairyPrefab == null || zonePrefab == null)
         {
-            EditorUtility.DisplayDialog("Not set up", "Run Farm > Forest > Set Up Forest first.", "OK");
+            EditorUtility.DisplayDialog("Not set up", "Run Farm > Set Up > Forest first.", "OK");
             return;
         }
         var style = AssetDatabase.LoadAssetAtPath<ForestStyle>(ForestSetupMenu.DataFolder + "/ForestStyle_Polluted.asset");

@@ -29,7 +29,7 @@ public class GameHUD : MonoBehaviour
     [SerializeField] private float barWidth = 220f;
     [SerializeField] private float barHeight = 20f;
 
-    [Header("Art (optional: Farm > UI > Apply HUD Art fills these in)")]
+    [Header("Art (optional: Farm > Set Up > HUD Art fills these in)")]
     [SerializeField] private Sprite forestPanel;        // bottom inventory frame
     [SerializeField] private Sprite forestSlot;
     [SerializeField] private Sprite forestSelected;
@@ -413,7 +413,7 @@ public class GameHUD : MonoBehaviour
 
     // ------------------------------------------------------------------
     // Art helpers. Every picture is optional: leave a field empty and the plain colour boxes are used instead.
-    // The art is drawn at 2 screen pixels per art pixel (set by Farm > UI > Apply HUD Art).
+    // The art is drawn at 2 screen pixels per art pixel (set by Farm > Set Up > HUD Art).
     // ------------------------------------------------------------------
 
     /// <summary>Gives an Image a picture. Sliced = the corners stay sharp while the middle stretches.</summary>

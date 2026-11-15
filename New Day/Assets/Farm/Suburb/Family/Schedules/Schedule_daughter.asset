@@ -1,0 +1,224 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd850fae68a74ed4087495a7eab7ac27, type: 3}
+  m_Name: Schedule_daughter
+  m_EditorClassIdentifier: Assembly-CSharp::NpcScheduleData
+  npcId: daughter
+  idleSpot: AptBed3
+  idleScene: 
+  routes:
+  - routeName: Morning routine
+    enabled: 1
+    priority: 5
+    startHour: 7.5
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: AptBath2
+      scene: 
+      waitMinutes: 20
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Getting ready
+    - place: AptKitchen
+      scene: 
+      waitMinutes: 25
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Having breakfast
+    - place: AptDining
+      scene: 
+      waitMinutes: 90
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Studying
+    whenFinished: 1
+  - routeName: University in the city
+    enabled: 1
+    priority: 40
+    startHour: 7.75
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 11
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: CityCampus
+      scene: City
+      waitMinutes: 360
+      transitMinutes: 40
+      facing: {x: 0, y: 0}
+      activity: At lectures in the city
+    whenFinished: 0
+  - routeName: Helping at the store
+    enabled: 1
+    priority: 40
+    startHour: 9.5
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 36
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: StoreSeeds
+      scene: 
+      waitMinutes: 45
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Sorting seeds
+    - place: StoreAisleMid
+      scene: 
+      waitMinutes: 30
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Stocking shelves
+    whenFinished: 1
+  - routeName: 'Saturday: cover the till'
+    enabled: 1
+    priority: 45
+    startHour: 11.9
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 32
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: StoreCheckout
+      scene: 
+      waitMinutes: 105
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Running the till
+    whenFinished: 1
+  - routeName: Afternoon in her room
+    enabled: 1
+    priority: 5
+    startHour: 14.5
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: AptBed3
+      scene: 
+      waitMinutes: 120
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Listening to music
+    whenFinished: 1
+  - routeName: Reading in the plaza
+    enabled: 1
+    priority: 20
+    startHour: 15
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 80
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 3
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: PlazaBench2
+      scene: 
+      waitMinutes: 75
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Reading on the bench
+    whenFinished: 1
+  - routeName: Evening
+    enabled: 1
+    priority: 10
+    startHour: 19
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: AptDining
+      scene: 
+      waitMinutes: 60
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Having dinner
+    - place: AptLiving
+      scene: 
+      waitMinutes: 90
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Watching TV
+    whenFinished: 0

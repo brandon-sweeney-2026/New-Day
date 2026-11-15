@@ -5,7 +5,7 @@ using UnityEngine.Rendering.Universal;
 using UnityEngine.Tilemaps;
 
 /// <summary>
-/// The sun, the shadows and the darkness. One of these lives in your scene (Farm > Lighting > Set Up Lighting adds it, and it also
+/// The sun, the shadows and the darkness. One of these lives in your scene (Farm > Set Up > Lighting adds it, and it also
 /// creates itself automatically if you forget).
 ///
 /// THE SUN
@@ -129,7 +129,7 @@ public class LightingManager : MonoBehaviour
         if ((litMat == null || unlitMat == null) && !warnedMats)
         {
             warnedMats = true;
-            Debug.LogWarning("LightingManager: couldn't find the sprite materials. Run Farm > Lighting > Set Up Lighting once so they are created in Assets/Resources/Lighting.");
+            Debug.LogWarning("LightingManager: couldn't find the sprite materials. Run Farm > Set Up > Lighting once so they are created in Assets/Resources/Lighting.");
         }
     }
 
@@ -222,6 +222,9 @@ public class LightingManager : MonoBehaviour
         else if (hour < lampsOffHour) on = 1f - Mathf.Clamp01((hour - (lampsOffHour - fade)) / fade);
         else on = 0f;
         lampLevel = on;
+
+        // In the mine shaft there is no sun at all: always "night" (so no sun shadows) and the lamps are always lit.
+        if (Underground.Active) { nightAmount = 1f; lampLevel = 1f; }
     }
 
     // Reads HouseInterior's private "current" room field by name, so HouseInterior.cs needs no changes.
@@ -248,6 +251,8 @@ public class LightingManager : MonoBehaviour
     private void ApplyLight()
     {
         if (sun == null) return;
+        // Underground the mine decides the light (each theme has its own colour), whatever the time of day.
+        if (Underground.Active) { sun.color = Underground.AmbientColor; sun.intensity = Underground.AmbientBrightness; return; }
         Color dayCol = Color.Lerp(noonColor, horizonColor, Mathf.Abs(sunT));
         Color outCol = Color.Lerp(dayCol, nightTint, nightAmount);
         float outInt = Mathf.Lerp(dayIntensity, nightBrightness * dayIntensity, nightAmount);

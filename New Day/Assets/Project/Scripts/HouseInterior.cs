@@ -31,6 +31,9 @@ public class HouseInterior : MonoBehaviour
 
     private static HouseInterior current;
 
+    /// <summary>True while the player is inside any room (the weather uses this to stop the rain indoors).</summary>
+    public static bool PlayerIsInside { get { return current != null; } }
+
     /// <summary>The room rectangle in world space (used to limit the camera).</summary>
     public Rect WorldBounds
     {

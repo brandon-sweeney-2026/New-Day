@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEngine;
 
 /// <summary>
-/// Makes the 54 mountain boulders ready for the Level Editor. Menu: Farm > Mountain > Build Boulder Prefabs.
+/// Makes the 54 mountain boulders ready for the Level Editor. Menu: Farm > Build Art > Boulder Prefabs.
 ///
 /// Put the Boulders folder (the PNGs named Boulder_3x2_Granite.png etc.) anywhere in Assets, then run this. It
 ///   - sets each picture up as a sprite (16 pixels per tile, crisp, standing on its bottom edge),
@@ -18,7 +18,7 @@ public static class BoulderPrefabBuilder
 {
     private static readonly Regex NameRule = new Regex("^Boulder_([1-9])x([1-9])_([A-Za-z]+)$");
 
-    [MenuItem("Farm/Mountain/Build Boulder Prefabs")]
+    [MenuItem("Farm/Build Art/Boulder Prefabs", false, 206)]
     public static void Build()
     {
         var pngs = new List<string>();

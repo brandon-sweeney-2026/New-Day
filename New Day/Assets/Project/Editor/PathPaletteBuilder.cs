@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 
 /// <summary>
 /// Builds 7 palettes for roads and paths: Asphalt Road, Asphalt Path, Sidewalk, Forest Path, Mountain Path, Dirt Path, Dock.
-/// Menu: Farm > Biomes > Build Path Palettes.
+/// Menu: Farm > Build Art > Path Palettes.
 ///
 /// First copy the "Paths" art folder (the six *_tiles.png files) anywhere into your Assets.
 /// Each palette is laid out the same way (the picture of the sheet IS the palette):
@@ -67,11 +67,11 @@ public static class PathPaletteBuilder
     private static readonly string[] Narrow16 =
         { "Dot", "N", "E", "NE", "S", "NS", "ES", "NES", "W", "NW", "EW", "NEW", "SW", "NSW", "ESW", "NESW" };
 
-    [MenuItem("Farm/Biomes/Build Path Palettes")]
+    [MenuItem("Farm/Build Art/Path Palettes", false, 201)]
     public static void Build() { BuildSurfaces(null); }
 
     /// <summary>Builds only the dock palette (needs dock_tiles.png somewhere in your Assets).</summary>
-    [MenuItem("Farm/Biomes/Build Dock Palette")]
+    [MenuItem("Farm/Build Art/Dock Palette", false, 202)]
     public static void BuildDock() { BuildSurfaces("Dock"); }
 
     private static void BuildSurfaces(string onlyTitle)
@@ -194,7 +194,7 @@ public static class PathPaletteBuilder
                 rect.rect = new Rect(c * Cell, tex.height - (r + 1) * Cell, Cell, Cell);
                 rect.alignment = SpriteAlignment.Center;
                 rect.pivot = new Vector2(0.5f, 0.5f);
-                rect.spriteID = GUID.Generate();
+                rect.spriteID = StableSpriteId.For(provider, baseName, rect.name);   // keeps the same ID every run, so nothing loses its art
                 rects.Add(rect);
             }
 

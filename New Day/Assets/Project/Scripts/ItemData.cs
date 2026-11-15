@@ -19,11 +19,14 @@ public class ItemData : ScriptableObject
 
     /// <summary>
     /// Which fighting style a Weapon uses. Generic = the old simple swing. The others are handled by WeaponController
-    /// (add that to the Player: Farm > Combat > Set Up Weapons On Player).
+    /// (add that to the Player: Farm > Set Up > Weapons).
     /// </summary>
     public enum WeaponKind { Generic, Sword, Dagger, Flail, Hammer, Bow }
 
-    /// <summary>Material tier (the same metals as the ores). Only used for the name/label and to keep the stats tidy.</summary>
+    /// <summary>
+    /// Material tier (the same metals as the ores), used by weapons AND tools. It is only a label: what a tool actually does
+    /// comes from its Tool Reach and Tool Power numbers, so you can tune each tool in the Inspector.
+    /// </summary>
     public enum WeaponTier { Stone, Copper, Iron, Gold, Platinum }
 
     [Header("Basics")]
@@ -45,6 +48,18 @@ public class ItemData : ScriptableObject
 
     [Header("Tool (only used when type is Tool)")]
     public ToolAction toolAction = ToolAction.None;
+    [Min(1), Tooltip("Hoe, Watering Can and Sickle/Scythe: how many tiles in a row in front of you one use covers. 1 = just the tile you face.")]
+    public int toolReach = 1;
+    [Min(1), Tooltip("Axe and Pickaxe: how many hits one swing counts as. 2 = trees and rocks break in half the swings.")]
+    public int toolPower = 1;
+
+    [Header("Seed (only used when type is Seed)")]
+    [Tooltip("The seasons this seed can be planted and will keep growing in. A crop still in the ground when its last season ends withers.")]
+    public bool plantInSpring = true;
+    public bool plantInSummer = true;
+    public bool plantInAutumn = true;
+    [Tooltip("Leave this OFF for crops: nothing grows in winter.")]
+    public bool plantInWinter = false;
 
     [Header("Weapon (only used when type is Weapon)")]
     [Min(0)] public int damage = 5;
@@ -60,6 +75,7 @@ public class ItemData : ScriptableObject
 
     [Header("Weapon style (new combat system - used when Weapon Kind is not Generic)")]
     public WeaponKind weaponKind = WeaponKind.Generic;
+    [Tooltip("Stone, Copper, Iron, Gold or Platinum. Used by weapons and by the upgradable tools. A label only.")]
     public WeaponTier tier = WeaponTier.Stone;
     [Range(0f, 1f), Tooltip("Chance for a hit to be a critical strike.")] public float critChance = 0.05f;
     [Min(1f), Tooltip("Damage multiplier on a critical strike (2 = double).")] public float critMultiplier = 2f;
@@ -90,6 +106,29 @@ public class ItemData : ScriptableObject
     public Color projectileColor = new Color(1f, 0.55f, 0.15f);
     public int healAmount = 20;
     public float castTime = 0.25f;
+
+    /// <summary>Can this seed be planted (and keep growing) in this season?</summary>
+    public bool CanPlantIn(TimeManager.Season season)
+    {
+        switch (season)
+        {
+            case TimeManager.Season.Spring: return plantInSpring;
+            case TimeManager.Season.Summer: return plantInSummer;
+            case TimeManager.Season.Autumn: return plantInAutumn;
+            default: return plantInWinter;
+        }
+    }
+
+    /// <summary>The seed's seasons as text for the shop and for messages, for example "Spring, Summer".</summary>
+    public string PlantSeasonsText()
+    {
+        var names = new System.Collections.Generic.List<string>();
+        if (plantInSpring) names.Add("Spring");
+        if (plantInSummer) names.Add("Summer");
+        if (plantInAutumn) names.Add("Autumn");
+        if (plantInWinter) names.Add("Winter");
+        return names.Count == 0 ? "no season" : string.Join(", ", names.ToArray());
+    }
 
     /// <summary>
     /// What one of this item sells for. A pollution level (0-5) lowers the price using the

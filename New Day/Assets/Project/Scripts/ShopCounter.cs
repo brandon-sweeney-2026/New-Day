@@ -11,6 +11,8 @@ public class ShopCounter : MonoBehaviour, IInteractable
 {
     [SerializeField] private string shopName = "General Store";
     [SerializeField] private List<ItemData> stock = new List<ItemData>();
+    [Tooltip("Seeds are only shown in the seasons they can be planted in (each seed's Plant In Spring / Summer / Autumn boxes).")]
+    [SerializeField] private bool hideOutOfSeasonSeeds = true;
 
     private static readonly int[] Quantities = { 1, 5, 10 };
     private int quantityIndex;
@@ -31,10 +33,18 @@ public class ShopCounter : MonoBehaviour, IInteractable
         int qty = Quantities[quantityIndex];
         var rows = new List<MenuRow>();
 
+        // Seeds are only on the shelf in the seasons they can be planted (so nothing in winter).
+        bool knowSeason = TimeManager.Instance != null;
+        TimeManager.Season season = knowSeason ? TimeManager.Instance.CurrentSeason : TimeManager.Season.Spring;
+        int seedsHidden = 0;
+
         foreach (ItemData stocked in stock)
         {
             if (stocked == null) continue;
             ItemData item = stocked;
+            bool isSeed = item.type == ItemData.ItemType.Seed;
+            if (isSeed && hideOutOfSeasonSeeds && knowSeason && !item.CanPlantIn(season)) { seedsHidden++; continue; }
+
             int total = item.buyPrice * qty;
             bool affordable = GameState.Gold >= total;
 
@@ -43,13 +53,22 @@ public class ShopCounter : MonoBehaviour, IInteractable
                 label = item.itemName,
                 right = "x" + qty + "   " + total + "g",
                 enabled = affordable,
-                detail = (string.IsNullOrEmpty(item.description) ? "" : item.description + "\n") + "You have " + (inv != null ? inv.CountOf(item) : 0) + "   -   Gold: " + GameState.Gold + "g",
+                detail = (string.IsNullOrEmpty(item.description) ? "" : item.description + "\n")
+                         + (isSeed ? "Plant in: " + item.PlantSeasonsText() + "\n" : "")
+                         + "You have " + (inv != null ? inv.CountOf(item) : 0) + "   -   Gold: " + GameState.Gold + "g",
                 onLeft = () => quantityIndex = Mathf.Max(0, quantityIndex - 1),
                 onRight = () => quantityIndex = Mathf.Min(Quantities.Length - 1, quantityIndex + 1),
                 onSelect = () => Buy(item, qty, inv)
             });
         }
 
+        if (seedsHidden > 0)
+            rows.Add(new MenuRow
+            {
+                label = season == TimeManager.Season.Winter ? "(no seeds in winter)" : "(" + seedsHidden + " seeds out of season)",
+                enabled = false,
+                detail = season == TimeManager.Season.Winter ? "Nothing grows in winter. Seeds are back in spring." : "Some seeds are only sold in the seasons they grow in."
+            });
         if (rows.Count == 0) rows.Add(new MenuRow { label = "(nothing for sale)", enabled = false });
         return rows;
     }

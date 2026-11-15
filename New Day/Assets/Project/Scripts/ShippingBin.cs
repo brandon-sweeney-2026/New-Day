@@ -7,7 +7,7 @@ using UnityEngine;
 /// Everything left in the box is SOLD at the end of the day, when you go to sleep or pass out, and the money is added then.
 /// Crops that grew in polluted soil sell for less (see PollutionSettings).
 ///
-/// Put it on an object with a Collider2D (a trigger works well). Farm > Shipping > Set Up Mailbox does it all for you.
+/// Put it on an object with a Collider2D (a trigger works well). Farm > Set Up > Mailbox does it all for you.
 /// </summary>
 [RequireComponent(typeof(Collider2D))]
 public class ShippingBin : MonoBehaviour, IInteractable

@@ -8,7 +8,25 @@ public enum HouseCategory
 {
     Floor, Wall,                       // inside
     Siding, Roof,                      // outside colours
-    Bed, Kitchen, Table, Rug, Bookshelf, Plant, Lamp, WallArt   // furniture
+    Bed, Kitchen, Table, Rug, Bookshelf, Plant, Lamp, WallArt,  // furniture   (Kitchen = the stove / range)
+    // ---- added by Suburb Pack C (Frank's Home & Hardware). New entries go at the END so your saved assets keep working. ----
+    Door,            // outside: front door colour
+    Shutters,        // outside: shutters beside the big windows
+    Cabinets,        // inside: the kitchen cabinets on the wall
+    WindowStyle,     // inside: what the windows look like
+    WindowLayout     // inside: where the windows are on the back wall
+}
+
+/// <summary>One window position on the back wall. Used by WindowLayout options.</summary>
+[Serializable]
+public class WindowSpot
+{
+    [Tooltip("Where along the back wall: 0 = far left, 1 = far right.")]
+    [Range(0f, 1f)] public float along = 0.5f;
+    [Tooltip("Move the window up (+) or down (-), in tiles.")]
+    public float lift = 0f;
+    [Tooltip("Mirror the picture.")]
+    public bool flip = false;
 }
 
 [Serializable]
@@ -46,6 +64,10 @@ public class HouseUpgradeData : ScriptableObject
     public TileBase tileBase;
     [Tooltip("Siding / Roof: the colour the outside is painted.")]
     public Color tint = Color.white;
+
+    [Header("Windows (WindowLayout options only)")]
+    [Tooltip("Where the windows go. Add as many as you like. The picture used comes from the WindowStyle you own.")]
+    public WindowSpot[] windowSpots = new WindowSpot[0];
 
     [Header("Effects")]
     [Tooltip("Kitchen only: chance (0-1) that cooking makes one extra serving.")]

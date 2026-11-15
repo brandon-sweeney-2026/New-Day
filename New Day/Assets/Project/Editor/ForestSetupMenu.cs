@@ -4,13 +4,13 @@ using UnityEditor;
 using UnityEngine;
 
 /// <summary>
-/// Farm > Forest > Set Up Forest           (run once, after copying the 'Forest' art folder into Assets)
-/// Farm > Forest > Test: Open All Doors    (play mode)
-/// Farm > Forest > Test: Reset Forest      (play mode: re-locks doors, clears offerings and fairy quests)
+/// Farm > Set Up > Forest           (run once, after copying the 'Forest' art folder into Assets)
+/// Farm > Test and Debug > Open All Forest Doors    (play mode)
+/// Farm > Test and Debug > Reset Forest Progress      (play mode: re-locks doors, clears offerings and fairy quests)
 ///
 /// Set Up Forest imports the art and makes: the Shadow Essence item, the polluted ForestStyle, the five shadow animals (prefabs), the forest room,
 /// gates, the stump, the Fairy (with starter quests), a ForestProgression asset, and every grove decoration. All of them are labelled so they
-/// show in the Level Editor's Objects palette. Then use Farm > Forest > Maze Generator to build the maze. Safe to run again.
+/// show in the Level Editor's Objects palette. Then use Farm > Level Editors > Forest Maze Generator to build the maze. Safe to run again.
 /// </summary>
 public static class ForestSetupMenu
 {
@@ -18,7 +18,7 @@ public static class ForestSetupMenu
     private const string ItemsFolder = "Assets/Farm/Data/Items";
     public static string ArtFolder;
 
-    [MenuItem("Farm/Forest/Set Up Forest")]
+    [MenuItem("Farm/Set Up/Forest", false, 140)]
     public static void Run()
     {
         ArtFolder = FindFolder("floor_dark_0");
@@ -116,7 +116,7 @@ public static class ForestSetupMenu
         EditorUtility.DisplayDialog("Forest ready",
             "Done! Made the Shadow Essence item, the forest style, 5 shadow animals, room, gates, stump, the Fairy and the grove pieces.\n\n" +
             "NEXT:\n1. Open " + DataFolder + "/ForestProgression and drag your FARM items and QUARRY items in (easiest first). I filled in what I could find.\n" +
-            "2. Open the scene for the forest and run Farm > Forest > Maze Generator.\n" +
+            "2. Open the scene for the forest and run Farm > Level Editors > Forest Maze Generator.\n" +
             "3. Level Editor > Objects palette > 'Reload this palette from labelled assets' to paint extras.\n\n" +
             "Remember: ground/lighting scripts treat the forest like any scene. Not compiled in Unity - tell me about any red errors.", "OK");
     }
@@ -449,7 +449,7 @@ public static class ForestSetupMenu
                 rect.rect = new Rect(c * cellW, tex.height - (r + 1) * cellH, cellW, cellH);
                 rect.alignment = align;
                 rect.pivot = align == SpriteAlignment.BottomCenter ? new Vector2(0.5f, 0f) : new Vector2(0.5f, 0.5f);
-                rect.spriteID = GUID.Generate();
+                rect.spriteID = StableSpriteId.For(provider, baseName, rect.name);   // keeps the same ID every run, so nothing loses its art
                 rects.Add(rect);
             }
         provider.SetSpriteRects(rects.ToArray());
@@ -462,7 +462,7 @@ public static class ForestSetupMenu
     }
 
     // ------------------------------------------------------------------ test helpers
-    [MenuItem("Farm/Forest/Test: Open All Doors")]
+    [MenuItem("Farm/Test and Debug/Open All Forest Doors", false, 322)]
     public static void OpenAll()
     {
         if (!Application.isPlaying) { EditorUtility.DisplayDialog("Play mode needed", "Press Play first.", "OK"); return; }
@@ -470,7 +470,7 @@ public static class ForestSetupMenu
         Debug.Log("All forest doors opened.");
     }
 
-    [MenuItem("Farm/Forest/Test: Reset Forest")]
+    [MenuItem("Farm/Test and Debug/Reset Forest Progress", false, 323)]
     public static void ResetForest()
     {
         if (!Application.isPlaying) { EditorUtility.DisplayDialog("Play mode needed", "Progress lives in the running game. Press Play first.", "OK"); return; }

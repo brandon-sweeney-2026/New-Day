@@ -7,7 +7,7 @@ using UnityEngine;
 /// - Build the room: choose what each side is (Wall / Open / Door), pick a "Style", then press "Rebuild Room" (button in the Inspector, or right-click the
 ///   component's title > Rebuild Room). It makes the floor, thorn walls with colliders, and gates where you chose Door.
 ///   A gap is 2 tiles wide. Two neighbouring rooms must both have a gap on the shared side (one of them with the Door, the other Open).
-///   The maze generator (Farm > Forest > Maze Generator) does all of this for you.
+///   The maze generator (Farm > Level Editors > Forest Maze Generator) does all of this for you.
 /// - When the player comes into the room, 1-3 shadow animals appear. If you leave and come back after a while they return.
 /// - It never spawns on top of scenery, walls or anything with a collider.
 /// </summary>
@@ -193,7 +193,7 @@ public class ForestRoom : MonoBehaviour
         BuildScenery(built.transform);
     }
 
-    /// <summary>Redoes only the scenery (trees, bushes...) and leaves walls, gates, stumps and everything else alone. Used by Farm > Forest > Update Maze.</summary>
+    /// <summary>Redoes only the scenery (trees, bushes...) and leaves walls, gates, stumps and everything else alone. Used by Farm > Level Editors > Update Forest Maze.</summary>
     public void RebuildScenery()
     {
         Transform built = transform.Find("Built");

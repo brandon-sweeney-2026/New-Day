@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 
 /// <summary>
-/// Farm > Debug > Give Items
+/// Farm > Test and Debug > Give Items
 /// A test tool for Play mode: lists EVERY item in the project (seeds, crops, tools, weapons, spells, resources, food...), with a search box, type filter and amount.
 /// Click "Give" to put it in the player's inventory (what doesn't fit drops on the ground at the player's feet).
 /// Also: add gold, fill health/magic if your player has them, and "Give ALL" for quick stress tests.
@@ -20,7 +20,7 @@ public class GiveItemsWindow : EditorWindow
     private Vector2 scroll;
     private string status = "";
 
-    [MenuItem("Farm/Debug/Give Items")]
+    [MenuItem("Farm/Test and Debug/Give Items", false, 300)]
     public static void Open()
     {
         var w = GetWindow<GiveItemsWindow>("Give Items");

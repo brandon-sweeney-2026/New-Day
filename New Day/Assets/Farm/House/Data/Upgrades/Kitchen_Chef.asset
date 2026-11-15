@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee9e5df28081ab2478d11e823ef04c35, type: 3}
+  m_Name: Kitchen_Chef
+  m_EditorClassIdentifier: Assembly-CSharp::HouseUpgradeData
+  displayName: Chef's Range
+  description: Professional steel with red knobs. 60% chance of an extra serving.
+  category: 5
+  isDefault: 0
+  goldCost: 1600
+  materials:
+  - item: {fileID: 11400000, guid: 5fb8c73e76c1f0849b4389eb0564e048, type: 2}
+    count: 16
+  - item: {fileID: 11400000, guid: 7dd304f87aa51554397365539e828f5c, type: 2}
+    count: 6
+  - item: {fileID: 11400000, guid: 36d84dfe118e72544995d304516fc444, type: 2}
+    count: 4
+  sprite: {fileID: 21300000, guid: cfe80a0e830ef7144b2689381ac84079, type: 3}
+  tile: {fileID: 0}
+  tileBase: {fileID: 0}
+  tint: {r: 1, g: 1, b: 1, a: 1}
+  windowSpots: []
+  foodBonus: 0.6

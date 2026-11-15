@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 /// <summary>
-/// Forest helpers (Farm > Forest > ...). Must live in a folder named "Editor".
+/// Forest helpers (Farm > Build Art > Forest Editor Layers, Farm > Set Up > Forest Sign Prefab). Must live in a folder named "Editor".
 ///   Make Level Editor Layers   Gives the open scene the 'Ground' / 'Paths' / 'Fences' tilemaps and the 'Objects' parent the Farm Level Editor needs.
 ///                              (The forest rooms draw their floors with sprites, so a forest scene has none of these until you run this.)
 ///   Make Sign Prefab           Creates the ForestSign prefab (label FarmLayer_Objects) so signs show up in the Level Editor's Objects palette.
@@ -12,7 +12,7 @@ using UnityEngine.Tilemaps;
 /// </summary>
 public static class ForestToolsMenu
 {
-    [MenuItem("Farm/Level Editors/Make Forest Editor Layers", false, 30)]
+    [MenuItem("Farm/Build Art/Forest Editor Layers", false, 220)]
     public static void MakeLayersMenu()
     {
         bool made = EnsureEditLayers();
@@ -59,7 +59,7 @@ public static class ForestToolsMenu
     }
 
     // ------------------------------------------------------------------ the sign prefab
-    [MenuItem("Farm/Forest/Make Sign Prefab")]
+    [MenuItem("Farm/Set Up/Forest Sign Prefab", false, 143)]
     public static void MakeSignMenu()
     {
         GameObject p = EnsureSignPrefab();

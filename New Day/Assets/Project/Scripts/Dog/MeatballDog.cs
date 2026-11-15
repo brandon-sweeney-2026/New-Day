@@ -7,13 +7,13 @@ using UnityEngine;
 ///   - Sits when you stop, and now and then scratches an ear or rolls over.
 ///   - Talk to him (action button) for: a tip about the closest thing you can do, what a villager likes (ONE per day),
 ///     a belly rub, or send him back to his dog house / call him out again.
-/// All the numbers are in the Inspector. The art arrays are filled by Farm > NPCs > Set Up Meatball.
+/// All the numbers are in the Inspector. The art arrays are filled by Farm > Set Up > Meatball.
 /// He lives in the farm scene, so he only follows you on the farm.
 /// </summary>
 [RequireComponent(typeof(Rigidbody2D))]
 public class MeatballDog : MonoBehaviour, IInteractable
 {
-    [Header("Art (filled in by Farm > NPCs > Set Up Meatball)")]
+    [Header("Art (filled in by Farm > Set Up > Meatball)")]
     [SerializeField] private Sprite[] walkSide;          // facing right (left uses a flip)
     [SerializeField] private Sprite[] walkDown;
     [SerializeField] private Sprite[] walkUp;

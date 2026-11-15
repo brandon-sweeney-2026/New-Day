@@ -4,7 +4,7 @@ using UnityEngine;
 
 /// <summary>
 /// Makes the invisible-barrier prefabs for every level editor: Barrier_1x1, Barrier_4x1 (wide), Barrier_1x4 (tall), Barrier_4x4.
-/// They are made automatically the first time Unity compiles this, and you can remake them with Farm > Level Editors > Make Barrier Prefabs.
+/// They are made automatically the first time Unity compiles this, and you can remake them with Farm > Build Art > Barrier Prefabs.
 /// They carry the label that puts them in the Objects palette of the Farm Level Editor (also used for the mountain) and the Forest Level Editor.
 /// In the Farm Level Editor press "Reload this palette from labelled assets" on the Objects layer once to see them.
 /// Must live in a folder named "Editor".
@@ -23,7 +23,7 @@ public static class BarrierPrefabMenu
         };
     }
 
-    [MenuItem("Farm/Level Editors/Make Barrier Prefabs", false, 32)]
+    [MenuItem("Farm/Build Art/Barrier Prefabs", false, 222)]
     public static void MakeMenu()
     {
         Make();

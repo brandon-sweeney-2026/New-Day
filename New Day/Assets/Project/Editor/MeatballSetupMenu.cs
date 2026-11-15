@@ -4,13 +4,13 @@ using UnityEditor;
 using UnityEngine;
 
 /// <summary>
-/// Farm > NPCs > Set Up Meatball
+/// Farm > Set Up > Meatball
 /// Imports Meatball's art (copy the "Dog" folder into your Assets first), then puts a dog house and Meatball into the open scene
 /// and wires everything up. Safe to run again: it reuses what is already in the scene.
 /// </summary>
 public static class MeatballSetupMenu
 {
-    [MenuItem("Farm/NPCs/Set Up Meatball")]
+    [MenuItem("Farm/Set Up/Meatball", false, 160)]
     public static void Run()
     {
         string dir = FindFolder("meatball_sheet");
@@ -212,7 +212,7 @@ public static class MeatballSetupMenu
                 rect.rect = new Rect(c * cellW, tex.height - (r + 1) * cellH, cellW, cellH);
                 rect.alignment = align;
                 rect.pivot = align == SpriteAlignment.BottomCenter ? new Vector2(0.5f, 0f) : new Vector2(0.5f, 0.5f);
-                rect.spriteID = GUID.Generate();
+                rect.spriteID = StableSpriteId.For(provider, baseName, rect.name);   // keeps the same ID every run, so nothing loses its art
                 rects.Add(rect);
             }
         provider.SetSpriteRects(rects.ToArray());

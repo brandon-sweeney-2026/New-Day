@@ -6,7 +6,10 @@ using UnityEngine;
 ///
 ///  - 'catalog' lists every HouseUpgradeData in the game. Add your own assets to it.
 ///  - Buying takes gold AND materials from the player's backpack.
-///  - Put this on an empty GameObject. The Setup menu (Farm > House) does it for you.
+///  - Put this on an empty GameObject. The Setup menu (Farm > Set Up > Build Farmhouse) does it for you.
+///  - What you own is remembered for the whole play session, even when you change scenes. That is what lets you buy an
+///    upgrade at Frank's store in the Suburbs (which has its own HouseManager with no house to paint) and find it on
+///    the farmhouse when you get home.
 /// </summary>
 public class HouseManager : MonoBehaviour
 {
@@ -19,11 +22,34 @@ public class HouseManager : MonoBehaviour
     [SerializeField] private SpriteRenderer sidingRenderer;
     [SerializeField] private SpriteRenderer roofRenderer;
 
+    [Tooltip("Front door and shutters are pictures drawn on top of the house and tinted with the option's colour.")]
+    [SerializeField] private SpriteRenderer doorRenderer;
+    [SerializeField] private SpriteRenderer shuttersRenderer;
+
     [Header("Interior")]
     [SerializeField] private HouseInterior interior;
+    [Tooltip("Draws the windows on the back wall (Pack C). Optional.")]
+    [SerializeField] private HouseWindows windows;
+
+    [Header("Buying")]
+    [Tooltip("ON: new upgrades can only be BOUGHT at Frank's Home & Hardware. The design table at home still lets you switch between things you own.")]
+    public bool buyOnlyAtHardwareStore = false;
 
     private readonly Dictionary<HouseCategory, HouseUpgradeData> selected = new Dictionary<HouseCategory, HouseUpgradeData>();
     private readonly HashSet<string> owned = new HashSet<string>();
+
+    // Remembered between scenes (static = shared by every HouseManager, and kept when a scene is unloaded).
+    // Names of the upgrades you own, and the name of the one in use for each category.
+    private static readonly HashSet<string> rememberedOwned = new HashSet<string>();
+    private static readonly Dictionary<HouseCategory, string> rememberedSelected = new Dictionary<HouseCategory, string>();
+
+    /// <summary>Forget everything when the game starts (pressing Play), so a new session begins with the defaults.</summary>
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+    private static void ResetRemembered()
+    {
+        rememberedOwned.Clear();
+        rememberedSelected.Clear();
+    }
 
     /// <summary>Raised whenever something is bought or changed.</summary>
     public event System.Action OnChanged;
@@ -41,6 +67,14 @@ public class HouseManager : MonoBehaviour
             if (o == null || !o.isDefault) continue;
             owned.Add(o.name);
             selected[o.category] = o;
+        }
+
+        // Then put back what was bought or picked earlier in this play session (maybe in another scene).
+        foreach (string id in rememberedOwned) owned.Add(id);
+        foreach (HouseUpgradeData o in catalog)
+        {
+            string picked;
+            if (o != null && rememberedSelected.TryGetValue(o.category, out picked) && picked == o.name) selected[o.category] = o;
         }
     }
 
@@ -129,6 +163,7 @@ public class HouseManager : MonoBehaviour
             if (m != null && m.item != null && inv != null) inv.Remove(m.item, m.count);
 
         owned.Add(o.name);
+        rememberedOwned.Add(o.name);
         GameState.AddCounter("house_upgrades");
         GameEvents.ShowToast("Bought " + o.displayName + "!");
         Select(o);
@@ -140,6 +175,7 @@ public class HouseManager : MonoBehaviour
     {
         if (o == null || !IsOwned(o)) return;
         selected[o.category] = o;
+        rememberedSelected[o.category] = o.name;
         Apply(o);
         if (OnChanged != null) OnChanged();
     }
@@ -163,6 +199,16 @@ public class HouseManager : MonoBehaviour
             case HouseCategory.Roof:
                 if (roofRenderer != null) roofRenderer.color = o.tint;
                 break;
+            case HouseCategory.Door:
+                ApplyOverlay(doorRenderer, o);
+                break;
+            case HouseCategory.Shutters:
+                ApplyOverlay(shuttersRenderer, o);
+                break;
+            case HouseCategory.WindowStyle:
+            case HouseCategory.WindowLayout:
+                ApplyWindows();
+                break;
             case HouseCategory.Floor:
                 if (interior != null) interior.PaintFloor(o.tile);
                 break;
@@ -173,6 +219,22 @@ public class HouseManager : MonoBehaviour
                 if (interior != null) interior.SetFurniture(o.category, o.sprite);
                 break;
         }
+    }
+
+    private static void ApplyOverlay(SpriteRenderer r, HouseUpgradeData o)
+    {
+        if (r == null) return;
+        r.sprite = o.sprite;
+        r.color = o.tint;
+        r.enabled = o.sprite != null;      // an option with no picture means 'the original look / none'
+    }
+
+    private void ApplyWindows()
+    {
+        if (windows == null) return;
+        HouseUpgradeData style = Selected(HouseCategory.WindowStyle);
+        HouseUpgradeData layout = Selected(HouseCategory.WindowLayout);
+        windows.Show(style != null ? style.sprite : null, layout != null ? layout.windowSpots : null);
     }
 
     // ------------------------------------------------------------------
@@ -197,8 +259,8 @@ public class HouseManager : MonoBehaviour
         foreach (string line in data.Split('\n'))
         {
             HouseUpgradeData o;
-            if (line.StartsWith("own:")) owned.Add(line.Substring(4));
-            else if (line.StartsWith("use:") && byName.TryGetValue(line.Substring(4), out o)) selected[o.category] = o;
+            if (line.StartsWith("own:")) { owned.Add(line.Substring(4)); rememberedOwned.Add(line.Substring(4)); }
+            else if (line.StartsWith("use:") && byName.TryGetValue(line.Substring(4), out o)) { selected[o.category] = o; rememberedSelected[o.category] = o.name; }
         }
         ApplyAll();
         if (OnChanged != null) OnChanged();

@@ -10,7 +10,7 @@ using UnityEngine.Tilemaps;
 ///  - From code or events, call SetLevel / Add / PaintCircle / Clean to change it (a factory spills, rain cleans...).
 ///  - Crops read the level of the tile they grow on (see CropManager).
 ///
-/// Put this on an empty GameObject. Farm > Game > Set Up Game Systems In Scene does it for you.
+/// Put this on an empty GameObject. Farm > Set Up > Game Systems In Scene does it for you.
 /// </summary>
 public class PollutionMap : MonoBehaviour
 {

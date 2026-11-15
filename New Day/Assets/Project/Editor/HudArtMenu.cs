@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEngine;
 
 /// <summary>
-/// Applies the HUD artwork. Menu: Farm > UI > Apply HUD Art.
+/// Applies the HUD artwork. Menu: Farm > Set Up > HUD Art.
 ///
 /// Before running it, copy the "UI" folder (the ui_*.png / orn_*.png files) into your project, e.g. Assets/Farm/UI.
 /// It then imports each picture as crisp pixel art (2 screen pixels per art pixel), sets up the 9-slice borders so frames
@@ -42,7 +42,7 @@ public static class HudArtMenu
         ("ui_portrait_frame",   "portraitFrame",   0),
     };
 
-    [MenuItem("Farm/UI/Apply HUD Art")]
+    [MenuItem("Farm/Set Up/HUD Art", false, 102)]
     public static void Apply()
     {
         var hud = Object.FindAnyObjectByType<GameHUD>();

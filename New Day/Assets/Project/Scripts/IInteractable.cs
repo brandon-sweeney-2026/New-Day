@@ -17,6 +17,9 @@ public interface IInteractable
 /// </summary>
 public interface IToolTarget
 {
-    /// <summary>Returns true if the tool did something (so the swing counts as used).</summary>
-    bool OnToolUsed(ItemData.ToolAction tool, PlayerActions user);
+    /// <summary>
+    /// Returns true if the tool did something (so the swing counts as used).
+    /// 'power' is the tool's Tool Power: how many hits this one swing counts as (1 for a stone tool, more for better ones).
+    /// </summary>
+    bool OnToolUsed(ItemData.ToolAction tool, int power, PlayerActions user);
 }

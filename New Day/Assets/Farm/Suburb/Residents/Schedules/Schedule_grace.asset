@@ -1,0 +1,186 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd850fae68a74ed4087495a7eab7ac27, type: 3}
+  m_Name: Schedule_grace
+  m_EditorClassIdentifier: Assembly-CSharp::NpcScheduleData
+  npcId: grace
+  idleSpot: H1Bed
+  idleScene: 
+  routes:
+  - routeName: Breakfast
+    enabled: 1
+    priority: 10
+    startHour: 6.25
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: H1Kitchen
+      scene: 
+      waitMinutes: 35
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Having breakfast
+    whenFinished: 1
+  - routeName: Lecturing in the city
+    enabled: 1
+    priority: 40
+    startHour: 7.5
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 15
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: City
+      scene: City
+      waitMinutes: 420
+      transitMinutes: 40
+      facing: {x: 0, y: 0}
+      activity: Teaching at the university
+    whenFinished: 0
+  - routeName: Marking papers
+    enabled: 1
+    priority: 5
+    startHour: 9
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: H1Living
+      scene: 
+      waitMinutes: 180
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Marking essays
+    whenFinished: 1
+  - routeName: Sunday football
+    enabled: 1
+    priority: 30
+    startHour: 10
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 64
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 35
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: ParkBenchB
+      scene: 
+      waitMinutes: 120
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Cheering from the bench
+    whenFinished: 1
+  - routeName: Shopping at the Kims'
+    enabled: 1
+    priority: 20
+    startHour: 13.25
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 48
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: StoreCustomer
+      scene: 
+      waitMinutes: 15
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Buying groceries
+    - place: PlazaBench1
+      scene: 
+      waitMinutes: 40
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Chatting on the bench
+    whenFinished: 1
+  - routeName: Family dinner
+    enabled: 1
+    priority: 10
+    startHour: 18.75
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: H1Kitchen
+      scene: 
+      waitMinutes: 60
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Having dinner
+    - place: H1Living
+      scene: 
+      waitMinutes: 60
+      transitMinutes: 10
+      facing: {x: 0, y: 0}
+      activity: Reading
+    whenFinished: 0

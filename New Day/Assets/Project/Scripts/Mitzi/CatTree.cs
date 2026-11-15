@@ -2,7 +2,7 @@ using UnityEngine;
 
 /// <summary>
 /// Mitzi's cat tree. She jumps up to the Perch Points to nap and hops down to the Ground Point.
-/// Add this to the cat tree object (Farm > NPCs > Set Up Mitzi does it for you).
+/// Add this to the cat tree object (Farm > Set Up > Mitzi does it for you).
 /// </summary>
 public class CatTree : MonoBehaviour
 {
