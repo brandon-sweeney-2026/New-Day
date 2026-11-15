@@ -97,7 +97,8 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         // MovePosition respects colliders and works in every Unity version.
-        Vector2 velocity = moveInput * moveSpeed * SpeedMultiplier + knockbackVelocity;
+        // PlayerBonuses.MoveSpeedMultiplier is the walking-speed bonus from perks and equipment (1 = none).
+        Vector2 velocity = moveInput * moveSpeed * SpeedMultiplier * PlayerBonuses.MoveSpeedMultiplier + knockbackVelocity;
         knockbackVelocity = Vector2.Lerp(knockbackVelocity, Vector2.zero, knockbackDamping * Time.fixedDeltaTime);
         if (knockbackVelocity.sqrMagnitude < 0.01f) knockbackVelocity = Vector2.zero;
 

@@ -10,7 +10,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewItem", menuName = "Farm/Item")]
 public class ItemData : ScriptableObject
 {
-    public enum ItemType { Seed, Crop, Tool, Resource, Food, Weapon, Spell }
+    // (Equipment was added at the END, so items you already made keep their type.)
+    public enum ItemType { Seed, Crop, Tool, Resource, Food, Weapon, Spell, Equipment }
+
+    /// <summary>Where a piece of Equipment is worn. Both ring slots in the player menu take a Ring.</summary>
+    public enum EquipSlot { None, Hat, Armor, Gloves, Boots, Ring, Necklace }
 
     /// <summary>What a Tool does when you press the action button.</summary>
     public enum ToolAction { None, Hoe, WateringCan, Sickle, Axe, Pickaxe, Shovel, FishingRod }
@@ -106,6 +110,20 @@ public class ItemData : ScriptableObject
     public Color projectileColor = new Color(1f, 0.55f, 0.15f);
     public int healAmount = 20;
     public float castTime = 0.25f;
+
+    [Header("Equipment (only used when type is Equipment)")]
+    [Tooltip("Which slot of the player menu this is worn in (Character tab).")]
+    public EquipSlot equipSlot = EquipSlot.None;
+    [Min(0), Tooltip("Each point takes 1 off every hit the player takes (a hit always does at least 1).")]
+    public int defense = 0;
+    [Tooltip("Added to the player's maximum health while worn.")]
+    public int bonusMaxHealth = 0;
+    [Tooltip("Added to the player's maximum magic while worn.")]
+    public float bonusMaxMagic = 0f;
+    [Tooltip("Walk this many percent faster while worn (5 = 5% faster).")]
+    public float bonusMoveSpeedPercent = 0f;
+    [Tooltip("Deal this many percent more damage while worn (10 = 10% more).")]
+    public float bonusDamagePercent = 0f;
 
     /// <summary>Can this seed be planted (and keep growing) in this season?</summary>
     public bool CanPlantIn(TimeManager.Season season)

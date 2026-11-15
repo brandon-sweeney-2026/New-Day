@@ -458,7 +458,7 @@ MonoBehaviour:
     - {fileID: 1901377412, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
     - {fileID: 741143902, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
     - {fileID: -1846951522, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
-  animationFramesPerSecond: 4
+  animationFramesPerSecond: 6
   colliderType: 2
   previewSprite: {fileID: 1478250448, guid: 7aef8b537543fec41a8f7254ead4a6ad, type: 3}
   shoreKinds:

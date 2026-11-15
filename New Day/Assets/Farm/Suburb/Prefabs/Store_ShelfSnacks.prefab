@@ -12,13 +12,12 @@ GameObject:
   - component: {fileID: 3191068818677852677}
   - component: {fileID: 826038684633657811}
   - component: {fileID: 5427832004606528862}
-  - component: {fileID: 8734521124127766835}
   m_Layer: 0
   m_Name: Store_ShelfSnacks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2971149712792867122
 Transform:
@@ -154,22 +153,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BehindPlayerSorter
   thresholdOffset: 0.8
---- !u!114 &8734521124127766835
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8082600058231778860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e1a976bacc037f47bc7b881940048df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShopCounter
-  shopName: Snack Shelf
-  stock:
-  - {fileID: 11400000, guid: 55bde49dc3e0c6a4a89290a6b370ed4b, type: 2}
-  - {fileID: 11400000, guid: b01032c4479d3c24a817d2597c204c2f, type: 2}
-  - {fileID: 11400000, guid: 23fbff7a9900e4f43a40e565bccb161d, type: 2}
-  - {fileID: 11400000, guid: 9d532f221bd63af49a3ff53c777a7d72, type: 2}
-  hideOutOfSeasonSeeds: 1

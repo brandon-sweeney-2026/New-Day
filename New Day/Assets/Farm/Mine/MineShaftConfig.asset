@@ -1,0 +1,187 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79f2844efee0d5a41a98767c021cd529, type: 3}
+  m_Name: MineShaftConfig
+  m_EditorClassIdentifier: Assembly-CSharp::MineShaftConfig
+  floorCount: 100
+  floorSizeMin: {x: 56, y: 56}
+  floorSizeMax: {x: 96, y: 96}
+  cartEveryNFloors: 5
+  fixedSeed: 0
+  rocksPer100Tiles: 6
+  oreChance: 0.05
+  ores:
+  - label: Coal
+    rockPrefab: {fileID: 5461184895262536927, guid: 57a050bb63b5add4e8829bd7b6429122, type: 3}
+    firstFloor: 1
+    lastFloor: 40
+    weight: 10
+  - label: Copper
+    rockPrefab: {fileID: 3540781104546190656, guid: 7ad54070f46cb7e4daf371d69edb4abc, type: 3}
+    firstFloor: 1
+    lastFloor: 45
+    weight: 10
+  - label: Iron
+    rockPrefab: {fileID: 1338678470715775548, guid: af2ab8aea7d49864f8d6360dd93ddbde, type: 3}
+    firstFloor: 15
+    lastFloor: 65
+    weight: 10
+  - label: Gold
+    rockPrefab: {fileID: 5190429742240857684, guid: d4897b9e85bac254db5b2b1e1ad12e1f, type: 3}
+    firstFloor: 35
+    lastFloor: 85
+    weight: 8
+  - label: Platinum
+    rockPrefab: {fileID: 547361469484140673, guid: af71ffe274ebd72419e0eecb26818175, type: 3}
+    firstFloor: 55
+    lastFloor: 100
+    weight: 8
+  - label: Emerald
+    rockPrefab: {fileID: 835492141036859090, guid: afecb807faa32d74487e213b48c6c330, type: 3}
+    firstFloor: 25
+    lastFloor: 100
+    weight: 2
+  - label: Ruby
+    rockPrefab: {fileID: 375276627188236647, guid: d34c8133498ee7545bef63c384561577, type: 3}
+    firstFloor: 45
+    lastFloor: 100
+    weight: 2
+  - label: Diamond
+    rockPrefab: {fileID: 6380373400272134487, guid: 53fd3914d2e63aa49bf5346b05b5582c, type: 3}
+    firstFloor: 65
+    lastFloor: 100
+    weight: 2
+  enemiesPer100Tiles: 0.5
+  maxEnemies: 26
+  safeRadius: 8
+  lampPrefab: {fileID: 4764389446639350407, guid: eb974115e07150044b5fa0687f3088a3, type: 3}
+  lampSpacing: 11
+  hubAmbientColor: {r: 1, g: 0.9, b: 0.75, a: 1}
+  hubAmbientBrightness: 0.6
+  themes:
+  - themeName: Icy caverns
+    firstFloor: 1
+    lastFloor: 20
+    floorTiles:
+    - {fileID: 11400000, guid: fffb6efde1b6e9f4991c1abba893ac15, type: 2}
+    - {fileID: 11400000, guid: 9f79c987e8b4d8d43a666cae52f65845, type: 2}
+    - {fileID: 11400000, guid: 3fe64a61082093540912ca2fe0cdf983, type: 2}
+    wallFaceTile: {fileID: 11400000, guid: ca3eb9301c571194a8b16d4a9d749543, type: 2}
+    wallTopTile: {fileID: 11400000, guid: f44375e37ab44fb4289321a30cc18e50, type: 2}
+    poolTile: {fileID: 11400000, guid: 9d52c1027eacb95418bce749eaa6bc71, type: 2}
+    ambientColor: {r: 0.62, g: 0.78, b: 1, a: 1}
+    ambientBrightness: 0.5
+    plainRocks:
+    - {fileID: 8164335176835485654, guid: 83b9d8678f9350d4daf63fedc016c008, type: 3}
+    - {fileID: 2941383581404416087, guid: 764a1dcdd5a0c834fb3d7b4010f3fea0, type: 3}
+    enemies:
+    - prefab: {fileID: 6517788885769340555, guid: 38034c9c111b7b747b6253295b6dce79, type: 3}
+      weight: 3
+    - prefab: {fileID: 1367989691917761708, guid: c6764ef6fa000ad4bba8dd9f7994c78a, type: 3}
+      weight: 1.5
+    - prefab: {fileID: 1385520646805167358, guid: 9ee47092e24f5fb45b28035904171c39, type: 3}
+      weight: 3
+    statMultiplierAtLastFloor: 1.5
+  - themeName: Rocky depths
+    firstFloor: 21
+    lastFloor: 40
+    floorTiles:
+    - {fileID: 11400000, guid: d40040d731c48df44882b0c273a77a76, type: 2}
+    - {fileID: 11400000, guid: 759fec631dbefb148ae267e166bbf4c5, type: 2}
+    - {fileID: 11400000, guid: 45412cd31f87b004da6f48f9f7bc937f, type: 2}
+    wallFaceTile: {fileID: 11400000, guid: 700f6da917231a74f9b73593a1e39681, type: 2}
+    wallTopTile: {fileID: 11400000, guid: 95a7c9c3f3d332641932938af7584201, type: 2}
+    poolTile: {fileID: 11400000, guid: 55a09e5c3d2754d4a9a7dce4321520be, type: 2}
+    ambientColor: {r: 0.92, g: 0.8, b: 0.65, a: 1}
+    ambientBrightness: 0.4
+    plainRocks:
+    - {fileID: 4891854362431592966, guid: a408dc6d55698e74a8b12abbb5350849, type: 3}
+    - {fileID: 2899394785330939459, guid: a689dc832f3e38047ac8bf21d54e08c9, type: 3}
+    enemies:
+    - prefab: {fileID: 3368897508717606882, guid: debd07457cda9cc46b7801681d98124b, type: 3}
+      weight: 3
+    - prefab: {fileID: 7089129185021018748, guid: 6607e3038bc6920468389e9a80afea26, type: 3}
+      weight: 2
+    - prefab: {fileID: 7633442012026680229, guid: 206d88d8c4ecee346b16ce331ef89b11, type: 3}
+      weight: 2
+    statMultiplierAtLastFloor: 1.5
+  - themeName: Flooded caves
+    firstFloor: 41
+    lastFloor: 60
+    floorTiles:
+    - {fileID: 11400000, guid: a1a76c0da2581924380ee3c4f9eda67b, type: 2}
+    - {fileID: 11400000, guid: e49eb0a8143449a45b560bdd2f8abb1a, type: 2}
+    - {fileID: 11400000, guid: 62b55442a6a82f9459a7c38989fd7b61, type: 2}
+    wallFaceTile: {fileID: 11400000, guid: 9e11c0c7de3e66a42b00116ebe2c0217, type: 2}
+    wallTopTile: {fileID: 11400000, guid: d578b2e71a6e01147abe5e002b4de243, type: 2}
+    poolTile: {fileID: 11400000, guid: 2afac06e2b9eafe40abc6a34d711e68f, type: 2}
+    ambientColor: {r: 0.5, g: 0.8, b: 0.85, a: 1}
+    ambientBrightness: 0.36
+    plainRocks:
+    - {fileID: 8164335176835485654, guid: 83b9d8678f9350d4daf63fedc016c008, type: 3}
+    - {fileID: 2941383581404416087, guid: 764a1dcdd5a0c834fb3d7b4010f3fea0, type: 3}
+    enemies:
+    - prefab: {fileID: 7033924755007723197, guid: a164694bc3489c740971f597ecb0a3cb, type: 3}
+      weight: 2
+    - prefab: {fileID: 3508676803950677106, guid: 6d80c9a5321008a4b9cfc868e2f72b89, type: 3}
+      weight: 2.5
+    - prefab: {fileID: 7569281180155335017, guid: c6e40dd1e1070ce43b3bc927b62d4dc9, type: 3}
+      weight: 1
+    statMultiplierAtLastFloor: 1.5
+  - themeName: Buried desert
+    firstFloor: 61
+    lastFloor: 80
+    floorTiles:
+    - {fileID: 11400000, guid: 6799455a6b202ce42be001d9b3cd2cb7, type: 2}
+    - {fileID: 11400000, guid: fedfc85e1b16bf343a7fa8ef79b8f34b, type: 2}
+    - {fileID: 11400000, guid: db12d9ffb00bec9478e4183ae49d7779, type: 2}
+    wallFaceTile: {fileID: 11400000, guid: 9fe2907f72f802f408cdf3872d83c3b4, type: 2}
+    wallTopTile: {fileID: 11400000, guid: 2ace5ee0a3ef10f449570ae80c403a04, type: 2}
+    poolTile: {fileID: 11400000, guid: 0515af1d9c8f80643905af7bf8f5ff64, type: 2}
+    ambientColor: {r: 1, g: 0.86, b: 0.6, a: 1}
+    ambientBrightness: 0.5
+    plainRocks:
+    - {fileID: 4891854362431592966, guid: a408dc6d55698e74a8b12abbb5350849, type: 3}
+    - {fileID: 2899394785330939459, guid: a689dc832f3e38047ac8bf21d54e08c9, type: 3}
+    enemies:
+    - prefab: {fileID: 6017306397108540148, guid: 6e2117ca97ca48047a568c4bcb9598a3, type: 3}
+      weight: 3
+    - prefab: {fileID: 4680223169689700442, guid: d03ea87a1ae7f1041a8d722073b6947d, type: 3}
+      weight: 2
+    - prefab: {fileID: 8781699041494639977, guid: 1370acda4fcf0fc47b145fbf7fe36828, type: 3}
+      weight: 2
+    statMultiplierAtLastFloor: 1.5
+  - themeName: Core of the earth
+    firstFloor: 81
+    lastFloor: 100
+    floorTiles:
+    - {fileID: 11400000, guid: 4349b310bf860ec4c9b27abaf3a2c6c5, type: 2}
+    - {fileID: 11400000, guid: 5311b0df4f3ecb6439b486ea4391c1b6, type: 2}
+    - {fileID: 11400000, guid: 7fdfd35412a41014a984e32b472037ba, type: 2}
+    wallFaceTile: {fileID: 11400000, guid: f0d7408bd710db140a9434c7f336d570, type: 2}
+    wallTopTile: {fileID: 11400000, guid: 086be5e92da19594cb096c1583b8af09, type: 2}
+    poolTile: {fileID: 11400000, guid: 457755b0cab0ab64390689a390ba485a, type: 2}
+    ambientColor: {r: 1, g: 0.52, b: 0.36, a: 1}
+    ambientBrightness: 0.42
+    plainRocks:
+    - {fileID: 2941383581404416087, guid: 764a1dcdd5a0c834fb3d7b4010f3fea0, type: 3}
+    - {fileID: 2899394785330939459, guid: a689dc832f3e38047ac8bf21d54e08c9, type: 3}
+    enemies:
+    - prefab: {fileID: 6296352054282047922, guid: 1f2870361782a5b4fa223b7ea2921db0, type: 3}
+      weight: 2.5
+    - prefab: {fileID: 1136852725061242444, guid: c32f666b50d5cbb4c97ab938fbc06834, type: 3}
+      weight: 2
+    - prefab: {fileID: 1388916079764422260, guid: c76f473d29e8bc04994d7a4e60f5756b, type: 3}
+      weight: 2
+    - prefab: {fileID: 2681468616060805405, guid: a3c2090e3dbbc65418ed55e4ea7db08f, type: 3}
+      weight: 1
+    statMultiplierAtLastFloor: 1.5

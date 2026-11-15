@@ -93,6 +93,31 @@ Editor tools are grouped by **purpose**, not by game area. Put every new `[MenuI
 - `WeatherManager` creates itself at run time and decides the day's weather.
 - The old front-only `House_01` to `House_10` prefabs are still in the Objects palette as decoration, but the builder no longer places them.
 
+## Mine shaft (hub and 100 generated floors)
+
+- **Naming trap:** the scene `Mine` is the OUTDOOR mountain trail. The underground mine is the scene `MineShaft`.
+- **One scene, regenerated in place.** `MineShaftManager` (`Assets/Project/Scripts/MineShaft/`) shows the hand-built `Hub` object for floor 0 and, for floors 1-100, switches the hub off and paints a new floor into the `Ground` / `MineWalls` / `MineFill` tilemaps from a `MineFloorLayout` made by `MineFloorGenerator` (four styles: Caves, Rooms, Tunnels, Chambers). Go to a floor with `MineShaftManager.Instance.GoToFloor(n)`.
+- **The MineShaft scene is generated.** `Farm > Set Up > Mine Shaft` (`MineShaftSetupMenu.cs`) rebuilds `Assets/Project/Scenes/MineShaft.unity` from a copy of the Mine scene, so hub changes belong in the constants at the top of that script. It also edits the Mine scene: sets `MineEntrance.sceneName`, and adds the object `MineShaftLinks` (spawn point `FromMineShaft` and the trail's fairy door `MineFairyDoor`).
+- **All tuning is in `Assets/Farm/Mine/MineShaftConfig.asset`** (`MineShaftConfig`): Ore Chance (0.05 = each rock has a 5% chance of being ore), the per-depth ore table, rocks and enemies per 100 tiles, floor sizes, cart interval, and the five themes (tiles, light, plain rocks, enemy set, stat growth). The asset and the enemy prefabs in `Assets/Farm/Mine/Prefabs/` are KEPT on a rebuild; delete one to get the starting version back.
+- Themes: 1-20 icy, 21-40 rocky, 41-60 flooded cave, 61-80 desert, 81-100 lava. Enemy sets: Bug / Bat / Frost Slime; Mud Slime / Rock Spitter / Mole; Cave Bat / Bubble Spitter / Stone Golem; Scarab / Sand Worm / Cactus; Magma Slime (splits into Ember Slimes) / Fire Bat / Fire Spitter / Magma Golem.
+- New enemy scripts (all on `EnemyBase`, in `Scripts/Mine/`): `SlimeEnemy` (hops), `ShooterEnemy` + `EnemyProjectile` (keeps its distance and spits; shots and spread are Inspector numbers), `BurrowerEnemy` (underground and unhittable until it surfaces), `GolemEnemy` (slow, telegraphed area slam).
+- Progress is in `GameState`: counter `mine_deepest_floor`, flag `mine_fairy_door`. The fairy doors are `ForestShortcutDoor` with `travelToScene` set (a door to another scene) and, in the hub, `wakeOnInteract`.
+- `Underground.Active` (static) is true in the mine shaft: `WeatherEffects` draws nothing and `LightingManager` uses the theme's ambient light with lamps always lit.
+- Art is drawn by `Tools/make_mine_art.ps1` into `Assets/Project/Art/MineShaft/` (one PNG per picture, except three recoloured bat / bug sheets cut with `StableSpriteId.For`). Palette keys in that script must not differ only by upper / lower case (PowerShell treats them as the same key).
+- Checking without playing: `-executeMethod MineShaftSetupMenu.BuildBatch` (build), `PreviewBatch` (pictures in `Logs/mine_*.png`; add `-mineFloors 1,50,100` to choose floors; no `-nographics`), `VerifyBatch` (generates all 100 floors and logs a `MINEFLOOR|` line each). In the editor: `Farm > Test and Debug > Mine Floor Previews (one per theme)`, `Unlock All Mine Cart Floors`, `Reset Mine Progress`.
+
+## Player menu
+
+- Scripts are in `Assets/Project/Scripts/PlayerMenu/`. **Tab** (or Esc) opens it; tabs are Character, Skills, Crafting, Quests, Achievements, People, Settings.
+- `PlayerMenu` draws the window and handles keys; it creates itself at run time, so it is in no scene. What each tab shows is in `PlayerMenuPages.cs` as lists of `PlayerMenuRow` (a `MenuRow` with an icon and a bar).
+- Tunable numbers and lists (open key, colours, XP rules, perks, achievements, crafting recipes, friendship points) are on `Assets/Resources/PlayerMenuSettings.asset` (`PlayerMenuSettings`). `Farm > Set Up > Player Menu` (`PlayerMenuSetupMenu.cs`) makes it, plus starter equipment in `Assets/Farm/Data/Equipment` and recipes in `Assets/Farm/Data/Crafting`. Without the asset the built-in defaults are used.
+- `GameSettings` (UI size, volume, brightness; saved in PlayerPrefs) is applied by `ScreenSettingsApplier`, which rescales every `CanvasScaler` and lays a brightness sheet over the screen.
+- `PlayerSkills` (Farming, Mining, Foraging, Combat) earns XP by **listening to GameState counters** (the Xp Rules list), so gameplay code never calls it. Fishing still uses `FishingTalents`. Progress is stored in counters `xp_<skill>` and `perk_<id>`.
+- Equipment: an `ItemData` with Type = Equipment and an Equip Slot; `PlayerEquipment` holds what is worn (static, survives scene changes).
+- **`PlayerBonuses` is the one place gameplay reads bonuses** from perks and equipment (`PlayerStats`, `PlayerController`, `EnemyBase`, `PlayerActions`, `CropManager` each read it once). Add new bonus kinds there.
+- `Achievements` watches counters, flags and gold; done = flag `ach_done_<id>`. `QuestLog` is the journal: quest givers call `QuestLog.Add` / `QuestLog.Complete` (only `FairyNpc` does so far). `Friendship` stores points in `friend_<npcId>`; `ScheduledNpc` calls it for the daily chat and the "Give <item>" gift choice, using the NPC's `NpcProfile` for tastes.
+- A `Recipe` with **Crafted** ticked counts as `items_crafted` instead of `meals_cooked`.
+
 ## Conventions seen in the code
 
 - One public class per file, file name equal to the class name. Exceptions that hold several small types: `Damage.cs`, `ForestData.cs`.

@@ -355,7 +355,8 @@ public class PlayerActions : MonoBehaviour
 
             case ItemData.ToolAction.Axe:
             case ItemData.ToolAction.Pickaxe:
-                did = HitToolTarget(tool.toolAction, tool.toolPower);
+                // The tool's own power, plus any extra hits from the Mining / Foraging perks.
+                did = HitToolTarget(tool.toolAction, tool.toolPower + PlayerBonuses.ToolPower(tool.toolAction));
                 break;
 
             case ItemData.ToolAction.FishingRod:

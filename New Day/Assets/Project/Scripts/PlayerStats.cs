@@ -54,9 +54,32 @@ public class PlayerStats : MonoBehaviour, IDamageable
     private PlayerController controller;
     private Color baseColor = Color.white;
 
+    // The Inspector values before any perk or equipment bonus is added on top.
+    private int baseMaxHealth;
+    private float baseMaxMagic;
+
+    /// <summary>
+    /// Sets the maximums to the Inspector values plus the bonuses from perks and worn equipment (see PlayerBonuses).
+    /// Runs at the start and again whenever a perk is bought or equipment changes.
+    /// </summary>
+    private void ApplyBonuses()
+    {
+        maxHealth = Mathf.Max(1, baseMaxHealth + PlayerBonuses.MaxHealth);
+        maxMagic = Mathf.Max(0f, baseMaxMagic + PlayerBonuses.MaxMagic);
+        // Taking a hat off must not leave you with more health than the new maximum.
+        Health = Mathf.Min(Health, maxHealth);
+        Magic = Mathf.Min(Magic, maxMagic);
+        if (OnChanged != null) OnChanged();
+    }
+
     private void Awake()
     {
         Instance = this;
+        baseMaxHealth = maxHealth;
+        baseMaxMagic = maxMagic;
+        maxHealth = Mathf.Max(1, baseMaxHealth + PlayerBonuses.MaxHealth);
+        maxMagic = Mathf.Max(0f, baseMaxMagic + PlayerBonuses.MaxMagic);
+        PlayerBonuses.OnChanged += ApplyBonuses;
         Health = maxHealth;
         Magic = maxMagic;
         controller = GetComponent<PlayerController>();
@@ -72,6 +95,7 @@ public class PlayerStats : MonoBehaviour, IDamageable
     private void OnDestroy()
     {
         if (TimeManager.Instance != null) TimeManager.Instance.OnNewDay -= HandleNewDay;
+        PlayerBonuses.OnChanged -= ApplyBonuses;
         if (Instance == this) Instance = null;
     }
 
@@ -106,7 +130,8 @@ public class PlayerStats : MonoBehaviour, IDamageable
         if (IsDead || Time.time < invulnerableUntil) return;
 
         invulnerableUntil = Time.time + invulnerableTime;
-        Health = Mathf.Max(0f, Health - info.amount);
+        // Defense (from perks and equipment) takes a little off every hit.
+        Health = Mathf.Max(0f, Health - PlayerBonuses.ReduceDamage(info.amount));
 
         if (controller != null && info.knockback.sqrMagnitude > 0.01f) controller.Knockback(info.knockback);
         if (OnDamaged != null) OnDamaged(info);

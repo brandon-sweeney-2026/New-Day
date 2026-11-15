@@ -431,7 +431,11 @@ public class ScheduledNpc : MonoBehaviour, IInteractable
         // face the player
         if (player != null) { Vector2 d = player.position - transform.position; if (d.sqrMagnitude > 0.01f) { facingDir = d.normalized; Draw(); } }
 
-        string metFlag = "npc_met_" + (schedule != null ? schedule.npcId : displayName);
+        // Friendship: add them to the People tab of the player menu, and count today's first chat.
+        Friendship.Meet(NpcId, displayName, portraitIdle, profile);
+        Friendship.Talk(NpcId);
+
+        string metFlag = "npc_met_" + NpcId;
         if (!GameState.HasFlag(metFlag))
         {
             GameState.SetFlag(metFlag);
@@ -466,6 +470,13 @@ public class ScheduledNpc : MonoBehaviour, IInteractable
             o.Add(new DialogueOption("Buy something", () => { DialogueBox.Close(); shop.Interact(p); }, true));
         if (hardware != null && IsNearShopSpot())
             o.Add(new DialogueOption("Browse the hardware", () => { DialogueBox.Close(); hardware.Interact(p); }, true));
+
+        // One gift a day: the item the player is holding (not a tool, weapon or spell).
+        ItemData held = p != null && p.Inventory != null ? p.Inventory.EquippedItem : null;
+        if (held != null && !Friendship.GiftedToday(NpcId)
+            && held.type != ItemData.ItemType.Tool && held.type != ItemData.ItemType.Weapon && held.type != ItemData.ItemType.Spell)
+            o.Add(new DialogueOption("Give " + held.itemName, () => GiveGift(p, held)));
+
         o.Add(new DialogueOption("What are you up to?", () =>
         {
             string what = string.IsNullOrEmpty(nowDoing) || nowDoing == "Walking" || nowDoing == "Resting" ? "Just going about my day." : nowDoing + ".";
@@ -473,6 +484,28 @@ public class ScheduledNpc : MonoBehaviour, IInteractable
         }));
         o.Add(new DialogueOption("Goodbye", null, true));
         return o;
+    }
+
+    /// <summary>The name this NPC is remembered by (met flag, friendship points).</summary>
+    private string NpcId { get { return schedule != null ? schedule.npcId : displayName; } }
+
+    /// <summary>Hands over one of the held item. How much they like it comes from their NPC Profile (Loves / Likes / Dislikes).</summary>
+    private void GiveGift(PlayerActions p, ItemData gift)
+    {
+        Inventory inv = p != null ? p.Inventory : null;
+        if (inv == null || inv.EquippedItem != gift || inv.RemoveFromSlot(inv.SelectedIndex, 1) <= 0) return;
+
+        Friendship.Reaction reaction = Friendship.Gift(NpcId, gift);
+        string line;
+        switch (reaction)
+        {
+            case Friendship.Reaction.Loved: line = "Oh! Is that for me? I love this. Thank you so much!"; break;
+            case Friendship.Reaction.Liked: line = "That's very kind of you. Thank you!"; break;
+            case Friendship.Reaction.Disliked: line = "Oh... um. Thank you, I suppose."; break;
+            default: line = "For me? Thank you."; break;
+        }
+        bool happy = reaction == Friendship.Reaction.Loved || reaction == Friendship.Reaction.Liked;
+        DialogueBox.Show(speaker, new[] { line }, Options(p), null, happy);
     }
 
     private bool IsNearShopSpot()

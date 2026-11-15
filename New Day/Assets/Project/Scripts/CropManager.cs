@@ -213,6 +213,8 @@ public class CropManager : MonoBehaviour
         float yield = settings.YieldMultiplier(level);
         int amount = Mathf.RoundToInt(crop.data.harvestAmount * yield);
         if (yield > 0f) amount = Mathf.Max(1, amount);
+        // The Farming perk "Green Thumb" gives a chance of one extra crop.
+        if (amount > 0 && UnityEngine.Random.value < PlayerBonuses.ExtraCropChance) amount++;
 
         ItemData item = crop.data.harvestItem;
         if (item != null && amount > 0 && inventory != null)

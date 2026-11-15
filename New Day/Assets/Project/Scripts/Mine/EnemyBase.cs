@@ -143,7 +143,8 @@ public abstract class EnemyBase : MonoBehaviour, IDamageable
     public void TakeDamage(DamageInfo info)
     {
         if (IsDead || info.team == Team.Enemy) return;
-        Health -= info.amount;
+        // Hits from the player get the damage bonus from perks and equipment (see PlayerBonuses).
+        Health -= info.team == Team.Player ? PlayerBonuses.ScaleDamage(info.amount) : info.amount;
         knockVelocity = info.knockback * (1f - knockbackResist);
         stunUntil = Time.time + stunSeconds;
         flashUntil = Time.time + 0.18f;

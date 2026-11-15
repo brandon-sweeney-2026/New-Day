@@ -192,6 +192,10 @@ public class FairyNpc : MonoBehaviour, IInteractable
                 GameState.SetCounter(State(q.id), 1);
                 if (q.kind == FairyQuest.Kind.ReachCounter && q.countFromAccept) GameState.SetCounter("fairy_base_" + q.id, GameState.GetCounter(q.counterKey));
                 GameEvents.ShowToast("Quest: " + q.title);
+                // Write it in the journal (the Quests tab of the player menu). The last part works out the progress text each time the menu is drawn.
+                QuestLog.Add("fairy_" + q.id, q.title, fairyName,
+                    q.offerPages != null && q.offerPages.Length > 0 ? q.offerPages[q.offerPages.Length - 1] : "",
+                    () => ProgressText(q, Inventory.Instance));
                 Hub(p, "Thank you. Come back when it's done.");
             }),
             new DialogueOption("Maybe later.", () => Hub(p, "Of course. The forest will wait. A little longer.")),
@@ -245,6 +249,7 @@ public class FairyNpc : MonoBehaviour, IInteractable
 
         GameState.SetCounter(State(q.id), 2);
         GameState.AddCounter("fairy_quests_done");
+        QuestLog.Complete("fairy_" + q.id);     // tick it off in the journal
         if (!string.IsNullOrEmpty(q.setFlag)) GameState.SetFlag(q.setFlag);
         if (q.rewardGold > 0) GameState.AddGold(q.rewardGold);
         if (q.rewardItems != null && inv != null)

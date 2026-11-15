@@ -31,6 +31,11 @@ public class Recipe : ScriptableObject
     [Tooltip("In-game minutes that pass while cooking.")]
     [Min(0)] public int cookMinutes = 30;
 
+    [Header("Crafting")]
+    [Tooltip("Tick for things made in the player menu's Crafting tab (a hat, a ring...) instead of food cooked on a stove. " +
+             "It then counts as 'items_crafted' instead of 'meals_cooked' and the message says Made instead of Cooked.")]
+    public bool crafted = false;
+
     // ------------------------------------------------------------------
 
     private static bool IsCrop(ItemData i) { return i.type == ItemData.ItemType.Crop; }
@@ -100,11 +105,12 @@ public class Recipe : ScriptableObject
         int leftover = inv.Add(result, amount, level);
         if (leftover > 0) ItemPickup.Spawn(result, leftover, dropPosition, level);
 
-        GameState.AddCounter("meals_cooked", amount);
-        GameState.AddCounter("cooked_" + recipeName.ToLowerInvariant().Replace(' ', '_'), amount);
+        // Crafted things and cooked meals are counted separately (skills and achievements read these counters).
+        GameState.AddCounter(crafted ? "items_crafted" : "meals_cooked", amount);
+        GameState.AddCounter((crafted ? "crafted_" : "cooked_") + recipeName.ToLowerInvariant().Replace(' ', '_'), amount);
 
         string note = level > 0 ? " (" + PollutionSettings.Current.Label(level) + " pollution)" : "";
-        GameEvents.ShowToast("Cooked " + amount + " " + result.itemName + note);
+        GameEvents.ShowToast((crafted ? "Made " : "Cooked ") + amount + " " + result.itemName + note);
 
         if (cookMinutes > 0 && TimeManager.Instance != null) TimeManager.Instance.AddMinutes(cookMinutes);
         return true;
