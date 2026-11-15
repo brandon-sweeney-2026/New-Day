@@ -24,6 +24,10 @@ MonoBehaviour:
   toolAction: 3
   toolReach: 1
   toolPower: 1
+  plantInSpring: 1
+  plantInSummer: 1
+  plantInAutumn: 1
+  plantInWinter: 0
   damage: 5
   attackRange: 0.8
   attackRadius: 0.6

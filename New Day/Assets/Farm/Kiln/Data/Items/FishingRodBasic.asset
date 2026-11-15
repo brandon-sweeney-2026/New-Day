@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Fishing Rod Basic
   description: 
-  icon: {fileID: 21300000, guid: 26eb455e44f161e4d97c34d178694460, type: 3}
+  icon: {fileID: 5268473884595868589, guid: d6cde76d3c5cab8409ee27e736d79de9, type: 3}
   type: 2
   maxStack: 99
   sellPrice: 10
@@ -22,6 +22,12 @@ MonoBehaviour:
   energyRestored: 0
   magicRestored: 0
   toolAction: 7
+  toolReach: 1
+  toolPower: 1
+  plantInSpring: 1
+  plantInSummer: 1
+  plantInAutumn: 1
+  plantInWinter: 0
   damage: 5
   attackRange: 0.8
   attackRadius: 0.6
