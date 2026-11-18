@@ -13,6 +13,11 @@ public class ShopCounter : MonoBehaviour, IInteractable
     [SerializeField] private List<ItemData> stock = new List<ItemData>();
     [Tooltip("Seeds are only shown in the seasons they can be planted in (each seed's Plant In Spring / Summer / Autumn boxes).")]
     [SerializeField] private bool hideOutOfSeasonSeeds = true;
+    [Range(0.1f, 2f), Tooltip("Every price in this shop is multiplied by this. 1 = full price, 0.95 = 5% off (the Sterling tower in the city).")]
+    [SerializeField] private float priceMultiplier = 1f;
+
+    /// <summary>What one of this item costs in this shop (never less than 1g).</summary>
+    private int PriceOf(ItemData item) { return Mathf.Max(1, Mathf.RoundToInt(item.buyPrice * priceMultiplier)); }
 
     private static readonly int[] Quantities = { 1, 5, 10 };
     private int quantityIndex;
@@ -45,7 +50,7 @@ public class ShopCounter : MonoBehaviour, IInteractable
             bool isSeed = item.type == ItemData.ItemType.Seed;
             if (isSeed && hideOutOfSeasonSeeds && knowSeason && !item.CanPlantIn(season)) { seedsHidden++; continue; }
 
-            int total = item.buyPrice * qty;
+            int total = PriceOf(item) * qty;
             bool affordable = GameState.Gold >= total;
 
             rows.Add(new MenuRow
@@ -76,7 +81,7 @@ public class ShopCounter : MonoBehaviour, IInteractable
     private void Buy(ItemData item, int qty, Inventory inv)
     {
         if (inv == null) return;
-        int total = item.buyPrice * qty;
+        int total = PriceOf(item) * qty;
 
         if (GameState.Gold < total) { GameEvents.ShowToast("Not enough gold."); return; }
         if (inv.CanFit(item, qty) < qty) { GameEvents.ShowToast("Your backpack is full."); return; }
@@ -84,5 +89,6 @@ public class ShopCounter : MonoBehaviour, IInteractable
         GameState.TrySpendGold(total);
         inv.Add(item, qty);
         GameEvents.ShowToast("Bought " + qty + " " + item.itemName);
+        SterlingInfluence.NoteSale(priceMultiplier);   // buying at the Sterling tower (the only discount shop) brings more litter to the farm
     }
 }

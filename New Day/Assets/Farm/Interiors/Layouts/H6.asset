@@ -1,0 +1,109 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dc122cff4e3b244fb5b5e82046454cd, type: 3}
+  m_Name: H6
+  m_EditorClassIdentifier: Assembly-CSharp::InteriorLayout
+  theme: cottage
+  floor: {fileID: 11400000, guid: 0f057cbdc41c47646944156e934524ed, type: 2}
+  wallCovering: {fileID: 11400000, guid: 84a22cc18bb12b64186d81b4a3b446d1, type: 2}
+  zoneFloors:
+  - zoneLabel: Kitchen
+    floor: {fileID: 11400000, guid: 4808f53f3610e634bafa1508ccde692b, type: 2}
+  - zoneLabel: Bath
+    floor: {fileID: 11400000, guid: a26f3a6b29ed16e44bc187627d5156ae, type: 2}
+  - zoneLabel: Bedroom
+    floor: {fileID: 11400000, guid: 486eb6c96a172a44f934493b770e320f, type: 2}
+  pieces:
+  - item: {fileID: 11400000, guid: 32fb8a93723662e4aa814f3ca269db4b, type: 2}
+    position: {x: 13, y: 9}
+    facing: 0
+  - item: {fileID: 11400000, guid: bc998d7ede5321443b1c7b9b01524988, type: 2}
+    position: {x: 11, y: 9}
+    facing: 0
+  - item: {fileID: 11400000, guid: 598d3fe662bb40749b97d6a015e6b182, type: 2}
+    position: {x: 9, y: 9}
+    facing: 0
+  - item: {fileID: 11400000, guid: ce7f49c1a7b67a447ad762c767bbbc28, type: 2}
+    position: {x: 7, y: 9}
+    facing: 0
+  - item: {fileID: 11400000, guid: b7c97eea296875c4cb5127b002555e5a, type: 2}
+    position: {x: 12, y: 9}
+    facing: 0
+  - item: {fileID: 11400000, guid: 87dbe092c4885e7449ab7d11a8b6e702, type: 2}
+    position: {x: 11, y: 9}
+    facing: 0
+  - item: {fileID: 11400000, guid: cc468ab7bbaa09346bfc1f3165e261a8, type: 2}
+    position: {x: 12, y: 5}
+    facing: 0
+  - item: {fileID: 11400000, guid: cb5810d1a01a0874b97826cf570c3e8b, type: 2}
+    position: {x: 11, y: 6}
+    facing: 1
+  - item: {fileID: 11400000, guid: 636b02a044d1e0f48824cd009be0f0cc, type: 2}
+    position: {x: 9, y: 10.5}
+    facing: 0
+  - item: {fileID: 11400000, guid: e7de9ea3ae680ad42ac675dfc032d3d9, type: 2}
+    position: {x: 7, y: 11.2}
+    facing: 0
+  - item: {fileID: 11400000, guid: f9e10d98746b46049a2b6a14f87d6800, type: 2}
+    position: {x: 10, y: 1}
+    facing: 0
+  - item: {fileID: 11400000, guid: 42eb799e2922fc54d867a22a756f1534, type: 2}
+    position: {x: 10, y: 3}
+    facing: 0
+  - item: {fileID: 11400000, guid: 3394de8bcfb83a24f8fea47d98e18c7a, type: 2}
+    position: {x: 11, y: 2}
+    facing: 0
+  - item: {fileID: 11400000, guid: 53a78af5db74d4e439733ff80a5eb04c, type: 2}
+    position: {x: 11, y: 0}
+    facing: 2
+  - item: {fileID: 11400000, guid: 21019425961f8a44ab99af85633a7b5e, type: 2}
+    position: {x: 9, y: 3}
+    facing: 1
+  - item: {fileID: 11400000, guid: e15e549ea540cfb45a1fd8710477240b, type: 2}
+    position: {x: 13, y: 3}
+    facing: 0
+  - item: {fileID: 11400000, guid: ab4f0aea0ead86a4c960f0089516b133, type: 2}
+    position: {x: 13, y: 0}
+    facing: 0
+  - item: {fileID: 11400000, guid: 74a92729f00c3744788454b7ff8752e9, type: 2}
+    position: {x: 2, y: 7}
+    facing: 0
+  - item: {fileID: 11400000, guid: cbfb11842e90148419c4c7f6da88feb0, type: 2}
+    position: {x: 1, y: 9}
+    facing: 0
+  - item: {fileID: 11400000, guid: c52fab4702431064ea26fe78a8cb8a4e, type: 2}
+    position: {x: 0, y: 5}
+    facing: 1
+  - item: {fileID: 11400000, guid: ab4f0aea0ead86a4c960f0089516b133, type: 2}
+    position: {x: 5, y: 9}
+    facing: 0
+  - item: {fileID: 11400000, guid: e15e549ea540cfb45a1fd8710477240b, type: 2}
+    position: {x: 4, y: 9}
+    facing: 0
+  - item: {fileID: 11400000, guid: 636b02a044d1e0f48824cd009be0f0cc, type: 2}
+    position: {x: 0, y: 10.5}
+    facing: 0
+  - item: {fileID: 11400000, guid: b081eb9e37e18004e81fcdbebc8eb4b5, type: 2}
+    position: {x: 0, y: 3}
+    facing: 0
+  - item: {fileID: 11400000, guid: c3693ada201313041a82d19373994512, type: 2}
+    position: {x: 2, y: 0}
+    facing: 0
+  - item: {fileID: 11400000, guid: bd2b03c06032deb4c9df3fef4b2f6772, type: 2}
+    position: {x: 0, y: 0}
+    facing: 0
+  - item: {fileID: 11400000, guid: 2b99ef7a750473343b51f2f24cdd6c9a, type: 2}
+    position: {x: 1, y: 1}
+    facing: 0
+  - item: {fileID: 11400000, guid: f6239ed3495dda046bca11da4ed8f9af, type: 2}
+    position: {x: 3, y: 3}
+    facing: 0

@@ -62,6 +62,8 @@ public class HouseUpgradeData : ScriptableObject
     [Tooltip("Floor / Wall: the tile. Wall: 'Tile' is the upper row, 'Tile Base' the row with the skirting board.")]
     public TileBase tile;
     public TileBase tileBase;
+    [Tooltip("Wall only, optional: the highest wall row (with crown moulding). Used by the decor wall coverings.")]
+    public TileBase tileTop;
     [Tooltip("Siding / Roof: the colour the outside is painted.")]
     public Color tint = Color.white;
 
@@ -73,11 +75,30 @@ public class HouseUpgradeData : ScriptableObject
     [Tooltip("Kitchen only: chance (0-1) that cooking makes one extra serving.")]
     [Range(0f, 1f)] public float foodBonus = 0f;
 
+    /// <summary>
+    /// A shop can sell house upgrades cheaper (the Sterling tower in the city: 0.95 = 5% off). The shop sets this just before it
+    /// opens its list; it goes back to 1 (full price) whenever a scene loads.
+    /// </summary>
+    public static float PriceMultiplier = 1f;
+
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+    private static void ResetPriceMultiplier()
+    {
+        PriceMultiplier = 1f;
+        UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
+        UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private static void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode) { PriceMultiplier = 1f; }
+
+    /// <summary>The gold this costs right now (Gold Cost times the shop's discount).</summary>
+    public int GoldPrice { get { return Mathf.Max(0, Mathf.RoundToInt(goldCost * PriceMultiplier)); } }
+
     /// <summary>"150g + 8 Wood Plank" style text.</summary>
     public string CostText()
     {
         var parts = new List<string>();
-        if (goldCost > 0) parts.Add(goldCost + "g");
+        if (GoldPrice > 0) parts.Add(GoldPrice + "g");
         foreach (MaterialCost m in materials)
             if (m != null && m.item != null) parts.Add(m.count + " " + m.item.itemName);
         return parts.Count == 0 ? "Free" : string.Join(" + ", parts);

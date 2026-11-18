@@ -145,7 +145,7 @@ MonoBehaviour:
       forbidFlags: []
       counters: []
     stops:
-    - place: City
+    - place: CafeInside
       scene: City
       waitMinutes: 240
       transitMinutes: 40

@@ -32,6 +32,16 @@ public class SickFairyNpc : MonoBehaviour, IInteractable
     [Tooltip("How fast she falls.")] public float gravity = 16f;
     [Tooltip("Height of the picture's centre above her feet when she is on the ground.")] public float groundOffset = 0.75f;
 
+    [Header("Getting better (Healing Forest)")]
+    [Tooltip("How much stronger she gets for each healed forest zone: she lies down for less time, flies higher and longer, and glows brighter. 0.15 x 6 zones = nearly well.")]
+    [Range(0f, 0.3f)] public float recoveryPerZone = 0.15f;
+
+    /// <summary>0 = as sick as at the start, 1 = well. Grows with every healed ForestZone in the scene.</summary>
+    private float Well { get { return Mathf.Clamp01(ForestZone.HealedInScene() * recoveryPerZone); } }
+    private float LieSeconds { get { return lieSeconds * (1f - 0.75f * Well); } }
+    private float RiseHeight { get { return riseHeight * (1f + 0.8f * Well); } }
+    private float StruggleSeconds { get { return struggleSeconds * (1f + 2f * Well); } }
+
     [Header("Story")]
     [TextArea] public string[] firstMeeting =
     {
@@ -157,14 +167,14 @@ public class SickFairyNpc : MonoBehaviour, IInteractable
                 if (lieFrames != null && lieFrames.Length > 0)
                     sr.sprite = lieFrames[(Mathf.FloorToInt(t * 0.55f) % 5 == 4 && lieFrames.Length > 1) ? 1 : 0];   // an occasional cough
                 bob = Mathf.Sin(t * 2.2f) * 0.012f;
-                if (phaseT > lieSeconds - 0.7f) jitter = Mathf.Sin(t * 45f) * 0.025f;                        // gathering her strength
-                if (phaseT >= lieSeconds) Go(Phase.Rising);
+                if (phaseT > LieSeconds - 0.7f) jitter = Mathf.Sin(t * 45f) * 0.025f;                        // gathering her strength
+                if (phaseT >= LieSeconds) Go(Phase.Rising);
                 break;
             }
             case Phase.Rising:
             {
                 float k = Mathf.Clamp01(phaseT / riseSeconds);
-                height = riseHeight * (1f - (1f - k) * (1f - k));
+                height = RiseHeight * (1f - (1f - k) * (1f - k));
                 rot = Mathf.Sin(t * 9f) * 6f;
                 jitter = Mathf.Sin(t * 40f) * 0.03f;
                 Flap(10f);
@@ -174,8 +184,8 @@ public class SickFairyNpc : MonoBehaviour, IInteractable
             }
             case Phase.Struggling:
             {
-                float k = Mathf.Clamp01(phaseT / struggleSeconds);
-                height = riseHeight + Mathf.Sin(phaseT * 7f) * 0.08f - phaseT * 0.3f;
+                float k = Mathf.Clamp01(phaseT / StruggleSeconds);
+                height = RiseHeight + Mathf.Sin(phaseT * 7f) * 0.08f - phaseT * 0.3f * (1f - Well);     // a stronger fairy sinks less
                 rot = Mathf.Sin(t * 8f) * Mathf.Lerp(6f, 24f, k);
                 jitter = Mathf.Sin(t * 30f) * 0.04f;
                 Flap(Mathf.Lerp(8f, 2.5f, k));                                                              // the flapping gives up
@@ -217,12 +227,12 @@ public class SickFairyNpc : MonoBehaviour, IInteractable
         pic.localPosition = new Vector3(jitter, groundOffset + height + bob, 0f);
         pic.localRotation = Quaternion.Euler(0f, 0f, rot);
 
-        float air = Mathf.Clamp01(height / Mathf.Max(0.1f, riseHeight));
+        float air = Mathf.Clamp01(height / Mathf.Max(0.1f, RiseHeight));
         shadowT.localPosition = new Vector3(0f, 0.12f, 0f);
         shadowT.localScale = new Vector3(Mathf.Lerp(1.1f, 0.55f, air), Mathf.Lerp(0.4f, 0.22f, air), 1f);
         glowT.localPosition = pic.localPosition;
         float flick = 0.75f + 0.25f * Mathf.Sin(Time.time * 6.5f);
-        Color c = glowColor; c.a = glowColor.a * Mathf.Lerp(0.35f, 1f, air) * flick;
+        Color c = glowColor; c.a = Mathf.Clamp01(glowColor.a * Mathf.Lerp(0.35f, 1f, air) * flick * (1f + Well));   // glows brighter as she recovers
         glow.color = c;
     }
 
@@ -286,6 +296,12 @@ public class SickFairyNpc : MonoBehaviour, IInteractable
 
     private string Greeting()
     {
+        if (ForestZone.All.Count > 0)
+        {
+            // the Healing Forest: she feels each zone you heal
+            if (ForestZone.NextToHeal() == null) return "Look - I can almost fly again! The whole forest is breathing. Thank you, truly.";
+            if (ForestZone.HealedInScene() > 0) return "I feel a little stronger every time a part of the forest heals. Can you feel it too?";
+        }
         if (GameState.HasFlag("forest_grove_reached")) return "You found my sister? I can feel the grove breathing again. Please, keep helping her.";
         if (GameState.HasFlag(PromisedFlag)) return "Please... she needs you. How can I help?";
         return "...You came back. Is there something you need?";

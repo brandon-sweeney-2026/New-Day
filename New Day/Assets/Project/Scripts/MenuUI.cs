@@ -49,7 +49,13 @@ public class MenuUI : MonoBehaviour
     private readonly Image[] rowBackgrounds = new Image[VisibleRows];
     private readonly Text[] rowLabels = new Text[VisibleRows];
     private readonly Text[] rowRights = new Text[VisibleRows];
-    private Font font;
+    private BookSkin skin;
+
+    // The page: room for the title ribbon, the rows and the description underneath (the book is sized to fit these).
+    private const float PageWidth = 600f;
+    private const float RowHeight = 34f;
+    private const float RowsTop = 52f;          // below the title ribbon
+    private const float DetailHeight = 76f;
 
     public static bool IsOpen { get { return instance != null && instance.stack.Count > 0; } }
 
@@ -218,10 +224,11 @@ public class MenuUI : MonoBehaviour
 
             MenuRow r = rows[index];
             bool sel = index == f.selected;
-            rowBackgrounds[i].color = sel ? new Color(1f, 0.85f, 0.3f, 0.35f) : new Color(1f, 1f, 1f, 0.06f);
+            skin.PaintRow(rowBackgrounds[i], sel);           // honey highlighter behind the chosen row
 
-            Color c = r.color.HasValue ? r.color.Value : Color.white;
-            if (!r.enabled) c = new Color(c.r * 0.55f, c.g * 0.55f, c.b * 0.55f, 1f);
+            // Row colours were picked for the old dark window; Ink() turns them into darker ink that reads on paper.
+            Color c = skin.Ink(r.color);
+            if (!r.enabled) c = skin.Disabled(c);
             rowLabels[i].color = c;
             rowRights[i].color = c;
             rowLabels[i].text = (sel ? "> " : "   ") + r.label;
@@ -237,7 +244,7 @@ public class MenuUI : MonoBehaviour
 
     private void BuildUI()
     {
-        font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+        skin = BookSkin.Current;
         DontDestroyOnLoad(gameObject);
 
         canvas = gameObject.AddComponent<Canvas>();
@@ -251,61 +258,49 @@ public class MenuUI : MonoBehaviour
 
         RectTransform root = gameObject.GetComponent<RectTransform>();
 
-        Image dim = Img(root, "Dim", new Color(0f, 0f, 0f, 0.55f));
+        Image dim = Img(root, "Dim", skin.dimColor);
         Stretch(dim.rectTransform);
 
-        Image panel = Img(root, "Panel", new Color(0.14f, 0.1f, 0.08f, 0.96f));
-        Place(panel.rectTransform, new Vector2(0.5f, 0.5f), new Vector2(0f, 0f), new Vector2(640f, 520f));
+        // ---- one page in a leather cover, sized so the title, rows and description all fit on the page ----
+        float contentHeight = RowsTop + VisibleRows * RowHeight + 8f + DetailHeight;
+        BookSkin.Book book = skin.BuildBook(root, "Book", false);
+        Place(book.root, new Vector2(0.5f, 0.5f), Vector2.zero, skin.CoverSizeFor(false, PageWidth, contentHeight));
+        RectTransform page = book.leftContent;
 
-        Image titleBar = Img(panel.rectTransform, "TitleBar", new Color(0.3f, 0.2f, 0.12f, 1f));
-        titleBar.rectTransform.anchorMin = new Vector2(0f, 1f);
-        titleBar.rectTransform.anchorMax = new Vector2(1f, 1f);
-        titleBar.rectTransform.pivot = new Vector2(0.5f, 1f);
-        titleBar.rectTransform.anchoredPosition = Vector2.zero;
-        titleBar.rectTransform.sizeDelta = new Vector2(0f, 44f);
+        // ---- the title on a red ribbon ----
+        titleText = skin.NewBanner(page, "Title", PageWidth * 0.75f, 0f, 22);
 
-        titleText = Txt(titleBar.rectTransform, "Title", 24, TextAnchor.MiddleCenter);
-        Stretch(titleText.rectTransform);
-
+        // ---- the rows ----
         for (int i = 0; i < VisibleRows; i++)
         {
-            Image bg = Img(panel.rectTransform, "Row" + i, Color.white);
-            bg.rectTransform.anchorMin = new Vector2(0f, 1f);
-            bg.rectTransform.anchorMax = new Vector2(1f, 1f);
-            bg.rectTransform.pivot = new Vector2(0.5f, 1f);
-            bg.rectTransform.anchoredPosition = new Vector2(0f, -54f - i * 34f);
-            bg.rectTransform.sizeDelta = new Vector2(-24f, 32f);
+            Image bg = Img(page, "Row" + i, Color.clear);
+            BookSkin.TopStrip(bg.rectTransform, -RowsTop - i * RowHeight, RowHeight - 2f);
+            skin.AddRule(bg.rectTransform);
             rowBackgrounds[i] = bg;
 
-            rowLabels[i] = Txt(bg.rectTransform, "Label", 20, TextAnchor.MiddleLeft);
+            rowLabels[i] = skin.NewText(bg.rectTransform, "Label", 20, skin.ink, TextAnchor.MiddleLeft);
             rowLabels[i].rectTransform.anchorMin = Vector2.zero;
             rowLabels[i].rectTransform.anchorMax = new Vector2(0.62f, 1f);
             rowLabels[i].rectTransform.offsetMin = new Vector2(8f, 0f);
             rowLabels[i].rectTransform.offsetMax = Vector2.zero;
 
-            rowRights[i] = Txt(bg.rectTransform, "Right", 18, TextAnchor.MiddleRight);
+            rowRights[i] = skin.NewText(bg.rectTransform, "Right", 18, skin.ink, TextAnchor.MiddleRight);
             rowRights[i].rectTransform.anchorMin = new Vector2(0.45f, 0f);
             rowRights[i].rectTransform.anchorMax = Vector2.one;
             rowRights[i].rectTransform.offsetMin = Vector2.zero;
             rowRights[i].rectTransform.offsetMax = new Vector2(-8f, 0f);
         }
 
-        detailText = Txt(panel.rectTransform, "Detail", 17, TextAnchor.UpperLeft);
-        detailText.horizontalOverflow = HorizontalWrapMode.Wrap;
-        detailText.color = new Color(0.9f, 0.85f, 0.7f);
-        detailText.rectTransform.anchorMin = new Vector2(0f, 0f);
-        detailText.rectTransform.anchorMax = new Vector2(1f, 0f);
-        detailText.rectTransform.pivot = new Vector2(0.5f, 0f);
-        detailText.rectTransform.anchoredPosition = new Vector2(0f, 40f);
-        detailText.rectTransform.sizeDelta = new Vector2(-32f, 100f);
+        // ---- a flourish, then the description of the highlighted row at the bottom of the page ----
+        Image flourish = skin.NewImage(page, "Divider", BookSkin.Part.Divider);
+        float flourishH = skin.NaturalHeight(BookSkin.Part.Divider, 12f);
+        BookSkin.BottomStrip(flourish.rectTransform, DetailHeight, flourishH);
 
-        hintText = Txt(panel.rectTransform, "Hint", 15, TextAnchor.MiddleCenter);
-        hintText.color = new Color(0.7f, 0.7f, 0.7f);
-        hintText.rectTransform.anchorMin = new Vector2(0f, 0f);
-        hintText.rectTransform.anchorMax = new Vector2(1f, 0f);
-        hintText.rectTransform.pivot = new Vector2(0.5f, 0f);
-        hintText.rectTransform.anchoredPosition = new Vector2(0f, 8f);
-        hintText.rectTransform.sizeDelta = new Vector2(0f, 26f);
+        detailText = skin.NewText(page, "Detail", 17, skin.ink, TextAnchor.UpperLeft);
+        BookSkin.BottomStrip(detailText.rectTransform, 0f, DetailHeight - 4f);
+
+        // ---- key help, pressed in gold into the leather under the page ----
+        hintText = skin.NewCoverHint(book.root, "", 15);
 
         canvas.enabled = false;
     }
@@ -318,21 +313,6 @@ public class MenuUI : MonoBehaviour
         i.color = c;
         i.raycastTarget = false;
         return i;
-    }
-
-    private Text Txt(RectTransform parent, string name, int size, TextAnchor anchor)
-    {
-        var go = new GameObject(name, typeof(RectTransform), typeof(Text));
-        go.transform.SetParent(parent, false);
-        var t = go.GetComponent<Text>();
-        t.font = font;
-        t.fontSize = size;
-        t.alignment = anchor;
-        t.color = Color.white;
-        t.horizontalOverflow = HorizontalWrapMode.Overflow;
-        t.verticalOverflow = VerticalWrapMode.Overflow;
-        t.raycastTarget = false;
-        return t;
     }
 
     private static void Stretch(RectTransform rt)

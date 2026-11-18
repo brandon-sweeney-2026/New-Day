@@ -21,6 +21,8 @@ public class ShadowCreature : EnemyBase
 
     [Header("Art (the setup menu fills these in)")]
     public Sprite[] moveFrames;         // faces right; flipped for left
+    [Tooltip("Optional: played while it stands still (breathing, blinking). Empty = it holds the first move frame.")]
+    public Sprite[] idleFrames;
     public Sprite warnFrame;            // crouch / curl / flap
     public float animFps = 8f;
 
@@ -95,7 +97,7 @@ public class ShadowCreature : EnemyBase
             case State.Go:
                 dir = goDir; speed = goSpeed;
                 stateTimer -= dt;
-                bool reached = Vector2.Distance(rb.position + Vector2.up * 0.3f, PlayerCenter) < touchRadius + 0.15f;
+                bool reached = IsTouchingPlayer(0.15f);      // measures collider to collider, so diagonals count too
                 if (stateTimer <= 0f || (reached && hitAndRun))
                 {
                     retreatNext = hitAndRun && reached;
@@ -147,6 +149,7 @@ public class ShadowCreature : EnemyBase
 
         Sprite s;
         if (state == State.Warn && warnFrame != null) s = warnFrame;
+        else if (!moving && idleFrames != null && idleFrames.Length > 0) s = Frame(idleFrames, Time.time, animFps * 0.6f);
         else if (moveFrames != null && moveFrames.Length > 0) s = moving ? Frame(moveFrames, animTime, animFps) : moveFrames[0];
         else s = null;
         if (s != null) sr.sprite = s;

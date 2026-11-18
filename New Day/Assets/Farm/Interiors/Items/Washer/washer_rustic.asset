@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f4ff7549fed0c4b99db334d94d5526, type: 3}
+  m_Name: washer_rustic
+  m_EditorClassIdentifier: Assembly-CSharp::DecorItem
+  id: washer_rustic
+  displayName: Almond Top-Loader
+  description: Lift the lid, drop the clothes in.
+  category: 20
+  theme: rustic
+  price: 350
+  mount: 0
+  width: 1
+  depth: 1
+  blocksPlayer: 1
+  surfaceHeight: 0
+  front: {fileID: 21300000, guid: 87caa770500f10548a7709941d9bad73, type: 3}
+  right: {fileID: 21300000, guid: ceddac5708fe0f04fad2b8db51c1debd, type: 3}
+  back: {fileID: 21300000, guid: aebcab0db50db20438ba1843b1887000, type: 3}
+  left: {fileID: 21300000, guid: e34f85e7adcc5a84da9fc1cc18a9c854, type: 3}
+  floorTile: {fileID: 0}
+  wallTop: {fileID: 0}
+  wallUpper: {fileID: 0}
+  wallBase: {fileID: 0}

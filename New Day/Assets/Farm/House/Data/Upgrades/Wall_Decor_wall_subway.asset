@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee9e5df28081ab2478d11e823ef04c35, type: 3}
+  m_Name: Wall_Decor_wall_subway
+  m_EditorClassIdentifier: Assembly-CSharp::HouseUpgradeData
+  displayName: Subway Tile
+  description: White tiles for kitchens and bathrooms.
+  category: 1
+  isDefault: 0
+  goldCost: 150
+  materials: []
+  sprite: {fileID: 0}
+  tile: {fileID: 11400000, guid: 532c3a7bfb81fa24fab4ee2fc2215474, type: 2}
+  tileBase: {fileID: 11400000, guid: 5a9a93889d0ce7b408746d8600c7c199, type: 2}
+  tileTop: {fileID: 11400000, guid: 4e2b08cc63c101343a5b4d54317552cf, type: 2}
+  tint: {r: 1, g: 1, b: 1, a: 1}
+  windowSpots: []
+  foodBonus: 0

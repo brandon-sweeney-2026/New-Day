@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f4ff7549fed0c4b99db334d94d5526, type: 3}
+  m_Name: utensil_rail
+  m_EditorClassIdentifier: Assembly-CSharp::DecorItem
+  id: utensil_rail
+  displayName: Pot Rail
+  description: Pans and ladles ready by the stove.
+  category: 27
+  theme: any
+  price: 90
+  mount: 3
+  width: 2
+  depth: 1
+  blocksPlayer: 0
+  surfaceHeight: 0
+  front: {fileID: 21300000, guid: 101c597fdbf579644a0c99487695c338, type: 3}
+  right: {fileID: 0}
+  back: {fileID: 0}
+  left: {fileID: 0}
+  floorTile: {fileID: 0}
+  wallTop: {fileID: 0}
+  wallUpper: {fileID: 0}
+  wallBase: {fileID: 0}

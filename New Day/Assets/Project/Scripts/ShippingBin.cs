@@ -52,7 +52,7 @@ public class ShippingBin : MonoBehaviour, IInteractable
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
     private static void ResetStatics()
     {
-        for (int i = 0; i < pending.Length; i++) { pending[i].item = null; pending[i].count = 0; pending[i].pollution = 0; }
+        for (int i = 0; i < pending.Length; i++) { pending[i].item = null; pending[i].count = 0; pending[i].pollution = 0; pending[i].quality = 0; }
     }
 
     public string InteractPrompt { get { return "Ship items"; } }
@@ -86,7 +86,7 @@ public class ShippingBin : MonoBehaviour, IInteractable
 
     public bool Accepts(ItemData item)
     {
-        if (item == null) return false;
+        if (item == null || item.isWaste) return false;      // nobody buys trash: it goes to the treatment plant in the city
         switch (item.type)
         {
             case ItemData.ItemType.Crop: return acceptCrops;
@@ -99,7 +99,7 @@ public class ShippingBin : MonoBehaviour, IInteractable
     public int PriceEach(ItemStack s)
     {
         if (s == null || s.IsEmpty) return 0;
-        return Mathf.RoundToInt(s.item.GetSellPrice(s.pollution) * priceMultiplier);
+        return Mathf.RoundToInt(s.item.GetSellPrice(s.pollution) * priceMultiplier * CropQuality.PriceMultiplier(s.quality));   // better crops sell for more
     }
 
     /// <summary>The money you will get tonight for everything in the box.</summary>
@@ -118,7 +118,7 @@ public class ShippingBin : MonoBehaviour, IInteractable
     }
 
     /// <summary>Puts items in the box (stacking with matching ones). Returns how many did NOT fit.</summary>
-    public int TryAdd(ItemData item, int count, int pollution)
+    public int TryAdd(ItemData item, int count, int pollution, int quality = 0)
     {
         if (item == null || count <= 0) return count;
         int max = Mathf.Max(1, item.maxStack);
@@ -126,7 +126,7 @@ public class ShippingBin : MonoBehaviour, IInteractable
         foreach (ItemStack s in pending)
         {
             if (count <= 0) break;
-            if (s.IsEmpty || s.item != item || s.pollution != pollution) continue;
+            if (s.IsEmpty || s.item != item || s.pollution != pollution || s.quality != quality) continue;
             int move = Mathf.Min(count, max - s.count);
             s.count += move;
             count -= move;
@@ -136,7 +136,7 @@ public class ShippingBin : MonoBehaviour, IInteractable
             if (count <= 0) break;
             if (!s.IsEmpty) continue;
             int move = Mathf.Min(count, max);
-            s.item = item; s.count = move; s.pollution = pollution;
+            s.item = item; s.count = move; s.pollution = pollution; s.quality = quality;
             count -= move;
         }
         RefreshSprite();
@@ -151,7 +151,7 @@ public class ShippingBin : MonoBehaviour, IInteractable
         if (s.IsEmpty) return 0;
         int removed = Mathf.Min(count, s.count);
         s.count -= removed;
-        if (s.count <= 0) { s.item = null; s.count = 0; s.pollution = 0; }
+        if (s.count <= 0) { s.item = null; s.count = 0; s.pollution = 0; s.quality = 0; }
         RefreshSprite();
         return removed;
     }
@@ -178,11 +178,14 @@ public class ShippingBin : MonoBehaviour, IInteractable
             gold += PriceEach(s) * s.count;
             items += s.count;
 
+            // Written down for the end-of-day recap screen ("Turnip x12 ... 480 G").
+            DayRecap.AddShipped(s.item, s.count, s.quality, PriceEach(s) * s.count);
+
             GameState.AddCounter("items_sold", s.count);
             if (s.item.type == ItemData.ItemType.Crop) GameState.AddCounter("crops_sold", s.count);
             GameState.AddCounter("sold_" + s.item.itemName.ToLowerInvariant().Replace(' ', '_'), s.count);
 
-            s.item = null; s.count = 0; s.pollution = 0;
+            s.item = null; s.count = 0; s.pollution = 0; s.quality = 0;
         }
 
         RefreshSprite();

@@ -43,6 +43,20 @@ public static class PlayerEquipment
         return slot >= 0 && slot < SlotCount ? worn[slot] : null;
     }
 
+    /// <summary>
+    /// Puts back what a save file says was being worn (used by SaveSystem). 'items' has one entry per slot; null = empty.
+    /// Nothing is taken from the backpack: a worn item was never in it.
+    /// </summary>
+    public static void LoadFromSave(ItemData[] items)
+    {
+        for (int i = 0; i < SlotCount; i++)
+        {
+            ItemData item = items != null && i < items.Length ? items[i] : null;
+            worn[i] = Fits(item, i) ? item : null;
+        }
+        Changed();
+    }
+
     /// <summary>Can this item go in this slot?</summary>
     public static bool Fits(ItemData item, int slot)
     {

@@ -7,6 +7,8 @@ using UnityEngine.InputSystem;
 ///  - Time advances while the game runs (set how fast below).
 ///  - At passOutHour the player collapses and a new day starts. Sleeping (see Bed) starts a new day too.
 ///  - A new day calls FarmManager.AdvanceDay(), which grows crops and dries the soil.
+///  - Then DayRecap.FinishDay() auto saves the game and shows the end-of-day recap screen.
+///  - The day and time carry over between scenes and save files (see SaveSystem.Clock).
 ///
 /// Put this on an empty GameObject called "TimeManager".
 /// </summary>
@@ -80,17 +82,49 @@ public class TimeManager : MonoBehaviour
         TotalDays = 1;
         minutes = dayStartHour * 60f;
 
+        // Every scene has its own TimeManager. If the game already knows what day and time it is
+        // (you walked here from another scene, or a save was loaded), carry on from there
+        // instead of starting again at the Inspector's start day.
+        SavedClock known = SaveSystem.Clock;
+        if (known != null && known.valid)
+        {
+            Day = Mathf.Max(1, known.day);
+            Year = Mathf.Max(1, known.year);
+            WeekDay = ((known.weekDay % 7) + 7) % 7;
+            TotalDays = Mathf.Max(1, known.totalDays);
+            CurrentSeason = (Season)Mathf.Clamp(known.season, 0, 3);
+            minutes = Mathf.Clamp(known.minutes, 0f, passOutHour * 60f - 1f);
+        }
+
         if (farm == null) farm = FindAnyObjectByType<FarmManager>();
     }
 
     private void OnDestroy()
     {
+        // Leaving the scene: remember the day and time for the next scene's TimeManager.
+        SaveSystem.RememberClock(this);
         if (Instance == this) Instance = null;
+    }
+
+    /// <summary>The calendar and time of day as plain data (for SaveSystem).</summary>
+    public SavedClock CaptureClock()
+    {
+        return new SavedClock
+        {
+            valid = true,
+            day = Day,
+            year = Year,
+            weekDay = WeekDay,
+            totalDays = TotalDays,
+            season = (int)CurrentSeason,
+            minutes = minutes
+        };
     }
 
     private void Update()
     {
-        if (debugKeys && Keyboard.current != null)
+        // (Not while a menu, the title screen or the day recap is open: N there would end another day underneath it.)
+        if (debugKeys && Keyboard.current != null && !GameState.InputLocked)
         {
             if (Keyboard.current.nKey.wasPressedThisFrame) StartNewDay(false);
             if (Keyboard.current.tKey.wasPressedThisFrame) AddMinutes(60);
@@ -146,6 +180,9 @@ public class TimeManager : MonoBehaviour
 
     public void StartNewDay(bool passedOut)
     {
+        // Remember what the day that is ending was called, for the recap screen ("Mon, Spring 3").
+        string endedDate = GetDateString();
+
         LastDayWasPassOut = passedOut;
         TotalDays++;
         WeekDay = (WeekDay + 1) % 7;
@@ -169,6 +206,10 @@ public class TimeManager : MonoBehaviour
         if (seasonChanged && OnSeasonChanged != null) OnSeasonChanged();
         if (OnNewDay != null) OnNewDay();
         if (OnMinuteChanged != null) OnMinuteChanged();
+
+        // Last of all, when everything has settled (mailbox paid out, crops grown, player back in bed):
+        // auto save, then show the recap of the day that just ended.
+        DayRecap.FinishDay(endedDate, passedOut);
     }
 
     // ------------------------------------------------------------------

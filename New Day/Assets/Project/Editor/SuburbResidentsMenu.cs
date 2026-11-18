@@ -60,10 +60,14 @@ public static class SuburbResidentsMenu
         return new ScheduleStop { place = place, waitMinutes = minutes, activity = doing };
     }
 
-    /// <summary>A stop in the city: they walk to the right edge of the map, vanish, and come back 'minutes' (plus the trip) later.</summary>
-    private static ScheduleStop City(float minutes, string doing)
+    /// <summary>
+    /// A stop in the city: they walk to the right edge of the map, vanish, and come back 'minutes' (plus the trip) later.
+    /// 'place' is an NpcSpot in the City scene (UniLectern, TowerOffice, HallDesk, PlantFloor...): a copy of the neighbour
+    /// turns up there while they are away from the suburb (see CitySceneBuilder, "Visitors").
+    /// </summary>
+    private static ScheduleStop City(string place, float minutes, string doing)
     {
-        return new ScheduleStop { place = "City", scene = "City", waitMinutes = minutes, transitMinutes = 40f, activity = doing };
+        return new ScheduleStop { place = place, scene = "City", waitMinutes = minutes, transitMinutes = 40f, activity = doing };
     }
 
     private static ScheduleRoute Home(string name, float hour, int priority, NpcCondition when, params ScheduleStop[] stops)
@@ -138,7 +142,7 @@ public static class SuburbResidentsMenu
             routes = new[]
             {
                 Stay("Breakfast", 6.25f, 10, null, Stop("H1Kitchen", 35, "Having breakfast")),
-                Home("Lecturing in the city", 7.5f, 40, On(Mon | Tue | Wed | Thu), City(420, "Teaching at the university")),
+                Home("Lecturing in the city", 7.5f, 40, On(Mon | Tue | Wed | Thu), City("UniLectern", 420, "Teaching at the university")),
                 Stay("Marking papers", 9f, 5, null, Stop("H1Living", 180, "Marking essays")),
                 Stay("Sunday football", 10f, 30, DryOn(Sun), Stop("ParkBenchB", 120, "Cheering from the bench")),
                 Stay("Shopping at the Kims'", 13.25f, 20, On(Fri | Sat), Stop("StoreCustomer", 15, "Buying groceries"), Stop("PlazaBench1", 40, "Chatting on the bench")),
@@ -160,7 +164,7 @@ public static class SuburbResidentsMenu
             routes = new[]
             {
                 Stay("Breakfast", 7f, 10, null, Stop("H1Kitchen", 30, "Having breakfast")),
-                Home("School in the city", 8f, 40, On(Weekdays), City(330, "At school in the city")),
+                Home("School in the city", 8f, 40, On(Weekdays), City("UniDesk2", 330, "At school in the city")),
                 Stay("Saturday at the playground", 9.5f, 20, DryOn(Sat), Stop("PlaySandbox", 60, "Digging for beetles"), Stop("PlaySeesaw", 30, "On the seesaw"), Stop("PlaySwings", 30, "On the swings")),
                 Stay("Sunday football", 10f, 30, DryOn(Sun), Stop("FieldRight", 90, "Playing football with Dad"), Stop("ParkBenchB", 30, "Sharing an orange")),
                 Stay("Lunch", 13.75f, 10, On(Sat | Sun), Stop("H1Kitchen", 30, "Having lunch")),
@@ -231,7 +235,7 @@ public static class SuburbResidentsMenu
             },
             routes = new[]
             {
-                Home("Early shift at the hospital", 6.25f, 40, On(Mon | Tue | Thu | Fri), City(480, "Working at the hospital in the city")),
+                Home("Early shift at the hospital", 6.25f, 40, On(Mon | Tue | Thu | Fri), City("ClinicInside", 480, "Working at the hospital in the city")),
                 Stay("Slow breakfast", 9f, 5, null, Stop("H3Kitchen", 45, "Having a slow breakfast")),
                 Stay("Errands", 10.5f, 10, On(Wed | Sat), Stop("StoreCustomer", 20, "Buying groceries"), Stop("HwCustomer", 15, "Asking Frank about a leaky tap"), Stop("PlazaBench2", 30, "Sitting down, finally")),
                 Stay("Watching Dev's practice", 17f, 10, Dry, Stop("ParkBenchA", 60, "Watching football practice")),
@@ -253,7 +257,7 @@ public static class SuburbResidentsMenu
             routes = new[]
             {
                 Stay("Breakfast", 7f, 10, null, Stop("H3Kitchen", 20, "Wolfing down breakfast")),
-                Home("School in the city", 7.75f, 40, On(Weekdays), City(350, "At school in the city")),
+                Home("School in the city", 7.75f, 40, On(Weekdays), City("UniDesk1", 350, "At school in the city")),
                 Stay("Slush run", 11f, 15, On(Sat | Sun), Stop("StoreSlush", 20, "Choosing a slush"), Stop("StoreFront", 30, "Drinking a blue slush")),
                 Stay("Football practice", 16f, 20, Dry, Stop("FieldLeft", 100, "At football practice"), Stop("ParkBenchA", 15, "Getting his breath back")),
                 Stay("Rainy afternoon", 16f, 10, Wet, Stop("H3Living", 150, "Gaming")),
@@ -277,7 +281,7 @@ public static class SuburbResidentsMenu
             routes = new[]
             {
                 Stay("Coffee and notes", 7f, 10, null, Stop("H4Kitchen", 45, "Having coffee over her notes")),
-                Home("University", 8.25f, 40, On(Mon | Wed | Fri), City(360, "In the lab at the university")),
+                Home("University", 8.25f, 40, On(Mon | Wed | Fri), City("UniLab", 360, "In the lab at the university")),
                 Stay("Reading in the park", 10f, 10, DryOn(Tue | Thu | Sat | Sun), Stop("ParkBenchB", 120, "Reading under the trees")),
                 Stay("Lunch", 13.5f, 10, null, Stop("H4Kitchen", 40, "Having lunch")),
                 Stay("Seed shopping", 15.25f, 10, On(Tue | Thu), Stop("StoreSeeds", 25, "Reading every seed packet"), Stop("StoreCustomer", 10, "Buying just one packet")),
@@ -302,7 +306,7 @@ public static class SuburbResidentsMenu
                 Stay("Busking in the plaza", 12f, 10, Dry, Stop("PlazaBench2", 150, "Playing guitar")),
                 Stay("Practising", 12f, 20, Wet, Stop("H4Living", 180, "Practising scales")),
                 Stay("Slush break", 15.5f, 10, null, Stop("StoreSlush", 15, "Choosing a slush"), Stop("StoreFront", 20, "Drinking a slush")),
-                Home("Gig in the city", 17.5f, 40, On(Fri | Sat), City(240, "Playing a gig in the city")),
+                Home("Gig in the city", 17.5f, 40, On(Fri | Sat), City("CafeInside", 240, "Playing a gig in the city")),
                 Stay("Songwriting in the park", 17.5f, 10, Dry, Stop("ParkBenchC", 80, "Writing a song")),
                 Home("Late dinner", 20.75f, 10, null, Stop("H4Kitchen", 40, "Having a late dinner"), Stop("H4Living", 100, "Playing quietly")),
             }
@@ -324,7 +328,7 @@ public static class SuburbResidentsMenu
             routes = new[]
             {
                 Stay("Tea", 6.75f, 10, null, Stop("H5Kitchen", 30, "Having tea")),
-                Home("The museum in the city", 7.75f, 40, On(Tue | Wed | Thu | Fri | Sat), City(420, "Working at the museum")),
+                Home("The museum in the city", 7.75f, 40, On(Tue | Wed | Thu | Fri | Sat), City("MuseumInside", 420, "Working at the museum")),
                 Stay("Walk in the park", 9f, 10, DryOn(Sun | Mon), Stop("ParkBenchA", 60, "Watching her father play chess"), Stop("FieldSide", 20, "Taking the air")),
                 Stay("Shopping", 11.75f, 10, On(Sun | Mon), Stop("StoreCustomer", 15, "Buying tea"), Stop("HwCustomer", 15, "Ordering picture hooks")),
                 Home("Evening", 18.25f, 10, null, Stop("H5Kitchen", 60, "Cooking dinner"), Stop("H5Living", 90, "Reading")),
@@ -369,7 +373,7 @@ public static class SuburbResidentsMenu
             routes = new[]
             {
                 Stay("Morning jog", 6.25f, 10, Dry, Stop("FieldSide", 3, "Jogging"), Stop("FieldRight", 3, "Jogging"), Stop("ParkBenchC", 3, "Jogging"), Stop("FieldLeft", 3, "Stretching")),
-                Home("The tower in the city", 8f, 40, On(Weekdays), City(480, "Working at the tower in the city")),
+                Home("The tower in the city", 8f, 40, On(Weekdays), City("TowerOffice", 480, "Working at the tower in the city")),
                 Stay("Buying local", 9.5f, 10, On(Sat | Sun), Stop("StoreCustomer", 15, "Buying groceries"), Stop("PlazaBench2", 40, "Having a coffee")),
                 Stay("Paint from Frank's", 13f, 10, On(Sat), Stop("HwCustomer", 20, "Buying paint from Frank")),
                 Stay("Park with Lena", 14f, 10, DryOn(Sun), Stop("ParkBenchB", 90, "Sitting in the sun with Lena")),
@@ -412,10 +416,12 @@ public static class SuburbResidentsMenu
                 Say("Somebody leaves soup on my step every week. I've never caught them. I wash the bowl and it vanishes."),
                 Say("The playground bench is the best seat in town. Everyone tells stories near a playground. I just... borrow them."),
                 Say("Rain", 10, Wet, "Rain on the window. Good writing weather. I got four whole sentences."),
+                Say("Plant days", 12, On(Tue | Thu | Sat), "I do three mornings a week at the treatment plant in the city. It pays for the noodles. And you would not BELIEVE what people throw away."),
                 Say("Autumn", 8, new NpcCondition { seasons = SeasonMask.Autumn }, "Autumn is when the book is set. So this is research. Walking around is research."),
             },
             routes = new[]
             {
+                Home("Shift at the treatment plant", 7.5f, 40, On(Tue | Thu | Sat), City("PlantFloor", 200, "Sorting waste at the treatment plant")),
                 Stay("Writing", 8f, 5, null, Stop("H7Living", 180, "Writing")),
                 Stay("Notebook at the playground", 11.5f, 10, Dry, Stop("ParkBenchD", 75, "Scribbling in a notebook")),
                 Stay("Rain on the window", 11.5f, 20, Wet, Stop("H7Living", 150, "Writing, slowly")),
@@ -468,7 +474,7 @@ public static class SuburbResidentsMenu
             routes = new[]
             {
                 Stay("Morning run", 6.5f, 10, Dry, Stop("PlaySlide", 2, "Running"), Stop("FieldLeft", 3, "Running laps"), Stop("FieldRight", 3, "Running laps")),
-                Home("City hall", 8.25f, 40, On(Mon | Tue | Wed | Thu), City(300, "Working at city hall")),
+                Home("City hall", 8.25f, 40, On(Mon | Tue | Wed | Thu), City("HallDesk", 300, "Working at city hall")),
                 Stay("Shopping", 11f, 10, On(Fri | Sat), Stop("StoreCustomer", 15, "Buying sports drinks"), Stop("PlazaBench1", 20, "Planning the weekend match")),
                 Stay("Coaching football", 16.25f, 20, Dry, Stop("FieldMid", 90, "Coaching football")),
                 Home("Evening", 19.5f, 10, null, Stop("H8Kitchen", 45, "Having dinner"), Stop("H8Living", 90, "Watching match replays")),

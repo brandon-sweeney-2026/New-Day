@@ -1790,7 +1790,6 @@ GameObject:
   - component: {fileID: 396970069}
   - component: {fileID: 396970068}
   - component: {fileID: 396970067}
-  - component: {fileID: 396970066}
   - component: {fileID: 396970065}
   - component: {fileID: 396970064}
   - component: {fileID: 396970063}
@@ -2009,38 +2008,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
---- !u!114 &396970066
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 396970059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b08282f175c63cf4681d2905859fcb2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerActions
-  inventory: {fileID: 0}
-  stats: {fileID: 0}
-  farm: {fileID: 0}
-  crops: {fileID: 0}
-  animator: {fileID: 0}
-  useSpace: 1
-  useJKey: 1
-  useGamepadSouth: 1
-  useLeftMouse: 0
-  originOffset: {x: 0, y: 0.3}
-  targetDistance: 0.9
-  interactDistance: 0.7
-  interactRadius: 0.6
-  showTargetTile: 1
-  targetColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 0.28
-  toolDuration: 0.33333334
 --- !u!114 &396970067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6792,6 +6759,53 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1811666762
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1811666764}
+  - component: {fileID: 1811666763}
+  m_Layer: 0
+  m_Name: MountainToMine
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1811666763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1811666762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7f9ade0a9e75884897621cf42815650, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneSpawnPoint
+  spawnId: MountainToMine
+  isDefault: 0
+  faceDirection: {x: 0, y: -1}
+--- !u!4 &1811666764
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1811666762}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 11.97, y: 2.6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1834276049
 GameObject:
   m_ObjectHideFlags: 0
@@ -6847,6 +6861,8 @@ MonoBehaviour:
   - marker
   - indicator
   - targettile
+  lampShadows: 1
+  wallSunShadows: 1
   noonColor: {r: 1, g: 1, b: 0.96, a: 1}
   horizonColor: {r: 1, g: 0.86, b: 0.72, a: 1}
   dayIntensity: 1
@@ -27802,3 +27818,4 @@ SceneRoots:
   - {fileID: 1025048170}
   - {fileID: 2005204967}
   - {fileID: 445971008}
+  - {fileID: 1811666764}

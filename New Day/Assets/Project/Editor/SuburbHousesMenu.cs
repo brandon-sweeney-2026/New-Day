@@ -40,6 +40,7 @@ public static class SuburbHousesMenu
     private static string art;
     private static Dictionary<string, TileBase> tiles = new Dictionary<string, TileBase>();
     private static Dictionary<string, GameObject> furniture = new Dictionary<string, GameObject>();
+    private static bool useDecor;
 
     // ------------------------------------------------------------------ interior layouts
     private struct P { public string prop; public float x, y; public P(string p, float x, float y) { prop = p; this.x = x; this.y = y; } }
@@ -209,6 +210,7 @@ public static class SuburbHousesMenu
             furniture[f] = pf;
         }
         furniture["Apt_Tub"] = furniture["Apt_Bathtub"];     // (short name used in the layouts)
+        useDecor = InteriorDecorSetupMenu.Ready();           // furnish from the decor catalogue (Farm > Set Up > Interior Decor) when it exists
 
         // every inside is a room far to the right of the map, 100 tiles after the last one
         float nextX = 600f;
@@ -284,8 +286,12 @@ public static class SuburbHousesMenu
         style.floorTile = tiles["floor_apt_wood"]; style.wallUpper = tiles["wall_apt_upper"]; style.wallBase = tiles["wall_apt_base"]; style.partitionTile = tiles["partition_apt"];
         style.zones = L.zones.ToArray(); style.partitions = L.parts.ToArray();
 
-        foreach (P p in L.props) Place(room, p.prop, p.x, p.y);
-        foreach (float wx in L.windows) Place(room, "Apt_Window", wx, L.F + 1.4f);
+        // furniture: the decor catalogue when it exists (see InteriorDecorLayouts.cs), otherwise the old apartment props
+        if (!useDecor)
+        {
+            foreach (P p in L.props) Place(room, p.prop, p.x, p.y);
+            foreach (float wx in L.windows) Place(room, "Apt_Window", wx, L.F + 1.4f);
+        }
 
         var entry = Child(room, "EntrySpawn", new Vector3(L.doorX, 1.4f, 0f));
         var exitGo = Child(room, "ExitDoor", new Vector3(L.doorX, 0f, 0f));
@@ -299,6 +305,7 @@ public static class SuburbHousesMenu
         HardwareEditorUtil.SetRef(sdoor, "destination", entry.transform);
         HardwareEditorUtil.SetRef(sdoor, "enterInterior", interior);
         style.Apply();
+        if (useDecor) Debug.Log(InteriorDecorTools.Furnish(interior, tag, InteriorDecorLayouts.ThemeForHouse(n), InteriorDecorSetupMenu.SuburbLayoutFor(interior), false));
 
         // ----- spots and paths inside
         var made = new Dictionary<string, PathNode>();

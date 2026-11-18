@@ -29,8 +29,12 @@ public class ScheduledNpc : MonoBehaviour, IInteractable
     public string displayName = "Neighbour";
     public NpcScheduleData schedule;
     public NpcProfile profile;
-    [Tooltip("Name of the scene this NPC lives in. Empty = the scene they are placed in.")]
+    [Tooltip("Name of the scene this NPC lives in. Empty = the scene they are placed in.\n" +
+             "VISITORS: put a second copy of an NPC in another scene (the neighbours who work in the City) with the SAME schedule and Home Scene = Suburbs. " +
+             "That copy only shows up for the stops that are in the scene it stands in, and is away the rest of the day.")]
     public string homeScene = "";
+    [Tooltip("Visitors only: about how many game minutes after a route starts they reach the edge of their home scene (the walk they do there, which this scene can't see).")]
+    public float visitorLeadMinutes = 30f;
 
     [Header("Walking")]
     [Tooltip("How far they walk in one game minute (tiles). 1.5 is a relaxed stroll when a game minute is 0.7 seconds.")]
@@ -88,8 +92,12 @@ public class ScheduledNpc : MonoBehaviour, IInteractable
 
     private readonly List<Plan> plans = new List<Plan>();
     private int planDay = -1;
-    private string sceneName;
+    private string sceneName;            // the scene they LIVE in (a stop with no scene name is there)
+    private string hereScene;            // the scene this copy is standing in
     private SpriteRenderer sr;
+
+    /// <summary>True for a copy placed outside the NPC's home scene (a neighbour at work in the City).</summary>
+    private bool Visiting { get { return hereScene != sceneName; } }
     private Collider2D col;
     private Transform player;
     private SpriteRenderer playerSr;
@@ -105,7 +113,8 @@ public class ScheduledNpc : MonoBehaviour, IInteractable
         sr = GetComponentInChildren<SpriteRenderer>();
         col = GetComponent<Collider2D>();
         if (col == null) { var c = gameObject.AddComponent<CircleCollider2D>(); c.radius = 0.6f; c.offset = new Vector2(0f, 0.5f); c.isTrigger = true; col = c; }
-        sceneName = string.IsNullOrEmpty(homeScene) ? SceneManager.GetActiveScene().name : homeScene;
+        hereScene = SceneManager.GetActiveScene().name;
+        sceneName = string.IsNullOrEmpty(homeScene) ? hereScene : homeScene;
         speaker = new DialogueSpeaker
         {
             speakerName = displayName,
@@ -133,7 +142,8 @@ public class ScheduledNpc : MonoBehaviour, IInteractable
     {
         var p = new Place();
         if (string.IsNullOrEmpty(id)) return p;
-        bool other = !string.IsNullOrEmpty(scene) && scene != sceneName;
+        // A place with no scene name is in the NPC's home scene. It is "here" only if that is the scene this copy stands in.
+        bool other = (string.IsNullOrEmpty(scene) ? sceneName : scene) != hereScene;
         if (other) { p.found = true; p.inScene = false; return p; }
         // (Stand Offset moves them a little to one side, so two people sent to the same spot don't stand inside each other.)
         NpcSpot spot = NpcSpot.Find(id);
@@ -237,14 +247,19 @@ public class ScheduledNpc : MonoBehaviour, IInteractable
             else if (away && next.inScene)
             {
                 // coming back from elsewhere: appear at the entry node of the scene they came from (or right at the place)
-                plan.segs.Add(new Seg { kind = Kind.Away, t0 = t, t1 = t + s.transitMinutes, a = pos, b = pos, label = "On the way" });
-                t += s.transitMinutes;
+                // A visitor's trip: the walk to the edge of their home scene (a guess) plus half the road in between.
+                float trip = Visiting ? visitorLeadMinutes + s.transitMinutes * 0.5f : s.transitMinutes;
+                plan.segs.Add(new Seg { kind = Kind.Away, t0 = t, t1 = t + trip, a = pos, b = pos, label = "On the way" });
+                t += trip;
                 PathNode entry = PathNode.FindExitTo(curScene);
                 pos = entry != null ? (Vector2)entry.transform.position : next.pos;
                 away = false;
+                float walkStart = t;
                 t = AddWalk(plan, t, pos, next.pos);
                 pos = next.pos;
-                t = AddWait(plan, t, pos, next.facing, s);
+                // A visitor's Wait Minutes covers their whole time in this scene, so the walk in and the walk back out come off it.
+                float stay = Visiting ? Mathf.Max(5f, s.waitMinutes - 2f * (t - walkStart)) : s.waitMinutes;
+                t = AddWait(plan, t, pos, next.facing, s, stay);
             }
             else
             {
@@ -317,11 +332,13 @@ public class ScheduledNpc : MonoBehaviour, IInteractable
         return t;
     }
 
-    private float AddWait(Plan plan, float t, Vector2 pos, Vector2 spotFacing, ScheduleStop s)
+    /// <summary>Adds a wait at a stop. 'minutes' below 0 = use the stop's own Wait Minutes.</summary>
+    private float AddWait(Plan plan, float t, Vector2 pos, Vector2 spotFacing, ScheduleStop s, float minutes = -1f)
     {
         Vector2 f = s.facing != Vector2.zero ? s.facing : spotFacing;
-        plan.segs.Add(new Seg { kind = Kind.Wait, t0 = t, t1 = t + Mathf.Max(0f, s.waitMinutes), a = pos, b = pos, facing = f, label = Label(s, false) });
-        return t + Mathf.Max(0f, s.waitMinutes);
+        float wait = Mathf.Max(0f, minutes >= 0f ? minutes : s.waitMinutes);
+        plan.segs.Add(new Seg { kind = Kind.Wait, t0 = t, t1 = t + wait, a = pos, b = pos, facing = f, label = Label(s, false) });
+        return t + wait;
     }
 
     // ------------------------------------------------------------------ evaluating the clock
@@ -442,6 +459,9 @@ public class ScheduledNpc : MonoBehaviour, IInteractable
             DialogueBox.Show(speaker, firstMeeting, Options(p), null, true);
             return;
         }
+        // Their storyline comes first: if the next part of their story (Assets/Resources/Stories) is ready, they tell that instead.
+        if (StoryArcs.TryTalk(NpcId, speaker, p, () => Options(p))) return;
+
         NpcChatLine line = BestLine();
         string[] pages = line != null && line.pages != null && line.pages.Length > 0 ? line.pages : new[] { "Hello again!" };
         DialogueBox.Show(speaker, pages, Options(p), null);

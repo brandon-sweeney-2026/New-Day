@@ -1,0 +1,546 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65eefa1a5942e54a8d76aef12a7fda9, type: 3}
+  m_Name: Story_ada
+  m_EditorClassIdentifier: Assembly-CSharp::NpcStoryArc
+  npcId: ada
+  title: Never Tell a Rose
+  summary: 'Ada ran a flower stall in the city for thirty years until the tower''s flower department closed it. She says she isn''t bitter. Nobody has ever seen her cat. Fork: reopen a flower stall in the plaza, or hand her name and secrets to Bea.'
+  pathAName: Reopen the stall
+  pathBName: Pass it to Bea
+  parts:
+  - title: The rules
+    number: 1
+    heartsNeeded: 1
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Hello again, petal. Have you remembered the rules? Never water after sunset. Never cut on a Friday.
+    - And never, ever tell a rose it looks tired. They hear you. They take it personally. I've seen a whole bed of roses sulk for a month over one careless remark.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The sulking tulips
+    number: 2
+    heartsNeeded: 2
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - The red tulips by the general store are still sulking. Somebody's been sitting on the planter again.
+    - I have my suspicions. Young, tall, carries a guitar, never up before eleven. I've said nothing. I've only moved the planter four inches so the edge is very uncomfortable.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Cousins of the rose
+    number: 3
+    heartsNeeded: 3
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - 'Did you know a strawberry is a rose''s cousin? Same family. Look at the flowers some time: five little petals, just like a wild rose.'
+    - Bring me five of your strawberries. I want to press the leaves for my book, and eat the rest with cream, like my mother did in June.
+    happy: 0
+    ask:
+      item: {fileID: 11400000, guid: 659a557b27a1ae14b8e0d2ce904cbf15, type: 2}
+      amount: 5
+      minQuality: 0
+      questTitle: Strawberries for Ada
+      questText: Ada wants five strawberries, the rose's cousin, to press the leaves and eat the rest with cream.
+      reminder:
+      - Strawberries, petal? Five. Cream's already in the fridge, and Pan Tadeusz keeps looking at it.
+      thanks:
+      - Look at those. Little hearts.
+      - Here, for your trouble. And a pressed violet, for luck. Keep it in a book. Any book. Books like flowers.
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 90
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The stall
+    number: 4
+    heartsNeeded: 4
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Thirty years I had the flower stall by the city fountain. Rain or shine, five in the morning till six at night.
+    - Then the tower opened a flower department on the ground floor. Roses flown in from somewhere hot. Half my price. In plastic. No smell.
+    - I lasted eight months. On the last day I gave every flower I had left to people walking past. That was a good day, actually. The best and the worst.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: J
+    number: 5
+    heartsNeeded: 5
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags:
+      - story_emeka_6
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Emeka brought me a letter. Thirty-one years late. Wrong house number.
+    - It was from a man called Jan. He asked me to come to the coast for a week, and bring the cat. Not this cat, the one before. I never got it. I thought he'd stopped writing.
+    - We'd have been very happy, I think. Or very annoyed with each other. Probably both. I sat on the step and laughed until I cried. Silly old woman.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The Bloom Show
+    number: 6
+    heartsNeeded: 6
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - There's to be a Bloom Show in the plaza next spring! Flowers, vegetables, everything people grow. Ribbons for the best.
+    - I'll enter. For fun. Just for fun. I don't care about ribbons.
+    - ...My sweet peas are going to win a ribbon. That's not caring, petal. That's just a fact.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Plastic perfect
+    number: 7
+    heartsNeeded: 7
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - The tower has entered the Bloom Show. Did you hear? A whole display. Flowers that never wilt, never drop a petal, never smell of anything.
+    - Half of them are silk. The judges can't tell from the far end of the plaza.
+    - Bea and Soo-ah came round last night and we stayed up till two, deciding what to grow. Those girls know more Latin than I ever did. They just don't know the rules yet.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The name on the stall
+    number: 8
+    heartsNeeded: 8
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - 'I''ve been offered a spot in the plaza. A stall. My old sign is still in the attic: ''Kowalczyk Flowers''.'
+    - I could open it again. Your flowers, my know-how. 'Kowalczyk & Farm'. My knees might last a season or two.
+    - Or I could give it all to Bea. The sign, the rules, the secrets. She'd enter the Bloom Show under my name, and I'd watch from the bench with a flask.
+    - You're the grower, petal. You decide.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 1
+      optionA: Reopen the stall
+      replyA:
+      - Then it's back to five in the morning! Oh, my knees are going to have words with me.
+      - Bring me everything that blooms, petal. And tell the roses they look wonderful. Every day.
+      flagsA:
+      - ada_stall_open
+      optionB: Pass it to Bea
+      replyB:
+      - Bea, then. She's got the hands for it, and the patience. And young knees.
+      - I'll teach her the rules tonight. All of them. Even the one about Fridays, which isn't really a rule. I just like Fridays off.
+      flagsB:
+      - ada_passed_stall
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Kowalczyk & Farm
+    number: 9
+    heartsNeeded: 9
+    path: 1
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - 'First Saturday: sold out by eleven. Second Saturday: sold out by ten. Rosa says I''m stealing her customers. I''m sharing them.'
+    - 'And the Bloom Show! My sweet peas: a blue ribbon. The tower''s silk roses: nothing. One of the judges sniffed them and made a face.'
+    - My knees hurt. My hands smell of earth. I haven't been this happy since the fountain.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: From the bench
+    number: 9
+    heartsNeeded: 9
+    path: 2
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Bea won. The Bloom Show, best in show, under my old name. 'Kowalczyk Flowers, by B. Lindqvist.'
+    - I watched from the bench with a flask of tea and cried into the planters. The tulips didn't mind. They were in a good mood for once.
+    - The tower's silk roses got nothing. A judge sniffed them and made a face. I've never liked a judge so much.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Pan Tadeusz
+    number: 10
+    heartsNeeded: 10
+    path: 1
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Come inside, petal. No, really, come in. There's somebody who wants to meet you.
+    - This is Pan Tadeusz. He's been listening to me talk about you for a year, and he's decided you're allowed.
+    - 'Yes, he''s enormous. No, he doesn''t go outside. He thinks outside is a rumour. Sit down; he''ll sit on you. That means he approves. Here: flower money, your share of the stall.'
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags:
+    - met_pan_tadeusz
+    reward:
+      gold: 500
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Pan Tadeusz
+    number: 10
+    heartsNeeded: 10
+    path: 2
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Come inside, petal. Mind the step. Somebody's been waiting to meet you.
+    - This is Pan Tadeusz. Twenty pounds of opinions. He's been listening to me talk about you, and he's decided you're allowed in.
+    - 'He''s sitting on your feet. That means you''re family now. Here, from Bea and me: a share of the Bloom Show prize. Growers should get the ribbon money. That''s a rule.'
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags:
+    - met_pan_tadeusz
+    reward:
+      gold: 400
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0

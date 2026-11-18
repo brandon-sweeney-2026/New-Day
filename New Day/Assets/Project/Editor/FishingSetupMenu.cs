@@ -62,6 +62,29 @@ public static class FishingSetupMenu
         new BaitDef { key="lure",    name="Golden Lure", price=60, fish=new[]{"salmon","golden_koi","moonlit_koi"}, boost=4f, desc="Shiny. The rare ones can't resist." },
     };
 
+    /// <summary>Junk for the FishingManager's list: item asset names (made by the City and Farm Debris setups) and weights.</summary>
+    private static readonly KeyValuePair<string, float>[] Junk =
+    {
+        new KeyValuePair<string, float>("OldBoot", 20f),
+        new KeyValuePair<string, float>("CrushedCan", 25f),
+        new KeyValuePair<string, float>("TrashBag", 15f),
+        new KeyValuePair<string, float>("Debris", 15f),
+        new KeyValuePair<string, float>("Scrap", 10f),
+        new KeyValuePair<string, float>("TarLump", 6f),
+        new KeyValuePair<string, float>("ToxicGoo", 6f),
+        new KeyValuePair<string, float>("SludgeBarrel", 3f),
+    };
+
+    private static ItemData FindItem(string assetName)
+    {
+        foreach (string guid in AssetDatabase.FindAssets(assetName + " t:ItemData"))
+        {
+            string p = AssetDatabase.GUIDToAssetPath(guid);
+            if (Path.GetFileNameWithoutExtension(p) == assetName) return AssetDatabase.LoadAssetAtPath<ItemData>(p);
+        }
+        return null;
+    }
+
     [MenuItem("Farm/Set Up/Fishing", false, 125)]
     public static void Run()
     {
@@ -137,6 +160,16 @@ public static class FishingSetupMenu
         }
         mgr.rods = rodData.ToArray();
         mgr.baits = baitData.ToArray();
+        // Junk that can be fished up instead of a fish. Only filled when the list is empty, so your own changes are kept.
+        if (mgr.junk == null || mgr.junk.Count == 0)
+        {
+            mgr.junk = new List<FishingJunk>();
+            foreach (var j in Junk)
+            {
+                ItemData item = FindItem(j.Key);
+                if (item != null) mgr.junk.Add(new FishingJunk { item = item, weight = j.Value });
+            }
+        }
         EditorUtility.SetDirty(mgr);
 
         // ---- water prefabs ----

@@ -157,6 +157,7 @@ public class GeographyBrushWindow : EditorWindow
             // solid rock: its own layer above the ground and paths, with a collider the player cannot walk through
             cliffMap = NewMap(grid, "Cliffs", Mathf.Max(baseOrder + 2, GetOrder(pathMap) + 1), layerId);
             cliffMap.gameObject.AddComponent<TilemapCollider2D>();
+            WallShadowSetupMenu.AddTo(cliffMap.gameObject, WallShadowSetupMenu.CliffHeight);   // sun shadow + blocks lamp light
         }
         if (decorMap == null) decorMap = NewMap(grid, "PathDecor", Mathf.Max(baseOrder + 2, GetOrder(pathMap) + 1, GetOrder(cliffMap) + 1), layerId);
         else if (cliffMap != null && GetOrder(decorMap) <= GetOrder(cliffMap))

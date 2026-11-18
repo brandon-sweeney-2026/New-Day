@@ -77,7 +77,9 @@ public class DialogueBox : MonoBehaviour
     // ---- ui ----
     private Canvas canvas;
     private Font font;
+    private BookSkin skin;      // the storybook look (Assets/Resources/BookSkin.asset)
     private Image panelImg, frameImg, portraitImg, choiceImg;
+    private Image pageImg, choicePageImg;     // the paper pages inside the leather covers
     private Text nameText, bodyText, hintText;
     private readonly Image[] optionBg = new Image[MaxOptions];
     private readonly Text[] optionText = new Text[MaxOptions];
@@ -274,13 +276,26 @@ public class DialogueBox : MonoBehaviour
     private void ApplyArt()
     {
         nameText.text = speaker.speakerName;
-        nameText.color = speaker.nameColor;
+        nameText.color = skin.Ink(speaker.nameColor);
 
-        if (speaker.panel != null) { panelImg.sprite = speaker.panel; panelImg.type = Image.Type.Sliced; panelImg.color = Color.white; choiceImg.sprite = speaker.panel; choiceImg.type = Image.Type.Sliced; choiceImg.color = Color.white; }
-        else { panelImg.sprite = null; panelImg.color = new Color(0.96f, 0.9f, 0.76f, 0.97f); choiceImg.sprite = null; choiceImg.color = new Color(0.96f, 0.9f, 0.76f, 0.97f); }
+        // Normally every speaker talks on a book page. With 'Keep Old Screen Art' ticked on the Book Skin,
+        // a speaker that has its own box pictures uses those instead.
+        bool own = skin.keepOldScreenArt && speaker.panel != null;
+        if (own)
+        {
+            panelImg.sprite = speaker.panel; panelImg.type = Image.Type.Sliced; panelImg.color = Color.white;
+            choiceImg.sprite = speaker.panel; choiceImg.type = Image.Type.Sliced; choiceImg.color = Color.white;
+        }
+        else
+        {
+            skin.Paint(panelImg, BookSkin.Part.Cover);
+            skin.Paint(choiceImg, BookSkin.Part.Cover);
+        }
+        pageImg.enabled = !own;
+        choicePageImg.enabled = !own;
 
-        if (speaker.frame != null) { frameImg.sprite = speaker.frame; frameImg.type = Image.Type.Sliced; frameImg.color = Color.white; }
-        else { frameImg.sprite = null; frameImg.color = new Color(0.6f, 0.45f, 0.25f, 1f); }
+        if (skin.keepOldScreenArt && speaker.frame != null) { frameImg.sprite = speaker.frame; frameImg.type = Image.Type.Sliced; frameImg.color = Color.white; }
+        else skin.Paint(frameImg, BookSkin.Part.PortraitFrame);
 
         portraitImg.sprite = speaker.idle;
         portraitImg.enabled = speaker.idle != null;
@@ -293,20 +308,20 @@ public class DialogueBox : MonoBehaviour
         hintText.text = show ? "W/S: choose     Space: pick     Esc: close" : (typing ? "" : (pageIndex < pages.Length - 1 ? "Space  >>" : "Space: close"));
         if (!show) return;
 
+        // The choice book grows to hold every choice: cover edge + page edges + one row per choice.
         int count = Mathf.Min(options.Count, MaxOptions);
-        float rowH = 40f;
-        choiceImg.rectTransform.sizeDelta = new Vector2(430f, 24f + count * rowH);
+        float frame = ChoiceCoverEdge * 2f + skin.pageTopPadding + skin.pageBottomPadding;
+        choiceImg.rectTransform.sizeDelta = new Vector2(ChoiceWidth, frame + count * OptionRowHeight);
         for (int i = 0; i < MaxOptions; i++)
         {
             bool on = i < count;
             optionBg[i].gameObject.SetActive(on);
             if (!on) continue;
-            RectTransform rt = optionBg[i].rectTransform;
-            rt.anchoredPosition = new Vector2(0f, -12f - i * rowH);
+            BookSkin.TopStrip(optionBg[i].rectTransform, -i * OptionRowHeight, OptionRowHeight - 2f);
             bool sel = i == optionIndex;
-            optionBg[i].color = sel ? new Color(0.96f, 0.78f, 0.4f, 1f) : new Color(1f, 1f, 1f, 0f);
+            skin.PaintRow(optionBg[i], sel);                    // honey highlighter behind the chosen answer
             optionText[i].text = (sel ? "> " : "   ") + options[i].label;
-            optionText[i].color = new Color(0.25f, 0.15f, 0.1f);
+            optionText[i].color = skin.ink;
         }
     }
 
@@ -314,9 +329,15 @@ public class DialogueBox : MonoBehaviour
     // Building the box
     // ------------------------------------------------------------------
 
+    private const float BoxWidth = 1080f, BoxHeight = 250f;
+    private const float CoverEdge = 12f;            // leather showing around the page of the talking box
+    private const float PortraitSize = 156f;
+    private const float ChoiceWidth = 450f, OptionRowHeight = 40f, ChoiceCoverEdge = 10f;
+
     private void BuildUI()
     {
-        font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+        skin = BookSkin.Current;
+        font = skin.Font;
 
         var canvasGo = new GameObject("Canvas");
         canvasGo.transform.SetParent(transform, false);
@@ -330,43 +351,68 @@ public class DialogueBox : MonoBehaviour
         scaler.matchWidthOrHeight = 0.5f;
         RectTransform root = canvasGo.GetComponent<RectTransform>();
 
-        // main box, bottom centre
-        panelImg = Img(root, "Panel", Color.white);
-        Place(panelImg.rectTransform, new Vector2(0.5f, 0f), new Vector2(0.5f, 0f), new Vector2(0f, 18f), new Vector2(1040f, 210f));
+        // ---- main box, bottom centre: a leather cover with one page ----
+        panelImg = skin.NewImage(root, "Panel", BookSkin.Part.Cover);
+        Place(panelImg.rectTransform, new Vector2(0.5f, 0f), new Vector2(0.5f, 0f), new Vector2(0f, 12f), new Vector2(BoxWidth, BoxHeight));
         RectTransform panel = panelImg.rectTransform;
 
-        frameImg = Img(panel, "Portrait Frame", Color.white);
-        Place(frameImg.rectTransform, new Vector2(0f, 0.5f), new Vector2(0f, 0.5f), new Vector2(24f, 0f), new Vector2(160f, 160f));
+        pageImg = skin.NewImage(panel, "Page", BookSkin.Part.PageSingle);
+        BookSkin.Inset(pageImg.rectTransform, Vector2.zero, Vector2.one, CoverEdge, CoverEdge, CoverEdge, CoverEdge);
+
+        // Everything is written inside the page's margins, so nothing touches the page edge.
+        RectTransform content = BookSkin.NewArea(panel, "Content");
+        BookSkin.Inset(content, Vector2.zero, Vector2.one,
+            CoverEdge + skin.pageOuterPadding * 0.7f, CoverEdge + skin.pageBottomPadding * 0.8f,
+            CoverEdge + skin.pageOuterPadding, CoverEdge + skin.pageTopPadding * 0.8f);
+
+        // the portrait, pasted in like a photo
+        frameImg = skin.NewImage(content, "Portrait Frame", BookSkin.Part.PortraitFrame);
+        Place(frameImg.rectTransform, new Vector2(0f, 0.5f), new Vector2(0f, 0.5f), Vector2.zero, new Vector2(PortraitSize, PortraitSize));
         portraitImg = Img(frameImg.rectTransform, "Portrait", Color.white);
-        Place(portraitImg.rectTransform, new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f), Vector2.zero, new Vector2(128f, 128f));
+        Place(portraitImg.rectTransform, new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f), Vector2.zero, new Vector2(PortraitSize - 30f, PortraitSize - 30f));
         portraitImg.preserveAspect = true;
 
-        nameText = Txt(panel, "Name", 28, TextAnchor.UpperLeft);
+        // the writing, to the right of the portrait
+        float textX = PortraitSize + 22f;
+        RectTransform writing = BookSkin.NewArea(content, "Writing");
+        BookSkin.Inset(writing, Vector2.zero, Vector2.one, textX, 0f, 0f, 0f);
+
+        nameText = Txt(writing, "Name", 28, TextAnchor.UpperLeft);
         nameText.fontStyle = FontStyle.Bold;
-        Place(nameText.rectTransform, new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(206f, -16f), new Vector2(500f, 36f));
+        BookSkin.TopStrip(nameText.rectTransform, 0f, 34f);
+        Image flourish = skin.NewImage(writing, "Divider", BookSkin.Part.Divider);
+        BookSkin.TopLeft(flourish.rectTransform, 0f, -34f, 260f, skin.NaturalHeight(BookSkin.Part.Divider, 12f));
 
-        bodyText = Txt(panel, "Body", 26, TextAnchor.UpperLeft);
-        bodyText.color = new Color(0.25f, 0.15f, 0.1f);
-        bodyText.horizontalOverflow = HorizontalWrapMode.Wrap;
-        bodyText.verticalOverflow = VerticalWrapMode.Truncate;
+        // The text box ends above the hint line and holds four lines; long lines wrap.
+        // (No shrinking here: the typewriter adds letters one by one, and the size must not jump while it types.)
+        bodyText = Txt(writing, "Body", 24, TextAnchor.UpperLeft);
+        bodyText.resizeTextForBestFit = false;
+        bodyText.color = skin.ink;
         bodyText.lineSpacing = 1.05f;
-        Place(bodyText.rectTransform, new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(206f, -56f), new Vector2(800f, 130f));
+        BookSkin.Inset(bodyText.rectTransform, Vector2.zero, Vector2.one, 0f, 22f, 0f, 52f);
 
-        hintText = Txt(panel, "Hint", 16, TextAnchor.LowerRight);
-        hintText.color = new Color(0.45f, 0.32f, 0.22f);
-        Place(hintText.rectTransform, new Vector2(1f, 0f), new Vector2(1f, 0f), new Vector2(-28f, 14f), new Vector2(400f, 24f));
+        hintText = Txt(writing, "Hint", 16, TextAnchor.LowerRight);
+        hintText.color = skin.fadedInk;
+        BookSkin.BottomStrip(hintText.rectTransform, -4f, 22f);
 
-        // choice box, floating above the main box on the right
-        choiceImg = Img(root, "Choices", Color.white);
-        Place(choiceImg.rectTransform, new Vector2(0.5f, 0f), new Vector2(1f, 0f), new Vector2(520f, 234f), new Vector2(430f, 200f));
+        // ---- choice box, floating above the main box on the right: a smaller book ----
+        choiceImg = skin.NewImage(root, "Choices", BookSkin.Part.Cover);
+        Place(choiceImg.rectTransform, new Vector2(0.5f, 0f), new Vector2(1f, 0f), new Vector2(BoxWidth * 0.5f, 12f + BoxHeight + 8f), new Vector2(ChoiceWidth, 200f));
+        choicePageImg = skin.NewImage(choiceImg.rectTransform, "Page", BookSkin.Part.PageSingle);
+        BookSkin.Inset(choicePageImg.rectTransform, Vector2.zero, Vector2.one, ChoiceCoverEdge, ChoiceCoverEdge, ChoiceCoverEdge, ChoiceCoverEdge);
+        RectTransform choices = BookSkin.NewArea(choiceImg.rectTransform, "Content");
+        BookSkin.Inset(choices, Vector2.zero, Vector2.one,
+            ChoiceCoverEdge + skin.pageOuterPadding * 0.6f, ChoiceCoverEdge + skin.pageBottomPadding,
+            ChoiceCoverEdge + skin.pageOuterPadding, ChoiceCoverEdge + skin.pageTopPadding);
+
         for (int i = 0; i < MaxOptions; i++)
         {
-            optionBg[i] = Img(choiceImg.rectTransform, "Option " + i, Color.clear);
-            Place(optionBg[i].rectTransform, new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), Vector2.zero, new Vector2(400f, 38f));
-            optionText[i] = Txt(optionBg[i].rectTransform, "Label", 24, TextAnchor.MiddleLeft);
+            optionBg[i] = Img(choices, "Option " + i, Color.clear);
+            BookSkin.TopStrip(optionBg[i].rectTransform, -i * OptionRowHeight, OptionRowHeight - 2f);
+            optionText[i] = Txt(optionBg[i].rectTransform, "Label", 23, TextAnchor.MiddleLeft);
             optionText[i].rectTransform.anchorMin = Vector2.zero;
             optionText[i].rectTransform.anchorMax = Vector2.one;
-            optionText[i].rectTransform.offsetMin = new Vector2(10f, 0f);
+            optionText[i].rectTransform.offsetMin = new Vector2(8f, 0f);
             optionText[i].rectTransform.offsetMax = new Vector2(-6f, 0f);
         }
         choiceImg.gameObject.SetActive(false);
@@ -383,19 +429,12 @@ public class DialogueBox : MonoBehaviour
         return img;
     }
 
+    /// <summary>Book-style text in ink. It wraps and, when a line is too long, shrinks a little so it stays on the page.</summary>
     private Text Txt(RectTransform parent, string name, int size, TextAnchor anchor)
     {
-        var go = new GameObject(name, typeof(RectTransform), typeof(Text));
-        go.transform.SetParent(parent, false);
-        var t = go.GetComponent<Text>();
+        Text t = skin.NewText(parent, name, size, skin.ink, anchor);
         t.font = font;
-        t.fontSize = size;
-        t.alignment = anchor;
-        t.color = Color.white;
-        t.horizontalOverflow = HorizontalWrapMode.Overflow;
-        t.verticalOverflow = VerticalWrapMode.Overflow;
-        t.raycastTarget = false;
-        t.supportRichText = true;
+        t.resizeTextMinSize = Mathf.Max(10, Mathf.RoundToInt(size * 0.7f));
         return t;
     }
 

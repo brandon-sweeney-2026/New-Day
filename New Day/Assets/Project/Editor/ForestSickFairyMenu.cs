@@ -7,7 +7,7 @@ using UnityEngine;
 /// Farm > Set Up > Forest Sick Fairy and Fairy Door
 /// Imports the sick-fairy art (fairy_sick.png, fairy_sick_portraits.png, fairy_door_locked.png, fairy_door_open.png - copy them into the same folder as your other
 /// forest art) and makes two prefabs next to it: SickFairy and FairyDoor. Both are labelled so they show up in the Level Editor's Objects palette.
-/// The Maze Generator calls this for you, so you usually don't need to run it yourself.
+/// Run it once before Farm > Set Up > Forest Scene, which places these prefabs.
 /// Must live in a folder named "Editor".
 /// </summary>
 public static class ForestSickFairyMenu
@@ -17,7 +17,7 @@ public static class ForestSickFairyMenu
     {
         GameObject sick, door;
         if (Ensure(out sick, out door))
-            EditorUtility.DisplayDialog("Done", "Made the SickFairy and FairyDoor prefabs (next to your forest art, in a 'Prefabs' folder).\n\nThe Maze Generator places them for you. To place them by hand, use the Forest Level Editor's Objects palette.", "OK");
+            EditorUtility.DisplayDialog("Done", "Made the SickFairy and FairyDoor prefabs (next to your forest art, in a 'Prefabs' folder).\n\nFarm > Set Up > Forest Scene places them for you. To place them by hand, use the Forest Level Editor's Objects palette.", "OK");
     }
 
     public static bool Ensure(out GameObject sickPrefab, out GameObject doorPrefab)

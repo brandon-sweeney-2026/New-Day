@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f4ff7549fed0c4b99db334d94d5526, type: 3}
+  m_Name: fireplace_modern
+  m_EditorClassIdentifier: Assembly-CSharp::DecorItem
+  id: fireplace_modern
+  displayName: Linear Gas Fireplace
+  description: A long flame in a charcoal wall.
+  category: 3
+  theme: modern
+  price: 1100
+  mount: 0
+  width: 2
+  depth: 1
+  blocksPlayer: 1
+  surfaceHeight: 0
+  front: {fileID: 21300000, guid: b90a8f1206cfb334c95b1dad243dd50d, type: 3}
+  right: {fileID: 21300000, guid: 1632605bc5f99944a862af6b8ad93b67, type: 3}
+  back: {fileID: 21300000, guid: fb6b1ce3e4239df4db781d8e040e23de, type: 3}
+  left: {fileID: 21300000, guid: 2232415d8b88af04a8355f2895ce5b4d, type: 3}
+  floorTile: {fileID: 0}
+  wallTop: {fileID: 0}
+  wallUpper: {fileID: 0}
+  wallBase: {fileID: 0}

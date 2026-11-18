@@ -289,6 +289,8 @@ public class HeldItemVisual : MonoBehaviour
 
         // Weapons and spells have their own animation while in use, so hide the carried copy meanwhile.
         if (show && actions.IsBusy && !Allowed(item)) show = false;
+        // While fishing, FishingRig draws the rod (swinging, with a line), so hide the carried copy.
+        if (FishingManager.IsFishing) show = false;
 
         sr.enabled = show;
         if (!show) return;

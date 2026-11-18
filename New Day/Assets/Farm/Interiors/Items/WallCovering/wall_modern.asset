@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f4ff7549fed0c4b99db334d94d5526, type: 3}
+  m_Name: wall_modern
+  m_EditorClassIdentifier: Assembly-CSharp::DecorItem
+  id: wall_modern
+  displayName: Warm Grey Paint
+  description: Calm grey walls, charcoal skirting.
+  category: 29
+  theme: modern
+  price: 80
+  mount: 3
+  width: 1
+  depth: 1
+  blocksPlayer: 0
+  surfaceHeight: 0
+  front: {fileID: 21300000, guid: 6d781ae84babae849a76bae3bccc9625, type: 3}
+  right: {fileID: 0}
+  back: {fileID: 0}
+  left: {fileID: 0}
+  floorTile: {fileID: 0}
+  wallTop: {fileID: 11400000, guid: c921953d5d98f4242b375ea17aa14d2f, type: 2}
+  wallUpper: {fileID: 11400000, guid: 889a2fd7980132947aa803a6c6e8a629, type: 2}
+  wallBase: {fileID: 11400000, guid: fdf71684850bf4146b1c8cd43b1e5869, type: 2}

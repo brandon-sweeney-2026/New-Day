@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f4ff7549fed0c4b99db334d94d5526, type: 3}
+  m_Name: sink_retro
+  m_EditorClassIdentifier: Assembly-CSharp::DecorItem
+  id: sink_retro
+  displayName: Mint Enamel Sink
+  description: White enamel in a mint cabinet.
+  category: 17
+  theme: retro
+  price: 280
+  mount: 0
+  width: 2
+  depth: 1
+  blocksPlayer: 1
+  surfaceHeight: 15
+  front: {fileID: 21300000, guid: 3ec88fcd3e364de4db93ecd12d4ed5e3, type: 3}
+  right: {fileID: 21300000, guid: ac1bb8febce3e284b984e7d265384521, type: 3}
+  back: {fileID: 21300000, guid: e77b03ff23227e24990735d52c3b17e7, type: 3}
+  left: {fileID: 21300000, guid: d0d613946473759418d8f72a8b0a2e48, type: 3}
+  floorTile: {fileID: 0}
+  wallTop: {fileID: 0}
+  wallUpper: {fileID: 0}
+  wallBase: {fileID: 0}

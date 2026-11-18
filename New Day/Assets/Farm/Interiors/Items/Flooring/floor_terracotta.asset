@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f4ff7549fed0c4b99db334d94d5526, type: 3}
+  m_Name: floor_terracotta
+  m_EditorClassIdentifier: Assembly-CSharp::DecorItem
+  id: floor_terracotta
+  displayName: Terracotta Tiles
+  description: Warm clay tiles for kitchens.
+  category: 28
+  theme: any
+  price: 150
+  mount: 1
+  width: 1
+  depth: 1
+  blocksPlayer: 0
+  surfaceHeight: 0
+  front: {fileID: 21300000, guid: f72860160f0b83f40aaaa36239318280, type: 3}
+  right: {fileID: 0}
+  back: {fileID: 0}
+  left: {fileID: 0}
+  floorTile: {fileID: 11400000, guid: dfd1ad4fe2edea0458647077b87166a6, type: 2}
+  wallTop: {fileID: 0}
+  wallUpper: {fileID: 0}
+  wallBase: {fileID: 0}

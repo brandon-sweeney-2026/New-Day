@@ -51,6 +51,43 @@ public class HouseManager : MonoBehaviour
         rememberedSelected.Clear();
     }
 
+    /// <summary>
+    /// What you have bought and picked, as text for the save file (used by SaveSystem). It reads the remembered
+    /// lists, so it works in any scene - even one with no farmhouse in it.
+    /// </summary>
+    public static string SaveRemembered()
+    {
+        var parts = new List<string>();
+        foreach (string id in rememberedOwned) parts.Add("own:" + id);
+        foreach (var kv in rememberedSelected) parts.Add("use:" + kv.Key + "=" + kv.Value);
+        return string.Join("\n", parts);
+    }
+
+    /// <summary>
+    /// Puts back what SaveRemembered wrote. Call it BEFORE the scene loads: every HouseManager reads the
+    /// remembered lists when it wakes up, and paints the house from them.
+    /// </summary>
+    public static void LoadRemembered(string data)
+    {
+        rememberedOwned.Clear();
+        rememberedSelected.Clear();
+        if (string.IsNullOrEmpty(data)) return;
+
+        foreach (string line in data.Split('\n'))
+        {
+            if (line.StartsWith("own:")) rememberedOwned.Add(line.Substring(4));
+            else if (line.StartsWith("use:"))
+            {
+                // "use:Roof=Red Roof"  ->  category Roof, option "Red Roof"
+                string body = line.Substring(4);
+                int eq = body.IndexOf('=');
+                if (eq <= 0) continue;
+                HouseCategory category;
+                if (System.Enum.TryParse(body.Substring(0, eq), out category)) rememberedSelected[category] = body.Substring(eq + 1);
+            }
+        }
+    }
+
     /// <summary>Raised whenever something is bought or changed.</summary>
     public event System.Action OnChanged;
 
@@ -130,7 +167,7 @@ public class HouseManager : MonoBehaviour
         if (o == null) return false;
 
         var lacks = new List<string>();
-        if (GameState.Gold < o.goldCost) lacks.Add((o.goldCost - GameState.Gold) + "g");
+        if (GameState.Gold < o.GoldPrice) lacks.Add((o.GoldPrice - GameState.Gold) + "g");
         foreach (MaterialCost m in o.materials)
         {
             if (m == null || m.item == null) continue;
@@ -158,7 +195,8 @@ public class HouseManager : MonoBehaviour
             return false;
         }
 
-        GameState.TrySpendGold(o.goldCost);
+        GameState.TrySpendGold(o.GoldPrice);
+        SterlingInfluence.NoteSale(HouseUpgradeData.PriceMultiplier);   // an upgrade bought at the Sterling tower (5% off) counts as dealing with Sterling
         foreach (MaterialCost m in o.materials)
             if (m != null && m.item != null && inv != null) inv.Remove(m.item, m.count);
 
@@ -213,7 +251,7 @@ public class HouseManager : MonoBehaviour
                 if (interior != null) interior.PaintFloor(o.tile);
                 break;
             case HouseCategory.Wall:
-                if (interior != null) interior.PaintWall(o.tile, o.tileBase);
+                if (interior != null) interior.PaintWall(o.tile, o.tileBase, o.tileTop);
                 break;
             default:
                 if (interior != null) interior.SetFurniture(o.category, o.sprite);

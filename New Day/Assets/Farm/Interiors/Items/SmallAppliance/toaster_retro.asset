@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f4ff7549fed0c4b99db334d94d5526, type: 3}
+  m_Name: toaster_retro
+  m_EditorClassIdentifier: Assembly-CSharp::DecorItem
+  id: toaster_retro
+  displayName: Chrome Toaster
+  description: Two slices, golden brown.
+  category: 23
+  theme: retro
+  price: 50
+  mount: 2
+  width: 1
+  depth: 1
+  blocksPlayer: 0
+  surfaceHeight: 0
+  front: {fileID: 21300000, guid: bfd2bf70eb44f3d4bb8033698bcd8751, type: 3}
+  right: {fileID: 21300000, guid: 0ac921b278a15f142882afb854b966c0, type: 3}
+  back: {fileID: 21300000, guid: fd8ef3f6394366c419f136639fd26cd7, type: 3}
+  left: {fileID: 21300000, guid: 4449ee610491a1349aa77be0876a1955, type: 3}
+  floorTile: {fileID: 0}
+  wallTop: {fileID: 0}
+  wallUpper: {fileID: 0}
+  wallBase: {fileID: 0}

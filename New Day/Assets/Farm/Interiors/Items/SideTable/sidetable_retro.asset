@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f4ff7549fed0c4b99db334d94d5526, type: 3}
+  m_Name: sidetable_retro
+  m_EditorClassIdentifier: Assembly-CSharp::DecorItem
+  id: sidetable_retro
+  displayName: Tulip Side Table
+  description: One slim white stem.
+  category: 6
+  theme: retro
+  price: 120
+  mount: 0
+  width: 1
+  depth: 1
+  blocksPlayer: 1
+  surfaceHeight: 10
+  front: {fileID: 21300000, guid: 315c50bd15056074ca483767460e925c, type: 3}
+  right: {fileID: 21300000, guid: bc6a9c5f8d084c14684de708c6ce2942, type: 3}
+  back: {fileID: 21300000, guid: d421d0a103fccf74ba3f242c9a1e5d9e, type: 3}
+  left: {fileID: 21300000, guid: 76c4f331e2beac842b61da4883c5637d, type: 3}
+  floorTile: {fileID: 0}
+  wallTop: {fileID: 0}
+  wallUpper: {fileID: 0}
+  wallBase: {fileID: 0}

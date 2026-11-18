@@ -73,7 +73,7 @@ MonoBehaviour:
       forbidFlags: []
       counters: []
     stops:
-    - place: CityCampus
+    - place: UniStudy
       scene: City
       waitMinutes: 360
       transitMinutes: 40

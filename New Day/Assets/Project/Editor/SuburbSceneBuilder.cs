@@ -19,7 +19,7 @@ using UnityEngine.Tilemaps;
 ///   4. builds the General Store and Frank's Home and Hardware along the top (both can be entered), ten houses you can enter,
 ///      the park with a soccer field and playground, street lights, benches, mailboxes, trees, bushes, flower beds and pots;
 ///   5. lays the walking network for NPCs (path nodes along every sidewalk, into the park and playground, and a node on the
-///      right edge that leads to the future City scene) and the named spots they stand at (benches, the pitch, the swings...);
+///      right edge that leads to the City scene) and the named spots they stand at (benches, the pitch, the swings...);
 ///   6. moves everybody in: the Kim family above the General Store, Frank in his store, and the 18 residents of the ten houses;
 ///   7. adds the doorway to the farm on the left edge, and the matching doorway on the farm's right edge.
 ///
@@ -480,7 +480,7 @@ public static class SuburbSceneBuilder
     /// <summary>
     /// Lays the outdoor walking network. NPCs only walk from node to node along links, so this decides where they can go:
     /// along the middle of every sidewalk, across the streets at the corners, up each front path to a door, into the park and
-    /// the playground, and to the right edge of the map ("CityExit": the road to the future City scene).
+    /// the playground, and to the right edge of the map ("CityExit": the road to the City scene).
     /// It also makes the named NpcSpots that schedules use as places (ParkBenchA, FieldMid, PlaySwings, PlazaBench1 ...).
     /// The shops and houses made their own nodes (Street_StoreFront, Street_Hardware, H1_Street ...); this joins them up.
     /// Select 'PathNetwork_Streets' in the Hierarchy to see the network drawn in the Scene view.
@@ -614,16 +614,27 @@ public static class SuburbSceneBuilder
         Link("At_" + id, linkTo);
     }
 
-    /// <summary>The right-hand end of Main Street: the road to the city. The City scene does not exist yet, so for now it only says so.</summary>
+    /// <summary>
+    /// The right-hand end of Main Street: the road to the city (the City scene is built by Farm > Set Up > City Scene).
+    /// Press the action button there to travel; coming back from the city you arrive at 'FromCity'.
+    /// </summary>
     private static void MakeCityRoad()
     {
         var go = new GameObject("CityRoad");
         go.transform.position = new Vector3(W - 0.75f, MainY + 1.5f, 0f);
         go.transform.localScale = new Vector3(1.5f, 7f, 1f);                // covers the road and both sidewalks
-        go.AddComponent<BoxCollider2D>().isTrigger = true;                  // (the collider goes on first: StoreFlavor needs one)
-        var sign = go.AddComponent<StoreFlavor>();
-        sign.prompt = "Road to the city";
-        sign.lines = new[] { "The road to the city. It is a long walk, and you have a farm to run.", "The neighbours walk this way to work. Maybe one day you'll follow them." };
+        var se = go.AddComponent<SceneExit>();                              // (adds its BoxCollider2D by itself)
+        go.GetComponent<BoxCollider2D>().isTrigger = true;
+        Set(se, "sceneName", "City"); Set(se, "arriveAt", "FromSuburbs"); Set(se, "promptText", "To the city");
+        SetBool(se, "requireInteract", true);
+
+        var spawn = new GameObject("FromCity");
+        spawn.transform.position = new Vector3(W - 3.5f, MainY + 1.5f, 0f);
+        var sp = spawn.AddComponent<SceneSpawnPoint>();
+        Set(sp, "spawnId", "FromCity");
+        var so = new SerializedObject(sp);
+        so.FindProperty("faceDirection").vector2Value = Vector2.left;
+        so.ApplyModifiedProperties();
     }
 
     /// <summary>
@@ -649,6 +660,7 @@ public static class SuburbSceneBuilder
     {
         Debug.Log("Suburb: " + NpcFamilySetupMenu.Build());
         Debug.Log("Suburb: " + SuburbResidentsMenu.Build());
+        Debug.Log("Suburb: " + StoryArcSetupMenu.Build());      // their storylines (assets only; existing ones are kept)
     }
 
     // ------------------------------------------------------------------ trees, bushes and flower beds scattered over the free grass

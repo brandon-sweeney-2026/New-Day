@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f4ff7549fed0c4b99db334d94d5526, type: 3}
+  m_Name: oven_modern
+  m_EditorClassIdentifier: Assembly-CSharp::DecorItem
+  id: oven_modern
+  displayName: Steel Induction Range
+  description: A black glass top that cooks with magnets.
+  category: 18
+  theme: modern
+  price: 750
+  mount: 0
+  width: 2
+  depth: 1
+  blocksPlayer: 1
+  surfaceHeight: 0
+  front: {fileID: 21300000, guid: 04dc2af3ed14a834f990a75f69d6478f, type: 3}
+  right: {fileID: 21300000, guid: c85eccd3476b354459ac2224506cf5b9, type: 3}
+  back: {fileID: 21300000, guid: b427322f78c437346b8bb0df593a892f, type: 3}
+  left: {fileID: 21300000, guid: 7aa81b031173f3f4aa9e26143ebecede, type: 3}
+  floorTile: {fileID: 0}
+  wallTop: {fileID: 0}
+  wallUpper: {fileID: 0}
+  wallBase: {fileID: 0}

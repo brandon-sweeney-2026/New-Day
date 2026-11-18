@@ -7,29 +7,26 @@ using UnityEngine.UI;
 /// <summary>
 /// The forest screen that pops up at a stump: it shows which items the stump wants (how many you have given and how many you carry),
 /// and lets you offer them. Built from code, no setup. Controls: Space / Enter / E = offer, Esc / Q = close.
+/// What the stump is for (heal a ForestZone) is an IForestOffering.
 /// </summary>
 public class ForestStumpUI : MonoBehaviour
 {
     private static ForestStumpUI instance;
     public static bool IsOpen { get { return instance != null && instance.canvas != null && instance.canvas.gameObject.activeSelf; } }
 
-    public static void Open(ForestStump stump, ForestDoor door, PlayerActions player, string whisper)
+    public static void Open(ForestStump stump, IForestOffering target, PlayerActions player, string whisper)
     {
-        if (IsOpen) return;
+        if (IsOpen || target == null) return;
         if (instance == null)
         {
             var go = new GameObject("ForestStumpUI");
             instance = go.AddComponent<ForestStumpUI>();
             instance.Build();
         }
-        instance.StartCoroutine(instance.Run(stump, door, player, whisper));
+        instance.StartCoroutine(instance.Run(stump, target, player, whisper));
     }
 
-    // ---- look (change freely) ----
-    private static readonly Color Panel = new Color(0.07f, 0.13f, 0.09f, 0.95f);
-    private static readonly Color Leaf = new Color(0.45f, 0.85f, 0.5f);
-    private static readonly Color Soft = new Color(0.78f, 0.95f, 0.8f);
-    private static readonly Color Bad = new Color(1f, 0.55f, 0.6f);
+    // The look (cover, page, ink colours) comes from the Book Skin: Assets/Resources/BookSkin.asset.
 
     private Canvas canvas;
     private RectTransform root;
@@ -91,19 +88,22 @@ public class ForestStumpUI : MonoBehaviour
         return (kb != null && (kb.escapeKey.wasPressedThisFrame || kb.qKey.wasPressedThisFrame)) || (gp != null && gp.buttonEast.wasPressedThisFrame);
     }
 
-    private IEnumerator Run(ForestStump stump, ForestDoor door, PlayerActions player, string whisper)
+    private IEnumerator Run(ForestStump stump, IForestOffering target, PlayerActions player, string whisper)
     {
         GameState.LockInput();
         canvas.gameObject.SetActive(true);
         yield return null;                                      // so the key that opened this isn't read again
 
         Inventory inv = player != null ? player.Inventory : Inventory.Instance;
-        string msg = string.IsNullOrEmpty(whisper) ? "The old stump hums. Faint roots glow beneath the bark.\nGive it what it asks and the thorns will let go." : whisper;
+        bool isZone = target is ForestZone;
+        string msg = !string.IsNullOrEmpty(whisper) ? whisper
+                   : isZone ? "The old stump hums. Faint roots glow beneath the bark.\nGive it what it asks and the forest around it will heal."
+                            : "The old stump hums. Faint roots glow beneath the bark.\nGive it what it asks and the thorns will let go.";
         bool done = false;
 
         while (!done)
         {
-            Draw(door, inv, msg);
+            Draw(target, inv, msg);
             yield return null;
             while (!Pressed(true) && !Pressed(false)) yield return null;
             if (Pressed(false)) break;
@@ -111,29 +111,30 @@ public class ForestStumpUI : MonoBehaviour
             // offer: give as much as possible of each wanted item
             int gaveAny = 0;
             bool allMet = true;
-            ForestRequirement[] reqs = door.requirements;
+            string id = target.OfferingId;
+            ForestRequirement[] reqs = target.Requirements;
             if (reqs != null)
                 for (int i = 0; i < reqs.Length; i++)
                 {
                     ForestRequirement r = reqs[i];
                     if (r == null || r.item == null) continue;
-                    int need = r.count - ForestProgress.Given(door.id, i);
+                    int need = r.count - ForestProgress.Given(id, i);
                     if (need > 0 && inv != null)
                     {
                         int give = Mathf.Min(need, ForestItemMatch.Count(inv, r.item));
-                        if (give > 0 && ForestItemMatch.Remove(inv, r.item, give) == give) { ForestProgress.AddGiven(door.id, i, give); gaveAny += give; }
+                        if (give > 0 && ForestItemMatch.Remove(inv, r.item, give) == give) { ForestProgress.AddGiven(id, i, give); gaveAny += give; }
                     }
-                    if (ForestProgress.Given(door.id, i) < r.count) allMet = false;
+                    if (ForestProgress.Given(id, i) < r.count) allMet = false;
                 }
 
             if (allMet)
             {
-                msg = "The roots glow bright. The thorns shiver and let go...";
-                Draw(door, inv, msg);
+                msg = isZone ? "The roots blaze green. Life rushes out through the ground..." : "The roots glow bright. The thorns shiver and let go...";
+                Draw(target, inv, msg);
                 yield return new WaitForSecondsRealtime(0.9f);
-                door.Unlock();
-                stump.Refresh();
-                GameEvents.ShowToast("The way forward is open.");
+                target.Fulfil();
+                if (stump != null) stump.Refresh();
+                GameEvents.ShowToast(target.DoneMessage);
                 done = true;
             }
             else msg = gaveAny > 0 ? "The stump drinks it in. It still wants more..." : "You have nothing the stump wants right now.";
@@ -146,37 +147,91 @@ public class ForestStumpUI : MonoBehaviour
         GameState.UnlockInput();
     }
 
-    private void Draw(ForestDoor door, Inventory inv, string msg)
+    // Layout of the page (the book is sized to fit these, so everything stays on the page).
+    private const float PageWidth = 540f, MessageHeight = 60f, ReqRowHeight = 64f;
+
+    /// <summary>Redraws the screen as a page in a leather book (the Book Skin), sized to fit every item the stump asks for.</summary>
+    private void Draw(IForestOffering target, Inventory inv, string msg)
     {
         Clear();
-        Img(root, Vector2.zero, new Vector2(3000f, 2000f), new Color(0f, 0.03f, 0f, 0.55f));
-        Img(root, Vector2.zero, new Vector2(620f, 460f), Leaf);
-        Img(root, Vector2.zero, new Vector2(608f, 448f), Panel);
-        Txt(root, "THE STUMP ASKS", 30, Leaf, new Vector2(0f, 190f), new Vector2(560f, 44f));
-        Txt(root, msg, 17, Soft, new Vector2(0f, 128f), new Vector2(540f, 60f));
+        BookSkin skin = BookSkin.Current;
+        Img(root, Vector2.zero, new Vector2(3000f, 2000f), skin.dimColor);
 
-        ForestRequirement[] reqs = door.requirements;
+        ForestRequirement[] reqs = target.Requirements;
         int n = reqs == null ? 0 : reqs.Length;
-        if (n == 0) Txt(root, "It asks for nothing. Just offer.", 20, Soft, new Vector2(0f, 20f), new Vector2(500f, 40f));
+
+        float bannerH = skin.NaturalHeight(BookSkin.Part.Banner, 40f);
+        float listTop = bannerH + 8f + MessageHeight + 10f;
+        float contentH = listTop + Mathf.Max(1, n) * ReqRowHeight;
+        BookSkin.Book book = skin.BuildBook(root, "Book", false);
+        book.root.anchorMin = book.root.anchorMax = book.root.pivot = new Vector2(0.5f, 0.5f);
+        book.root.anchoredPosition = Vector2.zero;
+        book.root.sizeDelta = skin.CoverSizeFor(false, PageWidth, contentH);
+        RectTransform page = book.leftContent;
+
+        skin.NewBanner(page, "Title", 340f, 0f, 24).text = "The Stump Asks";
+
+        Text message = skin.NewText(page, "Message", 17, skin.ink, TextAnchor.MiddleCenter);
+        BookSkin.TopStrip(message.rectTransform, -bannerH - 8f, MessageHeight);
+        message.text = msg;
+
+        if (n == 0)
+        {
+            Text none = skin.NewText(page, "Nothing", 20, skin.fadedInk, TextAnchor.MiddleCenter);
+            BookSkin.TopStrip(none.rectTransform, -listTop, ReqRowHeight);
+            none.text = "It asks for nothing. Just offer.";
+        }
         for (int i = 0; i < n; i++)
         {
             ForestRequirement r = reqs[i];
             if (r == null || r.item == null) continue;
-            float y = 55f - i * 64f;
-            int given = Mathf.Min(r.count, ForestProgress.Given(door.id, i));
+            int given = Mathf.Min(r.count, ForestProgress.Given(target.OfferingId, i));
             int have = inv != null ? ForestItemMatch.Count(inv, r.item) : 0;
-            Img(root, new Vector2(-50f, y), new Vector2(520f, 56f), new Color(1f, 1f, 1f, 0.06f));
-            if (r.item.icon != null) Img(root, new Vector2(-265f, y), new Vector2(40f, 40f), Color.white, r.item.icon);
-            Txt(root, r.item.itemName, 21, Soft, new Vector2(-135f, y + 10f), new Vector2(200f, 28f), TextAnchor.MiddleLeft);
-            Txt(root, "You carry " + have, 14, have > 0 ? Leaf : Bad, new Vector2(-135f, y - 14f), new Vector2(200f, 20f), TextAnchor.MiddleLeft);
-            // progress bar
-            Img(root, new Vector2(90f, y), new Vector2(150f, 14f), new Color(0f, 0f, 0f, 0.5f));
-            float f = Mathf.Clamp01((float)given / r.count);
-            var bar = Img(root, new Vector2(90f - 75f * (1f - f), y), new Vector2(150f * f, 14f), given >= r.count ? Leaf : new Color(0.9f, 0.8f, 0.4f));
-            Txt(root, given + " / " + r.count, 20, given >= r.count ? Leaf : Soft, new Vector2(215f, y), new Vector2(110f, 28f));
+            bool met = given >= r.count;
+
+            // one row per wanted item: picture, name, how many you carry, a progress bar, and given / needed
+            RectTransform row = BookSkin.NewArea(page, "Wants " + r.item.itemName);
+            BookSkin.TopStrip(row, -listTop - i * ReqRowHeight, ReqRowHeight - 6f);
+            skin.AddRule(row);
+
+            if (r.item.icon != null)
+            {
+                Image icon = Img(row, Vector2.zero, new Vector2(40f, 40f), Color.white, r.item.icon);
+                icon.preserveAspect = true;
+                icon.rectTransform.anchorMin = icon.rectTransform.anchorMax = icon.rectTransform.pivot = new Vector2(0f, 0.5f);
+                icon.rectTransform.anchoredPosition = new Vector2(4f, 0f);
+            }
+
+            Text name = skin.NewText(row, "Name", 21, skin.ink, TextAnchor.MiddleLeft);
+            BookSkin.TopLeft(name.rectTransform, 54f, -2f, 220f, 28f);
+            name.text = r.item.itemName;
+            Text carry = skin.NewText(row, "Carry", 14, have > 0 ? skin.goodInk : skin.badInk, TextAnchor.MiddleLeft);
+            BookSkin.TopLeft(carry.rectTransform, 54f, -30f, 220f, 20f);
+            carry.text = "You carry " + have;
+
+            // progress bar: an inked outline with a coloured fill inside it
+            Image back = skin.NewImage(row, "Bar", BookSkin.Part.BarBack);
+            back.rectTransform.anchorMin = back.rectTransform.anchorMax = back.rectTransform.pivot = new Vector2(0f, 0.5f);
+            back.rectTransform.anchoredPosition = new Vector2(290f, 0f);
+            back.rectTransform.sizeDelta = new Vector2(140f, 14f);
+            RectTransform fillArea = BookSkin.NewArea(back.rectTransform, "Fill Area");
+            BookSkin.Inset(fillArea, Vector2.zero, Vector2.one, 2f, 2f, 2f, 2f);
+            Image fill = Img(fillArea, Vector2.zero, Vector2.zero, met ? skin.goodInk : new Color(0.85f, 0.65f, 0.25f));
+            fill.rectTransform.anchorMin = Vector2.zero;
+            fill.rectTransform.anchorMax = new Vector2(Mathf.Clamp01((float)given / r.count), 1f);
+            fill.rectTransform.offsetMin = fill.rectTransform.offsetMax = Vector2.zero;
+
+            Text count = skin.NewText(row, "Count", 20, met ? skin.goodInk : skin.ink, TextAnchor.MiddleRight);
+            count.rectTransform.anchorMin = new Vector2(1f, 0f);
+            count.rectTransform.anchorMax = new Vector2(1f, 1f);
+            count.rectTransform.pivot = new Vector2(1f, 0.5f);
+            count.rectTransform.anchoredPosition = new Vector2(-4f, 0f);
+            count.rectTransform.sizeDelta = new Vector2(90f, 0f);
+            count.text = given + " / " + r.count;
         }
 
-        Txt(root, "[Space] Offer      [Esc] Leave", 18, Leaf, new Vector2(0f, -195f), new Vector2(540f, 30f));
+        // key help, pressed in gold into the leather under the page
+        skin.NewCoverHint(book.root, "[Space] Offer      [Esc] Leave", 16);
     }
 }
 

@@ -45,6 +45,9 @@ public class ItemData : ScriptableObject
     [Header("Economy")]
     [Min(0)] public int sellPrice = 10;
     [Min(0)] public int buyPrice = 0; // 0 = not sold in the shop
+    [Tooltip("Trash, sludge, scrap... The mailbox will not take it. Pay the treatment plant in the city to get rid of it " +
+             "(the fee is a part of the Sell Price above), or throw it in the river for free and live with what that does.")]
+    public bool isWaste = false;
 
     [Header("Food (only used when type is Food)")]
     [Min(0)] public int energyRestored = 0;   // restores this much health

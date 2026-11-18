@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f4ff7549fed0c4b99db334d94d5526, type: 3}
+  m_Name: ottoman_modern
+  m_EditorClassIdentifier: Assembly-CSharp::DecorItem
+  id: ottoman_modern
+  displayName: Grey Cube Ottoman
+  description: A soft grey block.
+  category: 2
+  theme: modern
+  price: 120
+  mount: 0
+  width: 1
+  depth: 1
+  blocksPlayer: 1
+  surfaceHeight: 0
+  front: {fileID: 21300000, guid: 61a7a5cf28d21c64fb59042c2aa792da, type: 3}
+  right: {fileID: 21300000, guid: 8bcc93a3dcbb7c049b508fe4b6483a38, type: 3}
+  back: {fileID: 21300000, guid: 4ee094a3f92e5d14a98e20b7ec6e6f80, type: 3}
+  left: {fileID: 21300000, guid: 809f8c622c08f3549b201143ddfc26e8, type: 3}
+  floorTile: {fileID: 0}
+  wallTop: {fileID: 0}
+  wallUpper: {fileID: 0}
+  wallBase: {fileID: 0}

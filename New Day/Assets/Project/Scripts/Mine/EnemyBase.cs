@@ -25,7 +25,11 @@ public abstract class EnemyBase : MonoBehaviour, IDamageable
     [Min(0)] public int contactDamage = 3;
     public float contactKnockback = 6f;
     [Tooltip("Seconds between touches.")] public float touchCooldown = 0.9f;
-    [Tooltip("How close (world units) it has to be to the player to touch them.")] public float touchRadius = 0.6f;
+    [Tooltip("How big a gap (world units) between the enemy's collider and the player's collider still counts as touching. " +
+             "0 = the colliders must really touch. A little above 0 feels fair, because the two solid bodies push each other apart.")]
+    [Min(0f)] public float touchReach = 0.12f;
+    [Tooltip("Only used if the enemy or the player has no collider: how close (world units) their middles must be to touch.")]
+    public float touchRadius = 0.6f;
 
     [Header("When it is hit")]
     [Range(0f, 1f)] [Tooltip("0 = flies back a long way, 1 = can't be pushed.")] public float knockbackResist = 0f;
@@ -56,6 +60,8 @@ public abstract class EnemyBase : MonoBehaviour, IDamageable
     protected float stunUntil;
 
     private SpriteRenderer blob;
+    private Collider2D bodyCollider;      // this enemy's own collider (on the root object)
+    private Collider2D playerCollider;    // the player's solid collider
     private float nextTouch;
     private float flashUntil;
     private Color baseColor = Color.white;
@@ -66,6 +72,7 @@ public abstract class EnemyBase : MonoBehaviour, IDamageable
         rb.gravityScale = 0f;
         rb.freezeRotation = true;
         Health = maxHealth;
+        bodyCollider = GetComponent<Collider2D>();
 
         sr = GetComponentInChildren<SpriteRenderer>();
         if (sr != null) baseColor = sr.color;
@@ -89,6 +96,7 @@ public abstract class EnemyBase : MonoBehaviour, IDamageable
             var pc = FindAnyObjectByType<PlayerController>();
             if (pc != null) player = pc.transform;
             if (player == null) return;
+            playerCollider = FindPlayerCollider(player);
         }
 
         UpdateVisualsCommon();
@@ -122,8 +130,52 @@ public abstract class EnemyBase : MonoBehaviour, IDamageable
     private void CheckTouch()
     {
         if (contactDamage <= 0 || Time.time < nextTouch || !CanTouch()) return;
-        if (Vector2.Distance(rb.position + Vector2.up * 0.3f, PlayerCenter) > touchRadius) return;
+        if (!IsTouchingPlayer()) return;
         HurtPlayer();
+    }
+
+    /// <summary>The player's solid (non-trigger) collider, or any collider if it has no solid one.</summary>
+    private static Collider2D FindPlayerCollider(Transform p)
+    {
+        Collider2D any = null;
+        foreach (Collider2D c in p.GetComponents<Collider2D>())
+        {
+            if (!c.isTrigger) return c;
+            if (any == null) any = c;
+        }
+        return any;
+    }
+
+    /// <summary>
+    /// True when this enemy is touching the player.
+    /// It measures the real gap between the two colliders, so it works the same from every side, corners (diagonals) included.
+    /// (The old way measured between two fixed points, and the solid bodies stopped the enemy before those points got close
+    /// enough when it came from below or from a diagonal tile.)
+    /// 'extraReach' adds to Touch Reach for special attacks (the bat's swoop).
+    /// </summary>
+    protected bool IsTouchingPlayer(float extraReach = 0f)
+    {
+        if (player == null) return false;
+        if (playerCollider == null) playerCollider = FindPlayerCollider(player);
+
+        if (bodyCollider != null && playerCollider != null && bodyCollider.enabled && playerCollider.enabled)
+        {
+            ColliderDistance2D gap = bodyCollider.Distance(playerCollider);
+            if (gap.isValid) return gap.distance <= touchReach + extraReach;   // distance is negative when they overlap
+        }
+
+        // no usable colliders: fall back to the distance between their middles
+        return Vector2.Distance(rb.position + Vector2.up * 0.3f, PlayerCenter) <= touchRadius + extraReach;
+    }
+
+    /// <summary>The direction to push the player: from the middle of this enemy's body to the middle of the player's body.</summary>
+    protected Vector2 PushDirection()
+    {
+        Vector2 from = bodyCollider != null && bodyCollider.enabled ? (Vector2)bodyCollider.bounds.center : rb.position + Vector2.up * 0.3f;
+        Vector2 to = playerCollider != null && playerCollider.enabled ? (Vector2)playerCollider.bounds.center : PlayerCenter;
+        Vector2 dir = to - from;
+        if (dir.sqrMagnitude < 0.0001f) dir = rb.linearVelocity.sqrMagnitude > 0.01f ? rb.linearVelocity : Vector2.down;   // right on top: push the way it was moving
+        return dir.normalized;
     }
 
     /// <summary>Override to stop touching from hurting (the bat can only hurt while it is low).</summary>
@@ -134,7 +186,8 @@ public abstract class EnemyBase : MonoBehaviour, IDamageable
         var target = player.GetComponentInParent<IDamageable>();
         if (target == null) target = player.GetComponent<IDamageable>();
         if (target == null || target.DamageTeam != Team.Player) return;
-        Vector2 push = (PlayerCenter - rb.position).normalized * contactKnockback;
+        // The strength of this push is turned into a distance by PlayerStats (Knockback Distance).
+        Vector2 push = PushDirection() * contactKnockback;
         target.TakeDamage(new DamageInfo(contactDamage, push, Team.Enemy, gameObject));
         nextTouch = Time.time + touchCooldown;
         OnHitPlayer();

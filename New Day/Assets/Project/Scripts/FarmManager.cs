@@ -245,6 +245,51 @@ public class FarmManager : MonoBehaviour
     private void Start()
     {
         LoadPaintedSoil();
+
+        // If this scene's soil and crops were remembered (you left and came back, or a save was loaded),
+        // put them back the way they were. Does nothing the first time the scene is visited.
+        SaveSystem.RestoreFarm(this);
+    }
+
+    private void OnDestroy()
+    {
+        // Leaving the scene: write the soil down so it is still tilled when you come back.
+        SaveSystem.RememberSoil(this);
+    }
+
+    // ------------------------------------------------------------------
+    // Saving and loading (used by SaveSystem)
+    // ------------------------------------------------------------------
+
+    /// <summary>Every tilled tile as plain data.</summary>
+    public List<SavedSoil> CaptureSoil()
+    {
+        var list = new List<SavedSoil>();
+        foreach (KeyValuePair<Vector3Int, SoilState> pair in soil)
+            list.Add(new SavedSoil { x = pair.Key.x, y = pair.Key.y, watered = pair.Value.watered });
+        return list;
+    }
+
+    /// <summary>Replaces all the soil in the scene with the saved tiles (crops are put back afterwards by CropManager).</summary>
+    public void RestoreSoil(List<SavedSoil> saved)
+    {
+        if (soilTilemap == null || saved == null) return;
+
+        // Rub out what is there now (the soil painted in the editor was already read in by LoadPaintedSoil).
+        foreach (Vector3Int cell in soil.Keys)
+        {
+            soilTilemap.SetTile(cell, null);
+            if (waterTilemap != null) waterTilemap.SetTile(cell, null);
+        }
+        soil.Clear();
+
+        foreach (SavedSoil s in saved)
+        {
+            var cell = new Vector3Int(s.x, s.y, 0);
+            soil[cell] = new SoilState { watered = s.watered };
+            soilTilemap.SetTile(cell, tilledSoilTile);
+            if (s.watered && waterTilemap != null) waterTilemap.SetTile(cell, wateredSoilTile);
+        }
     }
 
     /// <summary>

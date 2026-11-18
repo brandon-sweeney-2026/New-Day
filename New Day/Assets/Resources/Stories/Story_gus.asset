@@ -1,0 +1,544 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65eefa1a5942e54a8d76aef12a7fda9, type: 3}
+  m_Name: Story_gus
+  m_EditorClassIdentifier: Assembly-CSharp::NpcStoryArc
+  npcId: gus
+  title: Eleni's Song
+  summary: 'Gus heckles everyone because he''s lonely. He''s a widower; Tariq''s songs remind him of his late wife Eleni. He built the first Sterling tower to pay her hospital bills, which ended his partnership with Walt. Fork: how he makes it up to Walt.'
+  pathAName: Say it to his face
+  pathBName: Fix his fence instead
+  parts:
+  - title: How I would have built it
+    number: 1
+    heartsNeeded: 1
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - You want advice? Free advice? Your barn door. It sticks, I can hear it from here.
+    - Plane a millimetre off the bottom, and put the hinge pins in with a bit of candle wax. I'd do it myself. I'm retired. I just like telling people.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Your house
+    number: 2
+    heartsNeeded: 2
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I had a look at your farmhouse from the road. Not bad. Somebody built it properly, once.
+    - The roof's the important thing. A roof is a promise. You make it once, and then it has to keep the rain off for fifty years without anybody saying thank you.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Too modern
+    number: 3
+    heartsNeeded: 3
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - That boy with the guitar. Tariq. Same four songs. Too modern.
+    - ...The third one. The slow one. Where does he get a song like that? It goes up at the end, like the old island songs.
+    - Don't tell him I asked. Don't tell him I know the words, either.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Whose roof
+    number: 4
+    heartsNeeded: 4
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 12
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Rain! Good. Now we find out whose roofs I did and whose somebody else did.
+    - Frank's store is leaking. Over the office. Right over that ridiculous cot. I put that roof on, thirty-one years ago, so it's MY leak.
+    - I'll be up there tomorrow with a bucket of tar. Don't tell Frank. He'll want to pay me, and then we'll have to argue about it.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The stubborn old fool
+    number: 5
+    heartsNeeded: 5
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags:
+      - story_frank_5
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Two years. Two YEARS that idiot has been sleeping on a cot in his own office, and he didn't tell me.
+    - Forty years we've been friends. I've told him everything. He sold his house and he told me 'just a few late nights'.
+    - I shouted at him. First time ever. I'm not sorry. ...I'm a bit sorry.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Eleni
+    number: 6
+    heartsNeeded: 6
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - My wife's name was Eleni. She sang. All day, in the kitchen, in the garden, at the top of her voice. Terrible voice. Wonderful songs.
+    - She's been gone nine years. The house got very quiet.
+    - That boy's slow song goes up at the end just like hers used to. That's why I sit through his whole set. Not for the four songs. For one line.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: My side
+    number: 7
+    heartsNeeded: 7
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags:
+      - story_walt_6
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Walt showed you the photo. Delgado & Petrakis. So now you'll want to know why I built that tower.
+    - Eleni was sick, the first time. The hospital in the city wanted money we didn't have. Sterling's contract paid for all of it.
+    - Walt said no on principle. I couldn't afford principles. I should have told him why. I was ashamed. Then it was too late to say it, so I said nothing for thirty years.
+    - She got better, that time. She had twenty more years. The tower bought her twenty years. I'd build it again.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: How do I say it?
+    number: 8
+    heartsNeeded: 8
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Everybody says I should talk to Walt. Kenji says it. Frank says it. Eleni would have said it, loudly.
+    - I could go round there and say it to his face. All of it. The hospital, the money, thirty years of being too proud.
+    - Or... his fence. His fence has been crooked for twenty years and I've told him every single afternoon. I could just go and fix it. He'd know what it meant.
+    - Words or a fence. Which?
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 1
+      optionA: Say it to his face
+      replyA:
+      - Words, then. Out loud. Like a grown man.
+      - I'll go tomorrow. If I'm not back by lunch, he's hit me with a level.
+      flagsA:
+      - gus_walt_talked
+      optionB: Fix his fence instead
+      replyB:
+      - The fence. Yes. He'll understand the fence.
+      - Twenty posts. Straight as a rule. And I won't say a single word while I do it. That'll be the hardest part.
+      flagsB:
+      - gus_fixed_fence
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Tea on the porch
+    number: 9
+    heartsNeeded: 9
+    path: 1
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I said it. All of it. On his porch, with Rosa listening through the window and pretending to dust.
+    - He didn't say anything for a long time. Then he said, 'You should have told me, you old goat. I'd have lent you the money.'
+    - We didn't have the money, either of us. That's the stupid part. We sat there and drank tea until it was dark.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Twenty straight posts
+    number: 9
+    heartsNeeded: 9
+    path: 2
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Did it. Twenty posts. Started at six, finished at four, didn't say one word.
+    - Walt came out at about noon with two coffees and sat on his step and watched. Didn't say one word either.
+    - When I'd finished he got up, walked down the whole fence, and pushed on every post. Then he said, 'Adequate.' From Walt, that's a hug.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The song
+    number: 10
+    heartsNeeded: 10
+    path: 1
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Come to the plaza tonight. Tariq's asked me to sing. Me! With my voice!
+    - Eleni's song. The one his slow song sounds like. I taught it to him last week. He plays it better than she sang it, and she'd have said so herself.
+    - Walt and Frank will be in the front row. Walt says he's only coming to heckle. Bring a handkerchief, farmer. For Walt.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 250
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The song
+    number: 10
+    heartsNeeded: 10
+    path: 2
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Tariq's going to play tonight, in the plaza, and I'm going to sing. Don't laugh.
+    - Eleni's song. I taught it to him. Walt says he's coming to make sure I don't embarrass the street.
+    - 'He brought me a present this morning. A level. Old. Ours, from the truck: ''D & P'' scratched on the side. He said, ''You''ll need this if you''re going to keep fixing my fence.'' Front row tonight, farmer.'
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 250
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0

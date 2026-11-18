@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f4ff7549fed0c4b99db334d94d5526, type: 3}
+  m_Name: rug_cottage
+  m_EditorClassIdentifier: Assembly-CSharp::DecorItem
+  id: rug_cottage
+  displayName: Braided Oval Rug
+  description: Rings of rust, cream and sage.
+  category: 10
+  theme: cottage
+  price: 150
+  mount: 1
+  width: 3
+  depth: 2
+  blocksPlayer: 0
+  surfaceHeight: 0
+  front: {fileID: 21300000, guid: 212a5a8e023e8ce4f91b77efb30f0716, type: 3}
+  right: {fileID: 21300000, guid: ec571172af47b5043a1eb48b604b1200, type: 3}
+  back: {fileID: 21300000, guid: b41002112e3686f47bff28d842f7b78f, type: 3}
+  left: {fileID: 21300000, guid: f9f7e70cc8aa76c49bdcb86fe598dd54, type: 3}
+  floorTile: {fileID: 0}
+  wallTop: {fileID: 0}
+  wallUpper: {fileID: 0}
+  wallBase: {fileID: 0}

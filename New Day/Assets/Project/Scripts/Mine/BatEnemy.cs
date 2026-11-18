@@ -28,7 +28,16 @@ public class BatEnemy : EnemyBase
     [Header("Swoop")]
     public Vector2 timeBetweenSwoops = new Vector2(2.2f, 3.8f);
     public float warnSeconds = 0.5f;
-    public float swoopSeconds = 0.9f;
+    [Tooltip("How fast it flies during a swoop (world units per second). The swoop always moves at this speed, " +
+             "so a longer swoop simply takes longer.")]
+    [Min(0.5f)] public float swoopSpeed = 6.5f;
+    [Tooltip("It only starts a swoop when you are this close (world units). Farther away, it flies toward you first. " +
+             "If you run off during the warning, the swoop falls short instead of rocketing after you.")]
+    [Min(1f)] public float maxSwoopDistance = 5f;
+    [Tooltip("The shortest swoop (world units, start to finish), so a swoop from right above you still has a visible dive.")]
+    [Min(0.5f)] public float minSwoopLength = 3f;
+    [Tooltip("Extra reach (world units) for its swoop to hit you, on top of Touch Reach.")]
+    [Min(0f)] public float swoopHitReach = 0.15f;
     [Tooltip("Lowest point of the swoop (world units above the ground).")] public float lowHeight = 0.25f;
     [Tooltip("Below this height it can be hit and can hurt the player.")] public float vulnerableHeight = 1.1f;
     public float recoverSeconds = 0.9f;
@@ -41,6 +50,8 @@ public class BatEnemy : EnemyBase
     private float stateTimer;
     private float swoopCountdown;
     private Vector2 swoopStart, swoopEnd;
+    private float swoopDuration;          // seconds this swoop takes = its length / swoopSpeed
+    private Vector2 swoopLastPos;         // where it was last frame (to catch you even if it moves far in one frame)
     private bool swoopHitDone;
     private Vector2 home;
     private float animTime;
@@ -93,7 +104,12 @@ public class BatEnemy : EnemyBase
                 height = cruiseHeight + Mathf.Sin(Time.time * 3f) * 0.18f;
                 swoopCountdown -= dt;
                 if (dist > aggroRange * 1.6f) { state = State.Idle; home = pos; }
-                else if (swoopCountdown <= 0f) { state = State.Warn; stateTimer = warnSeconds; }
+                else if (swoopCountdown <= 0f)
+                {
+                    // ready to swoop: only if you are close enough, otherwise fly straight toward you first
+                    if (dist <= maxSwoopDistance) { state = State.Warn; stateTimer = warnSeconds; }
+                    else desiredVelocity = (PlayerCenter - pos).normalized * flySpeed;
+                }
                 break;
 
             case State.Warn:
@@ -103,25 +119,36 @@ public class BatEnemy : EnemyBase
                 if (stateTimer <= 0f)
                 {
                     swoopStart = pos;
-                    Vector2 target = PlayerCenter;                                         // where you are NOW: keep moving!
-                    swoopEnd = swoopStart + (target - swoopStart) / 0.55f;                 // passes you at 55% of the swoop
+                    Vector2 toTarget = PlayerCenter - swoopStart;                          // where you are NOW: keep moving!
+                    // If you ran off during the warning, it aims only as far as Max Swoop Distance (the swoop falls short).
+                    toTarget = Vector2.ClampMagnitude(toTarget, maxSwoopDistance);
+                    if (toTarget.sqrMagnitude < 0.0001f) toTarget = Random.insideUnitCircle.normalized * 0.1f;
+                    Vector2 path = toTarget / 0.55f;                                       // passes you at 55% of the swoop
+                    if (path.magnitude < minSwoopLength) path = path.normalized * minSwoopLength;
+                    swoopEnd = swoopStart + path;
+                    // Fixed speed: the time grows with the length. (Before, every swoop took the same time,
+                    // so a long swoop had to fly much faster.)
+                    swoopDuration = path.magnitude / swoopSpeed;
+                    swoopLastPos = pos;
                     state = State.Swoop; stateTimer = 0f; swoopHitDone = false;
                 }
                 break;
 
             case State.Swoop:
                 stateTimer += dt;
-                float t = Mathf.Clamp01(stateTimer / swoopSeconds);
+                float t = Mathf.Clamp01(stateTimer / Mathf.Max(0.05f, swoopDuration));
                 Vector2 wanted = Vector2.Lerp(swoopStart, swoopEnd, t);
-                desiredVelocity = Vector2.ClampMagnitude((wanted - pos) / Mathf.Max(dt, 0.001f), 22f);
+                // follow the path; allowed a little faster than swoopSpeed only to catch up after a bump
+                desiredVelocity = Vector2.ClampMagnitude((wanted - pos) / Mathf.Max(dt, 0.001f), swoopSpeed * 1.5f);
                 float u = t < 0.55f ? (0.55f - t) / 0.55f : (t - 0.55f) / 0.45f;          // 1 at the ends, 0 at the lowest point
                 height = lowHeight + (cruiseHeight + 0.35f - lowHeight) * u * u;
 
-                if (!swoopHitDone && height < vulnerableHeight && Vector2.Distance(pos, PlayerCenter) < touchRadius + 0.2f)
+                if (!swoopHitDone && height < vulnerableHeight && SwoopReachesPlayer(swoopLastPos, pos))
                 {
                     swoopHitDone = true;
                     HurtPlayer();
                 }
+                swoopLastPos = pos;
                 if (t >= 1f) { state = State.Recover; stateTimer = recoverSeconds; }
                 break;
 
@@ -145,6 +172,20 @@ public class BatEnemy : EnemyBase
         if (body != null) body.localPosition = new Vector3(0f, height, 0f);
         SetShadow(Mathf.Lerp(1f, 0.55f, Mathf.Clamp01(height / (cruiseHeight + 0.4f))));
         if (hitbox != null) hitbox.enabled = height < vulnerableHeight;
+    }
+
+    /// <summary>
+    /// True if the swooping bat touches the player: its collider touches the player's collider, or its path since last frame
+    /// passed close to the player (so a fast swoop can't skip past you between two frames).
+    /// </summary>
+    private bool SwoopReachesPlayer(Vector2 from, Vector2 to)
+    {
+        if (IsTouchingPlayer(swoopHitReach)) return true;
+        Vector2 seg = to - from;
+        float len2 = seg.sqrMagnitude;
+        float k = len2 > 0.0001f ? Mathf.Clamp01(Vector2.Dot(PlayerCenter - from, seg) / len2) : 0f;
+        Vector2 closest = from + seg * k;                                     // the point on the path nearest the player
+        return Vector2.Distance(closest, PlayerCenter) < touchRadius + swoopHitReach;
     }
 
     protected override void Animate()

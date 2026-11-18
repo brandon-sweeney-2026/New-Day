@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f4ff7549fed0c4b99db334d94d5526, type: 3}
+  m_Name: fridge_coastal
+  m_EditorClassIdentifier: Assembly-CSharp::DecorItem
+  id: fridge_coastal
+  displayName: Sky Blue Fridge
+  description: A child's drawing stuck on the door.
+  category: 19
+  theme: coastal
+  price: 520
+  mount: 0
+  width: 1
+  depth: 1
+  blocksPlayer: 1
+  surfaceHeight: 0
+  front: {fileID: 21300000, guid: 2a3ae9bd5130b074d8aacc633f2b5024, type: 3}
+  right: {fileID: 21300000, guid: d9ca0724749f9d84998d3a6f6f6e2b24, type: 3}
+  back: {fileID: 21300000, guid: 4383871ed18da4842ae0f7fd4f3165f8, type: 3}
+  left: {fileID: 21300000, guid: cf2e2f756a29e2d4fa25870f97ca9486, type: 3}
+  floorTile: {fileID: 0}
+  wallTop: {fileID: 0}
+  wallUpper: {fileID: 0}
+  wallBase: {fileID: 0}

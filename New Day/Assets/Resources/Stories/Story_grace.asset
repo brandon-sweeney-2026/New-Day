@@ -1,0 +1,549 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65eefa1a5942e54a8d76aef12a7fda9, type: 3}
+  m_Name: Story_grace
+  m_EditorClassIdentifier: Assembly-CSharp::NpcStoryArc
+  npcId: grace
+  title: What the River Remembers
+  summary: 'Grace is writing the history of the valley and finds that the Sterling family''s first business poisoned the river long before the tower. Her university is funded by Sterling. Fork: publish and risk her job, or hide the files until the time is right.'
+  pathAName: Publish the history
+  pathBName: Keep the files safe
+  parts:
+  - title: Rent
+    number: 1
+    heartsNeeded: 1
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Remember what I told you? 'Farmer' comes from an old word for rent. You pay the land, one way or another.
+    - 'Here is another one, free of charge: ''neighbour'' means ''the farmer who lives nearby''. So you are everybody''s neighbour, by definition. Congratulations.'
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Anything old
+    number: 2
+    heartsNeeded: 2
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I am writing a history of the valley. Before the suburb, before the city, when it was all fields and one long, clean river.
+    - Nobody has written it properly. The city library's version is twelve pages long, and eleven of them are about the tower.
+    - If you dig, fish or find anything old, bring it to me. Even rubbish. Rubbish is the most honest thing a century leaves behind.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Rubbish from the river
+    number: 3
+    heartsNeeded: 3
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - 'I mean it about rubbish. Old bottles, buttons, boots. Especially boots: people wrote their names in them, and the makers stamped theirs inside.'
+    - Fish in the river near your farm long enough and it will give you a boot. It always does. Bring me one.
+    happy: 0
+    ask:
+      item: {fileID: 11400000, guid: b8db9d30bff0d2a49994ba6dbd5fa3df, type: 2}
+      amount: 1
+      minQuality: 0
+      questTitle: A boot from the river
+      questText: Grace wants an old boot fished out of the river. She says the maker's stamp could tell her something.
+      reminder:
+      - No boot yet? Keep fishing. The river is generous with boots. It is the fish it keeps to itself.
+      thanks:
+      - Perfect. Disgusting, and perfect.
+      - 'Look, inside the heel. A stamp: ''Sterling & Sons Tannery''. A tannery. Do you know what tanneries poured into rivers? I am going to find out exactly.'
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Sterling & Sons
+    number: 4
+    heartsNeeded: 4
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I found them. Sterling & Sons Tannery, upstream of your farm, ninety years ago. Victor Sterling's great-grandfather.
+    - Tanneries soak leather in lime and chrome and things I won't say in front of Nia. All of it went into the river. For forty years.
+    - So the tower didn't start this. It is only the newest chapter of a very old family habit.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The Sterling Wing
+    number: 5
+    heartsNeeded: 5
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - The university opened its new building today. The Sterling Wing. Very modern. Lots of glass. My office is in it.
+    - Victor Sterling cut the ribbon himself. He shook my hand and said he'd heard I was writing a history of the valley. 'I'd love to read it,' he said.
+    - I have never been so frightened by a compliment.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The old maps
+    number: 6
+    heartsNeeded: 6
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags:
+      - story_sam_4
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - The archive had maps from before the tannery. There was a wetland, right where your farm's bottom fields meet the river. Reeds, birds, clean water.
+    - The Sterlings drained it to build the tannery yard. Without the wetland, the river has nothing to clean it. Everything that goes in stays in.
+    - And now Sam Whitaker tells me about black barrels going into the river pipe at night. Ninety years, the same river, the same family.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The dean's request
+    number: 7
+    heartsNeeded: 7
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - The dean called me in today. He was very kind. He said the university 'values its partnership with Sterling Holdings'.
+    - He said a history of the valley would be wonderful, as long as it was 'balanced'. He used that word nine times. I counted.
+    - I marked forty essays tonight out of pure fury. Some of those students got very good grades they did not deserve.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Publish or wait
+    number: 8
+    heartsNeeded: 8
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - The book is finished. Every map, every tannery record, every boot. It is the best thing I have ever written.
+    - If I publish, I will lose my job in the Sterling Wing. Probably my job anywhere. Emeka says we will manage. Nia says I can be a goalkeeper.
+    - Or I keep the files somewhere safe and wait until someone can use them properly. A court. City hall. Someone braver than a history lecturer.
+    - You found the boot. You have a vote.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 1
+      optionA: Publish it
+      replyA:
+      - Then I will publish it. And I will give a lecture, in the plaza, free, to anybody who wants to come.
+      - History is not for the Sterling Wing. It is for the people who live where it happened.
+      flagsA:
+      - grace_published
+      - tower_file_maps
+      optionB: Keep the files safe
+      replyB:
+      - Wait, then. A history that nobody reads can't be silenced, at least.
+      - Here. Copies of everything, for you. Keep them somewhere damp-proof. Not in a barn. Please, not in a barn.
+      flagsB:
+      - grace_files_hidden
+      - tower_file_maps
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The plaza lecture
+    number: 9
+    heartsNeeded: 9
+    path: 1
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Did you see how many came? I counted sixty chairs, and then people sat on the fountain.
+    - Walt asked the only rude question and it was a very good one. Nia sat in the front row holding the boot like a trophy.
+    - The university has 'paused my contract'. The city paper has asked me to write a column. I think I have just traded forty students for forty thousand readers.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: In a drawer
+    number: 9
+    heartsNeeded: 9
+    path: 2
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - The files are in your keeping now, and the book is in a drawer. I teach my classes. I smile at the dean.
+    - 'Victor Sterling sent me flowers yesterday, with a card: ''For your balanced work.'' I don''t know how he knew there was any work to balance.'
+    - I took the flowers to Ada. She said they were grown in a greenhouse with no soil, and put them in the bin.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The plaque
+    number: 10
+    heartsNeeded: 10
+    path: 1
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Come to the plaza tomorrow morning. Lucia got permission from city hall. A plaque, by the fountain.
+    - '''Here the valley was fields, and the river ran clean. Remember it, so it can be again.'''
+    - Yuki wants the boot for the museum. I said only if it has its own glass case. She said that was the plan all along.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags:
+    - valley_plaque
+    reward:
+      gold: 400
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The right time
+    number: 10
+    heartsNeeded: 10
+    path: 2
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Lucia came to see me. City hall is building a case about the river. She asked if anybody had anything old. Anything at all.
+    - I told her the farmer has a box of files that is not in a barn. I hope it is not in a barn.
+    - So the history gets told after all. Not by me, in a book, but in a courtroom, by the river itself. That might be better. It is certainly louder.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags:
+    - river_case_evidence
+    reward:
+      gold: 400
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0

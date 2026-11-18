@@ -73,7 +73,7 @@ MonoBehaviour:
       forbidFlags: []
       counters: []
     stops:
-    - place: City
+    - place: HallDesk
       scene: City
       waitMinutes: 300
       transitMinutes: 40

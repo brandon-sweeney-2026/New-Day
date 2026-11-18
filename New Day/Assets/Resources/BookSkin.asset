@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1998825142ab0d41bfc554adb514929, type: 3}
+  m_Name: BookSkin
+  m_EditorClassIdentifier: Assembly-CSharp::BookSkin
+  cover: {fileID: 21300000, guid: 8d27ef99ff27a8a488b66aa0d54da367, type: 3}
+  pageSingle: {fileID: 21300000, guid: f4346e8a2678e9c4c8556a2238861d04, type: 3}
+  pageLeft: {fileID: 21300000, guid: 363c16118ec55054bb4fb15eb3b82c1f, type: 3}
+  pageRight: {fileID: 21300000, guid: fa897add0e07444469e0a7511f9484b3, type: 3}
+  gutter: {fileID: 21300000, guid: b12725190d4b6964eb1d310c78ab24ac, type: 3}
+  tab: {fileID: 21300000, guid: 775cffbf63b05404a956eeef47fe988a, type: 3}
+  tabSelected: {fileID: 21300000, guid: f6c4017891a90a347a0c557f5a65a1ca, type: 3}
+  highlight: {fileID: 21300000, guid: c1b1e842d3adfbc4da91c8b31cfced3f, type: 3}
+  rule: {fileID: 21300000, guid: 0f7ae3de961703541ba33660ba1ab030, type: 3}
+  banner: {fileID: 21300000, guid: d3859aa4ecccbc4418ec7c088ce1436f, type: 3}
+  divider: {fileID: 21300000, guid: 6f43828a951ad944783b239753da6c80, type: 3}
+  slot: {fileID: 21300000, guid: 0cc8f1bc0d8b64e4a97ef56f86d9e638, type: 3}
+  slotSelected: {fileID: 21300000, guid: cec6123f7c75c214a9856a42f618c093, type: 3}
+  labelBox: {fileID: 21300000, guid: eb5bda7281411bb4a84a885d89fa7e18, type: 3}
+  barBack: {fileID: 21300000, guid: 82595bce381778e46a2803b8bd78be1b, type: 3}
+  portraitFrame: {fileID: 21300000, guid: e8aeeb0679d88d543acf87ed70e1c500, type: 3}
+  pixelScale: 2
+  coverMargin: 16
+  coverBottomMargin: 46
+  coverTextBottom: 17
+  pageOuterPadding: 30
+  pageGutterPadding: 30
+  pageTopPadding: 22
+  pageBottomPadding: 26
+  font: {fileID: 0}
+  ink: {r: 0.24, g: 0.15, b: 0.09, a: 1}
+  fadedInk: {r: 0.49, g: 0.38, b: 0.27, a: 1}
+  headingInk: {r: 0.48, g: 0.18, b: 0.1, a: 1}
+  goodInk: {r: 0.22, g: 0.42, b: 0.16, a: 1}
+  badInk: {r: 0.66, g: 0.2, b: 0.13, a: 1}
+  goldInk: {r: 0.55, g: 0.36, b: 0.05, a: 1}
+  bannerText: {r: 1, g: 0.93, b: 0.78, a: 1}
+  coverText: {r: 0.95, g: 0.8, b: 0.48, a: 1}
+  tabText: {r: 0.27, g: 0.17, b: 0.09, a: 1}
+  tabSelectedText: {r: 1, g: 0.93, b: 0.8, a: 1}
+  paperColor: {r: 0.95, g: 0.89, b: 0.76, a: 1}
+  coverColor: {r: 0.48, g: 0.24, b: 0.13, a: 1}
+  highlightColor: {r: 0.95, g: 0.78, b: 0.35, a: 0.55}
+  slotColor: {r: 0.89, g: 0.8, b: 0.62, a: 1}
+  dimColor: {r: 0.08, g: 0.04, b: 0.02, a: 0.55}
+  keepOldScreenArt: 0

@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f4ff7549fed0c4b99db334d94d5526, type: 3}
+  m_Name: sink_rustic
+  m_EditorClassIdentifier: Assembly-CSharp::DecorItem
+  id: sink_rustic
+  displayName: Copper Basin Sink
+  description: Hammered copper in a stone top.
+  category: 17
+  theme: rustic
+  price: 360
+  mount: 0
+  width: 2
+  depth: 1
+  blocksPlayer: 1
+  surfaceHeight: 15
+  front: {fileID: 21300000, guid: 846ce60fa6a94b14fa24837749c99d5d, type: 3}
+  right: {fileID: 21300000, guid: 420cd222d76f9f64593619c24f01df20, type: 3}
+  back: {fileID: 21300000, guid: 8b22cf1b3d8e32c4aa72c99bdf6ed600, type: 3}
+  left: {fileID: 21300000, guid: eff04d18ea6d7904f9411108bf9d79e2, type: 3}
+  floorTile: {fileID: 0}
+  wallTop: {fileID: 0}
+  wallUpper: {fileID: 0}
+  wallBase: {fileID: 0}

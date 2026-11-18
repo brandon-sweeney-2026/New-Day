@@ -6,9 +6,8 @@ using UnityEngine.Tilemaps;
 /// <summary>
 /// Forest helpers (Farm > Build Art > Forest Editor Layers, Farm > Set Up > Forest Sign Prefab). Must live in a folder named "Editor".
 ///   Make Level Editor Layers   Gives the open scene the 'Ground' / 'Paths' / 'Fences' tilemaps and the 'Objects' parent the Farm Level Editor needs.
-///                              (The forest rooms draw their floors with sprites, so a forest scene has none of these until you run this.)
 ///   Make Sign Prefab           Creates the ForestSign prefab (label FarmLayer_Objects) so signs show up in the Level Editor's Objects palette.
-/// The Maze Generator runs both for you.
+///                              The Forest Scene builder makes it for you.
 /// </summary>
 public static class ForestToolsMenu
 {

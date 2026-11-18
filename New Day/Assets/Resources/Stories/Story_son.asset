@@ -1,0 +1,542 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65eefa1a5942e54a8d76aef12a7fda9, type: 3}
+  m_Name: Story_son
+  m_EditorClassIdentifier: Assembly-CSharp::NpcStoryArc
+  npcId: son
+  title: The Reluctant Heir
+  summary: 'Everybody thinks Ji-ho is lazy. He''s actually great with numbers and people; he just doesn''t want his parents'' life. Fork: take a business course in the city, or stay and modernise the store his way (the games corner).'
+  pathAName: The business course
+  pathBName: Stay and change the store
+  parts:
+  - title: Already restocked
+    number: 1
+    heartsNeeded: 1
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Oh, hey. If Mom asks, I already restocked the coolers.
+    - I haven't. But I'm going to. In my head I basically have. That counts for about seventy percent.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The floor plan
+    number: 2
+    heartsNeeded: 2
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Don't look at this. Okay, you can look at this. It's a floor plan.
+    - If you move the cleaning stuff to the back and turn the corner by the window round, there's room for two arcade machines and a bench.
+    - Kids would hang out here instead of at the tower. They'd buy slush. I've done the maths. Dad would hate it.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Terrible in goal
+    number: 3
+    heartsNeeded: 3
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Dev says I'm the worst keeper he's ever seen. He's right. I dive the wrong way on purpose so it looks like I meant it.
+    - The thing is, nobody else will go in goal. So it's me, or no team. I'd rather be bad at something than have no team.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The slush trick
+    number: 4
+    heartsNeeded: 4
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Promise you won't tell anyone? I changed the slush prices. Small one cheaper, big one a bit dearer, and a 'medium' that nobody needs.
+    - Everybody buys the medium now. Sales are up a third. Nobody noticed. Not even Dad.
+    - I kind of want somebody to notice. But if they notice, they'll expect me to do it again.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The letter from the city
+    number: 5
+    heartsNeeded: 5
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I got into a business course. In the city. Two years. I applied in the winter and didn't tell anyone, in case I didn't get in.
+    - Now I did get in, and I still haven't told anyone. Except you. Right now. Oh no.
+    - If I go, who helps Mom on Tuesdays? If I stay, I'm stocking coolers until I'm fifty.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The napkin
+    number: 6
+    heartsNeeded: 6
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags:
+      - story_dad_5
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I worked something out on a napkin last night. Look.
+    - This is what the store took last year. This is what the wholesaler's new prices cost us. This is what the tower's taking from us, every week.
+    - Dad's been doing these sums on paper for months. On his own. He thinks we don't know. I've known since the first week.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Diving the right way
+    number: 7
+    heartsNeeded: 7
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - We played the city team on Sunday. The ones in the Sterling shirts.
+    - Last minute, penalty. And I dived the RIGHT way. For the first time in my life. Dev picked me up off the grass and screamed in my face. It was great.
+    - I think I'm only good at things when they matter. Is that a thing? That might be a thing.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Go or stay
+    number: 8
+    heartsNeeded: 8
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I have to tell the course by Friday.
+    - If I go, I learn how big companies work. How the tower works. Then maybe one day I come back and beat them properly.
+    - If I stay, I do it now, my way. The games corner, the slush trick, everything. Small, but real.
+    - Mom and Dad say it's my choice. Which is worse, honestly. What would you do?
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 1
+      optionA: Take the course
+      replyA:
+      - The course. Okay. Okay, wow.
+      - I'm going to tell Dad tonight. If you hear shouting, it's me, from happiness. Probably.
+      flagsA:
+      - jiho_business_course
+      optionB: Stay and change the store
+      replyB:
+      - Stay. Yeah. I think I knew that already. I just needed someone else to say it.
+      - Right. I'm going to need a screwdriver, two arcade machines and my dad in a very good mood.
+      flagsB:
+      - jiho_games_corner
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Weekend ideas
+    number: 9
+    heartsNeeded: 9
+    path: 1
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - First month of the course. I come home every weekend with a notebook full of ideas, and Dad pretends he isn't reading them.
+    - Do you know the tower loses money on half of what it sells? On purpose. To kill small shops. Then it puts the prices back up. There's a name for it in the textbook.
+    - I'm going to find every trick they use, and then I'm going to find the trick that beats it.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The games corner
+    number: 9
+    heartsNeeded: 9
+    path: 2
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - It's open! Two machines, one bench, and a 'no shouting after eight' sign that nobody reads.
+    - Dev and half the football team are in here every afternoon. They buy slush. Medium slush. Nobody needs a medium slush.
+    - Dad came down at closing time, looked at it for a long time, and said 'hm'. That's the best 'hm' I've ever had.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Two at the till
+    number: 10
+    heartsNeeded: 10
+    path: 1
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Look at this. Me and Dad, at the till together, on a Saturday.
+    - 'I brought back one idea from the course: a loyalty card, but on paper, stamped by hand. Ten stamps, one free slush. People love it. People love stamps.'
+    - Dad still pretends he isn't proud. He's terrible at pretending. Thanks for telling me to go. I'll be back for good. I always was going to be.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Two at the till
+    number: 10
+    heartsNeeded: 10
+    path: 2
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Dad gave me the keys for Tuesdays and Fridays. The real keys. Not the spare that doesn't fit the back door.
+    - I stocked the coolers this morning. Actually stocked them. One hundred percent. Not seventy.
+    - He's standing behind me right now pretending to check the shelves. He's checking me. Hi, Dad. Thanks for telling me to stay, farmer. I'm glad someone did.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0

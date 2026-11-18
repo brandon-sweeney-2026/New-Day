@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dc122cff4e3b244fb5b5e82046454cd, type: 3}
+  m_Name: Farmhouse
+  m_EditorClassIdentifier: Assembly-CSharp::InteriorLayout
+  theme: cottage
+  floor: {fileID: 0}
+  wallCovering: {fileID: 0}
+  zoneFloors: []
+  pieces:
+  - item: {fileID: 11400000, guid: 9fadee0bac93cdd449fe96007812be6f, type: 2}
+    position: {x: 3, y: 9}
+    facing: 0
+  - item: {fileID: 11400000, guid: f9e10d98746b46049a2b6a14f87d6800, type: 2}
+    position: {x: 3, y: 5}
+    facing: 0
+  - item: {fileID: 11400000, guid: 42eb799e2922fc54d867a22a756f1534, type: 2}
+    position: {x: 3, y: 4}
+    facing: 2
+  - item: {fileID: 11400000, guid: 3394de8bcfb83a24f8fea47d98e18c7a, type: 2}
+    position: {x: 4, y: 6}
+    facing: 0
+  - item: {fileID: 11400000, guid: 21019425961f8a44ab99af85633a7b5e, type: 2}
+    position: {x: 6, y: 6}
+    facing: 3
+  - item: {fileID: 11400000, guid: e15e549ea540cfb45a1fd8710477240b, type: 2}
+    position: {x: 6, y: 4}
+    facing: 0
+  - item: {fileID: 11400000, guid: bc998d7ede5321443b1c7b9b01524988, type: 2}
+    position: {x: 9, y: 1}
+    facing: 3
+  - item: {fileID: 11400000, guid: 598d3fe662bb40749b97d6a015e6b182, type: 2}
+    position: {x: 9, y: 3}
+    facing: 3
+  - item: {fileID: 11400000, guid: 32fb8a93723662e4aa814f3ca269db4b, type: 2}
+    position: {x: 9, y: 5}
+    facing: 3
+  - item: {fileID: 11400000, guid: b7c97eea296875c4cb5127b002555e5a, type: 2}
+    position: {x: 9, y: 1}
+    facing: 0
+  - item: {fileID: 11400000, guid: ab4f0aea0ead86a4c960f0089516b133, type: 2}
+    position: {x: 9, y: 0}
+    facing: 0
+  - item: {fileID: 11400000, guid: f6239ed3495dda046bca11da4ed8f9af, type: 2}
+    position: {x: 9, y: 6}
+    facing: 3
+  - item: {fileID: 11400000, guid: 1e28b32e0b5b9634d9f9f97812c072c7, type: 2}
+    position: {x: 9, y: 7}
+    facing: 3
+  - item: {fileID: 11400000, guid: 636b02a044d1e0f48824cd009be0f0cc, type: 2}
+    position: {x: 5, y: 10.5}
+    facing: 0
+  - item: {fileID: 11400000, guid: 5ca86c6199132de40aabe56dea3433f8, type: 2}
+    position: {x: 8, y: 11.5}
+    facing: 0

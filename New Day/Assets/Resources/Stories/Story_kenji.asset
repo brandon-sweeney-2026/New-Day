@@ -1,0 +1,543 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65eefa1a5942e54a8d76aef12a7fda9, type: 3}
+  m_Name: Story_kenji
+  m_EditorClassIdentifier: Assembly-CSharp::NpcStoryArc
+  npcId: kenji
+  title: The Crow and the Board
+  summary: 'Kenji is gentle and wise, and has been greeting the same crow every morning without reply. He is quietly planning to go home to Japan, and hasn''t told his daughter Yuki. Fork: encourage him to go, or to tell Yuki and decide together.'
+  pathAName: Go home to Japan
+  pathBName: Tell Yuki first
+  parts:
+  - title: Sit or stand
+    number: 1
+    heartsNeeded: 1
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - You came back. Sit, then. The bench is warm. Walt has been sitting on it all morning, losing.
+    - He thinks three moves ahead. I think about lunch. You would be surprised how often lunch wins.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The crow
+    number: 2
+    heartsNeeded: 2
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Every morning I say good morning to the crow on the football field. Every morning, for two years.
+    - He has never said good morning back. But he is always there. That is a kind of answer.
+    - Some friendships are very slow. That is not the same as being nothing.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: One movement
+    number: 3
+    heartsNeeded: 3
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Stand with me. Feet like this. Knees soft. Breathe in while the hands rise.
+    - No, slower. Slower than that. Slower than you think a person can move.
+    - Good. That is the whole secret. The rest is only practice. Here, have some tea. It is also slow.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 11400000, guid: c47c97feb4e379f4382a8330972aab67, type: 2}
+      amount: 2
+      friendship: 0
+  - title: A forgotten opening
+    number: 4
+    heartsNeeded: 4
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Something odd happened. I sat down to play Walt and could not remember my opening. Forty years, the same opening.
+    - I laughed, and played another. I still won. Walt was very angry about that.
+    - Yuki did not laugh when I told her. She looked at me the way I used to look at her when she had a fever. I am not ill. I am only seventy-eight.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: A gift for the crow
+    number: 5
+    heartsNeeded: 5
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I would like to give the crow a present. Not bread. Walt says crows are clever, and clever creatures are insulted by bread.
+    - Corn, I think. Real corn, from a real farm. Three cobs. If he takes them, perhaps we will finally be introduced.
+    happy: 0
+    ask:
+      item: {fileID: 11400000, guid: 7131efea24ac2a7478636dc29754660a, type: 2}
+      amount: 3
+      minQuality: 0
+      questTitle: Corn for the crow
+      questText: Kenji wants three cobs of Corn to give to the crow on the football field.
+      reminder:
+      - Corn for the crow? Three, if you have them. He is waiting. He has been waiting two years; he can wait a little more.
+      thanks:
+      - Beautiful. He will be very pleased, or he will pretend not to be. Either is fine.
+      - I will leave them on the bench tomorrow at dawn. Thank you.
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: My brother's letters
+    number: 6
+    heartsNeeded: 6
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - The crow took the corn. All three. He did not say thank you. But he sat on the bench afterwards, next to me, for one whole minute.
+    - My brother writes from Japan every week. Emeka brings the letters. Our old house is by the sea. My brother is old too, and alone there now.
+    - I have been thinking that I would like to see the sea again. And him. Before we are both too slow to sit together.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: A letter I cannot write
+    number: 7
+    heartsNeeded: 7
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I have tried to tell Yuki. Three times. Each time I open my mouth, and she says something about the museum, and I say something about lunch.
+    - 'I am trying to write it instead. Look: one page, and every line crossed out.'
+    - My calligraphy is very good. My courage is not. It is strange to be so old and still find some things difficult.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The slow river
+    number: 8
+    heartsNeeded: 8
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I have a ticket. For the spring. I have not told anyone. Now I have told you.
+    - Walt will be angry. Gus will be rude. Yuki will be... I do not know what Yuki will be. That is what frightens me.
+    - Should I simply go, and write to her from the boat, where it is easier? Or tell her first, face to face, and let her decide some of it with me?
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 1
+      optionA: Go home
+      replyA:
+      - Then I will go. The slow river reaches the sea too.
+      - I will tell her this week. Before I lose my nerve. And then I will tell Walt, who will need a chair.
+      flagsA:
+      - kenji_going_home
+      optionB: Tell Yuki first
+      replyB:
+      - Face to face. Yes. You are right, though I wish you were not.
+      - Tonight, at dinner. I will make her favourite. That way, if it goes badly, at least the food will be good.
+      flagsB:
+      - kenji_told_yuki
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The farewell
+    number: 9
+    heartsNeeded: 9
+    path: 1
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - The street gave me a party in the plaza. Rosa made a cake shaped like a chessboard. Mi-sook made enough food for the whole of Japan.
+    - Walt cried. He says it was the pollen. Gus said, 'You'll be back,' and then he hugged me so hard my glasses came off.
+    - Yuki has promised to visit every summer. The crow was on the roof of the general store the whole evening. Watching. I think he knows.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Yuki's answer
+    number: 9
+    heartsNeeded: 9
+    path: 2
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I told her. She was quiet for a long time. Then she went into her room and came back with a folder.
+    - Inside were museum papers. Leave of absence, a whole season, already signed. She had been planning to ask ME if we could go to Japan together, to see her uncle.
+    - Two people, each too frightened to say the same thing. We laughed until the tea went cold. We will go together, in spring, and come back together.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Good morning
+    number: 10
+    heartsNeeded: 10
+    path: 1
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - A postcard came for you this morning. From Japan. Emeka brought it himself, very carefully, as if it were made of glass.
+    - '''The sea is the same. My brother is slower than me at chess, which is wonderful. Please say good morning to the crow for me.'''
+    - ...And when you went to the field and said it, the crow said it back. Did you hear? 'Kraa.' That is good morning, in crow. He was waiting for the right person.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 11400000, guid: c47c97feb4e379f4382a8330972aab67, type: 2}
+      amount: 3
+      friendship: 0
+  - title: Good morning
+    number: 10
+    heartsNeeded: 10
+    path: 2
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - We leave in spring, and we come back in autumn. Walt has made me promise to bring him a Japanese chess set so he can lose in two languages.
+    - And this morning, on the field, I said good morning to the crow as always.
+    - He looked at me. He hopped closer. And he said 'Kraa.' Two years, and a bag of your corn, and he said good morning. You see? The slow river reaches the sea.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 11400000, guid: c47c97feb4e379f4382a8330972aab67, type: 2}
+      amount: 3
+      friendship: 0

@@ -1,0 +1,548 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65eefa1a5942e54a8d76aef12a7fda9, type: 3}
+  m_Name: Story_frank
+  m_EditorClassIdentifier: Assembly-CSharp::NpcStoryArc
+  npcId: frank
+  title: The Cot in the Office
+  summary: 'Frank sold his house to keep the store open and sleeps on the cot in his back office. Sterling''s flat-pack doors undercut him. Part 4 needs 3 house upgrades. Fork: turn the store into a neighbourhood co-op, or sell it to Sterling for a fair price.'
+  pathAName: The co-op
+  pathBName: Sell to Sterling
+  parts:
+  - title: Measure twice
+    number: 1
+    heartsNeeded: 1
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - You know what my dad used to say? Measure twice, cut once.
+    - He also said 'never trust a man who doesn't own a level', which is why I've got eleven of them. Eleven! You want one? Take one.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Every item has a story
+    number: 2
+    heartsNeeded: 2
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - See that tin of screws? Bought it the day I opened. Thirty-one years ago. Never sold one. Not one!
+    - 'I keep it on the shelf because it reminds me: you don''t open a hardware store to get rich. You open it so that when somebody''s door won''t shut at nine at night, there''s somebody to call.'
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The cot
+    number: 3
+    heartsNeeded: 3
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - You saw the cot, didn't you. In the back office. With the toothbrush.
+    - Ha! It's nothing. Late nights, stock counts, you know how it is. Sometimes it's easier to just sleep here.
+    - Every night, for two years, it's been easier to sleep here. Let's not make a thing of it.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Doors in a box
+    number: 4
+    heartsNeeded: 4
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters:
+      - key: house_upgrades
+        atLeast: 3
+        atMost: -1
+    pages:
+    - Have you seen the tower's new catalogue? Doors in a box! Half my price.
+    - You know what's in that box? A door made of cardboard and hope. Rain gets in, it swells up like a sponge.
+    - But people see the price, and they don't see the rain. Three customers this week went to the tower. Three!
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Gus finds out
+    number: 5
+    heartsNeeded: 5
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Gus knows. About the house. He came round early with coffee and found me shaving in the stock-room mirror.
+    - Forty years we've been friends, and he shouted at me for the first time. 'Why didn't you SAY something, you stubborn old fool?'
+    - I told him a man doesn't say something. A man fixes it. He said that's the stupidest thing he's ever heard. He might be right.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: A display to beat the tower
+    number: 6
+    heartsNeeded: 6
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Here's my plan. The tower sells pictures of doors. I'm going to build a real one right in the window. Oak, brass hinges, the works.
+    - People can open it, close it, knock on it. Let's see a box do that!
+    - I need good timber, though. Would you bring me some wood?
+    happy: 0
+    ask:
+      item: {fileID: 11400000, guid: 74774f685447bd4458cd1bed839c572e, type: 2}
+      amount: 20
+      minQuality: 0
+      questTitle: Timber for Frank's window
+      questText: Frank wants 20 Wood to build a real door in his shop window, to beat the tower's flat-pack doors.
+      reminder:
+      - How's the wood coming? Twenty pieces and I can start tonight. I don't sleep much anyway. Ha.
+      thanks:
+      - Now THAT is timber. Smell that!
+      - Come back in a few days. That door is going to be the best thing on Shop Street.
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The bank letter
+    number: 7
+    heartsNeeded: 7
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Emeka brought a letter this morning. He looked like he was delivering it to a funeral.
+    - The bank. The store's loan. Three months to pay, or they take the building.
+    - And a man from Sterling turned up an hour later, like he'd been waiting round the corner. He made me an offer. A fair one, too. That's the worst part.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Frank's choice
+    number: 8
+    heartsNeeded: 8
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Gus has an idea. A co-op, he calls it. Everybody on the street buys a share of the store. Walt, the Kims, Marcus, Gus. You.
+    - It'd still be Frank's. Just... Frank's and everybody's. I'd have to let people tell me what to do. Walt would tell me what to do. Every day.
+    - Or I take Sterling's money, pay the bank, buy a little house, and sleep in a real bed. You tell me. I'm too close to see it straight.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 1
+      optionA: Make it a co-op
+      replyA:
+      - A co-op. Frank's and everybody's.
+      - Walt's going to make me put the screws in alphabetical order. I can feel it. All right. All right! Let's do it.
+      flagsA:
+      - frank_coop
+      optionB: Sell to Sterling
+      replyB:
+      - Sell. Yeah. Yeah, that's the sensible thing.
+      - Thirty-one years. I'll sign on Monday. Don't tell Gus yet. Let me tell Gus.
+      flagsB:
+      - frank_sold_store
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Frank's and everybody's
+    number: 9
+    heartsNeeded: 9
+    path: 1
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Fifteen shares sold in a week! Rosa bought one with her egg money. Nia bought one with her pocket money, so now I've got a nine-year-old on the board.
+    - Walt reorganised the screws. Gus stands at the door and tells everybody my prices are robbery, then sends them in.
+    - Saturday mornings we're running workshops. Fix your own tap. Hang your own door. Thirty people last week!
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Feet up
+    number: 9
+    heartsNeeded: 9
+    path: 2
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I'm a man of leisure now. A house! With a bed! I've got nothing to fix.
+    - Every morning I walk past the store. They've painted it grey. The sign says 'Sterling Home Essentials'. The tin of screws is gone.
+    - Somebody's door wouldn't shut last night, on Maple Lane. They rang the store. It's shut at six now. Nobody came.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: A house for Frank
+    number: 10
+    heartsNeeded: 10
+    path: 1
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I want to show you something. Come round the side of the store. No, the side!
+    - Gus and Walt built it. Walt did the frame, Gus did the roof, and they only stopped speaking twice.
+    - A little house. Right next to the store. With a door that shuts properly and a real bed in it.
+    - The cot's going in the museum, Yuki says. 'An important historical object.' Ha! Thank you, farmer. Truly. Here, take a share of the first profits.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 800
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Frank's Fix-It
+    number: 10
+    heartsNeeded: 10
+    path: 2
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Couldn't stand it. Four weeks of feet up and I nearly went round the bend.
+    - So I've got a stall now, in the plaza, by the fountain. 'Frank's Fix-It'. Doors, taps, hinges, bikes. Cash or cake.
+    - Didn't need a building after all. Just a toolbox and people who know my name.
+    - And there's a tin of screws on the counter. Brand new. I'll never sell one.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 300
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0

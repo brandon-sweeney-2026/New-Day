@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f4ff7549fed0c4b99db334d94d5526, type: 3}
+  m_Name: bed_modern
+  m_EditorClassIdentifier: Assembly-CSharp::DecorItem
+  id: bed_modern
+  displayName: Platform Bed
+  description: Low and wide, with a mustard throw.
+  category: 14
+  theme: modern
+  price: 620
+  mount: 0
+  width: 2
+  depth: 3
+  blocksPlayer: 1
+  surfaceHeight: 0
+  front: {fileID: 21300000, guid: ba479c7d03425a441ab48c4ad2a84951, type: 3}
+  right: {fileID: 21300000, guid: 6497da694558e774d913ee68b8514163, type: 3}
+  back: {fileID: 21300000, guid: 27e79416baeef474990c647c0974df38, type: 3}
+  left: {fileID: 21300000, guid: c922e62ad6fbf6642bba9eb42fdedd3d, type: 3}
+  floorTile: {fileID: 0}
+  wallTop: {fileID: 0}
+  wallUpper: {fileID: 0}
+  wallBase: {fileID: 0}

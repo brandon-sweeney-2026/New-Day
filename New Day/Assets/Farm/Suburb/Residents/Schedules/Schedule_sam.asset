@@ -16,6 +16,32 @@ MonoBehaviour:
   idleSpot: H7Bed
   idleScene: 
   routes:
+  - routeName: Shift at the treatment plant
+    enabled: 1
+    priority: 40
+    startHour: 7.5
+    startPlace: 
+    startScene: 
+    conditions:
+      days: 42
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    stops:
+    - place: PlantFloor
+      scene: City
+      waitMinutes: 200
+      transitMinutes: 40
+      facing: {x: 0, y: 0}
+      activity: Sorting waste at the treatment plant
+    whenFinished: 0
   - routeName: Writing
     enabled: 1
     priority: 5

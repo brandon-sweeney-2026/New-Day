@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f4ff7549fed0c4b99db334d94d5526, type: 3}
+  m_Name: shower
+  m_EditorClassIdentifier: Assembly-CSharp::DecorItem
+  id: shower
+  displayName: Shower with Curtain
+  description: Tiled walls and a striped curtain.
+  category: 24
+  theme: any
+  price: 650
+  mount: 0
+  width: 2
+  depth: 2
+  blocksPlayer: 1
+  surfaceHeight: 0
+  front: {fileID: 21300000, guid: ad07f6b2d1b2e1147ba4282d155b145c, type: 3}
+  right: {fileID: 21300000, guid: 6acebe481dce1bb42ba6258d79cc1de8, type: 3}
+  back: {fileID: 21300000, guid: c57503e1459bb7d44928049c92d3563a, type: 3}
+  left: {fileID: 21300000, guid: 88acbc055c723a247aaba76f2a9b46b4, type: 3}
+  floorTile: {fileID: 0}
+  wallTop: {fileID: 0}
+  wallUpper: {fileID: 0}
+  wallBase: {fileID: 0}

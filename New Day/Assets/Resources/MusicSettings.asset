@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afa27d4a9d12f6e459ba8813ed57efee, type: 3}
+  m_Name: MusicSettings
+  m_EditorClassIdentifier: Assembly-CSharp::MusicSettings
+  volume: 0.6
+  indoorVolume: 0.6
+  fadeSeconds: 1.5
+  tracks:
+  - sceneName: Farm
+    music: {fileID: 8300000, guid: 189585749e8a59e4793b69b392600bf9, type: 3}
+  - sceneName: Suburbs
+    music: {fileID: 8300000, guid: 189585749e8a59e4793b69b392600bf9, type: 3}
+  - sceneName: City
+    music: {fileID: 8300000, guid: 556bfb02554c3a6449691e1674787c2c, type: 3}
+  - sceneName: Forest
+    music: {fileID: 8300000, guid: a6d0f1d91ebf0064cb58d785b8d5128b, type: 3}
+  - sceneName: Mine
+    music: {fileID: 8300000, guid: 80db1455d0cd9dc4596904287fdb7eac, type: 3}
+  - sceneName: MineShaft
+    music: {fileID: 8300000, guid: 80db1455d0cd9dc4596904287fdb7eac, type: 3}
+  fallback: {fileID: 0}

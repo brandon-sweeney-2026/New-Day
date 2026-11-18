@@ -2,20 +2,26 @@ using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
 /// <summary>
-/// A glowing stump. Press the action button to see what it wants and give it. When everything is given the linked door opens (for good).
-/// Offerings are remembered, so you can bring a few at a time. Put it in the room whose door it unlocks and drag that door into "Door".
+/// A zone's glowing "heart stump". Press the action button to see what it wants and give it. When everything is given,
+/// its ForestZone heals (for good). Offerings are remembered, so you can bring a few at a time.
 /// Needs a trigger Collider2D (added automatically).
 ///
 /// GLOW: a yellow VEIN that runs up the stump, down to the ground and spreads out across the floor like roots. It pulses slowly and stays bright
 /// in the dark, and a real yellow light under it lights the ground nearby. Everything is in the Inspector under "Glow".
-/// Once the door is open the veins settle to a dim "resting" glow.
+/// Once the zone is healed the veins settle to a dim "resting" glow.
 /// </summary>
 public class ForestStump : MonoBehaviour, IInteractable
 {
-    public ForestDoor door;
+    [Tooltip("The Healing Forest zone this stump heals.")]
+    public ForestZone zone;
     [Tooltip("What the stump says. Leave empty for the default.")]
     [TextArea] public string whisper = "";
-    public Sprite openSprite;                 // picture after the door is open (optional)
+    [Tooltip("Picture once its work is done (optional). For a heart stump: heart_stump_healthy.")]
+    public Sprite openSprite;
+
+    /// <summary>What this stump is for: its zone.</summary>
+    public IForestOffering Target { get { return zone; } }
+    private bool Done { get { IForestOffering t = Target; return t != null && t.IsDone; } }
 
     [Header("Glow")]
     public bool glow = true;
@@ -35,13 +41,12 @@ public class ForestStump : MonoBehaviour, IInteractable
     public float lightRadius = 3.8f;
     [Tooltip("Height of the real light above the stump's feet.")]
     public float glowHeight = 0.45f;
-    [Range(0f, 1f), Tooltip("How bright it stays after the door is open (0 = goes out).")]
+    [Range(0f, 1f), Tooltip("How bright it stays once its work is done (0 = goes out).")]
     public float restingStrength = 0.2f;
 
-    public string InteractPrompt { get { return door != null && door.IsOpen ? "The stump rests" : "Offer to the stump"; } }
+    public string InteractPrompt { get { return Done ? "The stump rests" : "Offer to the stump"; } }
 
     private SpriteRenderer veinSr, rootSr, ownSr;
-    private ForestRoom roomOwner;
     private Light2D lamp;
     private float seed;
 
@@ -60,7 +65,6 @@ public class ForestStump : MonoBehaviour, IInteractable
     {
         var own = GetComponent<SpriteRenderer>();
         ownSr = own;
-        roomOwner = GetComponentInParent<ForestRoom>();
         int order = own != null ? own.sortingOrder : 8;
         int pattern = rootPattern * 7919 + Mathf.RoundToInt(transform.position.x * 31f + transform.position.y * 17f);
 
@@ -193,8 +197,7 @@ public class ForestStump : MonoBehaviour, IInteractable
     /// <summary>Roots lie on the ground: just above the floor and always well below the stump and anything else standing on it.</summary>
     private int RootOrder(int stumpOrder)
     {
-        int floor = roomOwner != null ? roomOwner.floorSortingOrder + 2 : stumpOrder - 4;
-        return Mathf.Min(floor, stumpOrder - 1);
+        return stumpOrder - 4;
     }
 
     private void LateUpdate()
@@ -207,7 +210,7 @@ public class ForestStump : MonoBehaviour, IInteractable
     private void Update()
     {
         if (!glow || rootSr == null) return;
-        float rest = door != null && door.IsOpen ? Mathf.Clamp01(restingStrength) : 1f;
+        float rest = Done ? Mathf.Clamp01(restingStrength) : 1f;
         float pulse = 0.5f + 0.5f * Mathf.Sin(Time.time * (6.2832f / pulseSeconds) + seed);      // 0..1
         float k = Mathf.Lerp(0.55f, 1f, pulse) * rest;
 
@@ -220,13 +223,14 @@ public class ForestStump : MonoBehaviour, IInteractable
     public void Refresh()
     {
         var sr = GetComponent<SpriteRenderer>();
-        if (sr != null && openSprite != null && door != null && door.IsOpen) sr.sprite = openSprite;
+        if (sr != null && openSprite != null && Done) sr.sprite = openSprite;
     }
 
     public void Interact(PlayerActions player)
     {
-        if (door == null) { GameEvents.ShowToast("This stump isn't linked to a door yet."); return; }
-        if (door.IsOpen) { GameEvents.ShowToast("The vines have withered. The way is open."); return; }
-        ForestStumpUI.Open(this, door, player, whisper);
+        IForestOffering t = Target;
+        if (t == null) { GameEvents.ShowToast("This stump isn't linked to a zone yet."); return; }
+        if (t.IsDone) { GameEvents.ShowToast("The stump rests. " + zone.displayName + " is alive again."); return; }
+        ForestStumpUI.Open(this, t, player, whisper);
     }
 }

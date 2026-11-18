@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f4ff7549fed0c4b99db334d94d5526, type: 3}
+  m_Name: washer_coastal
+  m_EditorClassIdentifier: Assembly-CSharp::DecorItem
+  id: washer_coastal
+  displayName: White and Blue Washer
+  description: Sea-blue ring around the door.
+  category: 20
+  theme: coastal
+  price: 420
+  mount: 0
+  width: 1
+  depth: 1
+  blocksPlayer: 1
+  surfaceHeight: 0
+  front: {fileID: 21300000, guid: 3e7786d7650bfee4a8298e109a0baa99, type: 3}
+  right: {fileID: 21300000, guid: a2231677906cac64a9a209c4beaf67a5, type: 3}
+  back: {fileID: 21300000, guid: f19e3eddb8e7fdf428ff912545d8654a, type: 3}
+  left: {fileID: 21300000, guid: a1baa268eed57af4ebfdf3b91355fd84, type: 3}
+  floorTile: {fileID: 0}
+  wallTop: {fileID: 0}
+  wallUpper: {fileID: 0}
+  wallBase: {fileID: 0}

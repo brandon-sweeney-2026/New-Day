@@ -52,13 +52,17 @@ public class HouseInterior : MonoBehaviour
                 floorTilemap.SetTile(new Vector3Int(x, y, 0), tile);
     }
 
-    /// <summary>'baseTile' is the row that meets the floor (with the skirting board); 'upper' fills the rest.</summary>
-    public void PaintWall(TileBase upper, TileBase baseTile)
+    /// <summary>
+    /// 'baseTile' is the row that meets the floor (with the skirting board); 'upper' fills the rest.
+    /// 'top' (optional) is the highest row, with the crown moulding (used by the decor wall coverings).
+    /// </summary>
+    public void PaintWall(TileBase upper, TileBase baseTile, TileBase top = null)
     {
         if (wallTilemap == null) return;
         for (int r = 0; r < wallRows; r++)
         {
             TileBase t = r == 0 ? (baseTile != null ? baseTile : upper) : upper;
+            if (r == wallRows - 1 && r > 0 && top != null) t = top;
             for (int x = 0; x < width; x++)
                 wallTilemap.SetTile(new Vector3Int(x, floorRows + r, 0), t);
         }

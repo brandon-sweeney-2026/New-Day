@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f4ff7549fed0c4b99db334d94d5526, type: 3}
+  m_Name: coffeetable_modern
+  m_EditorClassIdentifier: Assembly-CSharp::DecorItem
+  id: coffeetable_modern
+  displayName: Glass Coffee Table
+  description: Black steel, clear glass, a shelf below.
+  category: 7
+  theme: modern
+  price: 240
+  mount: 0
+  width: 2
+  depth: 1
+  blocksPlayer: 1
+  surfaceHeight: 9
+  front: {fileID: 21300000, guid: f39856a1972c3e54a8c2fb4cda849a02, type: 3}
+  right: {fileID: 21300000, guid: 88c2045390c56e64dad1cf82aa496858, type: 3}
+  back: {fileID: 21300000, guid: 023e9806f11a5a54ea1a9e96641c8310, type: 3}
+  left: {fileID: 21300000, guid: 01aa9e56e103d4d4596721747628fc5e, type: 3}
+  floorTile: {fileID: 0}
+  wallTop: {fileID: 0}
+  wallUpper: {fileID: 0}
+  wallBase: {fileID: 0}

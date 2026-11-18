@@ -69,6 +69,22 @@ public static class QuestLog
         if (OnChanged != null) OnChanged();
     }
 
+    /// <summary>
+    /// Empties the journal and fills it from a save file (used by SaveSystem). Call Restore once per saved quest afterwards.
+    /// A restored quest has no progress text until its quest giver is met again and calls Add.
+    /// </summary>
+    public static void ClearForLoad()
+    {
+        entries.Clear();
+    }
+
+    /// <summary>Puts one saved quest back in the journal without announcing it.</summary>
+    public static void Restore(string id, string title, string giver, string description, bool done)
+    {
+        if (string.IsNullOrEmpty(id) || Find(id) != null) return;
+        entries.Add(new Entry { id = id, title = title, giver = giver, description = description, done = done });
+    }
+
     public static int ActiveCount
     {
         get { int n = 0; foreach (Entry e in entries) if (!e.done) n++; return n; }

@@ -1,0 +1,546 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65eefa1a5942e54a8d76aef12a7fda9, type: 3}
+  m_Name: Story_daughter
+  m_EditorClassIdentifier: Assembly-CSharp::NpcStoryArc
+  npcId: daughter
+  title: The Seed Tin
+  summary: 'A plant nerd who studies in the city. Soo-ah finds old local seeds in the store''s basement and wants to save them before Sterling''s patented seeds replace everything. Fork: start a free seed library in the store, or take an internship at Sterling AgriSeed to learn their secrets.'
+  pathAName: The seed library
+  pathBName: The internship
+  parts:
+  - title: You noticed, right?
+    number: 1
+    heartsNeeded: 1
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I sorted the seed rack by season AND by colour. Spring at the top, winter at the bottom, rainbow from left to right.
+    - Nobody noticed. You noticed, right? Please say you noticed.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Faded packets
+    number: 2
+    heartsNeeded: 2
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - If a seed packet looks faded, tell me and I'll swap it. Old seeds still grow, mostly. But faded packets make people sad.
+    - That's my real job, I think. Not selling seeds. Stopping people being sad about seeds.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The tin in the basement
+    number: 3
+    heartsNeeded: 3
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I found something in the basement behind the old freezer. A biscuit tin. Inside, paper envelopes, all hand-written.
+    - Seeds. Really old ones. The writing on this one says 'Halmeoni's pumpkin, the good one'. That's my grandmother. She died before I was born.
+    - Would you try to grow some? I don't have a garden. You have a whole farm. Here, take a handful.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 11400000, guid: d8d3000b4998f864ba4dae418e267cd3, type: 2}
+      amount: 5
+      friendship: 0
+  - title: Grandmother's pumpkin
+    number: 4
+    heartsNeeded: 4
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Did any of Halmeoni's seeds come up? Even one?
+    - 'If you can grow some, bring them to me. I want to save the seeds from inside them. That''s how a plant stays alive for a hundred years: someone keeps saving the seeds.'
+    happy: 0
+    ask:
+      item: {fileID: 11400000, guid: 71e8abaac063a7449a20032e0475b777, type: 2}
+      amount: 2
+      minQuality: 0
+      questTitle: Halmeoni's pumpkins
+      questText: Soo-ah wants two pumpkins grown from her grandmother's old seeds, so she can save their seeds.
+      reminder:
+      - Any pumpkins yet? Two is enough. I just need what's inside.
+      thanks:
+      - Oh. Oh, they're real. They're actually real.
+      - Mom cried when she saw them. She said they look exactly like the ones in the village. Thank you.
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Three hours at the seed rack
+    number: 5
+    heartsNeeded: 5
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Bea Lindqvist came in on Tuesday to buy one packet of seeds. One packet.
+    - We talked for three hours. About soil, and roots, and which flowers bees like best. Dad had to turn the lights off to make us leave.
+    - She's coming back Thursday. I've sorted the rack again. Don't tell her that's why.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The internship offer
+    number: 6
+    heartsNeeded: 6
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - My professor offered me an internship. A paid one. At Sterling AgriSeed, in the city.
+    - They make the seeds the tower sells. Huge labs, every machine you can imagine. It's the kind of thing people in my course would fight for.
+    - I should be happy. Why aren't I happy?
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Seeds that don't come back
+    number: 7
+    heartsNeeded: 7
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I found out why I wasn't happy.
+    - AgriSeed seeds are bred so that if you save the seeds from your crop, they don't grow properly. You have to buy new ones. Every year. From them.
+    - Halmeoni's pumpkin has grown for a hundred years because people saved it. Theirs is made so nobody ever can.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The library or the lab
+    number: 8
+    heartsNeeded: 8
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I've got an idea. A seed library. In the store, in the corner by the rack. Free.
+    - You borrow seeds, grow them, and bring some back at the end of the season. Everybody's seeds, from everybody's gardens. Halmeoni's pumpkin first.
+    - Or I take the internship. Learn exactly how AgriSeed does it, from the inside. Find something we can use against them. I'd be in that building every day.
+    - You helped grow the pumpkins. You choose with me.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 1
+      optionA: Start the seed library
+      replyA:
+      - The library! I'm going to need tiny envelopes. So many tiny envelopes.
+      - And a sign. Lena will draw it. And Bea will help. Bea will definitely help.
+      flagsA:
+      - seed_library_planned
+      optionB: Take the internship
+      replyB:
+      - The internship. Okay. I'll be careful.
+      - I'll write everything down. Every test, every number. If they're hiding something, I'll find it.
+      flagsB:
+      - sooah_internship
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Borrowed seeds
+    number: 9
+    heartsNeeded: 9
+    path: 1
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Forty envelopes borrowed in the first week! Ada took the sweet peas. Mateo took a tree I've never heard of. Nia took 'whatever bugs like'.
+    - And Bea brought back seeds from her university garden that nobody's grown here for fifty years.
+    - 'At the end of the season, they''ll all come back. More than went out. That''s the thing about seeds: they come back with interest.'
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: What the lab knows
+    number: 9
+    heartsNeeded: 9
+    path: 2
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I've been at AgriSeed for a month. The labs are amazing. I hate how amazing they are.
+    - I found the soil tests. Their seeds grow badly in polluted ground. They know the river is poisoned. They sell 'river-resistant' seeds for double the price to the farms downstream.
+    - They're making money from the pollution their own tower causes. I copied the report. Bea has it now. I'm scared and I'm angry.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Grown by the farm
+    number: 10
+    heartsNeeded: 10
+    path: 1
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Look at the rack. The top shelf is new.
+    - '''Local heirloom seeds. Grown on the farm.'' Halmeoni''s pumpkin, the good one. With your farm''s name under it, as the grower.'
+    - These are the first packets. They're for you. Keep some back each harvest, and they'll keep going long after both of us.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags:
+    - seed_library_open
+    reward:
+      gold: 0
+      item: {fileID: 11400000, guid: d8d3000b4998f864ba4dae418e267cd3, type: 2}
+      amount: 10
+      friendship: 0
+  - title: Grown by the farm
+    number: 10
+    heartsNeeded: 10
+    path: 2
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I quit the internship. Bea and I took the soil report to city hall together. Lucia read the whole thing with her sandwich going cold.
+    - And then I came home and opened a seed library anyway. You can't keep Halmeoni's pumpkin in a lab.
+    - 'Top shelf, look: ''Local heirloom seeds. Grown on the farm.'' Your farm''s name, as the grower. The first packets are yours.'
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags:
+    - seed_library_open
+    - tower_file_seeds
+    reward:
+      gold: 0
+      item: {fileID: 11400000, guid: d8d3000b4998f864ba4dae418e267cd3, type: 2}
+      amount: 10
+      friendship: 0

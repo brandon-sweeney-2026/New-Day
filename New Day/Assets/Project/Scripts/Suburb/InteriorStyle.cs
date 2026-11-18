@@ -38,6 +38,8 @@ public class InteriorStyle : MonoBehaviour
     public TileBase floorTile;
     public TileBase wallUpper;
     public TileBase wallBase;
+    [Tooltip("Optional: the highest wall row (with crown moulding). Set by the Interior Decorator's wall coverings.")]
+    public TileBase wallTop;
     public TileBase partitionTile;
     [Tooltip("What fills the corners cut off by Interior Blockers.")] public TileBase blockerTile;
 
@@ -56,7 +58,7 @@ public class InteriorStyle : MonoBehaviour
         if (partitionMap != null) partitionMap.ClearAllTiles();
 
         interior.PaintFloor(floorTile);
-        interior.PaintWall(wallUpper, wallBase);
+        interior.PaintWall(wallUpper, wallBase, wallTop);
 
         if (zones != null && floorMap != null)
             foreach (FloorZone z in zones)

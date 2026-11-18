@@ -239,7 +239,7 @@ MonoBehaviour:
       forbidFlags: []
       counters: []
     stops:
-    - place: CityFriends
+    - place: CafeInside
       scene: City
       waitMinutes: 210
       transitMinutes: 45

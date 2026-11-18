@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 5dfcff56ae754d95a38d0a7a7bbb2f6c, type: 3}
   m_Name: ForestProgression
   m_EditorClassIdentifier: Assembly-CSharp::ForestProgression
   stumps:

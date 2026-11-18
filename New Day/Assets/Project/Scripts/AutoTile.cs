@@ -54,6 +54,11 @@ public class AutoTile : TileBase
     [Tooltip("Playback speed for animated pieces, in frames per second.")]
     public float animationFramesPerSecond = 4f;
 
+    [Tooltip("Play the animation frames last-to-first. For water this flips the flow: ticked = east to west, unticked = west to east.")]
+    public bool playBackwards = false;
+
+    [NonSerialized] private System.Collections.Generic.Dictionary<Piece, Sprite[]> reversedCache;
+
     [Tooltip("None = walk through it. Grid = solid, fills the whole cell (use for water and fences with a TilemapCollider2D).")]
     public Tile.ColliderType colliderType = Tile.ColliderType.None;
 
@@ -66,7 +71,24 @@ public class AutoTile : TileBase
     [NonSerialized] private System.Collections.Generic.Dictionary<TileBase, int> kindCache;
     [NonSerialized] private static float[] scratch = new float[64];
 
-    private void OnValidate() { kindCache = null; }
+    private void OnValidate() { kindCache = null; reversedCache = null; }
+
+    /// <summary>The frames to play for a piece: as stored, or flipped end-to-end when Play Backwards is ticked.</summary>
+    private Sprite[] FramesToPlay(Piece piece)
+    {
+        if (!playBackwards) return piece.frames;
+
+        // Keep one flipped copy per piece so we don't make a new array every time a tile redraws.
+        if (reversedCache == null) reversedCache = new System.Collections.Generic.Dictionary<Piece, Sprite[]>();
+        Sprite[] flipped;
+        if (!reversedCache.TryGetValue(piece, out flipped) || flipped.Length != piece.frames.Length)
+        {
+            flipped = (Sprite[])piece.frames.Clone();
+            Array.Reverse(flipped);
+            reversedCache[piece] = flipped;
+        }
+        return flipped;
+    }
 
     // ------------------------------------------------------------------
     // Neighbour maths (public + static so it is easy to test or reuse)
@@ -210,7 +232,7 @@ public class AutoTile : TileBase
         Piece piece = PieceAt(position, tilemap, ComputeMask(position, tilemap));
         if (piece == null || piece.frames == null || piece.frames.Length < 2) return false;
 
-        tileAnimationData.animatedSprites = piece.frames;
+        tileAnimationData.animatedSprites = FramesToPlay(piece);
         tileAnimationData.animationSpeed = animationFramesPerSecond;
         tileAnimationData.animationStartTime = 0f;
         return true;

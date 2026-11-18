@@ -47,13 +47,16 @@ public class PlayerMenu : MonoBehaviour
     }
 
     private const int VisibleRows = 12;
-    private const float PanelWidth = 1040f, PanelHeight = 620f;
+    // The open book. The list is written on the left page and the description on the right page.
+    private const float BookWidth = 1060f, BookHeight = 600f;
     private const float RowHeight = 38f;
-    private const float ListWidth = 500f;
+    // Bookmark tabs stick out above the book: how much of a closed / the open tab shows, and how much hides under the cover.
+    private const float TabVisible = 28f, TabRaised = 38f, TabTuck = 18f;
 
     private static PlayerMenu instance;
 
     private PlayerMenuSettings settings;
+    private BookSkin skin;
     private bool open;
     private bool locked;
     private int tab;
@@ -130,7 +133,8 @@ public class PlayerMenu : MonoBehaviour
     private void Awake()
     {
         settings = PlayerMenuSettings.Current;
-        font = settings.font != null ? settings.font : Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+        skin = BookSkin.Current;
+        font = settings.font != null ? settings.font : skin.Font;
         for (int i = 0; i < stacks.Length; i++) stacks[i] = new List<Page>();
         BuildUI();
     }
@@ -332,10 +336,16 @@ public class PlayerMenu : MonoBehaviour
     {
         Page page = Current;
 
+        // Bookmarks: the open tab's ribbon is red and sticks out further.
         for (int i = 0; i < tabImages.Length; i++)
         {
-            tabImages[i].color = i == tab ? settings.tabSelectedColor : settings.tabColor;
-            tabTexts[i].color = i == tab ? Color.white : new Color(1f, 1f, 1f, 0.7f);
+            bool on = i == tab;
+            skin.Paint(tabImages[i], on ? BookSkin.Part.TabSelected : BookSkin.Part.Tab);
+            tabTexts[i].color = on ? skin.tabSelectedText : skin.tabText;
+            RectTransform tr = tabImages[i].rectTransform;
+            float visible = on ? TabRaised : TabVisible;
+            tr.anchoredPosition = new Vector2(tr.anchoredPosition.x, visible);
+            tr.sizeDelta = new Vector2(tr.sizeDelta.x, visible + TabTuck);
         }
 
         // "Skills > Farming" when a page is open on top of the tab.
@@ -358,28 +368,30 @@ public class PlayerMenu : MonoBehaviour
 
             PlayerMenuRow r = rows[index];
             bool sel = index == page.selected;
-            rowBackgrounds[i].color = sel ? settings.rowSelectedColor : settings.rowColor;
+            skin.PaintRow(rowBackgrounds[i], sel);            // honey highlighter behind the chosen row
 
-            Color c = r.color.HasValue ? r.color.Value : Color.white;
-            if (!r.enabled) c = new Color(c.r * 0.6f, c.g * 0.6f, c.b * 0.6f, 1f);
+            // The row colours were picked for the old dark window; Ink() turns them into darker ink that reads on paper.
+            Color c = skin.Ink(r.color);
+            if (!r.enabled) c = skin.Disabled(c);
             rowLabels[i].color = c;
             rowRights[i].color = c;
             rowLabels[i].text = r.label;
             rowRights[i].text = r.right;
 
-            // The label moves right to make room for a picture.
+            // The label moves right to make room for a picture, and up to make room for a bar.
             bool hasIcon = r.icon != null;
+            bool hasBar = r.bar >= 0f;
             rowIcons[i].enabled = hasIcon;
             rowIcons[i].sprite = r.icon;
-            rowLabels[i].rectTransform.offsetMin = new Vector2(hasIcon ? 42f : 10f, 0f);
+            rowLabels[i].rectTransform.offsetMin = new Vector2(hasIcon ? 42f : 10f, hasBar ? 8f : 0f);
+            rowRights[i].rectTransform.offsetMin = new Vector2(0f, hasBar ? 8f : 0f);
 
-            bool hasBar = r.bar >= 0f;
             rowBarBacks[i].enabled = hasBar;
             rowBarFillImages[i].enabled = hasBar;
             if (hasBar)
             {
                 rowBarFills[i].anchorMax = new Vector2(Mathf.Clamp01(r.bar), 1f);
-                rowBarFillImages[i].color = r.barColor;
+                rowBarFillImages[i].color = Color.Lerp(r.barColor, skin.ink, 0.2f);     // a touch darker, like paint on paper
             }
         }
 
@@ -392,7 +404,7 @@ public class PlayerMenu : MonoBehaviour
         detailIconImage.enabled = big != null;
         detailIconImage.sprite = big;
         // The text starts lower when there is a picture above it.
-        detailBodyText.rectTransform.offsetMax = new Vector2(-14f, big != null ? -160f : -52f);
+        detailBodyText.rectTransform.offsetMax = new Vector2(0f, big != null ? -DetailTextTop - 106f : -DetailTextTop);
 
         hintText.text = "Q / E: change tab     Up / Down: choose     Space: select     Left / Right: change     Esc: back     " + KeyName(settings.openKey) + ": close";
     }
@@ -419,41 +431,51 @@ public class PlayerMenu : MonoBehaviour
 
         RectTransform root = gameObject.GetComponent<RectTransform>();
 
-        Image dim = Img(root, "Dim", settings.dimColor);
+        Image dim = Img(root, "Dim", skin.dimColor);
         Stretch(dim.rectTransform);
 
-        Image panel = Img(root, "Panel", settings.panelColor);
-        RectTransform p = panel.rectTransform;
-        p.anchorMin = p.anchorMax = p.pivot = new Vector2(0.5f, 0.5f);
-        p.anchoredPosition = Vector2.zero;
-        p.sizeDelta = new Vector2(PanelWidth, PanelHeight);
+        // The book is at least tall enough for the page title, the flourish and every row (so nothing spills off the
+        // page even if the Book Skin's margins are made bigger). It sits a little low so the bookmarks have room above it.
+        float listHeight = 28f + skin.NaturalHeight(BookSkin.Part.Divider, 12f) + VisibleRows * RowHeight;
+        float bookHeight = Mathf.Max(BookHeight, skin.CoverSizeFor(true, 0f, listHeight).y);
+        RectTransform holder = BookSkin.NewArea(root, "Book");
+        holder.anchorMin = holder.anchorMax = holder.pivot = new Vector2(0.5f, 0.5f);
+        holder.anchoredPosition = new Vector2(0f, -TabRaised * 0.5f);
+        holder.sizeDelta = new Vector2(BookWidth, bookHeight);
 
-        // ---- tabs along the top ----
+        // ---- bookmark tabs along the top (made first, so they are drawn BEHIND the cover and look tucked in) ----
         int tabCount = PlayerMenuPages.TabCount;
-        float gap = 4f, side = 12f;
-        float tabWidth = (PanelWidth - side * 2f - gap * (tabCount - 1)) / tabCount;
+        float gap = 6f, side = 44f;
+        float tabWidth = (BookWidth - side * 2f - gap * (tabCount - 1)) / tabCount;
         for (int i = 0; i < tabCount; i++)
         {
-            Image t = Img(p, "Tab " + PlayerMenuPages.TabNames[i], settings.tabColor);
-            TopLeft(t.rectTransform, side + i * (tabWidth + gap), -10f, tabWidth, 38f);
+            Image t = skin.NewImage(holder, "Tab " + PlayerMenuPages.TabNames[i], BookSkin.Part.Tab);
+            BookSkin.TopLeft(t.rectTransform, side + i * (tabWidth + gap), TabVisible, tabWidth, TabVisible + TabTuck);
             tabImages[i] = t;
 
-            tabTexts[i] = Txt(t.rectTransform, "Label", 18, TextAnchor.MiddleCenter);
-            Stretch(tabTexts[i].rectTransform);
+            // the name sits in the part that sticks out above the cover
+            tabTexts[i] = T(t.rectTransform, "Label", 17, skin.tabText, TextAnchor.MiddleCenter);
+            BookSkin.Inset(tabTexts[i].rectTransform, Vector2.zero, Vector2.one, 6f, TabTuck, 6f, 3f);
             tabTexts[i].text = PlayerMenuPages.TabNames[i];
         }
 
-        // ---- the name of the page ----
-        pageTitleText = Txt(p, "Page Title", 20, TextAnchor.MiddleLeft);
-        pageTitleText.color = settings.headingColor;
-        TopLeft(pageTitleText.rectTransform, side + 4f, -52f, PanelWidth - side * 2f, 28f);
+        // ---- the open book: cover, left page, right page ----
+        BookSkin.Book book = skin.BuildBook(holder, "Cover", true);
+        BookSkin.Inset(book.root, Vector2.zero, Vector2.one, 0f, 0f, 0f, 0f);
+        RectTransform left = book.leftContent, right = book.rightContent;
 
-        // ---- the list on the left ----
-        float listTop = -86f;
+        // ---- left page: the name of the page, a flourish, then the list ----
+        pageTitleText = T(left, "Page Title", 21, skin.headingInk, TextAnchor.MiddleLeft);
+        BookSkin.TopStrip(pageTitleText.rectTransform, 0f, 28f);
+        Image flourish = skin.NewImage(left, "Divider", BookSkin.Part.Divider);
+        BookSkin.TopStrip(flourish.rectTransform, -28f, skin.NaturalHeight(BookSkin.Part.Divider, 12f));
+
+        float listTop = -28f - skin.NaturalHeight(BookSkin.Part.Divider, 12f);
         for (int i = 0; i < VisibleRows; i++)
         {
-            Image bg = Img(p, "Row " + i, settings.rowColor);
-            TopLeft(bg.rectTransform, side, listTop - i * RowHeight, ListWidth, RowHeight - 2f);
+            Image bg = Img(left, "Row " + i, Color.clear);
+            BookSkin.TopStrip(bg.rectTransform, listTop - i * RowHeight, RowHeight - 2f);
+            skin.AddRule(bg.rectTransform);
             rowBackgrounds[i] = bg;
 
             Image icon = Img(bg.rectTransform, "Icon", Color.white);
@@ -464,71 +486,62 @@ public class PlayerMenu : MonoBehaviour
             icon.enabled = false;
             rowIcons[i] = icon;
 
-            rowLabels[i] = Txt(bg.rectTransform, "Label", 19, TextAnchor.MiddleLeft);
+            rowLabels[i] = T(bg.rectTransform, "Label", 19, skin.ink, TextAnchor.MiddleLeft);
             rowLabels[i].rectTransform.anchorMin = Vector2.zero;
             rowLabels[i].rectTransform.anchorMax = new Vector2(0.64f, 1f);
             rowLabels[i].rectTransform.offsetMin = new Vector2(10f, 0f);
             rowLabels[i].rectTransform.offsetMax = Vector2.zero;
 
-            rowRights[i] = Txt(bg.rectTransform, "Right", 17, TextAnchor.MiddleRight);
+            rowRights[i] = T(bg.rectTransform, "Right", 17, skin.ink, TextAnchor.MiddleRight);
             rowRights[i].rectTransform.anchorMin = new Vector2(0.4f, 0f);
             rowRights[i].rectTransform.anchorMax = Vector2.one;
             rowRights[i].rectTransform.offsetMin = Vector2.zero;
             rowRights[i].rectTransform.offsetMax = new Vector2(-10f, 0f);
 
-            // A thin progress bar along the bottom edge of the row.
-            Image barBack = Img(bg.rectTransform, "Bar", new Color(0f, 0f, 0f, 0.5f));
+            // A small inked progress bar along the bottom of the row.
+            Image barBack = skin.NewImage(bg.rectTransform, "Bar", BookSkin.Part.BarBack);
             barBack.rectTransform.anchorMin = new Vector2(0f, 0f);
             barBack.rectTransform.anchorMax = new Vector2(1f, 0f);
             barBack.rectTransform.pivot = new Vector2(0.5f, 0f);
-            barBack.rectTransform.anchoredPosition = new Vector2(0f, 1f);
-            barBack.rectTransform.sizeDelta = new Vector2(-16f, 4f);
+            barBack.rectTransform.anchoredPosition = new Vector2(0f, 3f);
+            barBack.rectTransform.sizeDelta = new Vector2(-16f, 8f);
             rowBarBacks[i] = barBack;
 
-            Image barFill = Img(barBack.rectTransform, "Fill", Color.white);
+            RectTransform fillArea = BookSkin.NewArea(barBack.rectTransform, "Fill Area");
+            BookSkin.Inset(fillArea, Vector2.zero, Vector2.one, 2f, 2f, 2f, 2f);      // the fill stays inside the inked outline
+            Image barFill = Img(fillArea, "Fill", Color.white);
             Stretch(barFill.rectTransform);
             rowBarFills[i] = barFill.rectTransform;
             rowBarFillImages[i] = barFill;
         }
 
-        // ---- the description panel on the right ----
-        float detailX = side + ListWidth + 12f;
-        Image detail = Img(p, "Detail", settings.detailPanelColor);
-        TopLeft(detail.rectTransform, detailX, listTop, PanelWidth - detailX - side, VisibleRows * RowHeight - 2f);
+        // ---- right page: what the highlighted row is about ----
+        detailTitleText = T(right, "Title", 24, skin.headingInk, TextAnchor.UpperLeft);
+        BookSkin.TopStrip(detailTitleText.rectTransform, 0f, 32f);
+        Image flourish2 = skin.NewImage(right, "Divider", BookSkin.Part.Divider);
+        BookSkin.TopStrip(flourish2.rectTransform, -32f, skin.NaturalHeight(BookSkin.Part.Divider, 12f));
 
-        detailTitleText = Txt(detail.rectTransform, "Title", 23, TextAnchor.UpperLeft);
-        detailTitleText.rectTransform.anchorMin = new Vector2(0f, 1f);
-        detailTitleText.rectTransform.anchorMax = new Vector2(1f, 1f);
-        detailTitleText.rectTransform.pivot = new Vector2(0.5f, 1f);
-        detailTitleText.rectTransform.anchoredPosition = new Vector2(0f, -12f);
-        detailTitleText.rectTransform.sizeDelta = new Vector2(-28f, 30f);
-
-        detailIconImage = Img(detail.rectTransform, "Picture", Color.white);
-        detailIconImage.rectTransform.anchorMin = detailIconImage.rectTransform.anchorMax = detailIconImage.rectTransform.pivot = new Vector2(0f, 1f);
-        detailIconImage.rectTransform.anchoredPosition = new Vector2(14f, -52f);
-        detailIconImage.rectTransform.sizeDelta = new Vector2(96f, 96f);
+        detailIconImage = Img(right, "Picture", Color.white);
+        BookSkin.TopLeft(detailIconImage.rectTransform, 0f, -DetailTextTop, 96f, 96f);
         detailIconImage.preserveAspect = true;
         detailIconImage.enabled = false;
 
-        detailBodyText = Txt(detail.rectTransform, "Body", 17, TextAnchor.UpperLeft);
-        detailBodyText.horizontalOverflow = HorizontalWrapMode.Wrap;      // long text wraps onto the next line
-        detailBodyText.color = settings.detailTextColor;
+        detailBodyText = T(right, "Body", 18, skin.ink, TextAnchor.UpperLeft);
+        detailBodyText.lineSpacing = 1.1f;
         detailBodyText.rectTransform.anchorMin = Vector2.zero;
         detailBodyText.rectTransform.anchorMax = Vector2.one;
-        detailBodyText.rectTransform.offsetMin = new Vector2(14f, 10f);
-        detailBodyText.rectTransform.offsetMax = new Vector2(-14f, -52f);
+        detailBodyText.rectTransform.offsetMin = Vector2.zero;
+        detailBodyText.rectTransform.offsetMax = new Vector2(0f, -DetailTextTop);
 
-        // ---- key help along the bottom ----
-        hintText = Txt(p, "Hint", 14, TextAnchor.MiddleCenter);
-        hintText.color = new Color(0.7f, 0.7f, 0.7f);
-        hintText.rectTransform.anchorMin = new Vector2(0f, 0f);
-        hintText.rectTransform.anchorMax = new Vector2(1f, 0f);
-        hintText.rectTransform.pivot = new Vector2(0.5f, 0f);
-        hintText.rectTransform.anchoredPosition = new Vector2(0f, 10f);
-        hintText.rectTransform.sizeDelta = new Vector2(0f, 26f);
+        // ---- key help, pressed in gold into the leather under the pages ----
+        hintText = skin.NewCoverHint(book.root, "", 14);
+        hintText.font = font;
 
         canvas.enabled = false;
     }
+
+    /// <summary>How far down the right page the picture and the description start (below the title and flourish).</summary>
+    private const float DetailTextTop = 56f;
 
     // ---- small UI helpers ----
 
@@ -542,18 +555,11 @@ public class PlayerMenu : MonoBehaviour
         return i;
     }
 
-    private Text Txt(RectTransform parent, string name, int size, TextAnchor anchor)
+    /// <summary>Book-style text (shrinks to fit its box) in this menu's font.</summary>
+    private Text T(RectTransform parent, string name, int size, Color color, TextAnchor anchor)
     {
-        var go = new GameObject(name, typeof(RectTransform), typeof(Text));
-        go.transform.SetParent(parent, false);
-        var t = go.GetComponent<Text>();
+        Text t = skin.NewText(parent, name, size, color, anchor);
         t.font = font;
-        t.fontSize = size;
-        t.alignment = anchor;
-        t.color = Color.white;
-        t.horizontalOverflow = HorizontalWrapMode.Overflow;
-        t.verticalOverflow = VerticalWrapMode.Overflow;
-        t.raycastTarget = false;
         return t;
     }
 
@@ -563,13 +569,5 @@ public class PlayerMenu : MonoBehaviour
         rt.anchorMax = Vector2.one;
         rt.offsetMin = Vector2.zero;
         rt.offsetMax = Vector2.zero;
-    }
-
-    /// <summary>Places a box by its top-left corner, measured from the top-left corner of its parent (y goes down as a negative number).</summary>
-    private static void TopLeft(RectTransform rt, float x, float y, float width, float height)
-    {
-        rt.anchorMin = rt.anchorMax = rt.pivot = new Vector2(0f, 1f);
-        rt.anchoredPosition = new Vector2(x, y);
-        rt.sizeDelta = new Vector2(width, height);
     }
 }

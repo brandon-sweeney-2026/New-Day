@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f4ff7549fed0c4b99db334d94d5526, type: 3}
+  m_Name: dresser_modern
+  m_EditorClassIdentifier: Assembly-CSharp::DecorItem
+  id: dresser_modern
+  displayName: White Lacquer Dresser
+  description: No handles, just smooth white fronts.
+  category: 15
+  theme: modern
+  price: 320
+  mount: 0
+  width: 2
+  depth: 1
+  blocksPlayer: 1
+  surfaceHeight: 18
+  front: {fileID: 21300000, guid: dd023191b44bb5d47beaceeb9667850e, type: 3}
+  right: {fileID: 21300000, guid: 1b0f7a6207c00bf4dbf93c3efd513994, type: 3}
+  back: {fileID: 21300000, guid: 21015720672735a44b613c74fd999063, type: 3}
+  left: {fileID: 21300000, guid: 2c500cb973f37004584f7a5d85cee2dd, type: 3}
+  floorTile: {fileID: 0}
+  wallTop: {fileID: 0}
+  wallUpper: {fileID: 0}
+  wallBase: {fileID: 0}

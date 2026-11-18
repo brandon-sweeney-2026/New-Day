@@ -14,6 +14,7 @@ public enum LightBehaviour
 /// <summary>
 /// Makes an object glow: it adds a coloured point light (a Light2D) plus an optional "lit" glow overlay that stays bright at night.
 /// Put it on a prefab with a SpriteRenderer. Everything is editable in the Inspector.
+/// Walls and cliffs (WallShadowBlock) block its light and get a shadow behind them; nothing else does.
 /// </summary>
 public class LightSource : MonoBehaviour
 {
@@ -39,6 +40,15 @@ public class LightSource : MonoBehaviour
     public float flickerSpeed = 8f;
     [Range(0f, 1f)] public float pulseAmount = 0f;
     public float pulseSpeed = 1.5f;
+
+    [Header("Shadows from walls and cliffs")]
+    [Tooltip("Tick to let walls and cliffs (anything with a WallShadowBlock / ShadowCaster2D) block this light and throw a shadow behind them. " +
+             "The master switch is 'Lamp Shadows' on the LightingManager.")]
+    public bool castShadows = true;
+    [Tooltip("How dark the shadow behind a wall is: 0 = no shadow, 1 = no light at all gets through.")]
+    [Range(0f, 1f)] public float shadowStrength = 0.8f;
+    [Tooltip("0 = sharp shadow edges, 1 = very blurry edges.")]
+    [Range(0f, 1f)] public float shadowSoftness = 0.3f;
 
     [Header("Glow overlay (the 'lit' version of the art)")]
     [Tooltip("Frames drawn on top of the object, ignoring darkness, so flames and lit glass stay bright at night. Leave empty for none.")]
@@ -69,7 +79,7 @@ public class LightSource : MonoBehaviour
         lamp.pointLightOuterRadius = outerRadius;
         lamp.pointLightInnerRadius = Mathf.Min(innerRadius, outerRadius * 0.9f);
         lamp.falloffIntensity = falloff;
-        lamp.shadowsEnabled = false;
+        ApplyShadowSettings();
 
         if (glowFrames != null && glowFrames.Length > 0 && glowFrames[0] != null)
         {
@@ -105,6 +115,7 @@ public class LightSource : MonoBehaviour
         // the sprite keeps its sorting order in sync (BehindPlayerSorter changes it at runtime)
         if (glow != null && baseRenderer != null) glow.sortingOrder = baseRenderer.sortingOrder + 1;
 
+        ApplyShadowSettings();   // every frame, so Inspector changes and the master switch work while playing
         lamp.enabled = level > 0.01f;
         lamp.intensity = intensity * level * flick * pulse;
         lamp.pointLightOuterRadius = outerRadius * (1f + (flick - 1f) * 0.4f);
@@ -119,6 +130,19 @@ public class LightSource : MonoBehaviour
             glow.color = new Color(1f, 1f, 1f, a);
             glow.enabled = a > 0.01f;
         }
+    }
+
+    /// <summary>
+    /// Turns Unity's 2D light shadows on or off for this light. Only objects with a ShadowCaster2D (walls and cliffs,
+    /// see WallShadowBlock) block the light; everything else is lit as before.
+    /// </summary>
+    private void ApplyShadowSettings()
+    {
+        LightingManager m = LightingManager.Instance;
+        bool on = castShadows && (m == null || m.lampShadows);
+        lamp.shadowsEnabled = on;
+        lamp.shadowIntensity = shadowStrength;
+        lamp.shadowSoftness = shadowSoftness;
     }
 
     private void OnDrawGizmosSelected()

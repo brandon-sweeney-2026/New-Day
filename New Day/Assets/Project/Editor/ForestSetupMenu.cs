@@ -5,12 +5,11 @@ using UnityEngine;
 
 /// <summary>
 /// Farm > Set Up > Forest           (run once, after copying the 'Forest' art folder into Assets)
-/// Farm > Test and Debug > Open All Forest Doors    (play mode)
-/// Farm > Test and Debug > Reset Forest Progress      (play mode: re-locks doors, clears offerings and fairy quests)
 ///
-/// Set Up Forest imports the art and makes: the Shadow Essence item, the polluted ForestStyle, the five shadow animals (prefabs), the forest room,
-/// gates, the stump, the Fairy (with starter quests), a ForestProgression asset, and every grove decoration. All of them are labelled so they
-/// show in the Level Editor's Objects palette. Then use Farm > Level Editors > Forest Maze Generator to build the maze. Safe to run again.
+/// Imports the older forest art and makes the pieces the Healing Forest builds on: the Shadow Essence item, the five shadow
+/// animals (prefabs), the stump, the Fairy (with starter quests), the ForestProgression asset (what each heart stump asks for),
+/// and every grove decoration. All of them are labelled so they show in the Level Editor's Objects palette.
+/// Then run Farm > Set Up > Forest Scene to build the forest itself. Safe to run again.
 /// </summary>
 public static class ForestSetupMenu
 {
@@ -37,16 +36,6 @@ public static class ForestSetupMenu
 
         ItemData essence = MakeItem("ShadowEssence", "Shadow Essence", "A drop of pollution given shape. It hums faintly.", 15, "icon_shadow_essence");
 
-        ForestStyle polluted = LoadOrCreate<ForestStyle>(DataFolder + "/ForestStyle_Polluted.asset");
-        polluted.floorTiles = new[] { Spr("floor_dark_0"), Spr("floor_dark_1"), Spr("floor_dark_2") };
-        polluted.wallTile = Spr("wall_thorn");
-        polluted.scenery = new[] { Spr("forest_dead_tree_a"), Spr("forest_dead_tree_b"), Spr("forest_dead_bush"), Spr("forest_dark_mushroom") };
-        polluted.sceneryCount = 9;
-        polluted.gateAcrossLocked = Spr("gate_across_locked"); polluted.gateAcrossOpen = Spr("gate_across_open");
-        polluted.gateUpDownLocked = Spr("gate_updown_locked"); polluted.gateUpDownOpen = Spr("gate_updown_open");
-        polluted.fog = true;
-        EditorUtility.SetDirty(polluted);
-
         // ---- animals ----
         var animals = new List<GameObject>();
         animals.Add(BuildAnimal(prefabDir, essence, "rabbit", "Rabbit", ShadowCreature.Style.Hop, 8, 2, 1.2f, 5.5f, 0.35f, 0.55f, 0.30f, true, false, 0f));
@@ -55,17 +44,7 @@ public static class ForestSetupMenu
         animals.Add(BuildAnimal(prefabDir, essence, "bird", "Bird", ShadowCreature.Style.Dash, 6, 3, 1.8f, 9.5f, 0.45f, 0.55f, 0.35f, true, false, 0f));
         animals.Add(BuildAnimal(prefabDir, essence, "turtle", "Turtle", ShadowCreature.Style.Plod, 26, 3, 0.5f, 1.4f, 0.35f, 0.5f, 0.2f, true, false, 0.8f));
 
-        // ---- room, gates, stump, markers ----
-        var room = new GameObject("ForestRoom");
-        AddIcon(room, "marker_forest_room");
-        var fr = room.AddComponent<ForestRoom>();
-        fr.style = polluted;
-        fr.enemyPrefabs = animals.ToArray();
-        GameObject roomPrefab = SavePrefab(room, prefabDir + "/ForestRoom.prefab");
-
-        GameObject gateA = BuildGate(prefabDir, "ForestGate_Across", polluted, false);
-        GameObject gateU = BuildGate(prefabDir, "ForestGate_UpDown", polluted, true);
-
+        // ---- stump ----
         var st = new GameObject("ForestStump");
         var ssr = st.AddComponent<SpriteRenderer>();
         ssr.sprite = Spr("forest_stump"); ssr.sortingOrder = 9;
@@ -97,7 +76,7 @@ public static class ForestSetupMenu
         pieces.Add(BuildGlowMushroom(prefabDir, "Grove_MushroomGlow", "grove_mushroom_glow", new Color(0.35f, 1f, 0.65f)));
         pieces.Add(BuildPiece(prefabDir, "Grove_Tree", "grove_tree", 8, false, 0f, true));
         pieces.Add(BuildPiece(prefabDir, "Grove_Bush", "grove_bush", 8, false, 0f, true));
-        // polluted scenery too, for decorating the maze by hand
+        // polluted scenery too, for decorating by hand
         pieces.Add(BuildPiece(prefabDir, "Forest_DeadTreeA", "forest_dead_tree_a", 8, false, 0f, true));
         pieces.Add(BuildPiece(prefabDir, "Forest_DeadTreeB", "forest_dead_tree_b", 8, false, 0f, true));
         pieces.Add(BuildPiece(prefabDir, "Forest_DeadBush", "forest_dead_bush", 8, false, 0f, true));
@@ -107,16 +86,16 @@ public static class ForestSetupMenu
         // ---- label everything the Level Editor's Objects palette should list ----
         var all = new List<GameObject>(pieces);
         all.AddRange(animals);
-        all.Add(roomPrefab); all.Add(gateA); all.Add(gateU); all.Add(stumpPrefab); all.Add(fairy);
+        all.Add(stumpPrefab); all.Add(fairy);
         foreach (GameObject g in all) if (g != null) AssetDatabase.SetLabels(g, new[] { FarmEditorLabels.Objects });
 
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
 
         EditorUtility.DisplayDialog("Forest ready",
-            "Done! Made the Shadow Essence item, the forest style, 5 shadow animals, room, gates, stump, the Fairy and the grove pieces.\n\n" +
+            "Done! Made the Shadow Essence item, 5 shadow animals, the stump, the Fairy and the grove pieces.\n\n" +
             "NEXT:\n1. Open " + DataFolder + "/ForestProgression and drag your FARM items and QUARRY items in (easiest first). I filled in what I could find.\n" +
-            "2. Open the scene for the forest and run Farm > Level Editors > Forest Maze Generator.\n" +
+            "2. Run Farm > Set Up > Forest Scene to build the Healing Forest.\n" +
             "3. Level Editor > Objects palette > 'Reload this palette from labelled assets' to paint extras.\n\n" +
             "Remember: ground/lighting scripts treat the forest like any scene. Not compiled in Unity - tell me about any red errors.", "OK");
     }
@@ -149,19 +128,6 @@ public static class ForestSetupMenu
         c.goldMin = 1; c.goldMax = 3;
         c.shadowSize = new Vector2(0.8f, 0.3f); c.shadowOffset = new Vector2(0f, 0.12f);
         return SavePrefab(go_, dir + "/Shadow" + label + ".prefab");
-    }
-
-    private static GameObject BuildGate(string dir, string name, ForestStyle style, bool upDown)
-    {
-        var g = new GameObject(name);
-        var sr = g.AddComponent<SpriteRenderer>();
-        sr.sprite = upDown ? style.gateUpDownLocked : style.gateAcrossLocked;
-        sr.sortingOrder = 7;
-        var bc = g.AddComponent<BoxCollider2D>();
-        bc.size = upDown ? new Vector2(1f, 2f) : new Vector2(2f, 1f);
-        var d = g.AddComponent<ForestDoor>();
-        d.style = style; d.upDown = upDown; d.id = "door_new";
-        return SavePrefab(g, dir + "/" + name + ".prefab");
     }
 
     private static GameObject BuildFairy(string dir, ForestProgression prog)
@@ -257,8 +223,22 @@ public static class ForestSetupMenu
             bc.offset = new Vector2(0f, big ? 0.35f : 0.25f);
             go.AddComponent<BehindPlayerSorter>().thresholdOffset = 0f;
         }
-        if (name.StartsWith("Forest_DeadTree")) ForestUpdateMenu.UpgradeDeadTree(go, 2f);       // twice as big, with a shadow
+        if (name.StartsWith("Forest_DeadTree")) UpgradeDeadTree(go, 2f);       // twice as big, with a shadow
         return SavePrefab(go, dir + "/" + name + ".prefab");
+    }
+
+    /// <summary>Makes a dead-tree prefab 'scale' times bigger, adds a shadow, and keeps its trunk collider the same size in the world.</summary>
+    private static void UpgradeDeadTree(GameObject go, float scale)
+    {
+        go.transform.localScale = new Vector3(scale, scale, 1f);
+        var col = go.GetComponent<BoxCollider2D>();
+        if (col != null)
+        {
+            col.size = new Vector2(1f, 0.5f) / scale;
+            col.offset = new Vector2(0f, 0.25f / scale);
+        }
+        if (go.GetComponent<ShadowCaster>() == null)
+            go.AddComponent<ShadowCaster>().lengthMultiplier = 1.3f;
     }
 
     private static GameObject BuildGlowMushroom(string dir, string name, string art, Color glow)
@@ -459,33 +439,5 @@ public static class ForestSetupMenu
         idProvider.SetNameFileIdPairs(pairs);
         provider.Apply();
         imp.SaveAndReimport();
-    }
-
-    // ------------------------------------------------------------------ test helpers
-    [MenuItem("Farm/Test and Debug/Open All Forest Doors", false, 322)]
-    public static void OpenAll()
-    {
-        if (!Application.isPlaying) { EditorUtility.DisplayDialog("Play mode needed", "Press Play first.", "OK"); return; }
-        foreach (ForestDoor d in Object.FindObjectsByType<ForestDoor>()) d.Unlock();
-        Debug.Log("All forest doors opened.");
-    }
-
-    [MenuItem("Farm/Test and Debug/Reset Forest Progress", false, 323)]
-    public static void ResetForest()
-    {
-        if (!Application.isPlaying) { EditorUtility.DisplayDialog("Play mode needed", "Progress lives in the running game. Press Play first.", "OK"); return; }
-        foreach (ForestDoor d in Object.FindObjectsByType<ForestDoor>())
-        {
-            d.Lock();                                   // plays the closing animation and forgets the door was open
-            if (d.requirements != null) for (int i = 0; i < d.requirements.Length; i++) GameState.SetCounter("forest_give_" + d.id + "_" + i, 0);
-        }
-        var fairy = Object.FindAnyObjectByType<FairyNpc>();
-        if (fairy != null && fairy.quests != null)
-            foreach (FairyQuest q in fairy.quests) { GameState.SetCounter("fairy_q_" + q.id, 0); }
-        GameState.SetFlag("fairy_met", false);
-        GameState.SetFlag("sick_fairy_met", false);
-        GameState.SetFlag("sick_fairy_promised", false);
-        GameState.SetFlag("forest_grove_reached", false);
-        Debug.Log("Forest reset. The doors closed again.");
     }
 }

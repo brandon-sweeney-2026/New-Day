@@ -1,0 +1,549 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65eefa1a5942e54a8d76aef12a7fda9, type: 3}
+  m_Name: Story_mom
+  m_EditorClassIdentifier: Assembly-CSharp::NpcStoryArc
+  npcId: mom
+  title: Have You Eaten?
+  summary: 'Mi-sook feeds the whole street and never herself. Her ''Saturday friends in the city'' are really a cooking class she''s too shy to mention. Fork: enter a Sterling-sponsored cooking competition, or cook one big dinner for the whole street.'
+  pathAName: The street dinner
+  pathBName: The competition
+  parts:
+  - title: Take the rice ball
+    number: 1
+    heartsNeeded: 1
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Have you eaten today? Don't lie. I can always tell. You have a 'no breakfast' face.
+    - Here. Take it. No, no, take it. If you don't take it, I'll put it in your pocket and it will be squashed. Better to take it.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 11400000, guid: 9d532f221bd63af49a3ff53c777a7d72, type: 2}
+      amount: 2
+      friendship: 0
+  - title: Who won the swap
+    number: 2
+    heartsNeeded: 2
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Did Rosa tell you about our recipe swap? Her bread for my kimchi.
+    - She thinks she won. I know she has been eating my kimchi on toast every morning. Walt told Jae-hoon, and Jae-hoon told me. Husbands are terrible at secrets.
+    - Don't tell her I know. It's more fun this way.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Something for something
+    number: 3
+    heartsNeeded: 3
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Could you bring me some strawberries? Five. Good ones.
+    - What for? Oh... for something. Just something. Never mind what for.
+    happy: 0
+    ask:
+      item: {fileID: 11400000, guid: 659a557b27a1ae14b8e0d2ce904cbf15, type: 2}
+      amount: 5
+      minQuality: 0
+      questTitle: Strawberries for something
+      questText: Mi-sook wants five strawberries. She won't say what for.
+      reminder:
+      - The strawberries? Five, please. It's for... something. Stop smiling.
+      thanks:
+      - Beautiful. So red.
+      - Now go, go. I have something to practise. I mean, to cook. To cook.
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The apron
+    number: 4
+    heartsNeeded: 4
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - "You saw me. In the city, at the caf\xE9. In the apron with my name stitched on it."
+    - It's a cooking class. Every Saturday, for a year. My 'friends in the city' are a French chef who shouts and eleven people half my age.
+    - Please don't tell the children. They would make a fuss. I don't want a fuss. I just wanted something that was only for me.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: No, no, no
+    number: 5
+    heartsNeeded: 5
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - My teacher says I should enter the big cooking competition in the city. On television!
+    - I told her no. Who would stock the shelves? Who would cook dinner? Who would make sure Ji-ho eats a vegetable?
+    - ...She said 'Ji-ho is twenty-two'. She doesn't understand. Twenty-two is very young for vegetables.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Soo-ah knows
+    number: 6
+    heartsNeeded: 6
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags:
+      - story_daughter_4
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Soo-ah found the apron in my bag. She cried. She said 'Why didn't you tell me, Umma? I tell you everything.'
+    - I didn't know what to say. Thirty years I've been feeding everyone. I never learned how to ask for anything.
+    - She's not angry any more. Now she wants me to enter the competition. Everybody wants me to enter the competition.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The best ingredients
+    number: 7
+    heartsNeeded: 7
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - All right. All right! I'm going to cook something properly. My mother's recipe, but my way.
+    - I need the best pumpkins you can grow. Not ordinary ones. Silver quality, at least. The kind that make you close your eyes.
+    - Whatever I decide to do with the dish, it has to start with the best.
+    happy: 0
+    ask:
+      item: {fileID: 11400000, guid: 71e8abaac063a7449a20032e0475b777, type: 2}
+      amount: 3
+      minQuality: 1
+      questTitle: Mi-sook's best dish
+      questText: Mi-sook needs three Silver-quality (or better) pumpkins for her mother's recipe. Fertilizer from the city improves crop quality.
+      reminder:
+      - Pumpkins, Silver quality or better. Three. I know it's a lot to ask. I'm asking anyway. See? I'm learning.
+      thanks:
+      - Oh. Oh, these are perfect.
+      - My mother would have held one up to the light like this. Thank you.
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Where should I cook it?
+    number: 8
+    heartsNeeded: 8
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - The competition is next month. Sterling Foods is paying for it. The prize is a lot of money, and they put your dish in their shops.
+    - Or... I had another idea. In my village, once a year, everybody brought a table into the street and we ate together. All of us.
+    - One big dinner, here, in the plaza. Everybody brings one thing. And for once, I cook something for me and they all eat it.
+    - Which one? Don't think. Just say.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 1
+      optionA: Cook a street dinner
+      replyA:
+      - A street dinner. Yes. Yes!
+      - I'm telling Rosa first. She'll bring bread. Then Frank will bring terrible sandwiches, and Gus will complain about them, and it will be perfect.
+      flagsA:
+      - street_dinner_planned
+      optionB: Enter the competition
+      replyB:
+      - The competition. On television! Ji-ho will laugh at me.
+      - Good. Let him laugh. I'll be the one on television.
+      flagsB:
+      - misook_competition
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Long tables
+    number: 9
+    heartsNeeded: 9
+    path: 1
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Did you see the tables? From the fountain all the way to the slush machine!
+    - Gus said Frank's sandwiches were the worst food he'd ever tasted, and then he ate four. Kenji brought tea. Tariq played until the street lamps came on.
+    - And my pumpkin dish was gone before I even sat down. Everyone asked for the recipe. I said maybe. Maybe means yes, but slowly.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Second place
+    number: 9
+    heartsNeeded: 9
+    path: 2
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Second! Second place, on television! The judge said my dish 'tasted like somebody's home'.
+    - Then this week I saw it in the tower. In a plastic box. 'Sterling Kitchen Pumpkin Bowl'. With my mother's recipe, changed to be cheaper. No name.
+    - They said it's in the rules. Page eleven. Nobody reads page eleven.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Somebody cooks for her
+    number: 10
+    heartsNeeded: 10
+    path: 1
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Sit down. No, sit. Tonight somebody else is cooking. Soo-ah, Ji-ho and Jae-hoon have locked me out of my own kitchen.
+    - Thirty years I've fed everybody. Tonight they feed me. It smells... it smells burnt, actually. But it's the best thing I've ever smelled.
+    - Take these for the road. And next Saturday, come to class with me. My chef shouts, but he shouts kindly.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 11400000, guid: 6b31763b63eeded41a574d89e884e071, type: 2}
+      amount: 2
+      friendship: 0
+  - title: My name on it
+    number: 10
+    heartsNeeded: 10
+    path: 2
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - 'I made a recipe book. Not for the tower. For the street. Everybody''s recipes: Rosa''s bread, Kenji''s tea, Gus''s terrible stew.'
+    - And on page one, my mother's pumpkin dish. The real one. With her name on it, and mine.
+    - The tower can sell the box. They can't sell the page. Here. The first copy is for the farmer whose pumpkins started it.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags:
+    - street_cookbook
+    reward:
+      gold: 0
+      item: {fileID: 11400000, guid: 6b31763b63eeded41a574d89e884e071, type: 2}
+      amount: 2
+      friendship: 0

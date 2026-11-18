@@ -1,0 +1,548 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65eefa1a5942e54a8d76aef12a7fda9, type: 3}
+  m_Name: Story_sam
+  m_EditorClassIdentifier: Assembly-CSharp::NpcStoryArc
+  npcId: sam
+  title: The Book and the Barrels
+  summary: 'Sam is a shy writer stuck on an autumn novel, who works three mornings a week at the treatment plant and sees what the tower throws away. Linked to Rosa''s soup: Part 5 needs Rosa''s Part 7. Fork: publish an expose about the plant, or finish the novel and pass the notes to Marcus.'
+  pathAName: Publish the expose
+  pathBName: Finish the novel
+  parts:
+  - title: The talking part
+    number: 1
+    heartsNeeded: 1
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Oh. Hello again. You came back. People don't usually come back.
+    - Sorry. That sounded sad. I meant it as a compliment. I'm better at writing things than saying them.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The mystery soup
+    number: 2
+    heartsNeeded: 2
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - The soup was there again this morning. Leek and potato. Still warm.
+    - I've tried staying up to catch whoever it is. I fell asleep at the window with my face on the keyboard. Page forty-one is now just the letter J.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: One sentence
+    number: 3
+    heartsNeeded: 3
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Can I read you something? Just one sentence. Don't say anything after. Just nod.
+    - '"The leaves came down all at once that year, as if the trees had agreed on it."'
+    - ...
+    - I'm going to delete it now. Thank you for nodding.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Barrels at the plant
+    number: 4
+    heartsNeeded: 4
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - You know I sort waste at the plant in the city, three mornings a week?
+    - There are barrels that come in at night. Black ones. They don't go through the treatment line. They go round the back, to the river pipe.
+    - They've all got the same logo on the side. The tower's logo. I've been writing it all down. I don't know why. Habit.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: So it was Rosa
+    number: 5
+    heartsNeeded: 5
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags:
+      - story_rosa_7
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Rosa? ROSA? The soup is Rosa?
+    - Every week for a whole year. And I've walked past her house and said 'morning' like a stranger.
+    - I don't know what to do with this. I'm going to have to write about it. That's what I do with things.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Two notebooks
+    number: 6
+    heartsNeeded: 6
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I've got two notebooks now. Look.
+    - This one is the novel. Autumn, the leaves, a town a bit like this one. This one is the barrels. Dates, times, the colour of the river after.
+    - Lena wants me to write the words for her picture book about the street as well. That's three. I can't even finish one.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Proof
+    number: 7
+    heartsNeeded: 7
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - A reporter at the city paper said the barrel notes aren't enough. She wants something she can put in a jar and test.
+    - I can't take anything from the plant. I'd lose the job. But you fish, don't you? In the river by your farm, downstream of the pipe?
+    - If the fish there are sick... that's proof nobody can argue with.
+    happy: 0
+    ask:
+      item: {fileID: 11400000, guid: ea5270817bdda174f8e848725bd90b57, type: 2}
+      amount: 1
+      minQuality: 0
+      questTitle: A fish from downstream
+      questText: Sam needs a fish from the river by your farm, downstream of the treatment plant's pipe, as proof of the pollution.
+      reminder:
+      - Any fish from downstream yet? A carp would do it. They live near the bottom, where it all settles.
+      thanks:
+      - Look at its gills. That colour isn't right, is it?
+      - I'll take it to the reporter tomorrow. Thank you. I think. I'm a bit scared, honestly.
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Which book?
+    number: 8
+    heartsNeeded: 8
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - The reporter says she'll run it. My name on the front page. "What the Tower Pours Away".
+    - But if I do, the plant will know it was me. And I've got about three chapters of the novel left. The real one. The one I came here to write.
+    - I can't do both. I'm not brave enough to do both. Which one should I do?
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 1
+      optionA: Publish the expose
+      replyA:
+      - Okay. Okay. I'm going to do it.
+      - If my hands stop shaking long enough to type, it'll be in the paper next week.
+      flagsA:
+      - sam_expose_published
+      - tower_file_barrels
+      optionB: Finish the novel
+      replyB:
+      - The novel. Yes. I think that's what I'm for.
+      - I'll give the barrel notes to Marcus Bell. He works in the tower. He'll know what to do with them, better than me.
+      flagsB:
+      - sam_novel_finished
+      - tower_file_barrels
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Front page
+    number: 9
+    heartsNeeded: 9
+    path: 1
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - It's in the paper. Front page. People keep stopping me on the road to the city.
+    - The plant manager called me into the office. I thought I was finished. He shook my hand and closed the door and said 'about time'.
+    - Victor Sterling's lawyers have written to me twice. I've filed the letters under 'research'.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The last chapter
+    number: 9
+    heartsNeeded: 9
+    path: 2
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I finished it. The novel. Last night, at about four in the morning.
+    - The last chapter is a street dinner. Everybody's there. There's a farmer in it, who brings too much food.
+    - Don't look at me like that. Lots of books have farmers in them.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Soup for Rosa
+    number: 10
+    heartsNeeded: 10
+    path: 1
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I did something this morning. I made soup. It was terrible. Lentils. Too much salt.
+    - And I put it on Rosa's step and knocked and stood there like an idiot until she opened the door.
+    - She ate it all. She said it was the worst soup she'd ever had and asked me in for lunch.
+    - I think I'm going to stay here a long time. I hope that's all right with you.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Soup for Rosa
+    number: 10
+    heartsNeeded: 10
+    path: 2
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - My book's being printed. Just a small press. Fifty copies first, then we'll see.
+    - I gave the first one to Rosa this morning. With soup. Terrible soup, lentils, far too much salt. On her step. And then I knocked.
+    - The book's dedicated to her. And there's a farmer in chapter twelve, and a dedication to them too. You'll have to read it to find out who.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0

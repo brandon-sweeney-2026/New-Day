@@ -395,6 +395,10 @@ public static class PlayerMenuPages
             if (person.profile != null && !string.IsNullOrEmpty(person.profile.extraNote) && hearts >= 2)
                 detail += "\n\n" + person.profile.extraNote;
 
+            // Where their storyline is up to (NpcStoryArc assets in Assets/Resources/Stories).
+            string story = StoryArcs.MenuText(person.id);
+            if (story.Length > 0) detail += "\n\n" + story;
+
             rows.Add(new PlayerMenuRow
             {
                 label = person.name, right = hearts + " / " + maxHearts + " hearts",

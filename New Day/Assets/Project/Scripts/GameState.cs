@@ -11,7 +11,7 @@ using UnityEngine;
 ///  - Input lock: dialogue boxes and menus call LockInput() / UnlockInput() so the player stands still.
 ///
 /// This is a plain static class, so there is nothing to put in the scene.
-/// Everything resets when you press Play (and SaveData() / LoadData() are ready for a save system).
+/// Everything resets when you press Play. SaveSystem writes it to the save file with SaveData() and reads it back with LoadData().
 /// </summary>
 public static class GameState
 {
@@ -86,6 +86,9 @@ public static class GameState
         SetCounter(key, GetCounter(key) + delta);
     }
 
+    /// <summary>Every counter and its value (the save system and PlayerSkills read this after a save is loaded).</summary>
+    public static IEnumerable<KeyValuePair<string, int>> AllCounters { get { return counters; } }
+
     // ------------------------------------------------------------------
     // Input lock (dialogue, menus)
     // ------------------------------------------------------------------
@@ -95,7 +98,7 @@ public static class GameState
     public static void UnlockInput() { inputLocks = Mathf.Max(0, inputLocks - 1); }
 
     // ------------------------------------------------------------------
-    // Save / load hooks (simple text form; swap for JSON or your own save system later)
+    // Save / load hooks (simple text form; SaveSystem puts this text inside the save file)
     // ------------------------------------------------------------------
 
     public static string SaveData()

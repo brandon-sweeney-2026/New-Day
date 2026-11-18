@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f4ff7549fed0c4b99db334d94d5526, type: 3}
+  m_Name: bed_rustic
+  m_EditorClassIdentifier: Assembly-CSharp::DecorItem
+  id: bed_rustic
+  displayName: Log Bed
+  description: Built from whole logs, with a plaid quilt.
+  category: 14
+  theme: rustic
+  price: 560
+  mount: 0
+  width: 2
+  depth: 3
+  blocksPlayer: 1
+  surfaceHeight: 0
+  front: {fileID: 21300000, guid: 01fd736cbe28f52489be42408e888713, type: 3}
+  right: {fileID: 21300000, guid: 49fa6dadd1b000746840aceeae7684d6, type: 3}
+  back: {fileID: 21300000, guid: 05bbe8328d16cba4492e5bbbd826b987, type: 3}
+  left: {fileID: 21300000, guid: 5c5523c53d60f0d438a71a941fae4877, type: 3}
+  floorTile: {fileID: 0}
+  wallTop: {fileID: 0}
+  wallUpper: {fileID: 0}
+  wallBase: {fileID: 0}

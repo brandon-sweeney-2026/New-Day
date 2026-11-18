@@ -1,0 +1,174 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdbcaa7f3b0f9f740a3682267a60ee5d, type: 3}
+  m_Name: ForestHealSettings
+  m_EditorClassIdentifier: Assembly-CSharp::ForestHealSettings
+  tilePairs:
+  - sick: {fileID: 11400000, guid: b08636fb06d0d10419c42c2ab0c662c6, type: 2}
+    healthy: {fileID: 11400000, guid: c2b79be7a7ec238479bf1fb2f66ec5af, type: 2}
+  - sick: {fileID: 11400000, guid: 9197aae46252e76458ac8de306e3ad0b, type: 2}
+    healthy: {fileID: 11400000, guid: 1d6e8f6f8f2857a47b6860b0e50a07f7, type: 2}
+  - sick: {fileID: 11400000, guid: 84fcc8853c5c70a45b26db523617644f, type: 2}
+    healthy: {fileID: 11400000, guid: 85975a33ecc585046b434e2d8543e7b5, type: 2}
+  - sick: {fileID: 11400000, guid: 507bed434c8e487419d36bb00a9fbe2e, type: 2}
+    healthy: {fileID: 11400000, guid: bf40f1cc28b9c2a49ad134cd90f97ea2, type: 2}
+  - sick: {fileID: 11400000, guid: e60630f851002c544a529a88d597c193, type: 2}
+    healthy: {fileID: 11400000, guid: a7f6ac9833a07b848abe8c9ef391eda2, type: 2}
+  - sick: {fileID: 11400000, guid: 7e497e1d09a8960458d76656a6784399, type: 2}
+    healthy: {fileID: 11400000, guid: 467a51a427d0d7b4f8d2639cb5a0c0d8, type: 2}
+  - sick: {fileID: 11400000, guid: 0dc33536ec25ecc4580aa7acf89a5944, type: 2}
+    healthy: {fileID: 11400000, guid: 14f2c222b5918c74488e3a9f267c3a6b, type: 2}
+  waveSeconds: 3.5
+  sparkleColor: {r: 0.7, g: 1, b: 0.55, a: 0.95}
+  sparklesPerSecond: 60
+  waveLight: 1
+  waveLightColor: {r: 0.6, g: 1, b: 0.6, a: 1}
+  waveLightIntensity: 1.6
+  fogColor: {r: 0.45, g: 0.2, b: 0.65, a: 0.16}
+  fogFadeSeconds: 2.5
+  critters:
+  - id: rabbit
+    shadowStyle: 0
+    idleFrames:
+    - {fileID: -2077806704, guid: 25074baf45e7e084d980b10a93d67494, type: 3}
+    - {fileID: 1577107578, guid: 25074baf45e7e084d980b10a93d67494, type: 3}
+    - {fileID: -958447294, guid: 25074baf45e7e084d980b10a93d67494, type: 3}
+    - {fileID: 278427785, guid: 25074baf45e7e084d980b10a93d67494, type: 3}
+    - {fileID: 1226004977, guid: 25074baf45e7e084d980b10a93d67494, type: 3}
+    - {fileID: 1135914814, guid: 25074baf45e7e084d980b10a93d67494, type: 3}
+    moveFrames:
+    - {fileID: -254066081, guid: 25074baf45e7e084d980b10a93d67494, type: 3}
+    - {fileID: 2081712440, guid: 25074baf45e7e084d980b10a93d67494, type: 3}
+    - {fileID: 1219762586, guid: 25074baf45e7e084d980b10a93d67494, type: 3}
+    - {fileID: 1086018069, guid: 25074baf45e7e084d980b10a93d67494, type: 3}
+    - {fileID: -1626125567, guid: 25074baf45e7e084d980b10a93d67494, type: 3}
+    - {fileID: 573794986, guid: 25074baf45e7e084d980b10a93d67494, type: 3}
+    specialFrames:
+    - {fileID: -1614957321, guid: 25074baf45e7e084d980b10a93d67494, type: 3}
+    - {fileID: -417151617, guid: 25074baf45e7e084d980b10a93d67494, type: 3}
+    - {fileID: -2126840116, guid: 25074baf45e7e084d980b10a93d67494, type: 3}
+    - {fileID: -1316114851, guid: 25074baf45e7e084d980b10a93d67494, type: 3}
+    - {fileID: 752019882, guid: 25074baf45e7e084d980b10a93d67494, type: 3}
+    - {fileID: 19144720, guid: 25074baf45e7e084d980b10a93d67494, type: 3}
+    walkSpeed: 1.4
+    framesPerSecond: 10
+    hopHeight: 0.12
+    tame: 0
+  - id: squirrel
+    shadowStyle: 1
+    idleFrames:
+    - {fileID: -128234759, guid: 5bb2ccc4a31f5784c945010b365f814b, type: 3}
+    - {fileID: 1561019309, guid: 5bb2ccc4a31f5784c945010b365f814b, type: 3}
+    - {fileID: 936602632, guid: 5bb2ccc4a31f5784c945010b365f814b, type: 3}
+    - {fileID: -1289030328, guid: 5bb2ccc4a31f5784c945010b365f814b, type: 3}
+    - {fileID: 1213421876, guid: 5bb2ccc4a31f5784c945010b365f814b, type: 3}
+    - {fileID: 1739103032, guid: 5bb2ccc4a31f5784c945010b365f814b, type: 3}
+    moveFrames:
+    - {fileID: 339684243, guid: 5bb2ccc4a31f5784c945010b365f814b, type: 3}
+    - {fileID: -1486887810, guid: 5bb2ccc4a31f5784c945010b365f814b, type: 3}
+    - {fileID: -946682264, guid: 5bb2ccc4a31f5784c945010b365f814b, type: 3}
+    - {fileID: 1489948932, guid: 5bb2ccc4a31f5784c945010b365f814b, type: 3}
+    - {fileID: -1054034822, guid: 5bb2ccc4a31f5784c945010b365f814b, type: 3}
+    - {fileID: 1457218411, guid: 5bb2ccc4a31f5784c945010b365f814b, type: 3}
+    specialFrames:
+    - {fileID: -245715495, guid: 5bb2ccc4a31f5784c945010b365f814b, type: 3}
+    - {fileID: 930648658, guid: 5bb2ccc4a31f5784c945010b365f814b, type: 3}
+    - {fileID: -1309138324, guid: 5bb2ccc4a31f5784c945010b365f814b, type: 3}
+    - {fileID: 810851242, guid: 5bb2ccc4a31f5784c945010b365f814b, type: 3}
+    - {fileID: 2095818669, guid: 5bb2ccc4a31f5784c945010b365f814b, type: 3}
+    - {fileID: -228513845, guid: 5bb2ccc4a31f5784c945010b365f814b, type: 3}
+    walkSpeed: 1.8
+    framesPerSecond: 12
+    hopHeight: 0.08
+    tame: 0
+  - id: hedgehog
+    shadowStyle: 2
+    idleFrames:
+    - {fileID: 482270657, guid: 22afab704182fa842b4b09603b1ee9f1, type: 3}
+    - {fileID: -1992554313, guid: 22afab704182fa842b4b09603b1ee9f1, type: 3}
+    - {fileID: -1150568753, guid: 22afab704182fa842b4b09603b1ee9f1, type: 3}
+    - {fileID: -1297716613, guid: 22afab704182fa842b4b09603b1ee9f1, type: 3}
+    - {fileID: -611992061, guid: 22afab704182fa842b4b09603b1ee9f1, type: 3}
+    - {fileID: 165894915, guid: 22afab704182fa842b4b09603b1ee9f1, type: 3}
+    moveFrames:
+    - {fileID: -303707636, guid: 22afab704182fa842b4b09603b1ee9f1, type: 3}
+    - {fileID: -117616153, guid: 22afab704182fa842b4b09603b1ee9f1, type: 3}
+    - {fileID: -326844822, guid: 22afab704182fa842b4b09603b1ee9f1, type: 3}
+    - {fileID: 91265654, guid: 22afab704182fa842b4b09603b1ee9f1, type: 3}
+    - {fileID: -1014521064, guid: 22afab704182fa842b4b09603b1ee9f1, type: 3}
+    - {fileID: -1541956864, guid: 22afab704182fa842b4b09603b1ee9f1, type: 3}
+    specialFrames:
+    - {fileID: 1196320779, guid: 22afab704182fa842b4b09603b1ee9f1, type: 3}
+    - {fileID: 1668662914, guid: 22afab704182fa842b4b09603b1ee9f1, type: 3}
+    - {fileID: 1545378041, guid: 22afab704182fa842b4b09603b1ee9f1, type: 3}
+    - {fileID: 2126613222, guid: 22afab704182fa842b4b09603b1ee9f1, type: 3}
+    - {fileID: 162862626, guid: 22afab704182fa842b4b09603b1ee9f1, type: 3}
+    - {fileID: -293349271, guid: 22afab704182fa842b4b09603b1ee9f1, type: 3}
+    walkSpeed: 0.8
+    framesPerSecond: 8
+    hopHeight: 0
+    tame: 0
+  - id: bird
+    shadowStyle: 3
+    idleFrames:
+    - {fileID: 1543704046, guid: e29a66f52749419409adbb906de3373e, type: 3}
+    - {fileID: -707462943, guid: e29a66f52749419409adbb906de3373e, type: 3}
+    - {fileID: -1696734594, guid: e29a66f52749419409adbb906de3373e, type: 3}
+    - {fileID: 1289327858, guid: e29a66f52749419409adbb906de3373e, type: 3}
+    - {fileID: 115550364, guid: e29a66f52749419409adbb906de3373e, type: 3}
+    - {fileID: 1947595084, guid: e29a66f52749419409adbb906de3373e, type: 3}
+    moveFrames:
+    - {fileID: -1800144258, guid: e29a66f52749419409adbb906de3373e, type: 3}
+    - {fileID: -558776718, guid: e29a66f52749419409adbb906de3373e, type: 3}
+    - {fileID: -272498066, guid: e29a66f52749419409adbb906de3373e, type: 3}
+    - {fileID: 1548467526, guid: e29a66f52749419409adbb906de3373e, type: 3}
+    - {fileID: -639680458, guid: e29a66f52749419409adbb906de3373e, type: 3}
+    - {fileID: -2104035275, guid: e29a66f52749419409adbb906de3373e, type: 3}
+    specialFrames:
+    - {fileID: 4345158, guid: e29a66f52749419409adbb906de3373e, type: 3}
+    - {fileID: 1156197177, guid: e29a66f52749419409adbb906de3373e, type: 3}
+    - {fileID: 8380151, guid: e29a66f52749419409adbb906de3373e, type: 3}
+    - {fileID: -1905199018, guid: e29a66f52749419409adbb906de3373e, type: 3}
+    - {fileID: -1115176675, guid: e29a66f52749419409adbb906de3373e, type: 3}
+    - {fileID: -1429000509, guid: e29a66f52749419409adbb906de3373e, type: 3}
+    walkSpeed: 1.2
+    framesPerSecond: 10
+    hopHeight: 0.1
+    tame: 0
+  - id: turtle
+    shadowStyle: 4
+    idleFrames:
+    - {fileID: 341719497, guid: 2c14e15e3cfde814b8e21203b857ff60, type: 3}
+    - {fileID: 1590131468, guid: 2c14e15e3cfde814b8e21203b857ff60, type: 3}
+    - {fileID: -970396693, guid: 2c14e15e3cfde814b8e21203b857ff60, type: 3}
+    - {fileID: -869873800, guid: 2c14e15e3cfde814b8e21203b857ff60, type: 3}
+    - {fileID: -1431332214, guid: 2c14e15e3cfde814b8e21203b857ff60, type: 3}
+    - {fileID: 1388684531, guid: 2c14e15e3cfde814b8e21203b857ff60, type: 3}
+    moveFrames:
+    - {fileID: 1144191369, guid: 2c14e15e3cfde814b8e21203b857ff60, type: 3}
+    - {fileID: -1208522460, guid: 2c14e15e3cfde814b8e21203b857ff60, type: 3}
+    - {fileID: -651690792, guid: 2c14e15e3cfde814b8e21203b857ff60, type: 3}
+    - {fileID: 892353229, guid: 2c14e15e3cfde814b8e21203b857ff60, type: 3}
+    - {fileID: 213793778, guid: 2c14e15e3cfde814b8e21203b857ff60, type: 3}
+    - {fileID: -464395059, guid: 2c14e15e3cfde814b8e21203b857ff60, type: 3}
+    specialFrames:
+    - {fileID: 1456946456, guid: 2c14e15e3cfde814b8e21203b857ff60, type: 3}
+    - {fileID: 1852624014, guid: 2c14e15e3cfde814b8e21203b857ff60, type: 3}
+    - {fileID: -845664603, guid: 2c14e15e3cfde814b8e21203b857ff60, type: 3}
+    - {fileID: -680137950, guid: 2c14e15e3cfde814b8e21203b857ff60, type: 3}
+    - {fileID: 766815157, guid: 2c14e15e3cfde814b8e21203b857ff60, type: 3}
+    - {fileID: -1603735739, guid: 2c14e15e3cfde814b8e21203b857ff60, type: 3}
+    walkSpeed: 0.5
+    framesPerSecond: 6
+    hopHeight: 0
+    tame: 1
+  pettedCounter: forest_critters_petted

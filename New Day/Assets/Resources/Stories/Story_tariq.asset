@@ -1,0 +1,545 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65eefa1a5942e54a8d76aef12a7fda9, type: 3}
+  m_Name: Story_tariq
+  m_EditorClassIdentifier: Assembly-CSharp::NpcStoryArc
+  npcId: tariq
+  title: Maple Lane
+  summary: "Tariq busks in the plaza and wants to record a real album. Sterling Coffee takes over his city caf\xE9 gig, then Sterling's marketing team offers a lot of money for his best song as an advert jingle. Fork: keep the song and record it cheaply, or sell it."
+  pathAName: Keep the song
+  pathBName: Sell the song
+  parts:
+  - title: Taste is extra
+    number: 1
+    heartsNeeded: 1
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Hey, hey. My favourite audience member. Well, second favourite. Gus is first. He doesn't know that.
+    - Requests are still free. Taste is still extra. You'd like something slow, I can tell. Farmers always like something slow.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: He knows the words
+    number: 2
+    heartsNeeded: 2
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Gus sat through my whole set again. Arms crossed, face like a thunderstorm. 'Too modern,' he says.
+    - But on the slow song, the third one, his lips move. Every word. I've seen it. Don't tell him I've seen it.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: A fish called sunfish
+    number: 3
+    heartsNeeded: 3
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I'm writing a song about the farm, but I'm stuck on the chorus. I need something real to look at.
+    - You fish, right? Is there really a fish called a sunfish? Bring me one. If it's called sunfish, it deserves a song.
+    happy: 0
+    ask:
+      item: {fileID: 11400000, guid: 76cf93f2ba83f45409b7b501f35d50d8, type: 2}
+      amount: 1
+      minQuality: 0
+      questTitle: A fish for a song
+      questText: Tariq wants a sunfish to inspire the chorus of his song about the farm.
+      reminder:
+      - Any sunfish yet? I've got a whole verse waiting for it. The verse is getting impatient.
+      thanks:
+      - Look at it! It's yellow AND blue! It's showing off!
+      - That's the chorus. Right there. Thank you. Here, for the fish, and for the chorus.
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 80
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The farm song
+    number: 4
+    heartsNeeded: 4
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Sit down. I finished it. 'Maple Lane'. It's about this street, and your farm, and the road between them.
+    - ...And the bit at the end goes up, like that. I don't know where that came from. It just felt right.
+    - Gus was walking past and stopped. He didn't say 'too modern'. He didn't say anything. He just stood there.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Labelled
+    number: 5
+    heartsNeeded: 5
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags:
+      - story_bea_3
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - 'Bea labelled me. Literally. I woke up on the sofa with a sticky note on my forehead: ''TARIQ. DO NOT WAKE BEFORE 11.'''
+    - She's labelled the milk, the shelves, the light switches and the cat next door, who we don't even own.
+    - I love her, she's the best roommate I've ever had, and I'm going to put a label on her lab coat that says 'BEA. HAS FEELINGS ABOUT SEEDS.'
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: "No more caf\xE9"
+    number: 6
+    heartsNeeded: 6
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - "My Friday gig in the city's gone. The caf\xE9 was sold. It's a Sterling Coffee now."
+    - The new manager said 'we have a curated playlist'. Curated! It's forty songs on a loop, and they're all about being happy in an office.
+    - Fridays were the only paid gig I had. Now it's the plaza or nothing.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The jingle
+    number: 7
+    heartsNeeded: 7
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - A woman from Sterling's marketing team heard me in the plaza today. She wants 'Maple Lane'. For an advert.
+    - They'd change the words a bit. 'Maple Lane' becomes 'Sterling Lane'. They'd play it in every tower, every shop, every lift.
+    - And they'd pay. A lot. Enough to record a whole album properly, in a real studio, with a drummer who isn't a cardboard box.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Sterling Lane
+    number: 8
+    heartsNeeded: 8
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - "I have to answer by Friday. The day I used to play the caf\xE9, funnily enough."
+    - If I sell it, I get the money, I make the album, and every time I go into the city I hear my own song telling people to buy flat-pack doors.
+    - If I keep it, I record it myself, on Frank's old tape machine in his storeroom. Cheap. Rough. Mine.
+    - You gave me the sunfish. You're in this song. You get a vote.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 1
+      optionA: Keep the song
+      replyA:
+      - Keep it. Yeah. It's called Maple Lane. It's not called anything else.
+      - Frank's storeroom it is. Bea says the echo's terrible. Bea says that about every room I'm in.
+      flagsA:
+      - tariq_kept_song
+      optionB: Sell the song
+      replyB:
+      - Sell it. Money for an album. Proper drums. A proper studio.
+      - I'll just... not go into the tower. Ever. Simple.
+      flagsB:
+      - tariq_sold_song
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Somebody paid
+    number: 9
+    heartsNeeded: 9
+    path: 1
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Here's a weird thing. I went to pay Frank for the storeroom and he said it's already paid. A whole month, plus new strings, plus a microphone.
+    - Frank wouldn't say who. He went very red and started counting nails.
+    - There's only one person on this street who complains that loudly about my music and then knows all the words.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: In the lift
+    number: 9
+    heartsNeeded: 9
+    path: 2
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I went into the city to buy strings. I took the lift in the tower by mistake.
+    - And there it was. 'Sterling Lane'. My song. My chords. Somebody else singing 'save more, live better' where the farm used to be.
+    - The album is finished, and it sounds amazing. I haven't listened to it once.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The plaza concert
+    number: 10
+    heartsNeeded: 10
+    path: 1
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Tonight. The plaza. A concert. The whole album, start to finish, Maple Lane last.
+    - And I've got a guest singer. He doesn't want me to say who. He says if anybody claps, he's leaving.
+    - Bring everybody. Bring the sunfish, if it's still around. It's in the chorus. It deserves to hear itself.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 11400000, guid: 834a444f19f7d0e419d3ef52b4a46ef0, type: 2}
+      amount: 1
+      friendship: 0
+  - title: The plaza concert
+    number: 10
+    heartsNeeded: 10
+    path: 2
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I gave the money back. All of it. Well, most of it. I'd spent some on the drummer.
+    - They can keep 'Sterling Lane', it's theirs now. But I wrote 'Maple Lane' again. New words. Better. It's about what happened.
+    - Tonight, the plaza. The whole street. And a guest singer who said if anybody claps, he's leaving. Everybody's going to clap.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags:
+    - tariq_kept_song
+    reward:
+      gold: 0
+      item: {fileID: 11400000, guid: 834a444f19f7d0e419d3ef52b4a46ef0, type: 2}
+      amount: 1
+      friendship: 0

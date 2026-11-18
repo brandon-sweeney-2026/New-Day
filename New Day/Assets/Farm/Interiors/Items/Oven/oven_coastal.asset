@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f4ff7549fed0c4b99db334d94d5526, type: 3}
+  m_Name: oven_coastal
+  m_EditorClassIdentifier: Assembly-CSharp::DecorItem
+  id: oven_coastal
+  displayName: White Gas Range
+  description: Black grates, navy knobs, brass handle.
+  category: 18
+  theme: coastal
+  price: 600
+  mount: 0
+  width: 2
+  depth: 1
+  blocksPlayer: 1
+  surfaceHeight: 0
+  front: {fileID: 21300000, guid: e83737809d7cb334082f27cdc3777879, type: 3}
+  right: {fileID: 21300000, guid: 203bd993247e2de498ec87be628f068e, type: 3}
+  back: {fileID: 21300000, guid: cae98019df2b2ad4e995575225b39a43, type: 3}
+  left: {fileID: 21300000, guid: b681810c64656c848b5fba64f801da4b, type: 3}
+  floorTile: {fileID: 0}
+  wallTop: {fileID: 0}
+  wallUpper: {fileID: 0}
+  wallBase: {fileID: 0}

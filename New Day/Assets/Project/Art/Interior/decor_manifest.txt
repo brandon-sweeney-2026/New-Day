@@ -1,0 +1,165 @@
+# kind	id	name	category	theme	mount	w	d	price	surfaceHeight	pivotX	pivotY	rotates	description   (written by Tools/make_interior_art.ps1 - do not edit by hand)
+piece	couch_cottage	Sage Cottage Sofa	Couch	cottage	Floor	3	1	450	0	2	3	1	Soft sage cushions on turned oak legs.
+piece	armchair_cottage	Sage Reading Chair	Armchair	cottage	Floor	1	1	260	0	2	3	1	Made for a long book and a cup of tea.
+piece	ottoman_cottage	Tufted Footstool	Ottoman	cottage	Floor	1	1	110	0	2	3	1	Put your feet up.
+piece	fireplace_cottage	Fieldstone Hearth	Fireplace	cottage	Floor	2	1	900	0	2	3	1	Round river stones and an oak mantel.
+piece	tv_cottage	Oak Cabinet and Little TV	TV	cottage	Floor	2	1	380	0	2	3	1	A cosy little set on a two-door cabinet.
+piece	computer_cottage	Writing Desk and Laptop	ComputerDesk	cottage	Floor	2	1	420	14	2	3	1	A little laptop, a mug and some books.
+piece	sidetable_cottage	Round Tea Table	SideTable	cottage	Floor	1	1	90	11	2	3	1	A lace doily and a teacup.
+piece	coffeetable_cottage	Oval Oak Coffee Table	CoffeeTable	cottage	Floor	2	1	180	9	2	3	1	Books, a vase and a rosebud.
+piece	chair_cottage	Ladderback Chair	Chair	cottage	Floor	1	1	80	0	2	3	1	Oak rungs and a sage seat pad.
+piece	rug_cottage	Braided Oval Rug	Rug	cottage	Flat	3	2	150	0	2	3	1	Rings of rust, cream and sage.
+piece	plant_cottage	Fern in Terracotta	Plant	cottage	Floor	1	1	60	0	2	3	1	Feathery fronds in a clay pot.
+piece	floorlamp_cottage	Pleated Floor Lamp	FloorLamp	cottage	Floor	1	1	120	0	2	3	1	A brass pole and a pleated cream shade.
+piece	bookshelf_cottage	Oak Bookshelf	Bookshelf	cottage	Floor	2	1	260	0	2	3	1	Three full shelves of well-loved books.
+piece	bed_cottage	Patchwork Bed	Bed	cottage	Floor	2	3	500	0	2	3	1	A hand-sewn patchwork quilt.
+piece	dresser_cottage	Oak Dresser	Dresser	cottage	Floor	2	1	280	20	2	3	1	Brass knobs, a little lamp and a photo.
+piece	counter_cottage	Cream Cabinets, Butcher Block	KitchenCounter	cottage	Floor	2	1	220	15	2	3	1	Line them up along the wall.
+piece	sink_cottage	Farmhouse Apron Sink	Sink	cottage	Floor	2	1	300	15	2	3	1	A deep white sink with a brass tap.
+piece	oven_cottage	Cream Range Cooker	Oven	cottage	Floor	2	1	600	0	2	3	1	Two ovens, two warm hotplate lids.
+piece	fridge_cottage	Cream Fridge	Fridge	cottage	Floor	1	1	500	0	2	3	1	Covered in notes and magnets.
+piece	washer_cottage	Cream Washer	Washer	cottage	Floor	1	1	400	0	2	3	1	Round window, clothes going round.
+piece	dryer_cottage	Cream Dryer	Dryer	cottage	Floor	1	1	380	0	2	3	1	Warm towels in twenty minutes.
+piece	blender_cottage	Strawberry Blender	Blender	cottage	Surface	1	1	60	0	2	3	1	Half full of strawberry smoothie.
+piece	kitchentable_cottage	Farmhouse Table	KitchenTable	cottage	Floor	2	2	320	14	2	3	1	Painted legs, oak top and a fruit bowl.
+piece	couch_modern	Slate Modern Sofa	Couch	modern	Floor	3	1	520	0	2	3	1	Low, square and calm.
+piece	armchair_modern	Slate Lounge Chair	Armchair	modern	Floor	1	1	300	0	2	3	1	Clean lines, thin black legs.
+piece	ottoman_modern	Grey Cube Ottoman	Ottoman	modern	Floor	1	1	120	0	2	3	1	A soft grey block.
+piece	fireplace_modern	Linear Gas Fireplace	Fireplace	modern	Floor	2	1	1100	0	2	3	1	A long flame in a charcoal wall.
+piece	tv_modern	Wide Flatscreen	TV	modern	Floor	2	1	650	0	2	3	1	A huge thin screen on a low black stand.
+piece	computer_modern	Dual-Monitor Workstation	ComputerDesk	modern	Floor	2	1	800	14	2	3	1	Two screens, a glowing tower.
+piece	sidetable_modern	Black Cube Table	SideTable	modern	Floor	1	1	110	10	2	3	1	An open black cube with a tiny plant.
+piece	coffeetable_modern	Glass Coffee Table	CoffeeTable	modern	Floor	2	1	240	9	2	3	1	Black steel, clear glass, a shelf below.
+piece	chair_modern	Moulded Chair	Chair	modern	Floor	1	1	95	0	2	3	1	One smooth white shell.
+piece	rug_modern	Geometric Rug	Rug	modern	Flat	3	2	170	0	2	3	1	Thin lines on soft grey.
+piece	plant_modern	Snake Plant	Plant	modern	Floor	1	1	70	0	2	3	1	Tall, stiff and impossible to kill.
+piece	floorlamp_modern	Arc Floor Lamp	FloorLamp	modern	Floor	1	1	180	0	2	3	1	Leans over the sofa like a reading light.
+piece	bookshelf_modern	Black Grid Shelf	Bookshelf	modern	Floor	2	1	300	0	2	3	1	Open squares you can see through.
+piece	bed_modern	Platform Bed	Bed	modern	Floor	2	3	620	0	2	3	1	Low and wide, with a mustard throw.
+piece	dresser_modern	White Lacquer Dresser	Dresser	modern	Floor	2	1	320	18	2	3	1	No handles, just smooth white fronts.
+piece	counter_modern	Charcoal Cabinets, Quartz	KitchenCounter	modern	Floor	2	1	260	15	2	3	1	Line them up along the wall.
+piece	sink_modern	Steel Sink	Sink	modern	Floor	2	1	320	15	2	3	1	Brushed steel and a tall chrome tap.
+piece	oven_modern	Steel Induction Range	Oven	modern	Floor	2	1	750	0	2	3	1	A black glass top that cooks with magnets.
+piece	fridge_modern	Steel French-Door Fridge	Fridge	modern	Floor	1	1	800	0	2	3	1	Two doors, a drawer and an ice maker.
+piece	washer_modern	Graphite Washer	Washer	modern	Floor	1	1	480	0	2	3	1	Quiet, dark grey and very fast.
+piece	dryer_modern	Graphite Dryer	Dryer	modern	Floor	1	1	460	0	2	3	1	Matches the graphite washer.
+piece	blender_modern	Green Smoothie Blender	Blender	modern	Surface	1	1	80	0	2	3	1	Spinach, apple and something green.
+piece	kitchentable_modern	White Oval Table	KitchenTable	modern	Floor	2	2	380	13	2	3	1	One black stem, a vase of branches.
+piece	couch_rustic	Leather Chesterfield	Couch	rustic	Floor	3	1	600	0	2	3	1	Deep buttoned leather with rolled arms.
+piece	armchair_rustic	Leather Wingback	Armchair	rustic	Floor	1	1	340	0	2	3	1	High wings keep the draughts out.
+piece	ottoman_rustic	Leather Pouf	Ottoman	rustic	Floor	1	1	140	0	2	3	1	Worn brown leather, stitched round.
+piece	fireplace_rustic	Brick Hearth	Fireplace	rustic	Floor	2	1	950	0	2	3	1	Red brick and a heavy beam.
+piece	tv_rustic	Wooden Console TV	TV	rustic	Floor	2	1	420	0	2	3	1	The whole TV is a piece of furniture.
+piece	computer_rustic	Heavy Desk and Old Terminal	ComputerDesk	rustic	Floor	2	1	460	14	2	3	1	Green text on a black screen. It still works.
+piece	sidetable_rustic	Log Stump Table	SideTable	rustic	Floor	1	1	70	11	2	3	1	A slice of old oak with a candle on top.
+piece	coffeetable_rustic	Plank Coffee Table	CoffeeTable	rustic	Floor	2	1	160	10	2	3	1	Three thick planks on two blocks.
+piece	chair_rustic	Heart-Cut Farm Chair	Chair	rustic	Floor	1	1	85	0	2	3	1	A heart cut into the backrest.
+piece	rug_rustic	Red Plaid Rug	Rug	rustic	Flat	3	2	140	0	2	3	1	A warm cabin plaid with fringe.
+piece	plant_rustic	Barrel Olive Tree	Plant	rustic	Floor	1	1	140	0	2	3	1	A small olive tree in half a barrel.
+piece	floorlamp_rustic	Iron Tripod Lamp	FloorLamp	rustic	Floor	1	1	130	0	2	3	1	Three black iron legs and a burlap shade.
+piece	bookshelf_rustic	Crate Bookshelf	Bookshelf	rustic	Floor	2	1	180	0	2	3	1	Old fruit crates stacked up.
+piece	bed_rustic	Log Bed	Bed	rustic	Floor	2	3	560	0	2	3	1	Built from whole logs, with a plaid quilt.
+piece	dresser_rustic	Iron-Pull Dresser	Dresser	rustic	Floor	2	1	260	20	2	3	1	Dark oak with black iron pulls.
+piece	counter_rustic	Oak Cabinets, Stone Top	KitchenCounter	rustic	Floor	2	1	240	15	2	3	1	Line them up along the wall.
+piece	sink_rustic	Copper Basin Sink	Sink	rustic	Floor	2	1	360	15	2	3	1	Hammered copper in a stone top.
+piece	oven_rustic	Wood Cookstove	Oven	rustic	Floor	2	1	650	0	2	3	1	Feed it logs and it bakes all day.
+piece	fridge_rustic	Wood-Panel Fridge	Fridge	rustic	Floor	1	1	560	0	2	3	1	Hidden behind oak panels.
+piece	washer_rustic	Almond Top-Loader	Washer	rustic	Floor	1	1	350	0	2	3	1	Lift the lid, drop the clothes in.
+piece	dryer_rustic	Almond Dryer	Dryer	rustic	Floor	1	1	330	0	2	3	1	Matches the almond washer.
+piece	blender_rustic	Copper Blender	Blender	rustic	Surface	1	1	90	0	2	3	1	A shiny copper base.
+piece	kitchentable_rustic	Trestle Table	KitchenTable	rustic	Floor	2	2	340	15	2	3	1	Thick planks and candles.
+piece	couch_retro	Tangerine Retro Sofa	Couch	retro	Floor	3	1	480	0	2	3	1	Bright orange on tall walnut legs.
+piece	armchair_retro	Tangerine Club Chair	Armchair	retro	Floor	1	1	280	0	2	3	1	Buttoned back, walnut arms.
+piece	ottoman_retro	Tangerine Drum Ottoman	Ottoman	retro	Floor	1	1	120	0	2	3	1	A bright drum on peg legs.
+piece	fireplace_retro	Cone Fireplace	Fireplace	retro	Floor	2	1	850	0	2	3	1	A bright orange cone with a black chimney.
+piece	tv_retro	Rabbit-Ear Tube TV	TV	retro	Floor	2	1	300	0	2	3	1	Turn the antenna until the picture clears.
+piece	computer_retro	Walnut Desk and Beige PC	ComputerDesk	retro	Floor	2	1	520	14	2	3	1	Floppy disks not included.
+piece	sidetable_retro	Tulip Side Table	SideTable	retro	Floor	1	1	120	10	2	3	1	One slim white stem.
+piece	coffeetable_retro	Kidney Coffee Table	CoffeeTable	retro	Floor	2	1	210	9	2	3	1	A curvy walnut top on peg legs.
+piece	chair_retro	Diner Chair	Chair	retro	Floor	1	1	90	0	2	3	1	Chrome legs and teal vinyl.
+piece	rug_retro	Shag Circle Rug	Rug	retro	Flat	3	2	160	0	2	3	1	Thick, soft and very orange.
+piece	plant_retro	Monstera on a Stand	Plant	retro	Floor	1	1	110	0	2	3	1	Big split leaves on a mustard pot.
+piece	floorlamp_retro	Drum Tripod Lamp	FloorLamp	retro	Floor	1	1	140	0	2	3	1	Peg legs and a big orange drum.
+piece	bookshelf_retro	Walnut Bookcase	Bookshelf	retro	Floor	2	1	320	0	2	3	1	Sliding teal and orange doors below.
+piece	bed_retro	Walnut Bed	Bed	retro	Floor	2	3	540	0	2	3	1	Striped orange and mustard bedding.
+piece	dresser_retro	Walnut Lowboy	Dresser	retro	Floor	2	1	300	18	2	3	1	On peg legs, with a lava lamp.
+piece	counter_retro	Mint Cabinets, Formica	KitchenCounter	retro	Floor	2	1	220	15	2	3	1	Line them up along the wall.
+piece	sink_retro	Mint Enamel Sink	Sink	retro	Floor	2	1	280	15	2	3	1	White enamel in a mint cabinet.
+piece	oven_retro	Turquoise Retro Range	Oven	retro	Floor	2	1	550	0	2	3	1	Chrome trim and a clock on the back.
+piece	fridge_retro	Mint Retro Fridge	Fridge	retro	Floor	1	1	520	0	2	3	1	Rounded top and a big chrome lever.
+piece	washer_retro	Avocado Top-Loader	Washer	retro	Floor	1	1	360	0	2	3	1	That 1970s green, with chrome dials.
+piece	dryer_retro	Avocado Dryer	Dryer	retro	Floor	1	1	340	0	2	3	1	Matches the avocado washer.
+piece	blender_retro	Orange Juice Blender	Blender	retro	Surface	1	1	65	0	2	3	1	Fresh orange juice, pulp and all.
+piece	kitchentable_retro	Diner Table	KitchenTable	retro	Floor	2	2	300	13	2	3	1	Red top, chrome rim, ketchup and mustard.
+piece	couch_coastal	Seaside Slipcover Sofa	Couch	coastal	Floor	3	1	460	0	2	3	1	A loose white slipcover and navy pillows.
+piece	armchair_coastal	Rattan Peacock Chair	Armchair	coastal	Floor	1	1	290	0	2	3	1	A fan of woven rattan.
+piece	ottoman_coastal	Rattan Pouf	Ottoman	coastal	Floor	1	1	115	0	2	3	1	Woven and topped with a cushion.
+piece	fireplace_coastal	Tiled White Mantel	Fireplace	coastal	Floor	2	1	1000	0	2	3	1	Blue tiles around the fire, a white mantel above.
+piece	tv_coastal	Whitewashed Media Stand	TV	coastal	Floor	2	1	480	0	2	3	1	Woven baskets below, a flat screen above.
+piece	computer_coastal	White Desk and All-in-One	ComputerDesk	coastal	Floor	2	1	600	14	2	3	1	One slim screen and a plant.
+piece	sidetable_coastal	Whitewash Nightstand	SideTable	coastal	Floor	1	1	100	11	2	3	1	One drawer and a sea shell.
+piece	coffeetable_coastal	Rattan Coffee Table	CoffeeTable	coastal	Floor	2	1	190	9	2	3	1	Woven sides and a white top.
+piece	chair_coastal	Rattan Dining Chair	Chair	coastal	Floor	1	1	90	0	2	3	1	Woven seat with a blue cushion.
+piece	rug_coastal	Navy Stripe Rug	Rug	coastal	Flat	3	2	150	0	2	3	1	Like a deck chair, but on the floor.
+piece	plant_coastal	Palm in a Basket	Plant	coastal	Floor	1	1	90	0	2	3	1	A little palm in a woven basket.
+piece	floorlamp_coastal	Rattan Floor Lamp	FloorLamp	coastal	Floor	1	1	130	0	2	3	1	A woven shade on a white pole.
+piece	bookshelf_coastal	White Basket Shelf	Bookshelf	coastal	Floor	2	1	280	0	2	3	1	Woven baskets hide the clutter.
+piece	bed_coastal	Seaside Bed	Bed	coastal	Floor	2	3	520	0	2	3	1	Navy stripes and a white slatted headboard.
+piece	dresser_coastal	Seaside Dresser	Dresser	coastal	Floor	2	1	290	20	2	3	1	White drawers with navy knobs and a lantern.
+piece	counter_coastal	Sky Cabinets, White Top	KitchenCounter	coastal	Floor	2	1	230	15	2	3	1	Line them up along the wall.
+piece	sink_coastal	White Seaside Sink	Sink	coastal	Floor	2	1	300	15	2	3	1	Matches the sky-blue cabinets.
+piece	oven_coastal	White Gas Range	Oven	coastal	Floor	2	1	600	0	2	3	1	Black grates, navy knobs, brass handle.
+piece	fridge_coastal	Sky Blue Fridge	Fridge	coastal	Floor	1	1	520	0	2	3	1	A child's drawing stuck on the door.
+piece	washer_coastal	White and Blue Washer	Washer	coastal	Floor	1	1	420	0	2	3	1	Sea-blue ring around the door.
+piece	dryer_coastal	White and Blue Dryer	Dryer	coastal	Floor	1	1	400	0	2	3	1	Matches the white and blue washer.
+piece	blender_coastal	Blueberry Blender	Blender	coastal	Surface	1	1	70	0	2	3	1	Blueberry and yoghurt.
+piece	kitchentable_coastal	Round Pedestal Table	KitchenTable	coastal	Floor	2	2	330	14	2	3	1	A blue vase of white hydrangeas.
+piece	kettle_cottage	Enamel Kettle	SmallAppliance	cottage	Surface	1	1	45	0	2	3	1	A rose enamel kettle for the stove top.
+piece	coffeemaker_modern	Coffee Machine	SmallAppliance	modern	Surface	1	1	120	0	2	3	1	Fresh coffee, one cup at a time.
+piece	breadbox_rustic	Bread Box	SmallAppliance	rustic	Surface	1	1	40	0	2	3	1	Keeps the loaf fresh.
+piece	toaster_retro	Chrome Toaster	SmallAppliance	retro	Surface	1	1	50	0	2	3	1	Two slices, golden brown.
+piece	mixer_coastal	Stand Mixer	SmallAppliance	coastal	Surface	1	1	150	0	2	3	1	For cakes, cookies and bread dough.
+piece	microwave_modern	Microwave	SmallAppliance	modern	Surface	1	1	110	0	2	3	1	Leftovers in two minutes.
+piece	toilet	Toilet	Bathroom	any	Floor	1	1	200	0	2	3	1	Every house needs one.
+piece	clawfoot_tub	Clawfoot Tub	Bathroom	any	Floor	3	1	700	0	2	3	1	Navy outside, white inside, brass feet.
+piece	builtin_tub	Tiled Bathtub	Bathroom	any	Floor	3	1	600	0	2	3	1	Built in and tiled all round.
+piece	shower	Shower with Curtain	Bathroom	any	Floor	2	2	650	0	2	3	1	Tiled walls and a striped curtain.
+piece	vanity	Vanity Sink	Bathroom	any	Floor	2	1	380	15	2	3	1	Navy cupboard, marble top.
+piece	pedestal_sink	Pedestal Sink	Bathroom	any	Floor	1	1	220	0	2	3	1	Small and classic.
+piece	bath_mat	Fluffy Bath Mat	Bathroom	any	Flat	2	1	40	0	2	3	1	Soft on wet feet.
+piece	picture_cottage	Rolling Hills Painting	Picture	cottage	Wall	2	1	120	0	0	0	0	Green hills under a summer sun.
+piece	picture_modern	Abstract Print	Picture	modern	Wall	1	2	140	0	0	0	0	Shapes in mustard, teal and grey.
+piece	picture_rustic	Mountain Lake Painting	Picture	rustic	Wall	2	1	130	0	0	0	0	Snowy peaks, dark pines, still water.
+piece	picture_retro	Atomic Starburst	Picture	retro	Wall	1	1	110	0	0	0	0	Orange and teal, very 1958.
+piece	picture_coastal	Sailboat Painting	Picture	coastal	Wall	2	1	120	0	0	0	0	A little boat on a blue sea.
+piece	picture_photos	Family Photos	Picture	any	Wall	2	1	90	0	0	0	0	Three frames of happy faces.
+piece	picture_botanical	Botanical Print	Picture	cottage	Wall	1	2	100	0	0	0	0	A pressed fern in a brass frame.
+piece	window_cottage	Cottage Window	Window	cottage	Wall	2	2	160	0	0	0	0	Lace curtain and a box of flowers.
+piece	window_modern	Picture Window	Window	modern	Wall	3	2	260	0	0	0	0	One wide pane with a roller blind.
+piece	window_rustic	Cabin Window	Window	rustic	Wall	2	2	150	0	0	0	0	Red plaid curtains and a log valance.
+piece	window_retro	Drape Window	Window	retro	Wall	3	2	200	0	0	0	0	Orange drapes with mustard dots.
+piece	window_coastal	Sea View Window	Window	coastal	Wall	2	2	180	0	0	0	0	Sheer blue curtains and the sea.
+piece	window_arched	Arched Window	Window	any	Wall	2	2	220	0	0	0	0	A tall window with a round top.
+piece	clock	Wall Clock	WallDecor	any	Wall	1	1	70	0	0	0	0	Tick, tock.
+piece	mirror	Gilded Mirror	WallDecor	any	Wall	1	2	150	0	0	0	0	An oval mirror in a gold frame.
+piece	wall_shelf	Wall Shelf	WallDecor	any	Wall	2	1	80	0	0	0	0	Jam jars, a plant and a few books.
+piece	wreath	Berry Wreath	WallDecor	any	Wall	1	1	60	0	0	0	0	Evergreen with red berries and a bow.
+piece	quilt_hanging	Quilt Hanging	WallDecor	cottage	Wall	2	2	140	0	0	0	0	A patchwork quilt hung on a dowel.
+piece	utensil_rail	Pot Rail	WallDecor	any	Wall	2	1	90	0	0	0	0	Pans and ladles ready by the stove.
+floor	floor_oak	Honey Oak Boards	cottage	120	Warm, narrow oak boards.
+floor	floor_concrete	Polished Concrete	modern	160	Big smooth grey tiles.
+floor	floor_barnwood	Barn Wood	rustic	130	Wide old boards with nail heads.
+floor	floor_checker	Diner Checker	retro	140	Cream and teal squares.
+floor	floor_whitewash	Whitewashed Boards	coastal	120	Pale boards like a beach house.
+floor	floor_parquet	Parquet	any	180	Little oak blocks laid in squares.
+floor	floor_terracotta	Terracotta Tiles	any	150	Warm clay tiles for kitchens.
+floor	floor_carpet	Oatmeal Carpet	any	110	Soft beige carpet for bedrooms.
+floor	floor_mosaic	White Mosaic	any	140	Tiny white tiles for bathrooms.
+wall	wall_cottage	Rosebud Wallpaper	cottage	120	Little roses above a white beadboard.
+wall	wall_modern	Warm Grey Paint	modern	80	Calm grey walls, charcoal skirting.
+wall	wall_rustic	Log Wall	rustic	140	Round logs, like a mountain cabin.
+wall	wall_retro	Atomic Wallpaper	retro	130	Orange and teal rings over walnut panels.
+wall	wall_coastal	White Shiplap	coastal	120	Painted boards above a sky-blue wainscot.
+wall	wall_brick	Exposed Brick	any	160	Red brick with pale mortar.
+wall	wall_stripes	Sage Stripe Wallpaper	any	110	Wide sage and cream stripes.
+wall	wall_subway	Subway Tile	any	150	White tiles for kitchens and bathrooms.

@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03f3efa36e9209f4dbd16d6d4bcfddd2, type: 3}
+  m_Name: FarmDebrisSettings
+  m_EditorClassIdentifier: Assembly-CSharp::FarmDebrisSettings
+  farmSceneName: Farm
+  allowOnPaths: 0
+  keepAwayFromPlayer: 2.5
+  minSpacing: 1.2
+  maxCatchUpDays: 7
+  kinds:
+  - id: can
+    group: 0
+    prefab: {fileID: 182128987047661998, guid: 2186d31b4b4b0f24182eb2c5db9ac90d, type: 3}
+    weight: 4
+  - id: debris
+    group: 0
+    prefab: {fileID: 334449984756200010, guid: ff5d4cb343ec0a944be900a32787ec95, type: 3}
+    weight: 3
+  - id: tar
+    group: 0
+    prefab: {fileID: 727996182402669537, guid: 57820b97eebe6884782b5ade28f34c45, type: 3}
+    weight: 2
+  - id: goo
+    group: 0
+    prefab: {fileID: 6933699334499613629, guid: de85f355eb9fab545a76592647f22428, type: 3}
+    weight: 1
+  - id: weed_tuft
+    group: 1
+    prefab: {fileID: 4000155948441692787, guid: aca2af10a83d2784999293aae023ab38, type: 3}
+    weight: 5
+  - id: weed_grass
+    group: 1
+    prefab: {fileID: 3659357309375890246, guid: 34346b21d924f274d9e2bc81570e8bfa, type: 3}
+    weight: 3
+  - id: weed_dandelion
+    group: 1
+    prefab: {fileID: 5368343303913332601, guid: f845e4b3665959e4187b7f12c3a86849, type: 3}
+    weight: 2
+  - id: fallen_tree
+    group: 3
+    prefab: {fileID: 9138581854696400964, guid: ad01725d42633974eb596f30a9f96635, type: 3}
+    weight: 1
+  - id: rock_grey
+    group: 2
+    prefab: {fileID: 8164335176835485654, guid: 83b9d8678f9350d4daf63fedc016c008, type: 3}
+    weight: 5
+  - id: rock_brown
+    group: 2
+    prefab: {fileID: 4891854362431592966, guid: a408dc6d55698e74a8b12abbb5350849, type: 3}
+    weight: 5
+  - id: ore_coal
+    group: 2
+    prefab: {fileID: 5461184895262536927, guid: 57a050bb63b5add4e8829bd7b6429122, type: 3}
+    weight: 0.6
+  - id: ore_copper
+    group: 2
+    prefab: {fileID: 3540781104546190656, guid: 7ad54070f46cb7e4daf371d69edb4abc, type: 3}
+    weight: 0.4
+  rules:
+  - group: 0
+    startCount: 1
+    perDay: 0.15
+    maxOnFarm: 12
+    spring: 1
+    summer: 1
+    autumn: 1
+    winter: 1
+  - group: 1
+    startCount: 12
+    perDay: 2.5
+    maxOnFarm: 40
+    spring: 1
+    summer: 1
+    autumn: 1
+    winter: 0
+  - group: 2
+    startCount: 8
+    perDay: 1
+    maxOnFarm: 20
+    spring: 1
+    summer: 1
+    autumn: 1
+    winter: 1
+  - group: 3
+    startCount: 2
+    perDay: 0.2
+    maxOnFarm: 5
+    spring: 1
+    summer: 1
+    autumn: 1
+    winter: 1
+  pollutionPerDayPerDealing: 0.03
+  pollutionPerDayPerRiverLevel: 0.1
+  pollutionMaxPerDay: 3
+  dealingsPerExtraLitterRoom: 4

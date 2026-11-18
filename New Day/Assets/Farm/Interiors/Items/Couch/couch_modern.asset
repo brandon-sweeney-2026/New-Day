@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f4ff7549fed0c4b99db334d94d5526, type: 3}
+  m_Name: couch_modern
+  m_EditorClassIdentifier: Assembly-CSharp::DecorItem
+  id: couch_modern
+  displayName: Slate Modern Sofa
+  description: Low, square and calm.
+  category: 0
+  theme: modern
+  price: 520
+  mount: 0
+  width: 3
+  depth: 1
+  blocksPlayer: 1
+  surfaceHeight: 0
+  front: {fileID: 21300000, guid: 8448baad3c5209848b6e9aa4b0fbfe38, type: 3}
+  right: {fileID: 21300000, guid: 5e2c8328d2d48bf4f94659ae942d4ca2, type: 3}
+  back: {fileID: 21300000, guid: a62748bb141f6e945a1e0b180c1ce53b, type: 3}
+  left: {fileID: 21300000, guid: 284590b5819615145ae8dac49f52c4a5, type: 3}
+  floorTile: {fileID: 0}
+  wallTop: {fileID: 0}
+  wallUpper: {fileID: 0}
+  wallBase: {fileID: 0}

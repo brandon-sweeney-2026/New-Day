@@ -200,6 +200,7 @@ public class GameHUD : MonoBehaviour
 
             slotIcons[i].enabled = has && s.item.icon != null;
             slotIcons[i].sprite = has ? s.item.icon : null;
+            CropQuality.Band(slotIcons[i], has ? s : null);     // the coloured band around a crop shows its quality
 
             // No icon yet? Show the first letters of the name instead.
             slotLabels[i].text = (has && s.item.icon == null) ? Short(s.item.itemName) : (i < 10 ? ((i + 1) % 10).ToString() : "");
@@ -222,6 +223,7 @@ public class GameHUD : MonoBehaviour
         else
         {
             string extra = sel.pollution > 0 ? "  [" + PollutionSettings.Current.Label(sel.pollution) + " pollution]" : "";
+            if (sel.item.type == ItemData.ItemType.Crop) extra = "  [" + CropQuality.Name(sel.quality) + "]" + extra;
             equippedText.text = sel.item.itemName + extra;
         }
     }

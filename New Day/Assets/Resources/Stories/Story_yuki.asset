@@ -1,0 +1,548 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65eefa1a5942e54a8d76aef12a7fda9, type: 3}
+  m_Name: Story_yuki
+  m_EditorClassIdentifier: Assembly-CSharp::NpcStoryArc
+  npcId: yuki
+  title: The Wetland Room
+  summary: 'Yuki is precise and quietly funny. Her new exhibition is about the valley before the city, and the museum''s new sponsor, Sterling, wants it rewritten. Fork: open it honestly and lose the sponsor, or move it to a free pop-up museum in the suburb.'
+  pathAName: The honest exhibition
+  pathBName: The pop-up museum
+  parts:
+  - title: First look
+    number: 1
+    heartsNeeded: 1
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Good day. You have not dug up anything interesting yet? Never mind. You will. Old farms always give something back eventually.
+    - When you do, I would like to see it first. Before Grace. Grace will want to write about it. I want to put it in a glass case and light it properly.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Two degrees
+    number: 2
+    heartsNeeded: 2
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Frank's sign is still crooked. Two degrees to the left. I measured it last Monday with a protractor while pretending to tie my shoe.
+    - I have not said anything. It is the hardest thing I have ever not done.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: A living river
+    number: 3
+    heartsNeeded: 3
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - My next exhibition is about the river as it used to be. Old maps, old photographs, old fishing nets.
+    - But I want one living thing in the room. An eel, in a tank. Eels used to be everywhere in this valley. Now people do not believe they were ever here.
+    - Could you catch one? Carefully. They are older and stranger than they look.
+    happy: 0
+    ask:
+      item: {fileID: 11400000, guid: a3b6617a86c1c7846be723c7c8df372a, type: 2}
+      amount: 1
+      minQuality: 0
+      questTitle: An eel for the museum
+      questText: Yuki wants an eel from the river for her exhibition about the valley as it used to be.
+      reminder:
+      - Any luck with an eel? They are shy. Fish at dusk, my father says. He is usually right about things that move slowly.
+      thanks:
+      - Look at it. Look at how it moves. Like ink in water.
+      - It will have the best tank in the museum. And a label with your name on it, as the collector.
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 150
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Sterling & Sons
+    number: 4
+    heartsNeeded: 4
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags:
+      - story_grace_4
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Grace showed me the boot. 'Sterling & Sons Tannery.' Then we spent four hours in the museum basement with the archive boxes.
+    - We found the tannery's own records. Every barrel of chrome, every load of lime. They wrote it all down, very neatly. They were proud of it.
+    - I have never been so angry at good handwriting.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: My father
+    number: 5
+    heartsNeeded: 5
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags:
+      - story_kenji_4
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - My father forgot his chess opening last week. He laughed. I did not.
+    - He is seventy-eight. He does tai chi every morning and wins every game. But I have started watching him the way I watch old paper in the archive. Looking for the first crack.
+    - He would tell me the slow river reaches the sea too. He would be right. I still do not like it.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Remove the wetland section
+    number: 6
+    heartsNeeded: 6
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - The museum has a new sponsor. Sterling Holdings. They paid for the new roof, which leaked, and the new lights, which are very good.
+    - 'Today their office sent a note about my exhibition. One line: ''Please remove the wetland section, as it may confuse visitors.'''
+    - The wetland section is the exhibition. Without it there is only a river, and no reason anyone should care what happened to it.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: After hours
+    number: 7
+    heartsNeeded: 7
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Come to the museum tonight, after closing. I want to show you the exhibition as I made it. Before anyone changes it.
+    - Here is the wetland, painted from Grace's maps. Here are the tannery records. Here is your eel, in the middle of everything, looking unimpressed.
+    - And here is the last room. Empty, for now. I wanted it to be the valley as it could be again. I have not decided what to put in it.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Which room?
+    number: 8
+    heartsNeeded: 8
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - The museum director says I must choose. Remove the wetland section, or lose the sponsor, and possibly my job.
+    - Or there is another way. The Kims' back room is empty in the evenings. I could take the whole exhibition there. Free. Small. Ours.
+    - In the museum, ten thousand people would see it. In the suburb, a few hundred would. But nobody could tell me to take anything out.
+    - My father says 'ask the farmer'. So I am asking the farmer.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 1
+      optionA: Open it honestly at the museum
+      replyA:
+      - The museum, then, and all of it. If they take the sponsorship away, they take it away.
+      - I will write the labels myself tonight. In very clear, very neat handwriting. The Sterlings taught me that.
+      flagsA:
+      - yuki_honest_exhibition
+      - tower_file_tannery
+      optionB: Move it to a pop-up in the suburb
+      replyB:
+      - A pop-up. Yes. Small and stubborn, like this street.
+      - I will need Walt for the shelves, Lena for the signs, and you for carrying the eel. Very carefully.
+      flagsB:
+      - suburb_museum_open
+      - tower_file_tannery
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Ten thousand people
+    number: 9
+    heartsNeeded: 9
+    path: 1
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - The exhibition opened. The sponsor withdrew the same afternoon. The director shook my hand and said 'well done' in a voice that meant 'you're fired'.
+    - But the city paper reviewed it. 'The most important room in the museum is the one about a swamp.' People queued.
+    - Victor Sterling came on the second day. He stood in front of the tannery records for twenty minutes. Then he left without a word. That was the best review of all.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The museum behind the shop
+    number: 9
+    heartsNeeded: 9
+    path: 2
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - The pop-up has been open for a week. Rosa brings bread for the visitors. Nia gives tours, mostly about the eel.
+    - Walt built the shelves and said they were 'adequate', which I am told is very high praise.
+    - And the last room is not empty any more. Everybody on the street brought one thing that shows the valley as it could be. A seed packet, a drawing, a jar of clean water.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Two degrees
+    number: 10
+    heartsNeeded: 10
+    path: 1
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - The museum has asked me back. As director. The new director. The old one has 'retired'.
+    - 'The wetland room is staying. The last room now holds what the street brought: seeds, drawings, a jar of clean water. Your eel is the most popular resident in the building.'
+    - And this morning, Frank's sign was straight. I did not say anything. I only lent him the protractor. Here. A thank-you, from a curator who finally has nothing to fix.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 400
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Two degrees
+    number: 10
+    heartsNeeded: 10
+    path: 2
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - 'I have taken my first Monday off in eleven years. No plans. I spent it the way my father would: slowly, and mostly on a bench.'
+    - The museum in the city has asked to borrow our exhibition. All of it, as it is, with nothing taken out. They asked very politely.
+    - And Frank's sign is straight. I only lent him the protractor. Here. A thank-you, from a curator who finally has nothing to fix.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 400
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0

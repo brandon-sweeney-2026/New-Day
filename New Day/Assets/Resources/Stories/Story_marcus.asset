@@ -1,0 +1,548 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65eefa1a5942e54a8d76aef12a7fda9, type: 3}
+  m_Name: Story_marcus
+  m_EditorClassIdentifier: Assembly-CSharp::NpcStoryArc
+  npcId: marcus
+  title: The Man in the Tower
+  summary: 'Marcus works at Sterling''s tower, feels guilty about it, and finds the dumping paperwork. Part 7 needs the flag saw_tower_dumping (the StoryTrigger in the tower''s back room). Fork: take the proof to city hall, or accept a promotion to ''change it from inside''.'
+  pathAName: Blow the whistle
+  pathBName: Take the promotion
+  parts:
+  - title: A guilt thing
+    number: 1
+    heartsNeeded: 1
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Hey! The farmer. You know, I bought all my vegetables from the Kims this week. All of them. Even the ones I don't know how to cook.
+    - Lena says I'm trying to buy forgiveness one turnip at a time. She's not wrong.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Second place
+    number: 2
+    heartsNeeded: 2
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I've been getting up earlier to beat Kenji to the football field. Five forty-five this morning.
+    - He was already there. Him and the crow. The crow looked at me like I'd let it down.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Straight from the farm
+    number: 3
+    heartsNeeded: 3
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Can I ask you something weird? Can I buy straight from you? Not the store, not the tower. You.
+    - Five tomatoes. I'll pay properly. I just want to eat one thing this week that I know where it came from.
+    happy: 0
+    ask:
+      item: {fileID: 11400000, guid: e8be23eec11c7554695d1c5a7160ab26, type: 2}
+      amount: 5
+      minQuality: 0
+      questTitle: Tomatoes for Marcus
+      questText: Marcus wants to buy five tomatoes straight from your farm.
+      reminder:
+      - Still on for those tomatoes? Five. I've already told Lena I'm making sauce. I have never made sauce.
+      thanks:
+      - These are perfect. They smell like a garden. The ones at the tower smell like a fridge.
+      - Here. Don't argue, that's the price. Fair's fair.
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 150
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The franchise letter
+    number: 4
+    heartsNeeded: 4
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - They sent me to the Kims this week. With a letter. 'Become a Sterling Express franchise.'
+    - Jae-hoon read the whole thing, very politely, and then he gave me a rice ball and asked after Lena.
+    - I've never felt so small in my life. I didn't even take the rice ball. Well. I took it. But I felt bad.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: River disposal
+    number: 5
+    heartsNeeded: 5
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I saw something at work. I shouldn't tell you. I'm going to tell you.
+    - Shipping sheets. Every night, a line that just says 'river disposal'. Barrels, hundreds of them, going out the back of the tower.
+    - My job is to make the numbers look nice. I've been making that line look nice for a year.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Lena's drawings
+    number: 6
+    heartsNeeded: 6
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Lena showed me her sketchbook last night. All the drawings of me from this year.
+    - In the spring ones I'm laughing. By summer I'm not. The last few, I'm just sitting at the kitchen table staring at nothing.
+    - She didn't say anything. She didn't have to. She's a very good artist.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: You saw it too
+    number: 7
+    heartsNeeded: 7
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags:
+      - saw_tower_dumping
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - You've been in the back room. Haven't you? Don't lie, you've got the same face I had.
+    - So it's not just paper. It's real. Somebody else has seen it.
+    - I've got copies of the shipping sheets. On a memory stick, in my sock drawer, which is the least secret place on Earth.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The window office
+    number: 8
+    heartsNeeded: 8
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Victor called me up to the fortieth floor today. Victor Sterling himself.
+    - He offered me a promotion. A window office. Double the pay. 'A man like you could change how things are done here, Marcus.'
+    - Or I take the memory stick to Lucia at city hall tomorrow, and I never work in this city again.
+    - Lena says it's my decision. I'm asking you, because I can't trust myself to answer.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 1
+      optionA: Take it to city hall
+      replyA:
+      - Right. Tomorrow, nine o'clock, city hall. Lucia said she'll be at her desk with a sandwich and a book.
+      - I'm terrified. I feel better than I have in a year.
+      flagsA:
+      - marcus_whistleblower
+      - tower_file_manifests
+      optionB: Take the promotion
+      replyB:
+      - From the inside. Yes. That's the smart way. You can't change anything from outside, can you?
+      - I'll keep the memory stick. Just in case. Just... in case.
+      flagsB:
+      - marcus_promoted
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Out of work
+    number: 9
+    heartsNeeded: 9
+    path: 1
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - They walked me out of the building with a cardboard box. Like in the films. There was a plant in it. It died on the way home.
+    - 'But the street... Frank left a toolbox on the porch with a note: ''Fix something.'' Rosa sent bread. Gus told me I''d done the right thing and then told me my porch was crooked.'
+    - City hall is looking at the shipping sheets. Lucia says it'll take months. I've got nothing but time.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The fortieth floor
+    number: 9
+    heartsNeeded: 9
+    path: 2
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - The window office has a view of the river. I didn't think about that when I said yes.
+    - I can see the pipe from my desk. At night the water goes a different colour.
+    - I'm changing things from the inside. I've changed the coffee machine. It's a start. It's a start, isn't it?
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: First at the field
+    number: 10
+    heartsNeeded: 10
+    path: 1
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Guess who was first at the football field this morning. Five thirty.
+    - Kenji turned up, saw me, and bowed. The crow said something. I think it was 'well done'.
+    - Lucia's got me a job at city hall, helping with the river case. Less money. A window, though. A real one, that opens.
+    - Thank you. I mean it. You were the only one who asked me the question out loud.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The box under the arm
+    number: 10
+    heartsNeeded: 10
+    path: 2
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I quit. This morning. I walked out of the fortieth floor with a box of my own.
+    - Not a dead plant this time. Every shipping sheet from the last two years. I made copies of all of them while I was 'changing things from the inside'.
+    - Turns out that's what I was doing in there after all. Lucia has them now.
+    - I'm going jogging. I bet I can beat Kenji tomorrow. I've had a year of practice at getting up early and feeling awful.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags:
+    - tower_file_manifests
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0

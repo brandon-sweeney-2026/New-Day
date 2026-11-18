@@ -1,0 +1,549 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65eefa1a5942e54a8d76aef12a7fda9, type: 3}
+  m_Name: Story_priya
+  m_EditorClassIdentifier: Assembly-CSharp::NpcStoryArc
+  npcId: priya
+  title: Shoes That Don't Hurt
+  summary: 'Priya is an exhausted nurse and single mum. She sees more and more patients sick from the river, and a shiny Sterling clinic offers her double pay with a clause that forbids talking to the press. Fork: stay at the hospital and hand over her (anonymous) patient records, or take the clinic job.'
+  pathAName: Stay at the hospital
+  pathBName: Take the clinic job
+  parts:
+  - title: Before the duct tape
+    number: 1
+    heartsNeeded: 1
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I meant it, you know. If you cut yourself on a scythe, you come to me. Not to Frank. Frank's answer to everything is duct tape.
+    - Last month he taped up his own thumb and kept working. I had to take it off with olive oil and a lecture.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: My grandmother's tea
+    number: 2
+    heartsNeeded: 2
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Can I ask a favour? My grandmother used to make a tea with apples and spice when anyone was run down. I'm run down.
+    - The apples at the tower taste of nothing. Three from a real tree would be wonderful. Only if you have them spare.
+    happy: 0
+    ask:
+      item: {fileID: 11400000, guid: ac67ad7bf2de88441b45e9cfe51c91bf, type: 2}
+      amount: 3
+      minQuality: 0
+      questTitle: Apples for Priya's tea
+      questText: Priya wants three apples for her grandmother's tea. She says she's run down.
+      reminder:
+      - Apples, if you've got any spare? Three. No rush. Well. A little rush. I'm very tired.
+      thanks:
+      - Oh, they smell like her kitchen.
+      - Thank you. Here, for your trouble. Don't argue, I'm a nurse, I win arguments professionally.
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 120
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Asleep on the bench
+    number: 3
+    heartsNeeded: 3
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Did I fall asleep on the plaza bench yesterday? I did, didn't I. In the middle of the afternoon, with my shopping.
+    - Dev says you made sure he got dinner. Pasta, he says. Again.
+    - Thank you. I'm not used to people looking after us. I'm usually the one doing the looking.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The worst patient
+    number: 4
+    heartsNeeded: 4
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags:
+      - story_walt_4
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I've just been to see Walt Delgado about that knee.
+    - He's the worst patient I've ever had, and I once treated a man who'd glued himself to a ladder. Walt argued with every word I said. Then he did everything I told him.
+    - Rosa walked me to the gate and cried a bit. That's the part of the job nobody trains you for.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: From the river side
+    number: 5
+    heartsNeeded: 5
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Something's wrong in the city. More patients every week from the streets by the river. Rashes. Coughs that won't clear. Children, mostly.
+    - Nobody upstairs wants to say what everybody downstairs is thinking.
+    - I've started writing it all down. Dates, streets, symptoms. No names. Just in case anyone ever asks.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: A card, a month late
+    number: 6
+    heartsNeeded: 6
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Dev's father sent a birthday card. Dev's birthday was five weeks ago.
+    - Inside it said 'Sorry, buddy, crazy month'. Every month is a crazy month with him. Sixteen years of crazy months.
+    - I was furious for about an hour. Then I was just tired. Dev put the card in a drawer and asked what's for dinner. He's better at this than I am.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The clinic
+    number: 7
+    heartsNeeded: 7
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - A Sterling clinic is opening in the city. Glass, plants, coffee machines that work. They want me as head nurse.
+    - Double the pay. Regular hours. I'd see Dev's practice. I'd sleep.
+    - 'And a contract with a clause in it: staff may not ''discuss patient trends with outside parties, including the press''. They sent the clause in bold.'
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Which kind of tired?
+    number: 8
+    heartsNeeded: 8
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I have to give the clinic an answer by Friday.
+    - If I stay at the hospital, I'm tired and broke and I keep my notebook. Lucia says city hall needs exactly that kind of record for the river case. No names, just patterns.
+    - If I take the clinic, I'm rested, and Dev gets new boots, and I never say a word about the river again.
+    - I know what my grandmother would say. I want to hear what you say.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 1
+      optionA: Stay, and give city hall the records
+      replyA:
+      - Stay. Yes. I'll be tired, but I'll be able to look at myself in the mirror.
+      - I'll copy the notebook tonight. Anonymous. Every street, every rash, every cough. Lucia can have it on Monday.
+      flagsA:
+      - priya_stayed
+      - tower_file_patients
+      optionB: Take the clinic job
+      replyB:
+      - The clinic. Sleep. Boots that fit. I'm allowed to want that, aren't I?
+      - I'll keep the notebook in the drawer. With the birthday card.
+      flagsB:
+      - priya_clinic
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Tired and proud
+    number: 9
+    heartsNeeded: 9
+    path: 1
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - City hall has my records. Lucia called them 'the clearest thing on my desk'. The hospital board heard about it and gave me a pay rise. A small one. Very small. Still.
+    - I worked a double shift yesterday and came home to Dev asleep on the sofa with a pan of pasta for me on the stove.
+    - I'm tired. I'm always going to be tired. But it's a good tired now.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Glass and plants
+    number: 9
+    heartsNeeded: 9
+    path: 2
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - The clinic's lovely. I've slept eight hours four nights running. I've watched three of Dev's practices.
+    - Today a little girl came in from the river streets with the same rash I've seen a hundred times. My manager told me to write 'allergy' on the form.
+    - I wrote 'allergy'. I went into the staff toilet and sat there for ten minutes. Then I went back to work.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Community health day
+    number: 10
+    heartsNeeded: 10
+    path: 1
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - 'Saturday, the plaza: a Community Health Day! Free check-ups, blood pressure, and a stall for the river kids'' rashes. The hospital lent us everything.'
+    - And the tea stall is my grandmother's apple tea, made with apples from your farm. Dev is cooking pasta for everybody. It's always pasta. Nobody complains.
+    - Come by. Bring Walt. Tell him it's a party, not a check-up. He'll never know.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags:
+    - health_day
+    reward:
+      gold: 300
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Community health day
+    number: 10
+    heartsNeeded: 10
+    path: 2
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I quit. I walked into my manager's office with the notebook and put it on the desk and said 'that isn't an allergy'.
+    - Then I took it to Lucia. The hospital took me back the same afternoon.
+    - And Saturday we're doing a free Health Day in the plaza, for the river kids. Grandmother's apple tea, your apples. Dev on pasta. Come by.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags:
+    - health_day
+    - tower_file_patients
+    reward:
+      gold: 300
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0

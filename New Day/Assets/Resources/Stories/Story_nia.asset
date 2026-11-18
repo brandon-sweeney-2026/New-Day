@@ -1,0 +1,547 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65eefa1a5942e54a8d76aef12a7fda9, type: 3}
+  m_Name: Story_nia
+  m_EditorClassIdentifier: Assembly-CSharp::NpcStoryArc
+  npcId: nia
+  title: Gregory's River
+  summary: 'Nia wants to be a bug scientist, or a goalkeeper, or both. She is the first to notice the river is making the bugs sick. Fork: the science fair and the football cup final are on the same day. Neither is wrong; the other ending finds its way back.'
+  pathAName: The science fair
+  pathBName: The cup final
+  parts:
+  - title: How many legs?
+    number: 1
+    heartsNeeded: 1
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Did you bring a bug? You didn't bring a bug. That's okay. Next time.
+    - Do you know beetles are the most kinds of animal there are? More kinds than anything! If you picked an animal at random, it would probably be a beetle. I want to know all of them.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Gregory
+    number: 2
+    heartsNeeded: 2
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - This is Gregory. In the jar. Only for one minute, then he goes back. Mr. Reyes says one minute is the rule.
+    - Gregory has green wings and a bad attitude. He's my best friend that isn't a person.
+    - ...Okay, one minute. Bye, Gregory. Be good.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Bug shells
+    number: 3
+    heartsNeeded: 3
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - You go in the mine, right? Dad says there are bugs down there as big as a dog. Is that TRUE?
+    - When they get beaten, they leave bits of shell behind. Chitin! That's what beetle shells are made of. Can you bring me some? Three bits?
+    - It's for science. And for my shelf.
+    happy: 0
+    ask:
+      item: {fileID: 11400000, guid: 39462e537909fdb41b5b3266aa3870e7, type: 2}
+      amount: 3
+      minQuality: 0
+      questTitle: Chitin for Nia
+      questText: Nia wants three Chitin Shards from the bugs in the mine, for science (and her shelf).
+      reminder:
+      - Did you get the chitin? Three bits! From the BIG bugs! Is it gross? Tell me it's gross.
+      thanks:
+      - WOW. It's so gross. It's so cool.
+      - This one's got a scratch. Did it fight you? I'm going to label them. Here, I made you something.
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 11400000, guid: 0d465b9269af3534a84e6433f01155b9, type: 2}
+      amount: 1
+      friendship: 0
+  - title: The grey beetle
+    number: 4
+    heartsNeeded: 4
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I found a beetle by the river. Near your farm. It wasn't moving right.
+    - It was grey all over, like ash. Beetles from there are supposed to be green and shiny, like Gregory.
+    - I put it on a leaf in the shade. I don't think it's going to be okay. Is something wrong with the river?
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: A real project
+    number: 5
+    heartsNeeded: 5
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I'm doing a science fair project! A REAL one. Bea from the university is helping.
+    - 'We''re counting bugs at three places: the park, the football field, and the river by your farm. Then we compare.'
+    - Bea says a good scientist writes down what she sees, even when she doesn't like it. I don't like what I'm seeing.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Fewer every week
+    number: 6
+    heartsNeeded: 6
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - 'Look at my chart. The park: lots of bugs. The football field: lots. The river: fewer every week. And the ones there are grey.'
+    - Bea says that's called a 'trend'. Dad says it's called 'bad news'. Mum says it's called 'evidence' and gave me a hug that was too long.
+    - I'm nine. I don't want to have evidence. I want to have bugs.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Same day
+    number: 7
+    heartsNeeded: 7
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - There's a problem. A HUGE problem. The science fair is on a Saturday. The football cup final is on the same Saturday.
+    - Coach Lucia says I'm the best keeper the team has, even better than Ji-ho. Everybody's better than Ji-ho, but still.
+    - Mum says pick the science fair. Dad says pick the final. Then they both said 'it's your choice, sweetheart', which is the worst thing a grown-up can say.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: What would you do?
+    number: 8
+    heartsNeeded: 8
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - You're a grown-up but you don't count, because you're a farmer. So you can tell me.
+    - 'The fair: Bea says my chart could make the city newspaper. People might finally look at the river.'
+    - 'The final: the team needs a keeper, and it''s against the city team in the Sterling shirts, and I really, REALLY want to beat them.'
+    - Which one?
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 1
+      optionA: The science fair
+      replyA:
+      - The fair. Yeah. For the beetles. For Gregory's cousins.
+      - I'm going to make the BEST poster. With glitter. Science can have glitter.
+      flagsA:
+      - nia_science_fair
+      optionB: The cup final
+      replyB:
+      - The final! YES! I'm going to save EVERYTHING.
+      - Bea says she'll take my chart to the fair for me anyway. So I get both! Kind of! Half of both!
+      flagsB:
+      - nia_cup_final
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: First prize
+    number: 9
+    heartsNeeded: 9
+    path: 1
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I WON. First prize! A gold ribbon and a book about beetles that weighs more than Gregory's whole house.
+    - 'And a man from the city newspaper took my picture. Tomorrow it says: ''9-year-old finds poison in river.'''
+    - Dad bought ten copies. Mum read it out loud three times. And the team won the final without me, five-four, so nobody's even sad.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The penalty
+    number: 9
+    heartsNeeded: 9
+    path: 2
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Did you SEE? Last minute, penalty, the big city kid in the Sterling shirt, and I SAVED IT.
+    - Dev picked me up and ran round the whole field. Dad cried. He says he didn't. He did.
+    - And Bea took my chart to the science fair, and it got a special mention, and the newspaper wrote about the river anyway. Half of both was the best of both!
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: A beetle with your name
+    number: 10
+    heartsNeeded: 10
+    path: 1
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Bea showed my chart to her professor, and her professor found a beetle at the river that nobody has ever written down before. A new kind!
+    - When you find a new kind, you get to name it. The professor said I could choose.
+    - So it's named after you. Because you were the first one I told about the grey beetle, and you didn't laugh. Here. It's a picture. You can put it on your fridge.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags:
+    - nia_beetle_named
+    reward:
+      gold: 0
+      item: {fileID: 11400000, guid: 834a444f19f7d0e419d3ef52b4a46ef0, type: 2}
+      amount: 1
+      friendship: 0
+  - title: A beetle with your name
+    number: 10
+    heartsNeeded: 10
+    path: 2
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Coach Lucia gave me a medal. And Bea gave me a jar. Inside was a beetle from the river. Green. Shiny. Not grey.
+    - She says the professor found a new kind there, because of my chart, and I get to name it. So I named it after you, because you helped me choose and you were right.
+    - 'Gregory''s met it. They don''t get along. That''s okay. Here: a drawing of both of them, being rude to each other.'
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags:
+    - nia_beetle_named
+    reward:
+      gold: 0
+      item: {fileID: 11400000, guid: 834a444f19f7d0e419d3ef52b4a46ef0, type: 2}
+      amount: 1
+      friendship: 0

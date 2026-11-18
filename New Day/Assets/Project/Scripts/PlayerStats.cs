@@ -34,9 +34,27 @@ public class PlayerStats : MonoBehaviour, IDamageable
     [Tooltip("Gold lost when you die (0-1 of your gold).")]
     [Range(0f, 1f)] [SerializeField] private float goldLostOnDeath = 0.1f;
 
+    [Header("Knockback when hurt")]
+    [Tooltip("How far (world units = tiles) a normal hit shoves you back.")]
+    [Min(0f)] [SerializeField] private float knockbackDistance = 1.2f;
+    [Tooltip("How long the shove takes (seconds). Shorter = snappier.")]
+    [Range(0.05f, 0.6f)] [SerializeField] private float knockbackSeconds = 0.18f;
+    [Tooltip("Seconds you can't walk after a hit, so the shove can't be cancelled by holding a key.")]
+    [Range(0f, 0.6f)] [SerializeField] private float hitStunSeconds = 0.2f;
+    [Tooltip("An enemy's Contact Knockback of this size gives exactly Knockback Distance. Stronger enemies (the golem uses 9) push farther.")]
+    [Min(0.1f)] [SerializeField] private float normalKnockbackForce = 6f;
+    [Tooltip("The shove is never more than this many times Knockback Distance.")]
+    [Range(1f, 4f)] [SerializeField] private float maxKnockbackScale = 2f;
+
     [Header("Feedback")]
     [SerializeField] private SpriteRenderer flashRenderer;
     [SerializeField] private Color hurtColor = new Color(1f, 0.4f, 0.4f);
+    [Tooltip("Blink while you can't be hurt, so you can see it.")]
+    [SerializeField] private bool blinkWhileInvulnerable = true;
+    [Tooltip("Blinks per second.")]
+    [Range(2f, 20f)] [SerializeField] private float blinkRate = 10f;
+    [Tooltip("How much the screen shakes when you are hit (world units; 0 = no shake).")]
+    [Range(0f, 0.3f)] [SerializeField] private float hitShake = 0.07f;
 
     public float Health { get; private set; }
     public float Magic { get; private set; }
@@ -116,7 +134,14 @@ public class PlayerStats : MonoBehaviour, IDamageable
         }
 
         if (flashRenderer != null)
-            flashRenderer.color = Time.time < invulnerableUntil - invulnerableTime * 0.5f ? hurtColor : baseColor;
+        {
+            // first half of the safe time: red. Second half: blinking see-through.
+            float left = invulnerableUntil - Time.time;
+            Color c = baseColor;
+            if (left > invulnerableTime * 0.5f) c = hurtColor;
+            else if (left > 0f && blinkWhileInvulnerable && Mathf.FloorToInt(left * blinkRate * 2f) % 2 == 0) c.a = baseColor.a * 0.35f;
+            flashRenderer.color = c;
+        }
 
         if (changed && OnChanged != null) OnChanged();
     }
@@ -133,7 +158,13 @@ public class PlayerStats : MonoBehaviour, IDamageable
         // Defense (from perks and equipment) takes a little off every hit.
         Health = Mathf.Max(0f, Health - PlayerBonuses.ReduceDamage(info.amount));
 
-        if (controller != null && info.knockback.sqrMagnitude > 0.01f) controller.Knockback(info.knockback);
+        // Shove the player away from what hit them. The hit's knockback sets the direction, and its size scales the distance.
+        if (controller != null && info.knockback.sqrMagnitude > 0.01f)
+        {
+            float scale = Mathf.Min(maxKnockbackScale, info.knockback.magnitude / normalKnockbackForce);
+            controller.HitKnockback(info.knockback, knockbackDistance * scale, knockbackSeconds, hitStunSeconds);
+        }
+        if (hitShake > 0f) CameraFollow2D.Shake(hitShake, 0.15f);
         if (OnDamaged != null) OnDamaged(info);
         if (OnChanged != null) OnChanged();
 

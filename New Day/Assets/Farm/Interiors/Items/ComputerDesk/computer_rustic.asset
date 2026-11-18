@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f4ff7549fed0c4b99db334d94d5526, type: 3}
+  m_Name: computer_rustic
+  m_EditorClassIdentifier: Assembly-CSharp::DecorItem
+  id: computer_rustic
+  displayName: Heavy Desk and Old Terminal
+  description: Green text on a black screen. It still works.
+  category: 5
+  theme: rustic
+  price: 460
+  mount: 0
+  width: 2
+  depth: 1
+  blocksPlayer: 1
+  surfaceHeight: 14
+  front: {fileID: 21300000, guid: d5a7eb21a70d0d245a7ee43ca615e803, type: 3}
+  right: {fileID: 21300000, guid: 76e458f8ec1e41c41924be8e1946a012, type: 3}
+  back: {fileID: 21300000, guid: ca97b6f2b98f1ce43b7608a1d3de34ae, type: 3}
+  left: {fileID: 21300000, guid: 6e0552b610653d545bbacf97e0ef82c4, type: 3}
+  floorTile: {fileID: 0}
+  wallTop: {fileID: 0}
+  wallUpper: {fileID: 0}
+  wallBase: {fileID: 0}

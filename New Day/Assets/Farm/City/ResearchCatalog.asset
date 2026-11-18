@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05d79aee0c0576d488d3410519085672, type: 3}
+  m_Name: ResearchCatalog
+  m_EditorClassIdentifier: Assembly-CSharp::ResearchCatalog
+  projects:
+  - id: sprinkler_1
+    title: Copper Sprinkler
+    description: A simple sprinkler that waters the 4 tiles next to it every morning.
+    goldCost: 600
+    requires: 
+    unlocks:
+    - {fileID: 11400000, guid: 1dc9eb90a101bb249961f85506ac02ae, type: 2}
+  - id: sprinkler_2
+    title: Steel Sprinkler
+    description: 'A wider spray: the 8 tiles around it.'
+    goldCost: 1500
+    requires: sprinkler_1
+    unlocks:
+    - {fileID: 11400000, guid: 27df154c75eea714d8b2aef3c31352f4, type: 2}
+  - id: sprinkler_3
+    title: Gold Sprinkler
+    description: 'The best there is: a whole 5 by 5 square.'
+    goldCost: 3500
+    requires: sprinkler_2
+    unlocks:
+    - {fileID: 11400000, guid: 5d7c4fd7787afcb41a6cd4185bd7bc98, type: 2}
+  - id: gel_1
+    title: Moisture Gel I
+    description: A gel that holds water in the soil for one extra morning.
+    goldCost: 300
+    requires: 
+    unlocks:
+    - {fileID: 11400000, guid: 8f4b1e9760794bc4abc460c3ce509a3a, type: 2}
+  - id: gel_2
+    title: Moisture Gel II
+    description: The soil stays watered for two mornings.
+    goldCost: 600
+    requires: gel_1
+    unlocks:
+    - {fileID: 11400000, guid: 7e91ad1ef2461e34da0c55180a6bd68f, type: 2}
+  - id: gel_3
+    title: Moisture Gel III
+    description: The soil stays watered for three mornings.
+    goldCost: 1000
+    requires: gel_2
+    unlocks:
+    - {fileID: 11400000, guid: a5e9f5dadf1d8d84dbd9db020e0a5564, type: 2}
+  - id: gel_4
+    title: Moisture Gel IV
+    description: The soil stays watered for four mornings.
+    goldCost: 1600
+    requires: gel_3
+    unlocks:
+    - {fileID: 11400000, guid: d55ad7d9fea65484dbd2a78ad4c0e1ad, type: 2}
+  - id: fert_silver
+    title: Silver Fertilizer
+    description: Fertilizer that lifts a crop from Bronze to Silver quality. Silver crops sell for more.
+    goldCost: 500
+    requires: 
+    unlocks:
+    - {fileID: 11400000, guid: 33585b8837615a24ba78df37ee9ad67e, type: 2}
+  - id: fert_gold
+    title: Gold Fertilizer
+    description: Gold quality crops.
+    goldCost: 1400
+    requires: fert_silver
+    unlocks:
+    - {fileID: 11400000, guid: a4bd09eb92009604380fcdd5c6c69b75, type: 2}
+  - id: fert_platinum
+    title: Platinum Fertilizer
+    description: 'Platinum quality crops: the best money can grow.'
+    goldCost: 3200
+    requires: fert_gold
+    unlocks:
+    - {fileID: 11400000, guid: df7a01139260c6542bfd26089e651bab, type: 2}
+  - id: purifier
+    title: Soil Purifier
+    description: A powder that pulls pollution out of the soil. Useful when the river is dirty.
+    goldCost: 900
+    requires: 
+    unlocks:
+    - {fileID: 11400000, guid: 94db624d5f0b458469f3c63ca79163f4, type: 2}
+  - id: tonic
+    title: Growth Tonic
+    description: A tonic that makes a crop jump a day ahead.
+    goldCost: 1200
+    requires: fert_silver
+    unlocks:
+    - {fileID: 11400000, guid: f7daf58ebeaba1046a86254c3811e984, type: 2}

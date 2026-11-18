@@ -26,7 +26,20 @@ public class SuburbHouseDoor : MonoBehaviour, IInteractable
     [SerializeField] private NpcCondition conditions = new NpcCondition();
     [TextArea] [SerializeField] private string closedLine = "Nobody answers. Maybe come back in the morning.";
 
+    [Header("Animation")]
+    [Tooltip("Seconds the screen takes to fade to black (and the same again to fade back in). 0 = no fade.")]
+    [Range(0f, 1f)] [SerializeField] private float fadeSeconds = 0.18f;
+
+    private DoorSwing swing;
+
     public string InteractPrompt { get { return IsOpen() ? "Enter " + houseName : "Knock"; } }
+
+    private void Awake()
+    {
+        // The front door painted on the house swings open when you go in (see DoorSwing).
+        swing = GetComponent<DoorSwing>();
+        if (swing == null) swing = gameObject.AddComponent<DoorSwing>();
+    }
 
     public bool IsOpen()
     {
@@ -44,11 +57,10 @@ public class SuburbHouseDoor : MonoBehaviour, IInteractable
         if (!IsOpen()) { GameEvents.ShowToast(closedLine); return; }
         if (destination == null) { GameEvents.ShowToast("This door doesn't lead anywhere yet."); return; }
 
-        var rb = player.GetComponent<Rigidbody2D>();
-        if (rb != null) { rb.position = destination.position; rb.linearVelocity = Vector2.zero; }
-        player.transform.position = destination.position;
-
-        if (enterInterior != null) enterInterior.EnterRoom();
-        if (player.Controller != null) player.Controller.FaceDirection(arriveFacing);
+        // Door swings open, screen fades, player arrives inside (see DoorTransition).
+        DoorTransition.Walk(player, swing, destination, arriveFacing, () =>
+        {
+            if (enterInterior != null) enterInterior.EnterRoom();
+        }, fadeSeconds);
     }
 }

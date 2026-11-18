@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Shows every "item + count" (what a stump or the Fairy asks for) as a DROP-DOWN of collectible items, grouped by type
 /// (Crop, Resource, Food, Seed), plus a count box. Works everywhere a ForestRequirement appears: the ForestProgression asset's
-/// stump list, each ForestDoor's Requirements, and the Fairy's quests. Must live in a folder named "Editor".
+/// stump list, each ForestZone's Requirements, and the Fairy's quests. Must live in a folder named "Editor".
 /// </summary>
 [CustomPropertyDrawer(typeof(ForestRequirement))]
 public class ForestRequirementDrawer : PropertyDrawer

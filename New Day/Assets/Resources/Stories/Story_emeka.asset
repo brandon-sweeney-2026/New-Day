@@ -1,0 +1,544 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65eefa1a5942e54a8d76aef12a7fda9, type: 3}
+  m_Name: Story_emeka
+  m_EditorClassIdentifier: Assembly-CSharp::NpcStoryArc
+  npcId: emeka
+  title: The Dead Letter Box
+  summary: 'Emeka knows everyone''s business and tells nobody. Sterling wants to replace his round with parcel lockers. He keeps a box of letters nobody could deliver, and one is for whoever farms your land. Fork: petition city hall to keep the round, or take Sterling''s logistics job.'
+  pathAName: Save the route
+  pathBName: Take the tower job
+  parts:
+  - title: Your first postcard
+    number: 1
+    heartsNeeded: 1
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Told you everybody gets a postcard in their first weeks. Here. Hand-delivered, because I couldn't wait for tomorrow's round.
+    - It's a picture of the plaza. On the back it says 'Welcome to the street. From the street.' Everybody signed it. Gus signed it twice, once to complain about the pen.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 11400000, guid: 834a444f19f7d0e419d3ef52b4a46ef0, type: 2}
+      amount: 1
+      friendship: 0
+  - title: Eleven doorsteps
+    number: 2
+    heartsNeeded: 2
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - You know what you learn, eleven doorsteps every morning? Who's up early, who's up late, who's waiting for a letter that never comes.
+    - Gus gets a seed catalogue every month and has never planted a seed. Kenji writes to his brother in Japan every Friday. Ada gets nothing at all, and checks the box every day anyway.
+    - I don't tell people what I know. I just make sure I knock a bit louder on the quiet houses.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The dead letter box
+    number: 3
+    heartsNeeded: 3
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Come here. Look. Under the counter at the sorting office, I keep a shoebox. Well. Three shoeboxes.
+    - Dead letters. Wrong addresses, people who moved, names nobody remembers. Twenty years of them. The rules say I should send them to be shredded.
+    - I've never been very good at that rule.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The lockers
+    number: 4
+    heartsNeeded: 4
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Have you seen the metal boxes in the plaza? Yellow, with the tower's logo?
+    - Sterling Parcel Lockers. You get a code on your phone, you open a little door, you take your parcel. No knock. No 'morning, Emeka'.
+    - The post office says my round is going down to three days a week. 'To reflect changing demand.' I asked who's demanding. They didn't know.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Nia asks
+    number: 5
+    heartsNeeded: 5
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags:
+      - story_nia_4
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Nia asked me last night why I keep staring at my boots. I said I'm checking the laces.
+    - She said, 'Dad, you've been checking them for a week.' She notices everything, that girl. Bugs, beetles, her father being sad.
+    - She found a sick beetle by the river this week. Grey, she said, like it had been dipped in ash. She's more worried about that beetle than about my job. Good. So am I.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Letters nobody read
+    number: 6
+    heartsNeeded: 6
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I read you one of the dead letters. Just one. I've never opened one before, but this one wasn't sealed.
+    - '''Dear Ada, the stall will be fine without you for a week. Come to the coast. Bring the cat. Yours, always, J.'' Postmarked thirty-one years ago. Wrong house number.'
+    - I took it to her this morning. She read it on the step, and then she sat down on the step, and we sat there for an hour. My round was very late.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: For whoever farms here next
+    number: 7
+    heartsNeeded: 7
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - There's one in the box for your farm. It's older than me. The envelope just says 'To whoever farms here next'.
+    - I think it's yours. Here. Read it at home.
+    - ...You read it already? What did it say? No. Don't tell me. I'm the mail carrier, not the reader. Just tell me it was a good one.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The offer
+    number: 8
+    heartsNeeded: 8
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - A woman from the tower stopped me on the round today. Very polite. Very good shoes.
+    - '''Logistics supervisor. Sterling Parcel Network.'' A desk, a chair, three times the pay, and no more wet socks. I''d run the lockers. All of them.'
+    - Or Lucia says if the whole street signs a petition, city hall has to look at the round again. Every door. Every name.
+    - Grace says I should decide with my heart. My heart says my feet hurt. What do you say?
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 1
+      optionA: Start the petition
+      replyA:
+      - A petition it is. I'll start with Gus, because if Gus signs, everybody signs, just to disagree with him.
+      - And I know every door on this street. That's the one advantage I've got over a yellow box.
+      flagsA:
+      - mail_petition
+      optionB: Take the tower job
+      replyB:
+      - A desk. Dry socks. Three times the pay. Nia can have football boots that fit.
+      - I'll tell the post office tomorrow. Somebody else will do the round. Somebody will.
+      flagsB:
+      - emeka_tower_job
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Every door
+    number: 9
+    heartsNeeded: 9
+    path: 1
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Two hundred and six names! The whole street, the store, Frank's, and half the city hall staff. Kenji signed in calligraphy. It took him an hour.
+    - Lucia carried it into the council meeting herself. The lockers are staying, but so am I. Six days a week, like before.
+    - 'And look: nobody''s using the lockers. The yellow doors just sit there, shut. People would rather wait for a knock.'
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The quiet street
+    number: 9
+    heartsNeeded: 9
+    path: 2
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Third week at the desk. I can see a map of every locker in the city. Little green lights. No faces.
+    - The new carrier only does the street twice a week. Gus didn't get his catalogue. Kenji's letter to Japan sat in a box for nine days.
+    - And I don't know any of the news any more. Rosa had a cold, and I only found out when it was better. That's never happened.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: A letter from everyone
+    number: 10
+    heartsNeeded: 10
+    path: 1
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - This morning I had a letter in my own bag, addressed to me. In Nia's handwriting.
+    - 'Inside: one page from every house on the street. Rosa drew a loaf. Walt wrote ''adequate service''. Ada wrote ''thank you for J.'''
+    - And there's one for you, too. Here. I'm not telling you what it says. I'm the mail carrier, not the reader.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 11400000, guid: 834a444f19f7d0e419d3ef52b4a46ef0, type: 2}
+      amount: 1
+      friendship: 0
+  - title: One more round
+    number: 10
+    heartsNeeded: 10
+    path: 2
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I quit. Handed in my badge and walked out with my old bag over my shoulder. The woman in the good shoes didn't understand.
+    - Then I walked the old round. All eleven doorsteps, with nothing to deliver. Just knocking. 'Morning, Rosa. Morning, Gus. Morning, Kenji.'
+    - 'The post office took me back the next day. Six days a week. Here: the first letter I''ve delivered since. It''s from me. It says ''thanks''.'
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags:
+    - mail_petition
+    reward:
+      gold: 0
+      item: {fileID: 11400000, guid: 834a444f19f7d0e419d3ef52b4a46ef0, type: 2}
+      amount: 1
+      friendship: 0

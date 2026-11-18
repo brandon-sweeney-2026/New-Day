@@ -88,8 +88,65 @@ public class CropManager : MonoBehaviour
 
     private void OnDestroy()
     {
+        // Leaving the scene: write the crops down so they are still growing when you come back.
+        SaveSystem.RememberCrops(this);
+
         if (PollutionMap.Instance != null) PollutionMap.Instance.OnLevelChanged -= OnPollutionChanged;
         if (Instance == this) Instance = null;
+    }
+
+    // ------------------------------------------------------------------
+    // Saving and loading (used by SaveSystem)
+    // ------------------------------------------------------------------
+
+    /// <summary>Every planted crop as plain data.</summary>
+    public List<SavedCrop> CaptureCrops()
+    {
+        var list = new List<SavedCrop>();
+        foreach (CropInstance c in planted.Values)
+        {
+            if (c.data == null) continue;
+            list.Add(new SavedCrop
+            {
+                x = c.cell.x, y = c.cell.y,
+                crop = c.data.name,
+                daysGrown = c.daysGrown,
+                pollutionSum = c.pollutionSum,
+                samples = c.samples,
+                withered = c.withered
+            });
+        }
+        return list;
+    }
+
+    /// <summary>Removes every crop and plants the saved ones again, exactly as far along as they were. Call after FarmManager.RestoreSoil.</summary>
+    public void RestoreCrops(List<SavedCrop> saved)
+    {
+        if (saved == null || farm == null) return;
+
+        foreach (CropInstance old in new List<CropInstance>(planted.Values)) Remove(old);
+
+        foreach (SavedCrop s in saved)
+        {
+            CropData data = FindByName(s.crop);
+            var cell = new Vector3Int(s.x, s.y, 0);
+            if (data == null || !farm.IsTilled(cell) || planted.ContainsKey(cell)) continue;
+
+            CropInstance crop = Spawn(cell, data);
+            crop.daysGrown = s.daysGrown;
+            crop.pollutionSum = s.pollutionSum;
+            crop.samples = s.samples;
+            crop.withered = s.withered;
+            Refresh(crop);
+        }
+    }
+
+    /// <summary>The crop whose asset is called 'assetName' (from this manager's Crops list), or null.</summary>
+    private CropData FindByName(string assetName)
+    {
+        if (crops == null || string.IsNullOrEmpty(assetName)) return null;
+        foreach (CropData c in crops) if (c != null && c.name == assetName) return c;
+        return null;
     }
 
     // ------------------------------------------------------------------
@@ -166,6 +223,15 @@ public class CropManager : MonoBehaviour
         if (!farm.IsTilled(cell) || planted.ContainsKey(cell)) return false;
         if (WhyNotPlantable(data) != null) return false;      // wrong season (or winter)
 
+        CropInstance crop = Spawn(cell, data);
+        Sample(crop);
+        Refresh(crop);
+        return true;
+    }
+
+    /// <summary>Makes the plant object for a crop and records it on its tile. Used by planting and by loading a save.</summary>
+    private CropInstance Spawn(Vector3Int cell, CropData data)
+    {
         var go = new GameObject("Crop: " + data.cropName);
         go.transform.SetParent(holder, false);
         go.transform.position = farm.CellToWorldCenter(cell) + (Vector3)plantOffset;
@@ -182,10 +248,7 @@ public class CropManager : MonoBehaviour
         }
         planted[cell] = crop;
         farm.SetHasCrop(cell, true);
-
-        Sample(crop);
-        Refresh(crop);
-        return true;
+        return crop;
     }
 
     /// <summary>Harvests a ripe crop into the inventory (extra items drop on the ground). Returns true if harvested.</summary>
@@ -219,8 +282,11 @@ public class CropManager : MonoBehaviour
         ItemData item = crop.data.harvestItem;
         if (item != null && amount > 0 && inventory != null)
         {
-            int leftover = inventory.Add(item, amount, level);
+            // Fertilizer worked into this tile (bought from the university) makes a better crop: Silver, Gold or Platinum.
+            int quality = SoilCare.UseFertilizer(cell);
+            int leftover = inventory.Add(item, amount, level, quality);
             if (leftover > 0) ItemPickup.Spawn(item, leftover, farm.CellToWorldCenter(cell), level);
+            if (quality > 0) GameState.AddCounter("quality_crops_harvested", amount);
         }
 
         string label = level > 0 ? " (" + settings.Label(level) + " pollution)" : "";
@@ -229,6 +295,19 @@ public class CropManager : MonoBehaviour
         GameState.AddCounter("crops_harvested", amount);
 
         Remove(crop);
+        return true;
+    }
+
+    /// <summary>
+    /// Makes the crop here grow 'days' days at once (the growth tonic from the university). It never grows past ripe.
+    /// Returns false if there is no growing crop on this tile.
+    /// </summary>
+    public bool Boost(Vector3Int cell, int days)
+    {
+        CropInstance crop;
+        if (!planted.TryGetValue(cell, out crop) || crop.withered || crop.data.IsFullyGrown(crop.daysGrown)) return false;
+        crop.daysGrown = Mathf.Min(crop.data.DaysToMature, crop.daysGrown + Mathf.Max(1, days));
+        Refresh(crop);
         return true;
     }
 

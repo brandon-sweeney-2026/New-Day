@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f4ff7549fed0c4b99db334d94d5526, type: 3}
+  m_Name: coffeetable_coastal
+  m_EditorClassIdentifier: Assembly-CSharp::DecorItem
+  id: coffeetable_coastal
+  displayName: Rattan Coffee Table
+  description: Woven sides and a white top.
+  category: 7
+  theme: coastal
+  price: 190
+  mount: 0
+  width: 2
+  depth: 1
+  blocksPlayer: 1
+  surfaceHeight: 9
+  front: {fileID: 21300000, guid: 68d115c361f27ce47ac5595554220210, type: 3}
+  right: {fileID: 21300000, guid: aef2e1408e5332e439fa383b058d8fe8, type: 3}
+  back: {fileID: 21300000, guid: 5702721446595004da476e49d73155ae, type: 3}
+  left: {fileID: 21300000, guid: d9543ea3e19481947b71c8548d8f66e3, type: 3}
+  floorTile: {fileID: 0}
+  wallTop: {fileID: 0}
+  wallUpper: {fileID: 0}
+  wallBase: {fileID: 0}

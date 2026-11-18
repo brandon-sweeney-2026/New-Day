@@ -1,0 +1,545 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65eefa1a5942e54a8d76aef12a7fda9, type: 3}
+  m_Name: Story_walt
+  m_EditorClassIdentifier: Assembly-CSharp::NpcStoryArc
+  npcId: walt
+  title: Delgado & Petrakis
+  summary: 'Walt is proud, grumpy and his knee is failing. He and Gus were partners until Gus built the first tower for Sterling. Fork: get the two of them to build the plaza bandstand together, or help Walt finish his secret project alone.'
+  pathAName: Build it with Gus
+  pathBName: Finish it alone
+  parts:
+  - title: A strategy
+    number: 1
+    heartsNeeded: 1
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Kenji has beaten me at chess ten days running now. Ten.
+    - I'm lulling him into a false sense of security. Any day now, he'll get careless. Any day. Probably next year.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Your fence
+    number: 2
+    heartsNeeded: 2
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I walked past your farm. Your fence posts are a disgrace. Leaning like drunks at a wedding.
+    - ...I straightened three of them while you weren't looking. Don't thank me. It was offending my eyes, that's all.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Something in the shed
+    number: 3
+    heartsNeeded: 3
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I'm building something. In the shed. Don't ask what.
+    - I need good wood, and Frank's timber is too wet, whatever he says. You've got trees out there. Fifteen pieces. Straight ones, mind.
+    happy: 0
+    ask:
+      item: {fileID: 11400000, guid: 74774f685447bd4458cd1bed839c572e, type: 2}
+      amount: 15
+      minQuality: 0
+      questTitle: Wood for Walt's shed
+      questText: Walt wants 15 pieces of good Wood for something he's building in his shed. He won't say what.
+      reminder:
+      - The wood? Fifteen. Straight. If it's bent, take it to Frank, he'll sell it to somebody.
+      thanks:
+      - Hm. Not bad. Not bad at all.
+      - Here. Fair price. Now don't go telling Rosa there's anything in the shed.
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 180
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The knee
+    number: 4
+    heartsNeeded: 4
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Don't fuss. I'm sitting in the flowerbed because I want to. It's a perfectly good flowerbed.
+    - ...All right. The knee went. Halfway through the weeding. Just folded, like a cheap ladder.
+    - Priya Nair came by and poked at it and said words I didn't like. 'Specialist.' 'Rest.' 'At your age.' I'm not at my age. I've never been at my age.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Rosa's worried
+    number: 5
+    heartsNeeded: 5
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Rosa's been talking to you about the doctor, hasn't she. I can tell. You've got her face on.
+    - I'll go when I'm ready. A man spends forty years climbing ladders, he knows what his knees can take.
+    - Mine can take about one more ladder. I've been saving it for something.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The photo
+    number: 6
+    heartsNeeded: 6
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Here. Look at this. Don't get fingerprints on it.
+    - Two young idiots in front of a truck. 'Delgado & Petrakis, Builders.' That's me on the left, with hair. That's Gus on the right, with more hair.
+    - We built half the porches on this street together. Then we didn't. That's all you need to know about that.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The first tower
+    number: 7
+    heartsNeeded: 7
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags:
+      - story_gus_6
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Gus told you his side. I can see it. So you might as well have mine.
+    - 'Thirty years ago a man named Sterling wanted a building in the city. Big contract. More money than our whole company was worth. I said no: I''d heard what his family did to the river.'
+    - Gus said yes. He went and built it without me. The first Sterling tower. Thirty years I've been looking at it from my porch.
+    - ...He never told me why. And I never asked. Stubborn, the pair of us.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The last ladder
+    number: 8
+    heartsNeeded: 8
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Lucia's got permission for a bandstand in the plaza. For Tariq, the market, the street dinners. City hall wants a builder.
+    - I could build it. One last job. One last ladder. But I can't do the roof. Not with this knee. I'd need somebody who knows roofs.
+    - Gus knows roofs. Gus is the best roofer I ever met.
+    - Or I finish what's in the shed, quiet, on my own, and leave the bandstand to the young ones. Well? Don't just stand there.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 1
+      optionA: Build it with Gus
+      replyA:
+      - Hm. Fine. FINE. I'll go round there. I'll knock. If he slams the door, it's your fault.
+      - ...If he doesn't slam the door, it's also your fault. Somehow.
+      flagsA:
+      - bandstand_planned
+      optionB: Finish it alone
+      replyB:
+      - Alone, then. Like always. It's what I'm good at.
+      - Come round on Sunday. You can see what's in the shed. You've earned that much.
+      flagsB:
+      - walt_shed_project
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Two old idiots on a roof
+    number: 9
+    heartsNeeded: 9
+    path: 1
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Three weeks. Three weeks of that man telling me my joints were wrong while I told him his tiles were crooked.
+    - Kenji sat on a bench the whole time and said nothing, which is the most annoying thing anyone has ever done to me.
+    - It's finished. Best thing on the street. Gus did the roof. I did everything else. Mostly. Don't tell him I said 'mostly'.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: What's in the shed
+    number: 9
+    heartsNeeded: 9
+    path: 2
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Well. There it is. Go on, look.
+    - A cradle. Oak. No nails, just joints. My father made one like this for me.
+    - Tomas, our boy, doesn't come home. He's busy. Too busy for grandchildren, maybe. But if there's ever one, there's a cradle waiting. And if there isn't... it's a good cradle anyway.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Checkmate
+    number: 10
+    heartsNeeded: 10
+    path: 1
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Checkmate. CHECKMATE. Did you hear me, Kenji? Checkmate!
+    - Eleven years. Eleven years, and I've finally done it. I'm getting it carved on the bench.
+    - Kenji says he was distracted by the bandstand roof shining. I say he's a sore loser. Gus says we're both senile. Best day I've had in thirty years.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 11400000, guid: 74774f685447bd4458cd1bed839c572e, type: 2}
+      amount: 10
+      friendship: 0
+  - title: A good move
+    number: 10
+    heartsNeeded: 10
+    path: 2
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Kenji had me beat. Third move from the end, I could see it coming. Then he moved his bishop to the wrong square.
+    - He's never made a wrong move in eleven years. He looked at the cradle in my shed last week, and now he's making wrong moves.
+    - I won. I'm not getting it carved on the bench. Some wins you keep quiet. ...And I've been round to see Gus. Don't make a face. We had tea. That's all.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 11400000, guid: 74774f685447bd4458cd1bed839c572e, type: 2}
+      amount: 10
+      friendship: 0

@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f4ff7549fed0c4b99db334d94d5526, type: 3}
+  m_Name: oven_retro
+  m_EditorClassIdentifier: Assembly-CSharp::DecorItem
+  id: oven_retro
+  displayName: Turquoise Retro Range
+  description: Chrome trim and a clock on the back.
+  category: 18
+  theme: retro
+  price: 550
+  mount: 0
+  width: 2
+  depth: 1
+  blocksPlayer: 1
+  surfaceHeight: 0
+  front: {fileID: 21300000, guid: f9db299d5edddc1408dd5ece418c166f, type: 3}
+  right: {fileID: 21300000, guid: 84e4beddcc39fe74fa0d1adb5c03af2c, type: 3}
+  back: {fileID: 21300000, guid: 3395f828fd112dc40946443632689c97, type: 3}
+  left: {fileID: 21300000, guid: 48c7617a6f873b84cb07c974ea05d1b0, type: 3}
+  floorTile: {fileID: 0}
+  wallTop: {fileID: 0}
+  wallUpper: {fileID: 0}
+  wallBase: {fileID: 0}

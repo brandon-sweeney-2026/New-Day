@@ -4,6 +4,8 @@ using UnityEngine;
 /// A door. Press the action button in front of it to walk through.
 /// Use one on the outside of the house (leads INTO the room) and one inside by the exit (leads OUT).
 /// Needs a Collider2D (a trigger works well).
+/// Walking through plays a short animation (DoorTransition): the door painted on the building swings open
+/// (DoorSwing, added automatically), the screen fades, and the front door swings shut behind you when you come out.
 /// </summary>
 [RequireComponent(typeof(Collider2D))]
 public class HouseDoor : MonoBehaviour, IInteractable
@@ -16,7 +18,20 @@ public class HouseDoor : MonoBehaviour, IInteractable
     [Tooltip("Direction the player faces after walking through.")]
     [SerializeField] private Vector2 arriveFacing = Vector2.up;
 
+    [Header("Animation")]
+    [Tooltip("Seconds the screen takes to fade to black (and the same again to fade back in). 0 = no fade.")]
+    [Range(0f, 1f)] [SerializeField] private float fadeSeconds = 0.18f;
+
+    private DoorSwing swing;
+
     public string InteractPrompt { get { return prompt; } }
+
+    private void Awake()
+    {
+        // The swinging door. It stays inert if this door has no known building picture (for example inside a room).
+        swing = GetComponent<DoorSwing>();
+        if (swing == null) swing = gameObject.AddComponent<DoorSwing>();
+    }
 
     public void Interact(PlayerActions player)
     {
@@ -26,13 +41,10 @@ public class HouseDoor : MonoBehaviour, IInteractable
             return;
         }
 
-        var rb = player.GetComponent<Rigidbody2D>();
-        if (rb != null) { rb.position = destination.position; rb.linearVelocity = Vector2.zero; }
-        player.transform.position = destination.position;
-
-        if (enterInterior != null) enterInterior.EnterRoom();
-        else HouseInterior.LeaveAnyRoom();
-
-        if (player.Controller != null) player.Controller.FaceDirection(arriveFacing);
+        DoorTransition.Walk(player, swing, destination, arriveFacing, () =>
+        {
+            if (enterInterior != null) enterInterior.EnterRoom();
+            else HouseInterior.LeaveAnyRoom();
+        }, fadeSeconds);
     }
 }

@@ -94,8 +94,11 @@ public class PlayerMenuSettings : ScriptableObject
     [Tooltip("A second key that opens the menu. Inside the menu Esc always means 'go back'. Set to None to turn off.")]
     public Key secondOpenKey = Key.Escape;
 
-    [Header("Look")]
-    [Tooltip("Leave empty to use Unity's built-in font.")]
+    // The window itself (cover, pages, bookmarks, highlighter, ink colours) is drawn by the Book Skin
+    // (Assets/Resources/BookSkin.asset). Only 'font', 'headingColor' and 'goodColor' below are still used:
+    // the two colours are turned into matching dark ink by BookSkin.Ink. The other colours are from the old dark window.
+    [Header("Look (the window is drawn by the Book Skin asset)")]
+    [Tooltip("Leave empty to use the Book Skin's font.")]
     public Font font;
     public Color dimColor = new Color(0f, 0f, 0f, 0.55f);
     public Color panelColor = new Color(0.14f, 0.1f, 0.08f, 0.97f);
@@ -217,7 +220,16 @@ public class PlayerMenuSettings : ScriptableObject
             new Achievement("merchant", "Merchant", "Sell 100 items.", GoalKind.Counter, "items_sold", 100, 200),
             new Achievement("nest_egg", "Nest Egg", "Hold 5000 gold at once.", GoalKind.Gold, "", 5000, 0),
             new Achievement("shadow_chaser", "Shadow Chaser", "Banish 10 shadows in the forest.", GoalKind.Counter, "shadows_banished", 10, 200),
-            new Achievement("grove", "The Hidden Grove", "Reach the grove at the heart of the forest.", GoalKind.Flag, "forest_grove_reached", 1, 100),
+            new Achievement("grove", "The Hidden Grove", "Reach the grove at the end of the forest trail.", GoalKind.Flag, "forest_grove_reached", 1, 100),
+            // the Healing Forest: one for each zone (flag forest_zone_<id>), one for all six, and one for being kind to the animals
+            new Achievement("forest_trailhead", "First Green", "Heal the Trailhead.", GoalKind.Flag, "forest_zone_trailhead", 1, 50),
+            new Achievement("forest_creek", "Running Clear", "Heal Creek Bend.", GoalKind.Flag, "forest_zone_creek_bend", 1, 75),
+            new Achievement("forest_hollow", "Spores Settled", "Heal Mushroom Hollow.", GoalKind.Flag, "forest_zone_mushroom_hollow", 1, 100),
+            new Achievement("forest_clearing", "Regrowth", "Heal the Old Logging Clearing.", GoalKind.Flag, "forest_zone_logging_clearing", 1, 125),
+            new Achievement("forest_ridge", "Thornless", "Heal Bramble Ridge.", GoalKind.Flag, "forest_zone_bramble_ridge", 1, 150),
+            new Achievement("forest_mire", "Through the Fog", "Heal the Mire.", GoalKind.Flag, "forest_zone_the_mire", 1, 200),
+            new Achievement("forest_whole", "The Forest Breathes", "Heal every part of the forest.", GoalKind.Counter, "forest_zones_healed", 6, 500),
+            new Achievement("gentle_hands", "Gentle Hands", "Pet the forest animals 10 times.", GoalKind.Counter, "forest_critters_petted", 10, 100),
             new Achievement("fairy_friend", "Fairy's Helper", "Finish a job for the Fairy.", GoalKind.Counter, "fairy_quests_done", 1, 100),
             new Achievement("home_improvement", "Home Improvement", "Buy an upgrade for the farmhouse.", GoalKind.Counter, "house_upgrades", 1, 50),
             new Achievement("new_in_town", "New In Town", "Meet 5 people.", GoalKind.Counter, "people_met", 5, 50),

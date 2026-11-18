@@ -1,0 +1,544 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65eefa1a5942e54a8d76aef12a7fda9, type: 3}
+  m_Name: Story_dev
+  m_EditorClassIdentifier: Assembly-CSharp::NpcStoryArc
+  npcId: dev
+  title: The Best Left Foot
+  summary: 'Dev is sixteen, cooks pasta on Thursdays, and has the best left foot Lucia has coached. A Sterling-sponsored academy wants him, but he''d have to leave his mum alone. Fork: stay and play the Suburb Cup, or take the academy place.'
+  pathAName: Stay with the team
+  pathBName: Join the academy
+  parts:
+  - title: We need a keeper
+    number: 1
+    heartsNeeded: 1
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Oh. Hey. You're back. Do you play in goal yet? We still need a keeper. Ji-ho's still terrible.
+    - No pressure. Except, like, a lot of pressure. We play the city team next month.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The slush debate
+    number: 2
+    heartsNeeded: 2
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Okay, settle this. Blue slush or red slush?
+    - Wrong. Wait, you didn't say anything yet. Whatever you were going to say, if it wasn't blue, it was wrong.
+    - Red slush is for people who've given up on life. Blue slush is for people with hope. Look it up.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Actually good pasta
+    number: 3
+    heartsNeeded: 3
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Thursdays I cook, because Mum's on late shifts. It's always pasta. Nobody complains, but nobody says 'wow' either.
+    - I want somebody to say 'wow'. Real tomatoes, not tins. Could you get me some? Four.
+    happy: 0
+    ask:
+      item: {fileID: 11400000, guid: e8be23eec11c7554695d1c5a7160ab26, type: 2}
+      amount: 4
+      minQuality: 0
+      questTitle: Tomatoes for pasta night
+      questText: Dev wants four real tomatoes so his Thursday pasta is 'actually good' for once.
+      reminder:
+      - Got the tomatoes? Four. I'm doing a sauce from a video. The guy in the video has a moustache. You can trust him.
+      thanks:
+      - These are huge. These are so red.
+      - Mum's going to say 'wow'. I'm going to make her say it twice.
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: She said wow
+    number: 4
+    heartsNeeded: 4
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - She said WOW. Twice! And then she asked for the recipe, and then she fell asleep at the table. But still. Twice.
+    - Practice was good too. I scored four. Coach Lucia made me run laps anyway, for 'celebrating like a seagull'. That's not a rule.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The man on the touchline
+    number: 5
+    heartsNeeded: 5
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - There was a man at practice today. On the touchline, with a clipboard and a Sterling jacket. He didn't watch anybody else. Just me.
+    - Coach says he's a scout. From the academy in the city. The proper one, with the big pitches and the TV cameras.
+    - I played like a donkey after that. My legs forgot how legs work.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The offer
+    number: 6
+    heartsNeeded: 6
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - The academy wants me. Boarding school, in the city. Training every day, all paid for. Sterling Sports Academy.
+    - If I'm good enough there, I could play properly. Like, for a living.
+    - I'd only be home on Sundays. Mum would be on her own all week. She's already on her own most of the week. I'm the one who does the dishes.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: I haven't told her
+    number: 7
+    heartsNeeded: 7
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags:
+      - story_priya_6
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I haven't told Mum. About the academy.
+    - After Dad's card, she sat in the kitchen for ages. I'm not adding to that. She'd tell me to go. She'd tell me to go and then sit in the kitchen on her own every night.
+    - Coach Lucia knows. She said, 'Your mum is tougher than both of us, Dev.' Which is true. But that's not the point.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Stay or go
+    number: 8
+    heartsNeeded: 8
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I have to tell the academy by Saturday. That's the day after the Suburb Cup draw.
+    - If I stay, I play the Cup with the street. Ji-ho, Nia, everybody. Against the city team. And Mum's not alone.
+    - If I go, I might actually make it. Proper football. I'd send money home. I'd have a Sterling badge on my shirt, though. Every day.
+    - You don't have to be nice about it. Just tell me what you'd do.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 1
+      optionA: Stay with the team
+      replyA:
+      - Stay. Yeah. I think I needed somebody to say it so I could stop arguing with myself.
+      - I'm telling Mum tonight. All of it. And then I'm telling Coach we're going to win the Cup.
+      flagsA:
+      - dev_stayed
+      optionB: Join the academy
+      replyB:
+      - Go. Okay. Okay. I'm going.
+      - I'm telling Mum tonight. She's going to cry and then pack my bag before I've finished talking. I know her.
+      flagsB:
+      - dev_academy
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The Cup final
+    number: 9
+    heartsNeeded: 9
+    path: 1
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - We WON. Three-two, against the Sterling shirts. Nia saved a penalty, Ji-ho dived the right way for once, and I scored the winner with my left. My LEFT.
+    - Mum was on the touchline. She'd swapped three shifts to be there. She screamed so loud the crow flew off Kenji's bench.
+    - The academy scout came over after. He said the offer's still open next year. I said maybe. Maybe means we'll see.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The Sterling tracksuit
+    number: 9
+    heartsNeeded: 9
+    path: 2
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - The academy's amazing. Pitches like carpet. Coaches who know everything. A gym with machines I don't even know the names of.
+    - Every Sunday I come home in the Sterling tracksuit. I take it off before I get to the street. I don't really know why.
+    - Mum's okay. She says she's okay. Mrs. Delgado brings her soup now. I think that's a good sign and a bad sign.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Thursday pasta
+    number: 10
+    heartsNeeded: 10
+    path: 1
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Thursday pasta night has got out of hand. Mum invited Coach. Coach brought Mateo. Mateo brought Ji-ho. Ji-ho brought Nia, who brought a beetle.
+    - Eleven people in our kitchen. I made the sauce with your tomatoes. Everybody said wow. Not twice. Eleven times.
+    - Thanks for telling me to stay. Here. Blue slush. It's for people with hope.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 11400000, guid: 8d4c3daea9f4f234990f09e07f7a04d8, type: 2}
+      amount: 3
+      friendship: 0
+  - title: An accidental pass
+    number: 10
+    heartsNeeded: 10
+    path: 2
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - The academy played the suburb team in a friendly. Me in the Sterling shirt against everybody I grew up with. Worst day of my life. Best game, though.
+    - Last minute, I had the ball, and I passed it. To Ji-ho. By accident. Totally by accident. He scored. The suburb won.
+    - Coach at the academy shouted for ten minutes. Mum laughed for an hour. I'm coming home after this season. Here. Blue slush. You'll need hope too.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 11400000, guid: 8d4c3daea9f4f234990f09e07f7a04d8, type: 2}
+      amount: 3
+      friendship: 0

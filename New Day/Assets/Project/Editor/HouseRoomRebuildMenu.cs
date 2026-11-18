@@ -61,7 +61,7 @@ public static class HouseRoomRebuildMenu
                 switch (o.category)
                 {
                     case HouseCategory.Floor: interior.PaintFloor(o.tile); painted++; break;
-                    case HouseCategory.Wall: interior.PaintWall(o.tile, o.tileBase); painted++; break;
+                    case HouseCategory.Wall: interior.PaintWall(o.tile, o.tileBase, o.tileTop); painted++; break;
                     case HouseCategory.Siding: case HouseCategory.Roof: break;
                     default: interior.SetFurniture(o.category, o.sprite); break;
                 }

@@ -522,7 +522,7 @@ public static class HouseSetupMenu
                 case HouseCategory.Siding: walls.color = o.tint; break;
                 case HouseCategory.Roof: roof.color = o.tint; break;
                 case HouseCategory.Floor: interior.PaintFloor(o.tile); break;
-                case HouseCategory.Wall: interior.PaintWall(o.tile, o.tileBase); break;
+                case HouseCategory.Wall: interior.PaintWall(o.tile, o.tileBase, o.tileTop); break;
                 default: interior.SetFurniture(o.category, o.sprite); break;
             }
         }
@@ -535,6 +535,14 @@ public static class HouseSetupMenu
             if (b.transform.IsChildOf(room.transform)) continue;
             Undo.DestroyObjectImmediate(b.gameObject);
             log.Add("Removed the old placeholder Bed (the house has one inside now).");
+        }
+
+        // ---------------- furnish the inside from the decor catalogue (fireplace, kitchen, laundry...) if it exists ----------------
+        if (InteriorDecorSetupMenu.Ready())
+        {
+            log.Add(InteriorDecorTools.Furnish(interior, "Farmhouse", "cottage", InteriorDecorLayouts.Farmhouse, true));
+            string extra = InteriorDecorSetupMenu.AddHouseUpgrades();
+            if (extra.Length > 0) log.Add(extra);
         }
 
         log.Add("Built the farmhouse at " + origin + " (8 x 8 art, 8 x 4 solid footprint). Its inside is 20 x 20 tiles at x = 500, far from the farm.");

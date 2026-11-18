@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dc122cff4e3b244fb5b5e82046454cd, type: 3}
+  m_Name: H8
+  m_EditorClassIdentifier: Assembly-CSharp::InteriorLayout
+  theme: rustic
+  floor: {fileID: 11400000, guid: 1e94b9dbe6fff35479e34e858a79749a, type: 2}
+  wallCovering: {fileID: 11400000, guid: 4b0636d453f592d46b242bb6a4f6a75c, type: 2}
+  zoneFloors:
+  - zoneLabel: Kitchen
+    floor: {fileID: 11400000, guid: 4808f53f3610e634bafa1508ccde692b, type: 2}
+  - zoneLabel: Bath
+    floor: {fileID: 11400000, guid: a26f3a6b29ed16e44bc187627d5156ae, type: 2}
+  - zoneLabel: Sleeping
+    floor: {fileID: 11400000, guid: 486eb6c96a172a44f934493b770e320f, type: 2}
+  pieces:
+  - item: {fileID: 11400000, guid: 1b0f8771677feef4f8638604d3e1e258, type: 2}
+    position: {x: 0, y: 11}
+    facing: 0
+  - item: {fileID: 11400000, guid: bb95a598c82ce034998226ca4e7f3a11, type: 2}
+    position: {x: 1, y: 11}
+    facing: 0
+  - item: {fileID: 11400000, guid: 6c9e9c6028080bc47bb3be8fcaf7ab30, type: 2}
+    position: {x: 3, y: 11}
+    facing: 0
+  - item: {fileID: 11400000, guid: 1a620ce1324e9b24294ba1d7e7b3365d, type: 2}
+    position: {x: 5, y: 11}
+    facing: 0
+  - item: {fileID: 11400000, guid: 10144bd8cc34d224cb2ed4387a010c4d, type: 2}
+    position: {x: 2, y: 11}
+    facing: 0
+  - item: {fileID: 11400000, guid: 9bedf5d0f3417a145b2cd83b6be91c13, type: 2}
+    position: {x: 1, y: 7}
+    facing: 0
+  - item: {fileID: 11400000, guid: aa131f2838491a34b86fa8a8aec1bd71, type: 2}
+    position: {x: 0, y: 7}
+    facing: 1
+  - item: {fileID: 11400000, guid: aa131f2838491a34b86fa8a8aec1bd71, type: 2}
+    position: {x: 3, y: 7}
+    facing: 3
+  - item: {fileID: 11400000, guid: 4c16c1c3df4e04b4093981294ccac80c, type: 2}
+    position: {x: 2, y: 12.5}
+    facing: 0
+  - item: {fileID: 11400000, guid: 1f027630d797dc34ebc37505ec1d18dd, type: 2}
+    position: {x: 8, y: 1}
+    facing: 0
+  - item: {fileID: 11400000, guid: 68b94e99e1e0e5e4c91fb71adac7f1b7, type: 2}
+    position: {x: 7, y: 2}
+    facing: 1
+  - item: {fileID: 11400000, guid: 582d6823a26ef614a8b3ba5253b9b66d, type: 2}
+    position: {x: 11, y: 1}
+    facing: 3
+  - item: {fileID: 11400000, guid: df1926ff96fc5cf468cf07d19d3eae7e, type: 2}
+    position: {x: 9, y: 2}
+    facing: 1
+  - item: {fileID: 11400000, guid: 4af127d6a7478b54ea0525e0497ef1fa, type: 2}
+    position: {x: 9, y: 4}
+    facing: 3
+  - item: {fileID: 11400000, guid: f1b442831e1d7c748be00b2c1fbc8ec2, type: 2}
+    position: {x: 11, y: 4}
+    facing: 0
+  - item: {fileID: 11400000, guid: c28435253de0d784ea566d630d6b1516, type: 2}
+    position: {x: 11, y: 0}
+    facing: 0
+  - item: {fileID: 11400000, guid: 5cfdfdca2286a49488a3e393693a3566, type: 2}
+    position: {x: 9, y: 9}
+    facing: 0
+  - item: {fileID: 11400000, guid: 50da609e695910e449af61edcc4d63aa, type: 2}
+    position: {x: 11, y: 11}
+    facing: 0
+  - item: {fileID: 11400000, guid: b3e1b58536a795e4f9c0a02c23218981, type: 2}
+    position: {x: 11, y: 6}
+    facing: 3
+  - item: {fileID: 11400000, guid: f1b442831e1d7c748be00b2c1fbc8ec2, type: 2}
+    position: {x: 8, y: 11}
+    facing: 0
+  - item: {fileID: 11400000, guid: c28435253de0d784ea566d630d6b1516, type: 2}
+    position: {x: 7, y: 11}
+    facing: 0
+  - item: {fileID: 11400000, guid: da3c32323dec0214d98f354a5065e27b, type: 2}
+    position: {x: 7, y: 13}
+    facing: 0
+  - item: {fileID: 11400000, guid: b081eb9e37e18004e81fcdbebc8eb4b5, type: 2}
+    position: {x: 0, y: 3}
+    facing: 0
+  - item: {fileID: 11400000, guid: bd2b03c06032deb4c9df3fef4b2f6772, type: 2}
+    position: {x: 0, y: 0}
+    facing: 0
+  - item: {fileID: 11400000, guid: e36ae68d7143e2545ab9419333ab7882, type: 2}
+    position: {x: 2, y: 0}
+    facing: 0
+  - item: {fileID: 11400000, guid: 6c697524e99572244b966f230dbd7628, type: 2}
+    position: {x: 3, y: 0}
+    facing: 0

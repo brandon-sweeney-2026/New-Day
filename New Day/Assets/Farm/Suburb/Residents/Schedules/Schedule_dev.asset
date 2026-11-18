@@ -61,7 +61,7 @@ MonoBehaviour:
       forbidFlags: []
       counters: []
     stops:
-    - place: City
+    - place: UniDesk1
       scene: City
       waitMinutes: 350
       transitMinutes: 40

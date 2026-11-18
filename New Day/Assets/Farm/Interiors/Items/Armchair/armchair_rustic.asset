@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f4ff7549fed0c4b99db334d94d5526, type: 3}
+  m_Name: armchair_rustic
+  m_EditorClassIdentifier: Assembly-CSharp::DecorItem
+  id: armchair_rustic
+  displayName: Leather Wingback
+  description: High wings keep the draughts out.
+  category: 1
+  theme: rustic
+  price: 340
+  mount: 0
+  width: 1
+  depth: 1
+  blocksPlayer: 1
+  surfaceHeight: 0
+  front: {fileID: 21300000, guid: 11cbd2386de78ed47b1bc67da91d65fd, type: 3}
+  right: {fileID: 21300000, guid: 813e3098c6987af43af98d0c6ec585ea, type: 3}
+  back: {fileID: 21300000, guid: 7fb9e1861d33f4b4cb213ab6cfc78b7c, type: 3}
+  left: {fileID: 21300000, guid: 505711e80b238d946918055b4d9a6362, type: 3}
+  floorTile: {fileID: 0}
+  wallTop: {fileID: 0}
+  wallUpper: {fileID: 0}
+  wallBase: {fileID: 0}

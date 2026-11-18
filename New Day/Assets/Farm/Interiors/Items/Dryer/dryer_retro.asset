@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f4ff7549fed0c4b99db334d94d5526, type: 3}
+  m_Name: dryer_retro
+  m_EditorClassIdentifier: Assembly-CSharp::DecorItem
+  id: dryer_retro
+  displayName: Avocado Dryer
+  description: Matches the avocado washer.
+  category: 21
+  theme: retro
+  price: 340
+  mount: 0
+  width: 1
+  depth: 1
+  blocksPlayer: 1
+  surfaceHeight: 0
+  front: {fileID: 21300000, guid: 071db59bf578dfb40b025cc06e51dda5, type: 3}
+  right: {fileID: 21300000, guid: f4d7ce2489a1bc94bab0a09463b46b07, type: 3}
+  back: {fileID: 21300000, guid: 4b65b23074f32e142b08379b5e193814, type: 3}
+  left: {fileID: 21300000, guid: c66cb4ea727fba244b2e9fdc322df4f7, type: 3}
+  floorTile: {fileID: 0}
+  wallTop: {fileID: 0}
+  wallUpper: {fileID: 0}
+  wallBase: {fileID: 0}

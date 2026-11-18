@@ -230,6 +230,7 @@ public static class StoreSetupMenu
         SetString(aptExitDoor, "prompt", "Go downstairs");
 
         storeStyle.Apply(); aptStyle.Apply();
+        if (InteriorDecorSetupMenu.Ready()) Debug.Log(InteriorDecorTools.Furnish(aptInt, "KimApartment", "modern", InteriorDecorLayouts.KimApartment, false));
         UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(UnityEngine.SceneManagement.SceneManager.GetActiveScene());
         Selection.activeGameObject = ext;
         EditorUtility.DisplayDialog("General store ready",
@@ -305,6 +306,27 @@ public static class StoreSetupMenu
             Part("Bedroom 1|2", 7, 15, 1, 5), Part("Bedroom 2|3", 14, 15, 1, 5),
         };
 
+        // With the decor catalogue (Farm > Set Up > Interior Decor) the apartment is furnished from it after the doors are made
+        // (InteriorDecorLayouts.KimApartment). Without it, the old apartment props below are used.
+        if (!InteriorDecorSetupMenu.Ready())
+            PlaceOldApartmentProps(apt, props);
+
+        // spots (for the family's schedules)
+        Spot(Child(apt, "Spot_Living", new Vector3(5f, 2.2f, 0f)), "AptLiving", Vector2.up);
+        Spot(Child(apt, "Spot_Kitchen", new Vector3(14.5f, 5f, 0f)), "AptKitchen", Vector2.up);
+        Spot(Child(apt, "Spot_Dining", new Vector3(14.5f, 2f, 0f)), "AptDining", Vector2.up);
+        Spot(Child(apt, "Spot_Hall", new Vector3(10f, 10.5f, 0f)), "AptHall", Vector2.up);
+        Spot(Child(apt, "Spot_Bed1", new Vector3(3.5f, 15.4f, 0f)), "AptBed1", Vector2.up);
+        Spot(Child(apt, "Spot_Bed2", new Vector3(9.3f, 15.5f, 0f)), "AptBed2", Vector2.up);
+        Spot(Child(apt, "Spot_Bed3", new Vector3(16.4f, 15.5f, 0f)), "AptBed3", Vector2.up);
+        Spot(Child(apt, "Spot_Bath1", new Vector3(2.5f, 10.5f, 0f)), "AptBath1", Vector2.up);
+        Spot(Child(apt, "Spot_Bath2", new Vector3(17.5f, 10.5f, 0f)), "AptBath2", Vector2.up);
+        Spot(Child(apt, "Spot_Stairs", new Vector3(10.5f, 2f, 0f)), "AptStairs", Vector2.down);
+    }
+
+    /// <summary>The apartment's original plain furniture (used only when the decor catalogue doesn't exist yet).</summary>
+    private static void PlaceOldApartmentProps(GameObject apt, Dictionary<string, GameObject> props)
+    {
         // living room (open plan with the kitchen)
         Place(props, apt, "Apt_RugLiving", 5f, 4.2f);
         Place(props, apt, "Apt_Sofa", 3f, 6.6f); Place(props, apt, "Apt_TvStand", 7.2f, 6.6f);
@@ -326,18 +348,6 @@ public static class StoreSetupMenu
         Place(props, apt, "Apt_BedGreen", 16.4f, 16.6f); Place(props, apt, "Apt_Bookshelf", 18.5f, 16.4f);
         // windows on the back wall
         Place(props, apt, "Apt_Window", 4f, 21.4f); Place(props, apt, "Apt_Window", 11f, 21.4f); Place(props, apt, "Apt_Window", 17.5f, 21.4f);
-
-        // spots (for the family's schedules)
-        Spot(Child(apt, "Spot_Living", new Vector3(5f, 2.2f, 0f)), "AptLiving", Vector2.up);
-        Spot(Child(apt, "Spot_Kitchen", new Vector3(14.5f, 5f, 0f)), "AptKitchen", Vector2.up);
-        Spot(Child(apt, "Spot_Dining", new Vector3(14.5f, 2f, 0f)), "AptDining", Vector2.up);
-        Spot(Child(apt, "Spot_Hall", new Vector3(10f, 10.5f, 0f)), "AptHall", Vector2.up);
-        Spot(Child(apt, "Spot_Bed1", new Vector3(3.5f, 15.4f, 0f)), "AptBed1", Vector2.up);
-        Spot(Child(apt, "Spot_Bed2", new Vector3(9.3f, 15.5f, 0f)), "AptBed2", Vector2.up);
-        Spot(Child(apt, "Spot_Bed3", new Vector3(16.4f, 15.5f, 0f)), "AptBed3", Vector2.up);
-        Spot(Child(apt, "Spot_Bath1", new Vector3(2.5f, 10.5f, 0f)), "AptBath1", Vector2.up);
-        Spot(Child(apt, "Spot_Bath2", new Vector3(17.5f, 10.5f, 0f)), "AptBath2", Vector2.up);
-        Spot(Child(apt, "Spot_Stairs", new Vector3(10.5f, 2f, 0f)), "AptStairs", Vector2.down);
     }
 
     private static FloorZone Zone(string label, int x, int y, int w, int h, TileBase tile)

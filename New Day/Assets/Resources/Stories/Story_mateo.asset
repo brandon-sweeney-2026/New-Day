@@ -1,0 +1,544 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65eefa1a5942e54a8d76aef12a7fda9, type: 3}
+  m_Name: Story_mateo
+  m_EditorClassIdentifier: Assembly-CSharp::NpcStoryArc
+  npcId: mateo
+  title: Eleven Kinds of Grass
+  summary: 'Mateo looks after the park and worries about every blade of grass. City hall plans to sell half of it to Sterling for a car park, and his sister is the one with the forms on her desk. Fork: a ''Save the Park'' planting day, or a deal where Sterling keeps half and pays to clean the river.'
+  pathAName: Save the park
+  pathBName: Take the deal
+  parts:
+  - title: You can't hurry a plant
+    number: 1
+    heartsNeeded: 1
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Good to see you. Mind the edge of the pitch there, I re-seeded it on Tuesday.
+    - A farmer understands. People think a park just happens. It doesn't. It's a thousand small worries, every day, and if you do it right, nobody notices any of them.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Checking each other's work
+    number: 2
+    heartsNeeded: 2
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Ada watered the plaza planters at eight. I checked them at ten. She checked my hedges at eleven.
+    - Neither of us has said a word about it for six years. It's the best working relationship I've ever had.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Oaks for the far corner
+    number: 3
+    heartsNeeded: 3
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - There's a corner of the park where the old oak came down in a storm. It's been bare for three years.
+    - Acorns from a real tree would be perfect. Five. I'll plant them all, and the strongest one gets the corner. It'll be a hundred years before it's finished, but somebody has to start.
+    happy: 0
+    ask:
+      item: {fileID: 11400000, guid: db0b4bbca1f1b064182f4bb119d6cb66, type: 2}
+      amount: 5
+      minQuality: 0
+      questTitle: Acorns for the park
+      questText: Mateo wants five acorns to plant an oak in the bare corner of the park.
+      reminder:
+      - Any acorns? Five is plenty. The corner's waiting. Corners are very patient.
+      thanks:
+      - Lovely. Fat and brown. These will do very well.
+      - Here. For your trouble. Come back in a hundred years and sit under it.
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 120
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Blossom week
+    number: 4
+    heartsNeeded: 4
+    path: 0
+    conditions:
+      days: 0
+      seasons: 1
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - It's blossom week. The one week a year everybody notices the park.
+    - Rosa brought me a cake. Lena drew the trees. Walt said 'not bad', which from Walt is a medal.
+    - Fifty-one weeks of nobody noticing, one week of everybody. That's a fair deal, I think.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The surveyors
+    number: 5
+    heartsNeeded: 5
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - There were men on my football field this morning. In orange vests, with little tripods and a lot of wooden stakes.
+    - The vests said 'Sterling Holdings'. They put a stake right through the penalty spot.
+    - I asked them what it was for. They said 'parking'. Just that. Parking.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: My sister's desk
+    number: 6
+    heartsNeeded: 6
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags:
+      - story_lucia_6
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Lucia told me last night. The papers for the park sale are on her desk at city hall. Waiting for her stamp.
+    - Half the park. The football field, the bench where Kenji plays chess, the playground. All of it, to the tower. For cars.
+    - I didn't say anything. I went out and raked the sandbox in the dark. She came and sat on the swing and didn't say anything either.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The river trees
+    number: 7
+    heartsNeeded: 7
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Come and look at the trees by the river path. Look at the leaves.
+    - Yellow in summer. The bark's splitting at the bottom. They're drinking the river, and the river's making them sick.
+    - I can fight a car park. I don't know how to fight a river.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Half a park
+    number: 8
+    heartsNeeded: 8
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - A man from the tower came to see me. Not Lucia. Me. He had a deal.
+    - Sterling keeps half the park for parking. In return they pay to clean the river. A new filter at the plant, new trees on the river path, everything.
+    - Or we fight. Everybody on the street plants a tree in the park on the same day, and we make it impossible to build on. Lucia says city hall can't sell a park full of new trees.
+    - Half a park and a clean river. Or the whole park and a river nobody's fixing yet. I can't choose. Will you?
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 1
+      optionA: Save the park
+      replyA:
+      - The whole park. We plant. Every house, one tree. I'll find the saplings, you bring the strong arms.
+      - And then we find another way to fix the river. There's always another way. It's just slower.
+      flagsA:
+      - save_the_park
+      optionB: Take the deal
+      replyB:
+      - The deal. Half the park. A clean river.
+      - I'll sign it. I'll mark the new car park lines myself, so at least they're straight.
+      flagsB:
+      - park_deal
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Planting day
+    number: 9
+    heartsNeeded: 9
+    path: 1
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Did you see? Did you SEE? Two hundred trees in one morning. Nia planted four and named them all.
+    - The surveyors came back on Monday and couldn't find a single spot for a stake. They stood there for an hour and then went away.
+    - 'Lucia stamped the sale papers ''REJECTED: SITE UNSUITABLE''. In red. She says she''s wanted to use the red stamp for years.'
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Car park lines
+    number: 9
+    heartsNeeded: 9
+    path: 2
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - The car park's on the field side. Grey, flat, straight. I did the lines. They're very straight.
+    - But come and look at the river path. New trees. Green leaves. The filter at the plant went in last week.
+    - The kids play football on the half that's left. It's small. They don't seem to mind as much as I do.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: A bench with my name
+    number: 10
+    heartsNeeded: 10
+    path: 1
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Somebody put a bench in the far corner. By the little oak from your acorns.
+    - There's a plaque on it. 'For Mateo, who worried about every blade of grass.' I didn't ask for this. I don't like fuss.
+    - ...I've sat on it every lunchtime this week. Don't tell anyone. Here, take some acorns. Your little oak's first ones.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 200
+      item: {fileID: 11400000, guid: db0b4bbca1f1b064182f4bb119d6cb66, type: 2}
+      amount: 5
+      friendship: 0
+  - title: A bench with my name
+    number: 10
+    heartsNeeded: 10
+    path: 2
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Lucia did something. The car park's 'on hold for review'. The tower's paying for the river anyway. It's in the contract.
+    - And somebody put a bench by the river path, under the new trees. 'For Mateo, who worried about every blade of grass.'
+    - I like it there. I can watch the river getting better. Slowly. That's the only speed plants know. Here, for the next oak.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 200
+      item: {fileID: 11400000, guid: db0b4bbca1f1b064182f4bb119d6cb66, type: 2}
+      amount: 5
+      friendship: 0

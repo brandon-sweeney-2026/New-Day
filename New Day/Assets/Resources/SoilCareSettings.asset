@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 555e2ea02cd4ec0448a2f7b4d05fe7d6, type: 3}
+  m_Name: SoilCareSettings
+  m_EditorClassIdentifier: Assembly-CSharp::SoilCareSettings
+  items:
+  - item: {fileID: 11400000, guid: 1dc9eb90a101bb249961f85506ac02ae, type: 2}
+    kind: 0
+    power: 1
+    placedSprite: {fileID: 21300000, guid: 1466138cc4197154fbf2837923c25fc9, type: 3}
+  - item: {fileID: 11400000, guid: 27df154c75eea714d8b2aef3c31352f4, type: 2}
+    kind: 0
+    power: 2
+    placedSprite: {fileID: 21300000, guid: 4c459ef45acb3434789a938344b277a1, type: 3}
+  - item: {fileID: 11400000, guid: 5d7c4fd7787afcb41a6cd4185bd7bc98, type: 2}
+    kind: 0
+    power: 3
+    placedSprite: {fileID: 21300000, guid: 08e8cd150fe696f44a2535394289f3d9, type: 3}
+  - item: {fileID: 11400000, guid: 8f4b1e9760794bc4abc460c3ce509a3a, type: 2}
+    kind: 1
+    power: 1
+    placedSprite: {fileID: 21300000, guid: 9daf96b13a0e03649810e90f1422e33c, type: 3}
+  - item: {fileID: 11400000, guid: 7e91ad1ef2461e34da0c55180a6bd68f, type: 2}
+    kind: 1
+    power: 2
+    placedSprite: {fileID: 21300000, guid: 2e289368f7b160542b16cb2b5eb2a3ab, type: 3}
+  - item: {fileID: 11400000, guid: a5e9f5dadf1d8d84dbd9db020e0a5564, type: 2}
+    kind: 1
+    power: 3
+    placedSprite: {fileID: 21300000, guid: 53454e29f57978f438207993d974acd9, type: 3}
+  - item: {fileID: 11400000, guid: d55ad7d9fea65484dbd2a78ad4c0e1ad, type: 2}
+    kind: 1
+    power: 4
+    placedSprite: {fileID: 21300000, guid: a86287408ec6fdc4d9c235d582afa0fc, type: 3}
+  - item: {fileID: 11400000, guid: 33585b8837615a24ba78df37ee9ad67e, type: 2}
+    kind: 2
+    power: 1
+    placedSprite: {fileID: 21300000, guid: 0d0c406b70f0f4f49b58a73e81903c7b, type: 3}
+  - item: {fileID: 11400000, guid: a4bd09eb92009604380fcdd5c6c69b75, type: 2}
+    kind: 2
+    power: 2
+    placedSprite: {fileID: 21300000, guid: e7aeea298fd5c5e418bfafec5d97c5c0, type: 3}
+  - item: {fileID: 11400000, guid: df7a01139260c6542bfd26089e651bab, type: 2}
+    kind: 2
+    power: 3
+    placedSprite: {fileID: 21300000, guid: 27cfb6ba96dbc0649bb4a86341ee6e06, type: 3}
+  - item: {fileID: 11400000, guid: 94db624d5f0b458469f3c63ca79163f4, type: 2}
+    kind: 3
+    power: 2
+    placedSprite: {fileID: 21300000, guid: 59d4c7653af6cc843ac71d52619245ac, type: 3}
+  - item: {fileID: 11400000, guid: f7daf58ebeaba1046a86254c3811e984, type: 2}
+    kind: 4
+    power: 1
+    placedSprite: {fileID: 21300000, guid: 66707def92b40ad48a175e5cd5c452fe, type: 3}
+  qualityColors:
+  - {r: 0.72, g: 0.45, b: 0.2, a: 1}
+  - {r: 0.8, g: 0.84, b: 0.88, a: 1}
+  - {r: 1, g: 0.82, b: 0.25, a: 1}
+  - {r: 0.55, g: 0.95, b: 1, a: 1}
+  qualityPriceMultipliers:
+  - 1
+  - 1.25
+  - 1.5
+  - 2
+  showBronzeBand: 1
+  pointsPerLevel: 12
+  pointsPerItemDumped: 1
+  pointsPerDayFromTower: 0.5
+  pointsCleanedPerItemTreated: 0.5
+  pointsCleanedPerRiverImprovement: 18
+  farmRowsReached: 3
+  forestPatchesPerLevel: 4

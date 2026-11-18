@@ -1,0 +1,549 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65eefa1a5942e54a8d76aef12a7fda9, type: 3}
+  m_Name: Story_bea
+  m_EditorClassIdentifier: Assembly-CSharp::NpcStoryArc
+  npcId: bea
+  title: Forty Questions
+  summary: 'Bea studies botany and thinks farmers are heroes. Her thesis on your soil turns into proof of the pollution, and her supervisor''s grant comes from Sterling. Fork: publish the true results and lose the grant, or keep the grant and pass the data on quietly.'
+  pathAName: Publish the results
+  pathBName: Keep the grant
+  parts:
+  - title: The list
+    number: 1
+    heartsNeeded: 1
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Okay. I've cut it down. It was forty questions. Now it's thirty-eight. Two of them were the same question in different words.
+    - 'Question one: when you put your hand in your soil, what does it feel like? No, really. Like a sponge? Like cake? Be specific.'
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: A little jar of dirt
+    number: 2
+    heartsNeeded: 2
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Could I take a soil sample from your farm? A tiny one. A jar. A small jar. With a label.
+    - Every farm's soil is different, like a fingerprint. Yours is older than the whole suburb. It's probably full of stories. And worms. Mostly worms.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Roots
+    number: 3
+    heartsNeeded: 3
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - My thesis is about roots. How they find water, how they share food, how they decide where to go. Plants make decisions! Slowly, but they do.
+    - Could you bring me some potatoes from your farm? Three. I want to look at the skins under the microscope. I promise I'll eat them afterwards.
+    happy: 0
+    ask:
+      item: {fileID: 11400000, guid: fc0104c92e9c5554aa4867f63b6c5cbe, type: 2}
+      amount: 3
+      minQuality: 0
+      questTitle: Potatoes for the microscope
+      questText: Bea wants three potatoes from your farm to study under her microscope for her thesis.
+      reminder:
+      - Any potatoes? Three, please. I've already labelled the slides. 'Farm potato one', 'farm potato two', 'farm potato three'. I'm very organised.
+      thanks:
+      - Oh, look at the eyes on this one! That's where the new shoots come from. They're called eyes. Isn't that lovely?
+      - 'Here. A thank-you. Lab rules: always pay your farmer.'
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 100
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The seed rack
+    number: 4
+    heartsNeeded: 4
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags:
+      - story_daughter_5
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I went to the general store on Tuesday to buy one packet of seeds.
+    - I came home three hours later with one packet of seeds. Soo-ah knows the germination rate of every packet on that rack. By heart.
+    - We're meeting again on Thursday. To talk about seeds. Purely seeds. Why are you smiling like that?
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Nia's project
+    number: 5
+    heartsNeeded: 5
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags:
+      - story_nia_5
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I'm helping Nia Abara with her science fair project! She's counting bugs in three places and writing everything down in a notebook with a beetle on the cover.
+    - She's a better scientist than half my class. She doesn't decide what she wants to find before she looks. That's the whole trick, and grown-ups forget it.
+    - Her numbers from the river are... not good. I've started checking my own samples again.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The top rows
+    number: 6
+    heartsNeeded: 6
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I ran your soil samples again. The ones from the top rows of your farm, near the river.
+    - Heavy metals. Chrome, mostly. Way above safe levels. Your crops up there are pulling it out of the ground, which is why they look tired.
+    - The samples from the middle of your farm are fine. Better than fine. It's only where the river touches. I'm so sorry. It isn't anything you did.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Leave them out
+    number: 7
+    heartsNeeded: 7
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I showed my supervisor the results. He went quiet. Then he shut his office door.
+    - He said my thesis is 'about roots, not rivers', and the river samples should be left out because they're 'outside the scope'.
+    - His grant is from Sterling AgriSeed. So is mine. I looked it up on the way home and then I had to sit on a wall for a while.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: In or out
+    number: 8
+    heartsNeeded: 8
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - My thesis is due in a month.
+    - If I put the river results in, my supervisor won't sign it off, the grant stops, and I probably have to start again somewhere else. A year, at least.
+    - If I leave them out, I finish on time. And I give you the data, quietly, so somebody who isn't a student can use it.
+    - A good scientist writes down what she sees. Nia taught me that. But I didn't think it would cost this much.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 1
+      optionA: Publish the true results
+      replyA:
+      - In. All of it. Every sample.
+      - If they won't sign it, I'll find somebody who will. Data is data. It doesn't care who paid for the microscope.
+      flagsA:
+      - bea_published
+      - tower_file_soil
+      optionB: Keep the grant, share the data
+      replyB:
+      - 'Out of the thesis, into your hands. Here: every sample, every number, on paper and on a stick.'
+      - Keep it somewhere dry. Soil scientists are very fussy about dry.
+      flagsB:
+      - bea_grant_kept
+      - tower_file_soil
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Quoted at city hall
+    number: 9
+    heartsNeeded: 9
+    path: 1
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - My supervisor wouldn't sign it. So I took it to a professor at another university, and she signed it in five minutes and said 'about time someone did'.
+    - And then Lucia Reyes read pages forty to fifty-two out loud at a city hall meeting. My pages! With my graphs!
+    - No grant, no money, a year behind. I've never been this happy. Is that strange? Tariq says it's strange.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: On time, quietly
+    number: 9
+    heartsNeeded: 9
+    path: 2
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I handed my thesis in. On time. About roots, not rivers. My supervisor said it was 'excellent work'.
+    - I felt sick all day. Then I remembered your box of data and felt a bit better.
+    - Soo-ah says you can do the right thing in two steps instead of one. I think she might be right. She usually is.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The soil lab
+    number: 10
+    heartsNeeded: 10
+    path: 1
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Come and see! The Kims gave me the back room behind the store. It's tiny. It's a lab.
+    - Anybody on the street can bring a jar of garden soil and I'll test it for free. Ada brought six jars. Mateo brought twenty. Walt brought one, and stood over me the whole time.
+    - 'And for you: fertilizer mixed to suit your soil. Use it on the top rows. We''re going to help them get better.'
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags:
+    - soil_lab_open
+    reward:
+      gold: 0
+      item: {fileID: 11400000, guid: 1d656e80098a50d4c862053aa84f9d54, type: 2}
+      amount: 5
+      friendship: 0
+  - title: The soil lab
+    number: 10
+    heartsNeeded: 10
+    path: 2
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Lucia called. City hall used my data from your box. All of it. Anonymously, but she said the graphs were 'very convincing'.
+    - 'And with my degree finished, I could open this: a soil lab in the back room of the Kims'' store. Free tests for everyone on the street.'
+    - Here, the first batch of fertilizer mixed for your farm. For the top rows. Soo-ah helped. Soo-ah helps with everything now.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags:
+    - soil_lab_open
+    reward:
+      gold: 0
+      item: {fileID: 11400000, guid: 1d656e80098a50d4c862053aa84f9d54, type: 2}
+      amount: 5
+      friendship: 0

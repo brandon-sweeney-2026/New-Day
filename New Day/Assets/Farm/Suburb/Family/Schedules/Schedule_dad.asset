@@ -189,7 +189,7 @@ MonoBehaviour:
       forbidFlags: []
       counters: []
     stops:
-    - place: CityMarket
+    - place: MarketInside
       scene: City
       waitMinutes: 240
       transitMinutes: 45

@@ -93,6 +93,15 @@ public static class ObjectRotation
         foreach (GameObject go in objects)
         {
             if (go == null || EditorUtility.IsPersistent(go)) continue;      // not prefab assets in the Project window
+            // decor furniture turns by showing its other side instead of tilting the picture
+            DecorPiece piece = go.GetComponent<DecorPiece>();
+            if (piece != null)
+            {
+                InteriorDecorTools.Turn(piece, degrees < 0f);
+                DecorRoom room = piece.GetComponentInParent<DecorRoom>();
+                if (room != null) InteriorDecorTools.SaveLayout(room);
+                continue;
+            }
             Rotate(go, degrees);
         }
         Undo.CollapseUndoOperations(group);

@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f4ff7549fed0c4b99db334d94d5526, type: 3}
+  m_Name: washer_modern
+  m_EditorClassIdentifier: Assembly-CSharp::DecorItem
+  id: washer_modern
+  displayName: Graphite Washer
+  description: Quiet, dark grey and very fast.
+  category: 20
+  theme: modern
+  price: 480
+  mount: 0
+  width: 1
+  depth: 1
+  blocksPlayer: 1
+  surfaceHeight: 0
+  front: {fileID: 21300000, guid: 98959c4e69d82394b901cab2d2aeadda, type: 3}
+  right: {fileID: 21300000, guid: 5794c24dc68d7b948bb0a7ad22ac7af4, type: 3}
+  back: {fileID: 21300000, guid: 38800f8096b24fa43947245086e42607, type: 3}
+  left: {fileID: 21300000, guid: 18f5e42bde584874dbb121cf92c72b9a, type: 3}
+  floorTile: {fileID: 0}
+  wallTop: {fileID: 0}
+  wallUpper: {fileID: 0}
+  wallBase: {fileID: 0}

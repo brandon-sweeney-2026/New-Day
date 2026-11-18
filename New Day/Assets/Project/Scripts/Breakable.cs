@@ -66,6 +66,12 @@ public class Breakable : MonoBehaviour, IToolTarget
 
     private static string Nice(ItemData.ToolAction a)
     {
-        return a == ItemData.ToolAction.Pickaxe ? "a pickaxe" : "an " + a.ToString().ToLowerInvariant();
+        switch (a)
+        {
+            case ItemData.ToolAction.Pickaxe: return "a pickaxe";
+            case ItemData.ToolAction.Sickle: return "a scythe";
+            case ItemData.ToolAction.Shovel: return "a shovel";
+            default: return "an " + a.ToString().ToLowerInvariant();
+        }
     }
 }

@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f4ff7549fed0c4b99db334d94d5526, type: 3}
+  m_Name: couch_cottage
+  m_EditorClassIdentifier: Assembly-CSharp::DecorItem
+  id: couch_cottage
+  displayName: Sage Cottage Sofa
+  description: Soft sage cushions on turned oak legs.
+  category: 0
+  theme: cottage
+  price: 450
+  mount: 0
+  width: 3
+  depth: 1
+  blocksPlayer: 1
+  surfaceHeight: 0
+  front: {fileID: 21300000, guid: 236352051f20b3645af9679cb7ac722a, type: 3}
+  right: {fileID: 21300000, guid: 0b5e1c297f1c19a4ca71b244649c803d, type: 3}
+  back: {fileID: 21300000, guid: dd92170c9334029479f49a7a968e30fd, type: 3}
+  left: {fileID: 21300000, guid: 58ac46fd3237d0d4fb1419dc236d32a8, type: 3}
+  floorTile: {fileID: 0}
+  wallTop: {fileID: 0}
+  wallUpper: {fileID: 0}
+  wallBase: {fileID: 0}

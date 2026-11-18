@@ -134,6 +134,35 @@ public abstract class SpawnAreaBase : MonoBehaviour
         return false;
     }
 
+    /// <summary>
+    /// Every tile where something may appear right now (following the same rules as TryFindSpot), as the tile's cell and
+    /// its world centre. Used to fill a big share of an area at once (the farm's starting clutter). Slower than TryFindSpot,
+    /// so call it once, not every frame.
+    /// </summary>
+    protected List<KeyValuePair<Vector3Int, Vector2>> AllFreeTiles(float minDistanceFromPlayer = 0f)
+    {
+        AutoFind();
+        if (cells == null) BuildCells();
+        var result = new List<KeyValuePair<Vector3Int, Vector2>>();
+        if (spawnOnTilemap == null) return result;
+
+        Transform player = null;
+        if (minDistanceFromPlayer > 0f)
+        {
+            var pc = FindAnyObjectByType<PlayerController>();
+            if (pc != null) player = pc.transform;
+        }
+
+        foreach (Vector3Int cell in cells)
+        {
+            Vector2 world = spawnOnTilemap.GetCellCenterWorld(cell);
+            if (Blocked(world)) continue;
+            if (player != null && Vector2.Distance(world, player.position) < minDistanceFromPlayer) continue;
+            result.Add(new KeyValuePair<Vector3Int, Vector2>(cell, world));
+        }
+        return result;
+    }
+
     private bool Blocked(Vector2 p)
     {
         if (keepClearTilemaps != null)

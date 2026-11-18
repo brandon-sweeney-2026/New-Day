@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee9e5df28081ab2478d11e823ef04c35, type: 3}
+  m_Name: Wall_Decor_wall_modern
+  m_EditorClassIdentifier: Assembly-CSharp::HouseUpgradeData
+  displayName: Warm Grey Paint
+  description: Calm grey walls, charcoal skirting.
+  category: 1
+  isDefault: 0
+  goldCost: 80
+  materials: []
+  sprite: {fileID: 0}
+  tile: {fileID: 11400000, guid: 889a2fd7980132947aa803a6c6e8a629, type: 2}
+  tileBase: {fileID: 11400000, guid: fdf71684850bf4146b1c8cd43b1e5869, type: 2}
+  tileTop: {fileID: 11400000, guid: c921953d5d98f4242b375ea17aa14d2f, type: 2}
+  tint: {r: 1, g: 1, b: 1, a: 1}
+  windowSpots: []
+  foodBonus: 0

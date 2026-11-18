@@ -79,7 +79,7 @@ MonoBehaviour:
       forbidFlags: []
       counters: []
     stops:
-    - place: City
+    - place: TowerOffice
       scene: City
       waitMinutes: 480
       transitMinutes: 40

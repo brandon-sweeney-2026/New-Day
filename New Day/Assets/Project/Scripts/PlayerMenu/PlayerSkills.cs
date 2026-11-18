@@ -29,9 +29,22 @@ public static class PlayerSkills
         GameState.OnStateChanged += OnStateChanged;
     }
 
+    /// <summary>
+    /// Call after a save has been loaded. Loading sets every counter in one go, so without this the next
+    /// harvest would look like "crops_harvested went from 0 to 250" and hand out a mountain of XP.
+    /// </summary>
+    public static void SyncAfterLoad()
+    {
+        lastSeen.Clear();
+        foreach (KeyValuePair<string, int> counter in GameState.AllCounters) lastSeen[counter.Key] = counter.Value;
+    }
+
     // ------------------------------------------------------------------
     // XP and levels
     // ------------------------------------------------------------------
+
+    /// <summary>The GameState counter a skill's XP is kept in, for example "xp_farming".</summary>
+    public static string CounterFor(Skill skill) { return XpKey(skill); }
 
     private static string XpKey(Skill skill) { return "xp_" + skill.ToString().ToLowerInvariant(); }
 

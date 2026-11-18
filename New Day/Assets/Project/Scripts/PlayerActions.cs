@@ -85,6 +85,8 @@ public class PlayerActions : MonoBehaviour
             return false;
         }
     }
+    /// <summary>True on the frame the action button is pressed (works while input is locked; fishing uses it to hook a bite).</summary>
+    public bool ActionPressedThisFrame { get { return ActionPressed(); } }
     /// <summary>Used by WeaponController to take over the player while a weapon is in use.</summary>
     public void SetBusy(bool busy) { IsBusy = busy; }
     public void SetCooldown(float seconds) { nextActionTime = Time.time + seconds; }
@@ -220,7 +222,7 @@ public class PlayerActions : MonoBehaviour
         TargetCell = farm.WorldToCell(Origin + Facing * targetDistance);
 
         ItemData item = inventory != null ? inventory.EquippedItem : null;
-        bool needsTile = item != null && (item.type == ItemData.ItemType.Tool || item.type == ItemData.ItemType.Seed);
+        bool needsTile = item != null && (item.type == ItemData.ItemType.Tool || item.type == ItemData.ItemType.Seed || SoilCare.IsSoilItem(item));
 
         // An upgraded hoe / watering can / scythe works on a row of tiles: the one in front of you and the ones behind it.
         int reach = ReachOf(item);
@@ -303,7 +305,9 @@ public class PlayerActions : MonoBehaviour
                 StartCoroutine(Swing(item));
                 break;
             case ItemData.ItemType.Spell: StartCoroutine(Cast(item)); break;
-            default: break;   // crops and resources can't be "used" - sell them at the shipping bin
+            // Sprinklers, soil gel, fertilizer and the other things researched at the university are ordinary Resource items;
+            // SoilCare knows what each one does. Crops and plain resources can't be "used" - sell them at the shipping bin.
+            default: if (SoilCare.TryUse(this, item)) nextActionTime = Time.time + 0.3f; break;
         }
     }
 
@@ -322,11 +326,14 @@ public class PlayerActions : MonoBehaviour
                 foreach (Vector3Int cell in targetCells)
                 {
                     if (TreeManager.Instance != null && TreeManager.Instance.HasTree(cell)) continue;
+                    if (FarmDebrisSpawner.IsCellCluttered(cell)) continue;      // weeds, litter, a stone or a fallen tree is lying here
                     if (farm != null && farm.TryTill(cell)) worked.Add(cell);
                 }
                 did = worked.Count > 0;
                 if (!did && TreeManager.Instance != null && TreeManager.Instance.HasTree(TargetCell))
                     GameEvents.ShowToast("A tree is in the way. Chop it down first.");
+                else if (!did && FarmDebrisSpawner.IsCellCluttered(TargetCell))
+                    GameEvents.ShowToast("Clear this spot first.");
                 break;
 
             case ItemData.ToolAction.WateringCan:
@@ -345,7 +352,9 @@ public class PlayerActions : MonoBehaviour
                     if (i > 0 && (crops == null || !(crops.IsRipe(cell) || crops.IsWithered(cell)))) continue;
                     if (crops != null && crops.TryHarvest(cell, inventory)) worked.Add(cell);
                 }
-                did = worked.Count > 0;
+                // The scythe also cuts weeds (a Breakable that needs the Sickle) on every tile of its reach.
+                if (CutWeeds(tool.toolPower + PlayerBonuses.ToolPower(tool.toolAction), worked)) did = true;
+                did = did || worked.Count > 0;
                 break;
 
             case ItemData.ToolAction.Shovel:
@@ -375,12 +384,42 @@ public class PlayerActions : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Cuts the weeds on the scythe's target tiles. Only Breakables that need the Sickle are touched, so swinging the scythe
+    /// next to a tree or rock does not pop up "This needs an axe". Adds each cut tile to 'worked' (for the leaf effect).
+    /// </summary>
+    private bool CutWeeds(int power, List<Vector3Int> worked)
+    {
+        bool any = false;
+        var done = new HashSet<Breakable>();
+        foreach (Vector3Int cell in targetCells)
+        {
+            Vector2 centre = farm != null ? (Vector2)farm.CellToWorldCenter(cell) : Origin + Facing * interactDistance;
+            foreach (Collider2D hit in Physics2D.OverlapCircleAll(centre, 0.55f))
+            {
+                var weed = hit.GetComponentInParent<Breakable>();
+                if (weed == null || done.Contains(weed) || !weed.IsIntact || weed.RequiredTool != ItemData.ToolAction.Sickle) continue;
+                done.Add(weed);
+                if (weed.OnToolUsed(ItemData.ToolAction.Sickle, Mathf.Max(1, power), this))
+                {
+                    any = true;
+                    if (!worked.Contains(cell)) worked.Add(cell);
+                }
+            }
+        }
+        return any;
+    }
+
     /// <summary>Hits the tree or rock in front of the player. 'power' = how many hits this swing counts as.</summary>
     private bool HitToolTarget(ItemData.ToolAction action, int power)
     {
         Vector2 center = Origin + Facing * interactDistance;
         foreach (Collider2D hit in Physics2D.OverlapCircleAll(center, interactRadius))
         {
+            // weeds only care about the scythe: skip them quietly so an axe swing next to a weed doesn't say "This needs a scythe"
+            var weed = hit.GetComponentInParent<Breakable>();
+            if (weed != null && weed.RequiredTool == ItemData.ToolAction.Sickle && action != ItemData.ToolAction.Sickle) continue;
+
             var target = hit.GetComponentInParent<IToolTarget>();
             if (target != null && target.OnToolUsed(action, Mathf.Max(1, power), this))
             {

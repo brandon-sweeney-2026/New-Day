@@ -10,6 +10,8 @@ public class ItemStack
     public ItemData item;
     public int count;
     [Range(0, 5)] public int pollution;
+    [Range(0, 3), Tooltip("Crop quality: 0 = Bronze (ordinary), 1 = Silver, 2 = Gold, 3 = Platinum. Comes from fertilizer in the soil (see SoilCare).")]
+    public int quality;
 
     public bool IsEmpty { get { return item == null || count <= 0; } }
 }
@@ -22,6 +24,10 @@ public class ItemStack
 /// (Clicking a slot with the mouse also selects it, see GameHUD.)
 ///
 /// Put this on the Player. Fill 'startingItems' in the Inspector to hand out tools at the start.
+///
+/// The backpack is shared by every scene: its contents are kept in static fields, so they stay
+/// when you walk to another scene. Starting Items are handed out once per play session, by the
+/// Player in the first scene that loads (the lists on the Players in other scenes are then skipped).
 /// </summary>
 public class Inventory : MonoBehaviour
 {
@@ -47,8 +53,13 @@ public class Inventory : MonoBehaviour
     [SerializeField] private Key previousKey = Key.Q;
     [SerializeField] private Key nextKey = Key.R;
 
-    private readonly ItemStack[] slots = new ItemStack[SlotCount];
-    private int selected;
+    // These three are 'static': they belong to the game, not to one Player object.
+    // Every scene has its own Player (and so its own Inventory component), but they all share
+    // this one backpack, which is why your items stay with you when you change scenes.
+    private static ItemStack[] slots;
+    private static int selected;
+    // True once the Starting Items have been handed out, so the next scene does not hand them out again.
+    private static bool startingItemsGiven;
 
     /// <summary>Raised when any slot's contents change.</summary>
     public event Action OnChanged;
@@ -60,13 +71,68 @@ public class Inventory : MonoBehaviour
     /// <summary>The equipped item, or null if the slot is empty.</summary>
     public ItemData EquippedItem { get { return slots[selected].IsEmpty ? null : slots[selected].item; } }
 
+    // Static data survives between Play sessions when "Enter Play Mode Options" is on,
+    // so empty the backpack explicitly every time Play is pressed.
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+    private static void ResetOnPlay()
+    {
+        slots = null;
+        selected = 0;
+        startingItemsGiven = false;
+    }
+
+    // ------------------------------------------------------------------
+    // Saving and loading (used by SaveSystem)
+    // ------------------------------------------------------------------
+
+    /// <summary>All 20 slots, for the save system to write down.</summary>
+    public static ItemStack[] AllSlots { get { EnsureSlots(); return slots; } }
+
+    /// <summary>The slot that is selected, whichever scene's Player is asking.</summary>
+    public static int SavedSelectedIndex { get { return selected; } }
+
+    /// <summary>
+    /// Replaces the whole backpack with what a save file held. 'saved' has one entry per slot.
+    /// The Starting Items are NOT handed out afterwards: a loaded game already has its items.
+    /// </summary>
+    public static void LoadFromSave(ItemStack[] saved, int selectedIndex)
+    {
+        EnsureSlots();
+        for (int i = 0; i < SlotCount; i++)
+        {
+            ItemStack from = saved != null && i < saved.Length ? saved[i] : null;
+            bool empty = from == null || from.IsEmpty;
+            slots[i].item = empty ? null : from.item;
+            slots[i].count = empty ? 0 : from.count;
+            slots[i].pollution = empty ? 0 : from.pollution;
+            slots[i].quality = empty ? 0 : from.quality;
+        }
+        selected = Mathf.Clamp(selectedIndex, 0, SlotCount - 1);
+        startingItemsGiven = true;
+    }
+
+    /// <summary>Makes the 20 empty slots if they do not exist yet.</summary>
+    private static void EnsureSlots()
+    {
+        if (slots != null) return;
+        slots = new ItemStack[SlotCount];
+        for (int i = 0; i < SlotCount; i++) slots[i] = new ItemStack();
+    }
+
     private void Awake()
     {
         Instance = this;
-        for (int i = 0; i < SlotCount; i++) slots[i] = new ItemStack();
 
-        foreach (StartingItem s in startingItems)
-            if (s != null && s.item != null) Add(s.item, s.count);
+        // Make the 20 empty slots only once per play session (the first scene that loads).
+        EnsureSlots();
+
+        // Hand out the Starting Items only in the first scene. Later scenes keep the backpack as it is.
+        if (!startingItemsGiven)
+        {
+            startingItemsGiven = true;
+            foreach (StartingItem s in startingItems)
+                if (s != null && s.item != null) Add(s.item, s.count);
+        }
     }
 
     private void OnDestroy()
@@ -125,21 +191,21 @@ public class Inventory : MonoBehaviour
     // ------------------------------------------------------------------
 
     /// <summary>How many of this item would fit right now.</summary>
-    public int CanFit(ItemData item, int count, int pollution = 0)
+    public int CanFit(ItemData item, int count, int pollution = 0, int quality = 0)
     {
         if (item == null) return 0;
         int room = 0;
         foreach (ItemStack s in slots)
         {
             if (s.IsEmpty) room += item.maxStack;
-            else if (Matches(s, item, pollution)) room += item.maxStack - s.count;
+            else if (Matches(s, item, pollution, quality)) room += item.maxStack - s.count;
             if (room >= count) return count;
         }
         return room;
     }
 
     /// <summary>Adds items, topping up existing stacks first. Returns how many did NOT fit.</summary>
-    public int Add(ItemData item, int count, int pollution = 0)
+    public int Add(ItemData item, int count, int pollution = 0, int quality = 0)
     {
         if (item == null || count <= 0) return 0;
 
@@ -147,7 +213,7 @@ public class Inventory : MonoBehaviour
         foreach (ItemStack s in slots)
         {
             if (count <= 0) break;
-            if (s.IsEmpty || !Matches(s, item, pollution)) continue;
+            if (s.IsEmpty || !Matches(s, item, pollution, quality)) continue;
             int move = Mathf.Min(count, item.maxStack - s.count);
             s.count += move;
             count -= move;
@@ -162,6 +228,7 @@ public class Inventory : MonoBehaviour
             s.item = item;
             s.count = move;
             s.pollution = pollution;
+            s.quality = quality;
             count -= move;
         }
 
@@ -177,7 +244,7 @@ public class Inventory : MonoBehaviour
 
         int removed = Mathf.Min(count, s.count);
         s.count -= removed;
-        if (s.count <= 0) { s.item = null; s.count = 0; s.pollution = 0; }
+        if (s.count <= 0) { s.item = null; s.count = 0; s.pollution = 0; s.quality = 0; }
         if (OnChanged != null) OnChanged();
         return removed;
     }
@@ -243,9 +310,9 @@ public class Inventory : MonoBehaviour
         if (OnChanged != null) OnChanged();
     }
 
-    private static bool Matches(ItemStack s, ItemData item, int pollution)
+    private static bool Matches(ItemStack s, ItemData item, int pollution, int quality)
     {
-        // Different pollution levels never merge, so a dirty harvest can't hide inside a clean stack.
-        return s.item == item && s.pollution == pollution;
+        // Different pollution levels never merge, so a dirty harvest can't hide inside a clean stack. The same goes for crop quality.
+        return s.item == item && s.pollution == pollution && s.quality == quality;
     }
 }

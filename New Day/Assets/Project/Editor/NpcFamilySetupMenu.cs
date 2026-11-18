@@ -93,7 +93,7 @@ public static class NpcFamilySetupMenu
         AssetDatabase.SaveAssets();
         return "Placed Jae-hoon, Mi-sook, Ji-ho and Soo-ah in the scene, each with a schedule in " + Root + "/Schedules.\n\n" +
                "Edit a schedule asset to change routes (up to 30 each). Select an NPC and use the component's right-click menu 'Print Today's Plan' while playing to see what they will do.\n" +
-               "The city trips use a scene named 'City': the family walks off the right edge of the suburb and is away for a while. Change the scene name on those stops once your city scene exists.";
+               "The city trips use a scene named 'City': the family walks off the right edge of the suburb and is away for a while. Farm > Set Up > City Scene points those stops at the right places in the city.";
     }
 
     // ------------------------------------------------------------------ schedules
@@ -119,7 +119,7 @@ public static class NpcFamilySetupMenu
                 r.Add(Stay("Afternoon till", 13.5f, 10, null, Stop("StoreCheckout", 300, "Running the till")));
                 r.Add(Stay("Rainy day: stock check", 13.5f, 30, wet, Stop("StoreAisleBack", 40, "Checking stock"), Stop("StoreSlush", 15, "Fixing the slush machine"), Stop("StoreCheckout", 220, "Running the till")));
                 r.Add(Route("Close up", 19.25f, 10, null, Stop("StoreDoorInside", 5, "Locking up"), Stop("AptLiving", 120, "Watching TV")));
-                r.Add(Route("Sunday in the city", 8.5f, 50, Days(DayMask.Sun), Stop("CityMarket", 240, "Buying stock in the city", "City", 45)));
+                r.Add(Route("Sunday in the city", 8.5f, 50, Days(DayMask.Sun), Stop("MarketInside", 240, "Buying stock in the city", "City", 45)));
                 break;
             case "mom":     // works the shop floor, covers the till over lunch, cooks; Saturdays she visits friends in the city
                 r.Add(Stay("Morning prep", 6.25f, 10, null, Stop("AptKitchen", 35, "Making breakfast"), Stop("StoreAisleMid", 60, "Stocking shelves"), Stop("StoreSeeds", 30, "Tidying the seed rack"),
@@ -129,7 +129,7 @@ public static class NpcFamilySetupMenu
                 r.Add(Stay("Afternoon in the plaza", 16.25f, 10, dry, Stop("PlazaBench1", 50, "Catching up with the neighbours"), Stop("StoreFront", 10, "Watering the flower pots")));
                 r.Add(Stay("Rainy afternoon: baking", 16.25f, 30, Weather(WeatherMask.Rain | WeatherMask.Storm | WeatherMask.Snow), Stop("AptKitchen", 100, "Baking")));
                 r.Add(Route("Evening", 18.5f, 10, null, Stop("AptKitchen", 60, "Cooking dinner"), Stop("AptDining", 50, "Having dinner"), Stop("AptLiving", 60, "Relaxing")));
-                r.Add(Route("Saturday in the city", 8.5f, 50, Days(DayMask.Sat), Stop("CityFriends", 210, "Visiting friends in the city", "City", 45)));
+                r.Add(Route("Saturday in the city", 8.5f, 50, Days(DayMask.Sat), Stop("CafeInside", 210, "Visiting friends in the city", "City", 45)));
                 break;
             case "son":     // helps Tuesdays and Fridays; plays football in the park on dry afternoons
                 r.Add(Stay("Sleep in, then breakfast", 9f, 5, null, Stop("AptKitchen", 30, "Having breakfast"), Stop("AptLiving", 150, "Gaming")));
@@ -139,7 +139,7 @@ public static class NpcFamilySetupMenu
                 break;
             case "daughter":    // studies at the university in the city Mon/Tue/Thu; helps Wednesdays and Saturdays
                 r.Add(Stay("Morning routine", 7.5f, 5, null, Stop("AptBath2", 20, "Getting ready"), Stop("AptKitchen", 25, "Having breakfast"), Stop("AptDining", 90, "Studying")));
-                r.Add(Route("University in the city", 7.75f, 40, Days(DayMask.Mon | DayMask.Tue | DayMask.Thu), Stop("CityCampus", 360, "At lectures in the city", "City", 40)));
+                r.Add(Route("University in the city", 7.75f, 40, Days(DayMask.Mon | DayMask.Tue | DayMask.Thu), Stop("UniStudy", 360, "At lectures in the city", "City", 40)));
                 r.Add(Stay("Helping at the store", 9.5f, 40, Days(DayMask.Wed | DayMask.Sat), Stop("StoreSeeds", 45, "Sorting seeds"), Stop("StoreAisleMid", 30, "Stocking shelves")));
                 r.Add(Stay("Saturday: cover the till", 11.9f, 45, Days(DayMask.Sat), Stop("StoreCheckout", 105, "Running the till")));
                 r.Add(Stay("Afternoon in her room", 14.5f, 5, null, Stop("AptBed3", 120, "Listening to music")));

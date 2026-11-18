@@ -1,0 +1,546 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65eefa1a5942e54a8d76aef12a7fda9, type: 3}
+  m_Name: Story_lena
+  m_EditorClassIdentifier: Assembly-CSharp::NpcStoryArc
+  npcId: lena
+  title: Every House on the Street
+  summary: 'Lena is drawing every house on the street for a picture book and asks Sam to write the words. A big publisher, Sterling Media, wants it, if she makes the street ''less shabby'' and puts the tower in the background. Fork: print fifty copies at the Kims'', or sign the big deal.'
+  pathAName: Print fifty copies
+  pathBName: Sign with the big publisher
+  parts:
+  - title: A good hat face
+    number: 1
+    heartsNeeded: 1
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Oh, hold still. Hold still! ...Sorry. You turned your head and the light was perfect.
+    - You still don't have a hat. You really should get a hat. Your face is wasted without one.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Your farm at dawn
+    number: 2
+    heartsNeeded: 2
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I walked out to your farm early this morning and drew it from the road. I hope that's all right.
+    - The barn, the fields, the mist sitting on top of the crops like a cat. It's going to be the last page of my book. I don't know why yet. It just feels like an ending.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Paid in beetle facts
+    number: 3
+    heartsNeeded: 3
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags:
+      - story_nia_2
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Nia Abara posed for me today, on the swings. She charges one beetle fact per minute. I mean, I have to LISTEN to one per minute.
+    - Did you know some beetles can lift eight hundred times their own weight? I didn't. I do now. I know forty-five beetle facts now.
+    - The drawing's lovely, though. She looks exactly like a nine-year-old who knows more than you.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Handmade paper
+    number: 4
+    heartsNeeded: 4
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I want the book printed on handmade paper. Real paper, made from plants, like they used to.
+    - 'You can make it from fibre: the stringy bits from grass and weeds. Ten bundles would do the cover. Do you have any? Scything makes heaps of it, Mateo says.'
+    happy: 0
+    ask:
+      item: {fileID: 11400000, guid: 820decf0ba1fe194c9c482b4cecc2703, type: 2}
+      amount: 10
+      minQuality: 0
+      questTitle: Fibre for Lena's paper
+      questText: Lena wants 10 Fiber to make handmade paper for the cover of her picture book about the street.
+      reminder:
+      - Any fibre for the paper? Ten bundles. The scythe is your friend, apparently. Mateo says weeds are just plants with bad publicity.
+      thanks:
+      - Oh, it's perfect. Look at the colours in it! Green and gold and a bit of brown.
+      - The cover is going to look like your fields. Exactly like them.
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Drawings of Marcus
+    number: 5
+    heartsNeeded: 5
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags:
+      - story_marcus_5
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I looked through my sketchbook from this year. All the drawings of Marcus.
+    - 'Spring: he''s laughing. Summer: he''s not. Lately he just sits at the kitchen table staring at nothing.'
+    - I haven't asked. I drew him instead. I think he'll tell me when he's ready. I think he'll tell you first, actually. You're easier to tell things to.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Sam's words
+    number: 6
+    heartsNeeded: 6
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I asked Sam Whitaker to write the words for the book. One line per house. Sam went white, said 'I can't possibly', and left.
+    - This morning there were ten pages pushed under my door. One line per house. Every line is perfect.
+    - 'The line for your farm just says: ''Somebody here plants things for people they''ll never meet.'''
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Less shabby
+    number: 7
+    heartsNeeded: 7
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - A big publisher wants the book. Sterling Media. They'd print a hundred thousand. In shops everywhere. In the tower.
+    - They sent notes. Brighter curtains on Sam's house. No cracks on Walt's porch. No weeds on the pavement. And the tower, 'softly, in the background, for context', on every page.
+    - I sat with the notes for an hour. Then I drew the tower in, very lightly, on one page, to see. I rubbed it out so hard I tore the paper.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: A hundred thousand or fifty
+    number: 8
+    heartsNeeded: 8
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - The Kims have an old printer in the back room. Jae-hoon says we could do fifty copies. One for every house, and a few for the library.
+    - Or a hundred thousand, everywhere, with brighter curtains and a tower on every page. Marcus says the money would mean he could leave his job.
+    - I keep looking at the drawing of your farm. It's the only page they didn't want to change.
+    - What would you do?
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 1
+      optionA: Print fifty copies
+      replyA:
+      - Fifty. One for every house. Cracks and weeds and all.
+      - Jae-hoon says the printer makes a noise like a goose. I'm going to love that goose.
+      flagsA:
+      - street_book_printed
+      optionB: Sign with the big publisher
+      replyB:
+      - A hundred thousand. Everywhere. For Marcus. For us.
+      - I'll do the brighter curtains. I'll do the porch. I'll draw the tower very, very lightly.
+      flagsB:
+      - lena_sterling_book
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Fifty copies
+    number: 9
+    heartsNeeded: 9
+    path: 1
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - The goose printer printed fifty. Some of the pages are a bit wonky. Walt says that's 'character'.
+    - I gave them out yesterday, one on every doorstep. Emeka helped, of course. He said it was the best delivery of his life.
+    - Gus read his page three times and then told me his window was drawn the wrong size. It isn't. He knows it isn't.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Everywhere
+    number: 9
+    heartsNeeded: 9
+    path: 2
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - The book's everywhere. The tower bookshop has a whole window of it. I walked past and didn't recognise my own street.
+    - Bright curtains. No cracks. Walt's porch looks like it was built yesterday by somebody who's never been grumpy.
+    - And on every page, in the background, very lightly, the tower. Nia read it and said, 'That's not where the tower is.' She's right.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The launch
+    number: 10
+    heartsNeeded: 10
+    path: 1
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Launch party tonight! The plaza, Tariq playing, Rosa's bread, and Sam reading the words out loud, which Sam has agreed to do 'only if it's dark'.
+    - And here. Copy number one. I saved it for you.
+    - Turn to the last page. Your farm, at dawn, with the mist like a cat. And Sam's line underneath. You didn't think you'd end up in a book when you took the old farm, did you?
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 11400000, guid: 834a444f19f7d0e419d3ef52b4a46ef0, type: 2}
+      amount: 1
+      friendship: 0
+  - title: The launch
+    number: 10
+    heartsNeeded: 10
+    path: 2
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I made another book. Fifty copies, on the Kims' goose printer, on paper made from your fibre.
+    - The same street, drawn properly this time. Cracks, weeds, sad curtains and all. No tower. Sam wrote new words. Better ones.
+    - The big book paid for Marcus to leave his job. This one is for us. Copy number one is yours. Turn to the last page.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags:
+    - street_book_printed
+    reward:
+      gold: 0
+      item: {fileID: 11400000, guid: 834a444f19f7d0e419d3ef52b4a46ef0, type: 2}
+      amount: 1
+      friendship: 0

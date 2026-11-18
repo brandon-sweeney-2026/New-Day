@@ -28,10 +28,35 @@ public class PlayerController : MonoBehaviour
     /// <summary>Set to false to freeze the player (swinging a sword, in a menu, etc.).</summary>
     public bool CanMove { get; set; } = true;
 
-    /// <summary>Pushes the player (called by PlayerStats when hit). Force is in units per second.</summary>
+    // The shove from being hurt (separate from Knockback, which the sword and dagger lunges use).
+    private Vector2 hitPushStartVelocity;
+    private float hitPushTotal;
+    private float hitPushLeft;
+    private float hitStunUntil;
+
+    /// <summary>True for a moment after being hurt: the walking keys do nothing, so the push can't be cancelled.</summary>
+    public bool IsHitStunned => Time.time < hitStunUntil;
+
+    /// <summary>A quick push (units per second) that fades fast. Used by weapon lunges.</summary>
     public void Knockback(Vector2 force)
     {
         knockbackVelocity = force;
+    }
+
+    /// <summary>
+    /// Shoves the player back after being hurt (called by PlayerStats).
+    /// The player slides 'distance' world units in 'direction' over 'seconds', fast at first and slowing down,
+    /// and can't walk for 'stunSeconds'. Walls still stop the slide.
+    /// </summary>
+    public void HitKnockback(Vector2 direction, float distance, float seconds, float stunSeconds)
+    {
+        if (direction.sqrMagnitude < 0.0001f || distance <= 0f) return;
+        hitPushTotal = Mathf.Max(0.02f, seconds);
+        hitPushLeft = hitPushTotal;
+        // The speed falls in a straight line from the start speed to 0, which covers half of (start speed x time). So start at 2 x distance / time.
+        hitPushStartVelocity = direction.normalized * (2f * distance / hitPushTotal);
+        knockbackVelocity = Vector2.zero;          // a hit cancels a lunge in progress
+        hitStunUntil = Mathf.Max(hitStunUntil, Time.time + stunSeconds);
     }
 
     /// <summary>Turns the player to face a direction (used when walking through doors).</summary>
@@ -75,7 +100,8 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         // While frozen, ignore input entirely so the facing direction can't change mid-swing.
-        if (!CanMove || GameState.InputLocked)
+        // (also while reeling from a hit)
+        if (!CanMove || GameState.InputLocked || IsHitStunned)
         {
             moveInput = Vector2.zero;
             return;
@@ -98,7 +124,17 @@ public class PlayerController : MonoBehaviour
     {
         // MovePosition respects colliders and works in every Unity version.
         // PlayerBonuses.MoveSpeedMultiplier is the walking-speed bonus from perks and equipment (1 = none).
-        Vector2 velocity = moveInput * moveSpeed * SpeedMultiplier * PlayerBonuses.MoveSpeedMultiplier + knockbackVelocity;
+        Vector2 walk = IsHitStunned ? Vector2.zero : moveInput * moveSpeed * SpeedMultiplier * PlayerBonuses.MoveSpeedMultiplier;
+
+        // the shove from being hurt: full speed at first, easing to nothing
+        Vector2 hitPush = Vector2.zero;
+        if (hitPushLeft > 0f)
+        {
+            hitPush = hitPushStartVelocity * (hitPushLeft / hitPushTotal);
+            hitPushLeft -= Time.fixedDeltaTime;
+        }
+
+        Vector2 velocity = walk + knockbackVelocity + hitPush;
         knockbackVelocity = Vector2.Lerp(knockbackVelocity, Vector2.zero, knockbackDamping * Time.fixedDeltaTime);
         if (knockbackVelocity.sqrMagnitude < 0.01f) knockbackVelocity = Vector2.zero;
 

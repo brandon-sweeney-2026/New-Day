@@ -59,6 +59,22 @@ public static class Friendship
         if (profile != null) p.profile = profile;
     }
 
+    /// <summary>Forgets everyone, ready to be filled from a save file (used by SaveSystem).</summary>
+    public static void ClearForLoad()
+    {
+        known.Clear();
+    }
+
+    /// <summary>
+    /// Puts a saved person back in the People list. Their portrait and tastes come back the next time
+    /// you talk to them (Meet fills those in); their hearts are already in the GameState counters.
+    /// </summary>
+    public static void Restore(string id, string name)
+    {
+        if (string.IsNullOrEmpty(id) || Find(id) != null) return;
+        known.Add(new Person { id = id, name = name });
+    }
+
     public static Person Find(string id)
     {
         foreach (Person p in known) if (p.id == id) return p;

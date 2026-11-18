@@ -51,6 +51,12 @@ public class LightingManager : MonoBehaviour
     [Tooltip("Objects whose name contains any of these words get no shadow.")]
     public string[] ignoreNames = new string[] { "highlight", "overlay", "sun_patch", "sunpatch", "cursor", "glow", "marker", "indicator", "targettile" };
 
+    [Header("Wall and cliff shadows")]
+    [Tooltip("Master switch: lamps, torches, mushrooms and crystals cast real shadows behind walls and cliffs (each light also has its own 'Cast Shadows' box).")]
+    public bool lampShadows = true;
+    [Tooltip("Master switch: walls and cliffs throw a daytime sun shadow on the ground (drawn by WallSunShadows, settings on each WallShadowBlock).")]
+    public bool wallSunShadows = true;
+
     [Header("Day light")]
     [Tooltip("Sun colour at noon.")] public Color noonColor = new Color(1f, 1f, 0.96f);
     [Tooltip("Sun colour at sunrise / sunset (warmer).")] public Color horizonColor = new Color(1f, 0.86f, 0.72f);

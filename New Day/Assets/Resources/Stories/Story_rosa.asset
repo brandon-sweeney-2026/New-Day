@@ -1,0 +1,550 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65eefa1a5942e54a8d76aef12a7fda9, type: 3}
+  m_Name: Story_rosa
+  m_EditorClassIdentifier: Assembly-CSharp::NpcStoryArc
+  npcId: rosa
+  title: The Soup on the Step
+  summary: 'Rosa leaves soup on Sam''s step because Sam reminds her of her son Tomas, who works in the tower and never visits. The tower''s bakery counter hurts the Kims'' bread sales. Fork: start a plaza market, or sell her bread to the tower.'
+  pathAName: The Saturday market
+  pathBName: Bread for the tower
+  parts:
+  - title: A loaf for the farmer
+    number: 1
+    heartsNeeded: 1
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - There you are, dear! I baked an extra one this morning, and an extra one always has somebody's name on it.
+    - Today it's yours. No, don't argue. Walt argues. You're not Walt.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The great recipe swap
+    number: 2
+    heartsNeeded: 2
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Has Mi-sook told you about our swap? My bread recipe for her kimchi.
+    - She thinks she won. Let her think so. I've had that kimchi on toast every morning for a week, and Walt says it's the best thing I've ever made.
+    - I haven't told him it isn't mine.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Caught on the doorstep
+    number: 3
+    heartsNeeded: 3
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - You were out early this morning, weren't you? Near Maple Lane?
+    - Then you saw me. With the soup. On Sam's step.
+    - Oh, don't look at me like that. Somebody has to make sure that young writer eats something that isn't noodles.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: A secret between us
+    number: 4
+    heartsNeeded: 4
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Promise me you won't tell Sam it's me. Please, dear.
+    - If Sam knew, Sam would feel they owed me something. And then the bowl would stop coming back. I like it when the bowl comes back washed.
+    - It's the only conversation we have, and it's a lovely one.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Tomas
+    number: 5
+    heartsNeeded: 5
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I'll tell you why, since you've kept my secret.
+    - We have a son. Tomas. He's in the city, in that great glass tower, on the thirty-second floor. He's very important there, he says.
+    - He used to bring his washing home every Sunday and complain about my soup. I'd give anything to hear him complain about my soup.
+    - Sam sits at that window the way Tomas used to sit at his desk. That's all. An old woman's silliness.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Bread for the whole street
+    number: 6
+    heartsNeeded: 6
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I've had an idea, and I need a farmer for it.
+    - Every house on the street, one loaf each, all baked on the same morning. The way we used to do it when the street was new.
+    - But I want real flour. Flour from wheat I can see growing. Would you bring me some?
+    happy: 0
+    ask:
+      item: {fileID: 11400000, guid: eca73beb07679c4409c779f9df491fc0, type: 2}
+      amount: 10
+      minQuality: 0
+      questTitle: Bread for the whole street
+      questText: Rosa wants wheat from your farm to bake a loaf for every house on the street.
+      reminder:
+      - Any luck with the wheat, dear? Ten will do it. The oven's been looking at me.
+      thanks:
+      - Look at that! Proper wheat, with dirt still on it.
+      - Come back tomorrow and you'll smell it from the farm. Here, take something warm for now.
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 11400000, guid: 23fbff7a9900e4f43a40e565bccb161d, type: 2}
+      amount: 3
+      friendship: 0
+  - title: The bakery counter
+    number: 7
+    heartsNeeded: 7
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Have you seen? The tower's opened a bakery counter. Bread in plastic, three for the price of one.
+    - Jae-hoon says nobody bought my loaves at the store yesterday. Not one. They've all gone to the tower for the plastic ones.
+    - And you know... you can tell Sam about the soup now, if you like. I think I'm too tired to keep secrets.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: What would you do?
+    number: 8
+    heartsNeeded: 8
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - A man from the tower came to the door this morning. In a suit, on Walt's porch!
+    - He wants to buy my recipe and sell my bread at the counter. My name on the bag. More money than I've ever seen.
+    - Or... Ada says we should do what they used to do in the city. A Saturday market in the plaza. Everyone bringing what they make.
+    - You're a sensible one. What would you do?
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 1
+      optionA: Start a Saturday market
+      replyA:
+      - A market! Yes. Ada with her flowers, Soo-ah with her seeds, Mi-sook with her kimchi. And you, dear, with everything you grow.
+      - I'll tell Walt to build the stalls. He'll grumble for a week and then make them perfect.
+      flagsA:
+      - suburb_market_planned
+      optionB: Sell the recipe to the tower
+      replyB:
+      - You're right. I'm old, and it's a great deal of money, and Walt's knee isn't getting better.
+      - My name on a bag. Fancy that. I'll ring the man in the morning.
+      flagsB:
+      - rosa_sold_recipe
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Market day
+    number: 9
+    heartsNeeded: 9
+    path: 1
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Did you see it? Did you SEE it? Six stalls! Walt built every one of them and complained the whole time.
+    - Ada sold out of tulips by ten. Mi-sook gave away more kimchi than she sold. And my bread was gone before the pigeons were awake.
+    - Bring your best crops next Saturday. I've saved you the stall by the fountain.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: My name on a bag
+    number: 9
+    heartsNeeded: 9
+    path: 2
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I saw my bread at the tower yesterday. In plastic. With my name on it, spelled wrong.
+    - It doesn't taste like mine. They changed the flour to make it cheaper. I asked and they said it's 'the same recipe, optimised'.
+    - I've stopped baking at home. There doesn't seem much point now, does there?
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Tomas comes home
+    number: 10
+    heartsNeeded: 10
+    path: 1
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - You'll never guess who walked through the market on Saturday. In a suit, looking for the bakery counter.
+    - Tomas. He'd heard about the market at the tower and came to see what was stealing their customers.
+    - He ate a whole loaf standing at my stall. And then he complained about my soup. Oh, it was wonderful.
+    - He's coming for Sunday dinner. And Sam is coming too. I asked them myself. Thank you, dear. For all of it.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags:
+    - suburb_market_open
+    reward:
+      gold: 500
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The oven's warm again
+    number: 10
+    heartsNeeded: 10
+    path: 2
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I tore up the contract. Walt says I'll be sued. I said let them sue an old woman with a rolling pin.
+    - 'And look who came round when he heard: Tomas. He said the tower bread tastes like the bag it comes in.'
+    - So I'm baking again, dear. One loaf for every house, the old way. And one for Sam, with soup, every Sunday, on the step.
+    - Some things you shouldn't sell. I'm only sorry it took me so long to remember.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags:
+    - rosa_baking_again
+    reward:
+      gold: 300
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0

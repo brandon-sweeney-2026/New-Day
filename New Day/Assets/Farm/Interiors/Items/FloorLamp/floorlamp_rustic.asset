@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f4ff7549fed0c4b99db334d94d5526, type: 3}
+  m_Name: floorlamp_rustic
+  m_EditorClassIdentifier: Assembly-CSharp::DecorItem
+  id: floorlamp_rustic
+  displayName: Iron Tripod Lamp
+  description: Three black iron legs and a burlap shade.
+  category: 12
+  theme: rustic
+  price: 130
+  mount: 0
+  width: 1
+  depth: 1
+  blocksPlayer: 1
+  surfaceHeight: 0
+  front: {fileID: 21300000, guid: 232b7fcbc713c864b9da3fc3db57092a, type: 3}
+  right: {fileID: 21300000, guid: 336f5d6fc5a215d42bf64c7599b7e0d1, type: 3}
+  back: {fileID: 21300000, guid: 93fe44e888e93cc4c82410edd090faf7, type: 3}
+  left: {fileID: 21300000, guid: 90b0238ed8beac34482afe832d9231e4, type: 3}
+  floorTile: {fileID: 0}
+  wallTop: {fileID: 0}
+  wallUpper: {fileID: 0}
+  wallBase: {fileID: 0}

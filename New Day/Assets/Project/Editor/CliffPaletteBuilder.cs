@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
+using UnityEditor.U2D.Sprites;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -86,8 +87,14 @@ public static class CliffPaletteBuilder
         return null;
     }
 
+    /// <summary>
+    /// Cuts the sheet into 16x16 sprites named "cliff_&lt;index&gt;".
+    /// Every sprite keeps the ID it already had (StableSpriteId.For), so the Cliff tiles and the Mine scene's
+    /// tilemaps, which point at these sprites by ID, never lose their pictures when this menu is run again.
+    /// </summary>
     private static void Slice(string pngPath)
     {
+        // 1. pixel-art import settings
         var imp = (TextureImporter)AssetImporter.GetAtPath(pngPath);
         imp.textureType = TextureImporterType.Sprite;
         imp.spriteImportMode = SpriteImportMode.Multiple;
@@ -96,21 +103,38 @@ public static class CliffPaletteBuilder
         imp.mipmapEnabled = false;
         imp.textureCompression = TextureImporterCompression.Uncompressed;
         imp.alphaIsTransparency = true;
-        var data = new List<SpriteMetaData>();
+        imp.SaveAndReimport();
+
+        // 2. open the sheet's sprite list (the same data the Sprite Editor window edits)
+        string baseName = Path.GetFileNameWithoutExtension(pngPath);
+        var factory = new SpriteDataProviderFactories();
+        factory.Init();
+        ISpriteEditorDataProvider provider = factory.GetSpriteEditorDataProviderFromObject(imp);
+        provider.InitSpriteEditorDataProvider();
+
+        // 3. one rectangle per named slot; empty slots (null) are skipped
+        var rects = new List<SpriteRect>();
         for (int i = 0; i < Names.Length; i++)
         {
             if (Names[i] == null) continue;
             int col = i % Columns, row = i / Columns;
-            var m = new SpriteMetaData();
-            m.name = "cliff_" + i;
-            m.rect = new Rect(col * Cell, (Rows - 1 - row) * Cell, Cell, Cell);
-            m.alignment = (int)SpriteAlignment.Center;
-            m.pivot = new Vector2(0.5f, 0.5f);
-            data.Add(m);
+            var rect = new SpriteRect();
+            rect.name = "cliff_" + i;
+            rect.rect = new Rect(col * Cell, (Rows - 1 - row) * Cell, Cell, Cell);   // row 0 is the TOP of the picture
+            rect.alignment = SpriteAlignment.Center;
+            rect.pivot = new Vector2(0.5f, 0.5f);
+            rect.spriteID = StableSpriteId.For(provider, baseName, rect.name);   // keeps the same ID every run, so nothing loses its art
+            rects.Add(rect);
         }
-#pragma warning disable 618
-        imp.spritesheet = data.ToArray();
-#pragma warning restore 618
+        provider.SetSpriteRects(rects.ToArray());
+
+        // 4. the name -> ID table Unity uses to find each sprite again after a reimport
+        var idProvider = provider.GetDataProvider<ISpriteNameFileIdDataProvider>();
+        var pairs = new List<SpriteNameFileIdPair>();
+        foreach (SpriteRect r in rects) pairs.Add(new SpriteNameFileIdPair(r.name, r.spriteID));
+        idProvider.SetNameFileIdPairs(pairs);
+
+        provider.Apply();
         imp.SaveAndReimport();
     }
 

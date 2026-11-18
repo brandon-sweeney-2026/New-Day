@@ -1,0 +1,548 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65eefa1a5942e54a8d76aef12a7fda9, type: 3}
+  m_Name: Story_dad
+  m_EditorClassIdentifier: Assembly-CSharp::NpcStoryArc
+  npcId: dad
+  title: The First Dollar
+  summary: 'Thirty years behind the till. Jae-hoon wants the store to outlive him, but the tower''s prices and a Sterling-owned wholesaler squeeze him. Fork: become the town''s local shop, stocked from your farm, or take Sterling''s franchise offer.'
+  pathAName: The local supplier
+  pathBName: The franchise
+  parts:
+  - title: The frame under the till
+    number: 1
+    heartsNeeded: 1
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - You see that little frame under the till? The first dollar this store ever took. Thirty years ago, from Rosa Delgado, for a loaf of bread she'd baked herself.
+    - My wife says I should spend it. I say some things are worth more than a dollar.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: What do you grow?
+    number: 2
+    heartsNeeded: 2
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Tell me, what are you growing out there? Properly, I mean. Not the polite answer.
+    - I've been thinking. The tower sells vegetables from six countries away. What if a shop sold vegetables from six minutes away?
+    - Ha. Mi-sook says I'm dreaming again. She says it like it's a bad thing.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: From the farm
+    number: 3
+    heartsNeeded: 3
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Let's try it. Bring me ten of something you grow, and I'll put it by the till with a sign. 'From the farm.' Hand-written, so people know it's real.
+    - Turnips, maybe. Nia Abara says nobody likes turnips. I want to prove her wrong.
+    happy: 0
+    ask:
+      item: {fileID: 11400000, guid: 918ea0bc1100ac64ab941ae10a07620e, type: 2}
+      amount: 10
+      minQuality: 0
+      questTitle: From the farm
+      questText: Jae-hoon wants 10 Turnips to sell by the till under a hand-written 'From the farm' sign.
+      reminder:
+      - Still bringing me those turnips? Ten. I've already written the sign. It's very good. Soo-ah fixed the spelling.
+      thanks:
+      - Look at these! Dirt and all. Perfect.
+      - Here, I'll pay you what the tower would, and a little more for the walk.
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 220
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The wholesaler
+    number: 4
+    heartsNeeded: 4
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Sunday I went to my wholesaler in the city, same as every Sunday for twenty years.
+    - New sign over the door. 'A Sterling Company.' And new prices. Everything up by a third, but only for small shops. The tower pays the old price.
+    - The man at the desk was very sorry. He said it three times. Sorry doesn't stock shelves.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Sums at midnight
+    number: 5
+    heartsNeeded: 5
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - You're up late too? I saw your lamp from the window.
+    - I've been doing the sums at the kitchen table. Again. They come out the same every time, no matter how hard I press the pencil.
+    - Six more months like this and the store is losing money. Don't tell the children. Please.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: I never asked him
+    number: 6
+    heartsNeeded: 6
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags:
+      - story_son_5
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Ji-ho told me about the business course. He thought I would shout.
+    - I didn't shout. I just sat there. Thirty years I've been saying 'one day this will all be yours', and I never once asked if he wanted it.
+    - What kind of father plans a whole life for his son and forgets to ask the son?
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The franchise letter
+    number: 7
+    heartsNeeded: 7
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags:
+      - story_marcus_4
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Marcus Bell came in with a letter from the tower. Poor boy. He looked like he wanted the floor to swallow him.
+    - '''Become a Sterling Express franchise.'' They would pay off what I owe. New fridges, new lights, new uniforms. Their name over the door, and mine nowhere.'
+    - I gave Marcus a rice ball. It isn't his fault. But I haven't stopped reading the letter since.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Two signs
+    number: 8
+    heartsNeeded: 8
+    path: 0
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I've made two signs. Look. This one says 'Sterling Express'. They sent it, in the post, before I even said yes.
+    - This one I painted myself last night. 'Kim's General Store. Local food, local people.' The paint isn't dry yet.
+    - If I go local, you would have to bring me crops every week, and we would still be poor for a while. If I sign, we're safe, and it isn't ours any more.
+    - You've been honest with me since the turnips. Be honest now. Which sign goes up?
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 1
+      optionA: Go local
+      replyA:
+      - The wet one. Yes. The wet one.
+      - Ji-ho, come down! Bring a ladder! And don't drop it on the slush machine this time!
+      flagsA:
+      - kims_local_supplier
+      optionB: Take the franchise
+      replyB:
+      - Safe. Yes. Safe is good. My children won't have to do sums at midnight.
+      - I'll ring them in the morning. You'll still come in, won't you? Even when it's... their shop?
+      flagsB:
+      - kims_franchise
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Sold out on Saturday
+    number: 9
+    heartsNeeded: 9
+    path: 1
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Saturday the whole 'From the farm' shelf was empty by eleven o'clock. Empty! I had to put up a sign saying 'More on Tuesday'.
+    - People are coming back. Not everyone. But Grace Abara came in and said 'I'd rather pay a little more and know your name'.
+    - Keep the crops coming, farmer. This shop has a future again, and half of it grows on your land.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The bright cold shop
+    number: 9
+    heartsNeeded: 9
+    path: 2
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - New lights. Very bright. New fridges. Very cold. The till talks to the tower all by itself.
+    - The regulars still come. But they don't stay at the counter any more. There's nothing to talk about. The prices are the same as everywhere.
+    - Rosa bought bread yesterday. Not hers. Theirs. She didn't say anything and neither did I.
+    happy: 0
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 0
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: The second dollar
+    number: 10
+    heartsNeeded: 10
+    path: 1
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - Look under the till. Two frames now.
+    - The first dollar, from Rosa, thirty years ago. And the second, from the first week the farm shelf made more than the tower took from us.
+    - Tuesdays and Fridays, Ji-ho runs the till now. He's better at it than me, which is very annoying.
+    - Thank you, farmer. You didn't just sell me turnips. You sold me the next thirty years.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags: []
+    reward:
+      gold: 500
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
+  - title: Starting again
+    number: 10
+    heartsNeeded: 10
+    path: 2
+    conditions:
+      days: 0
+      seasons: 0
+      dayFrom: 0
+      dayTo: 0
+      minYear: 0
+      minTotalDays: 0
+      weather: 0
+      requireFlags: []
+      anyFlags: []
+      forbidFlags: []
+      counters: []
+    pages:
+    - I took their sign down this morning. Myself. Walt Delgado held the ladder and told me I was doing it wrong the whole time.
+    - I'll pay them back. It will take years. Ji-ho has a plan with a spreadsheet, and Soo-ah has a plan with seeds, and Mi-sook has a plan with food.
+    - Thirty-one years, and starting again. Bring me turnips, farmer. Nia Abara is still wrong about turnips.
+    happy: 1
+    ask:
+      item: {fileID: 0}
+      amount: 0
+      minQuality: 0
+      questTitle: 
+      questText: 
+      reminder: []
+      thanks: []
+    choice:
+      enabled: 0
+      optionA: 
+      replyA: []
+      flagsA: []
+      optionB: 
+      replyB: []
+      flagsB: []
+    setFlags:
+    - kims_local_supplier
+    reward:
+      gold: 300
+      item: {fileID: 0}
+      amount: 0
+      friendship: 0
